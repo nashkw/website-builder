@@ -1,40 +1,38 @@
 # Plan
 
-* PROJECT TITLE
-* YOUR NAME
-* STUDENT ID
-* SUPERVISOR NAME
-
-Week-by-week plan for the whole project. Update this as you go along.
+* **Project Title** Website Builder (for freetobook)
+* **Project Lead** Nash Waugh
+* **Student ID** 2517003W
+* **Supervisor** Alistair Morrison
 
 ## Winter semester
 
-* **Week 1**
-* **Week 2**
-* **Week 3**
-* **Week 4**
-* **Week 5**
-* **Week 6**
-* **Week 7**
-* **Week 8**
-* **Week 9**
-* **Week 10**
-* **Week 11 [PROJECT WEEK]**
-* **Week 12 [PROJECT WEEK]** Status report submitted.
+*  **Week 1** Project launch
+*  **Week 2** Project launch
+*  **Week 3** Requirements specification
+*  **Week 4** Requirements specification
+*  **Week 5** Design
+*  **Week 6** Design
+*  **Week 7** Implementation
+*  **Week 8** Implementation
+*  **Week 9** Implementation
+*  **Week 10** Implementation
+*  **Week 11 [PROJECT WEEK]** Implementation
+*  **Week 12 [PROJECT WEEK]** Implementation (status report due)
 
 ## Winter break
 
 ## Spring Semester
 
-* **Week 13**
-* **Week 14**
-* **Week 15**
-* **Week 16**
-* **Week 17**
-* **Week 19**
-* **Week 20**
-* **Week 21**
-* **Week 22**
-* **Week 23 [TERM ENDS]**
-* **Week 24** Dissertation submission deadline and presentations.
+*  **Week 13** Testing
+*  **Week 14** Testing
+*  **Week 15** Evaluation
+*  **Week 16** Evaluation
+*  **Week 17** Dissertation
+*  **Week 19** Dissertation
+*  **Week 20** Dissertation
+*  **Week 21** Dissertation
+*  **Week 22** Dissertation
+*  **Week 23 [TERM ENDS]** Presentation
+*  **Week 24** Presentation (dissertation due) (presentation due)
 
