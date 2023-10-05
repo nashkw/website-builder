@@ -1,27 +1,15 @@
-# Guidance
-This is a suggested template for a project. You can modify it as you please, but
-but remember to keep:
+# Website Builder for freetobook
+This is a [Level 4 Project](https://www.gla.ac.uk/coursecatalogue/course/?code=COMPSCI4025P) completed as part of a computer science degree with the [University of Glasgow](https://www.gla.ac.uk/). This project is intended to eventually be used by [freetobook](https://en.freetobook.com).
 
-* a timelog, updated regularly in the `timelog.md` format;
-* all source under version control;
-* data well organised and with appropriate ethical approval (for human subject data);
+For issue management, meeting notes, contact info, and other records see the project [Trello board](https://trello.com/b/eibXZwDg/level-4-project).
 
-Here's an overview of the structure as it stands:
+### Project Structure
 
-* `timelog.md` The time log for your project.
-* `plan.md` A skeleton week-by-week plan for the project. 
-* `data/` data you acquire during the project
-* `src/` source code for your project
-* `status_report/` the status report submitted in December
-* `meetings/` Records of the meetings you have during the project.
-* `dissertation/` source and for your project dissertation
-* `presentation/` your presentation
-
-* Make sure you add a `.gitignore` or similar for your VCS for the tools you are using!
-* Add any appropriate continuous integration (e.g. Travis CI) in this directory.
-
-* Remove this `readme.md` file from any repository and replace it with something more appropriate!
-
-## Important
-* It should be easy to rebuild and run your project and your dissertation
-        * Include clear instructions in the relevant directories to make this possible
+* `.github/` workflows for automatic deployment to an AWS EC2 instance (hosted [here](http://52.87.120.138/))
+* `data/` data acquired during the project, and supporting documents for data collection
+* `dissertation/` the dissertation documenting this project
+* `presentation/` a presentation summarising this project
+* `src/` source code for this project (see the `readme.md` file [here](https://github.com/nashkw/website-builder/tree/main/src))
+* `status_report/` a status report submitted to the project supervisor halfway through the project
+* `plan.md` a rough week-by-week plan for the project, updated as it evolves
+* `timelog.md` a timelog of all project activities starting from week 1 of the course
