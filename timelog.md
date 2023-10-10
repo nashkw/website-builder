@@ -73,3 +73,18 @@
 ### 05 Oct 2023
 
 * *0.5 hours* prepared and tested recording set up ahead of interviews
+* *0.5 hours* customised template `.md` files from the moodle example files
+* *1.5 hours* conducted first requirements gathering interview
+* *1.5 hours* conducted second requirements gathering interview
+* *1 hour* review of resources gathered during the interviews
+
+
+## Week 4
+
+### 09 Oct 2023
+
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 10 Oct 2023
+
+* *1.5 hours* conducted third requirements gathering interview
