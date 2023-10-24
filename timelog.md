@@ -88,3 +88,44 @@
 ### 10 Oct 2023
 
 * *1.5 hours* conducted third requirements gathering interview
+* *2.5 hours* research into and experimentation with existing website builder services
+* *2.5 hours* review of example dissertations and initial draft of functional requirements
+
+### 12 Oct 2023
+
+* *2.5 hours* research into existing freetobook products and design strategies
+* *2.5 hours* review of example dissertations and initial draft of non-functional requirements
+* *1 hour* review of example dissertations and consideration of potential design approaches
+
+
+## Week 5
+
+### 16 Oct 2023
+
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 17 Oct 2023
+
+* *0.5 hours* redraft requirements specification based on supervisor feedback
+* *1 hour* research into the feasibility of using prebuilt UI components
+* *2 hours* installation of tailwind and preline, creation of a responsive landing page
+* *0.5 hours* redraft requirements specification based on freetobook feedback
+* *3.5 hours* began figma wireframing of the application using preline assets
+
+### 19 Oct 2023
+
+* *8 hours* continued figma wireframing of the application using preline assets
+
+
+## Week 6
+
+### 23 Oct 2023
+
+* *1.5 hours* completed figma wireframing of the application using preline assets
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+* *4 hours* figma wireframing of the home page of an exemplar generated site using preline assets
+
+### 24 Oct 2023
+
+* *0.5 hours* brainstorming next steps for project and recording as trello tickets
+* *1 hour* updating freetobook on wireframing progress and updating timelog
