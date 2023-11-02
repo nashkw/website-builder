@@ -2,11 +2,10 @@
 import { ref } from 'vue';
 import ApplicationLogo from '@/Components/Breeze/ApplicationLogo.vue';
 import Dropdown from '@/Components/Breeze/Dropdown.vue';
-import DropdownLink from '@/Components/Breeze/DropdownLink.vue';
 import NavLink from '@/Components/Breeze/NavLink.vue';
 import ResponsiveNavLink from '@/Components/Breeze/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-
+import SignInOutButton from "@/Components/SignInOutButton.vue";
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -64,10 +63,8 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
-                                        </DropdownLink>
+                                        <Link :href="route('profile.edit')"> Profile </Link>
+                                        <SignInOutButton />
                                     </template>
                                 </Dropdown>
                             </div>

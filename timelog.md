@@ -129,3 +129,11 @@
 
 * *0.5 hours* brainstorming next steps for project and recording as trello tickets
 * *1 hour* updating freetobook on wireframing progress and updating timelog
+* *6.5 hours* begin setup of authentication system (including database and landing page)
+
+
+## Week 7
+
+### 02 Nov 2023
+
+* *? hours* continue setup of authentication system
