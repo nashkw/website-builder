@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import ApplicationLogo from '@/Components/Breeze/ApplicationLogo.vue';
+import ApplicationLogo from '@/Components/Icons/ApplicationLogo.vue';
 import Dropdown from '@/Components/Breeze/Dropdown.vue';
 import NavLink from '@/Components/Breeze/NavLink.vue';
 import ResponsiveNavLink from '@/Components/Breeze/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-import SignInOutButton from "@/Components/SignInOutButton.vue";
+import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 const showingNavigationDropdown = ref(false);
 </script>
 

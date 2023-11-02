@@ -6,6 +6,7 @@ import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import TextInput from '@/Components/Breeze/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
 
 defineProps({
     canResetPassword: {
@@ -30,7 +31,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <LoggedOutLayout>
         <Head title="Log in" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -90,5 +91,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </GuestLayout>
+    </LoggedOutLayout>
 </template>

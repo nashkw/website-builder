@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --colour-accent-primary: #6C3BF6;
+    --colour-accent-primary-alt: #6D28D9;
+    --colour-accent-secondary: #FEF4E6;
+    --colour-title: #000000;
+    --colour-sub-title: #1F2937;
+    --colour-sub-sub-title: #475569;
+    --colour-background: #FFFFFF;
+    --colour-background-outline: #E8E3F5;
+    --colour-background-alt: #C1BBD2;
+    --colour-disabled: #BABAC2;
+    --colour-gradient-start: #E9D5FF;
+    --colour-gradient-middle: #FFE4E6;
+    --colour-gradient-end: #FFEDD5;
+}
+
+.gradient-bg {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    --tw-gradient-from: var(--colour-gradient-start) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--colour-gradient-middle) var(--tw-gradient-via-position), var(--tw-gradient-to);
+    --tw-gradient-to: var(--colour-gradient-end) var(--tw-gradient-to-position);
+}
+
+.wb-primary-button, .wb-secondary-button {
+    display: inline-flex;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.375rem;
+    border-width: 1px;
+    border-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.wb-primary-button {
+    column-gap: 0.75rem;
+    font-weight: 500;
+    color: var(--colour-background);
+    background-color: var(--colour-accent-primary);
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+}
+.wb-primary-button:hover {
+    background-color: var(--colour-accent-primary-alt);
+}
+
+.wb-secondary-button {
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--colour-sub-title);
+    transition-property: all;
+}
+.wb-secondary-button:hover {
+    color: var(--colour-background);
+    background-color: var(--colour-sub-title);
+}

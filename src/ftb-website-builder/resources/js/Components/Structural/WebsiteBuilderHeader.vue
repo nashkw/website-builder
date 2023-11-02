@@ -5,12 +5,7 @@
             class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
         >
             <div class="flex items-center justify-between">
-                <a
-                    class="flex-none text-2xl text-violet-600 hover:text-violet-700 font-semibold"
-                    href="#"
-                >
-                    Website Builder
-                </a>
+                <ApplicationLogo />
                 <div class="sm:hidden">
                     <button
                         aria-controls="navbar-collapse-with-animation"
@@ -56,11 +51,12 @@
 </template>
 
 <script>
-import SignInOutButton from "@/Components/SignInOutButton.vue";
+import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
+import ApplicationLogo from "@/Components/Icons/ApplicationLogo.vue";
 
 export default {
     name: "WebsiteBuilderHeader",
-    components: {SignInOutButton}
+    components: {ApplicationLogo, SignInOutButton}
 }
 </script>
 

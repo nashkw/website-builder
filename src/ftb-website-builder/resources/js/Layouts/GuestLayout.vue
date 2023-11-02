@@ -1,15 +1,11 @@
 <script setup>
-import ApplicationLogo from '@/Components/Breeze/ApplicationLogo.vue';
-import { Link } from '@inertiajs/vue3';
-import WebsiteBuilderFooter from "@/Components/Structural/WebsiteBuilderFooter.vue";
+import ApplicationLogo from '@/Components/Icons/ApplicationLogo.vue';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 gradient-bg">
         <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
+            <ApplicationLogo />
         </div>
 
         <div
