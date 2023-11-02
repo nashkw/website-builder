@@ -5,7 +5,7 @@
             class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
         >
             <div class="flex items-center justify-between">
-                <ApplicationLogo />
+                <ApplicationLogo class ="mx-2" />
                 <div class="sm:hidden">
                     <button
                         aria-controls="navbar-collapse-with-animation"

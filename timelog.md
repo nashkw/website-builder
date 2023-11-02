@@ -136,4 +136,4 @@
 
 ### 02 Nov 2023
 
-* *? hours* continue setup of authentication system
+* *8 hours* continued setup of authentication system (including sign up and log in pages)

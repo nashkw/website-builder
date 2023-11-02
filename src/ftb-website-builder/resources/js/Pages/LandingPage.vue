@@ -3,23 +3,6 @@ import { Head } from '@inertiajs/vue3';
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
-
-defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
-});
 </script>
 
 <template>

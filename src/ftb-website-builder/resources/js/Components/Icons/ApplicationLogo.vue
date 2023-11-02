@@ -1,6 +1,6 @@
 <template>
     <a
-        class="wb-logo mx-2"
+        class="wb-logo"
         href="/"
     >
         Website Builder

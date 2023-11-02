@@ -1,9 +1,7 @@
 <script setup>
 import Checkbox from '@/Components/Forms/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
-import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
@@ -36,7 +34,7 @@ const submit = () => {
         <Head title="Log in" />
 
         <form @submit.prevent="submit">
-            <div class="w-80 sm:w-96 my-7 bg-white rounded-xl shadow-sm p-7 space-y-5">
+            <div class="w-80 sm:w-96 my-7 bg-white bg-opacity-75 rounded-xl shadow-sm p-7 space-y-5">
                 <div class="space-y-2 text-center mb-8">
                     <h1 class="wb-title">
                         Sign in
