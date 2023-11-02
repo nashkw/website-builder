@@ -1,6 +1,6 @@
 <template>
     <a
-        class="flex-none text-2xl text-violet-600 hover:text-violet-700 font-semibold"
+        class="wb-logo mx-2"
         href="/"
     >
         Website Builder

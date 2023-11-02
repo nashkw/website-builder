@@ -100,6 +100,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.password_confirmation" />
                 </div>
+
                 <div>
                     <button
                         type="submit"

@@ -16,6 +16,7 @@
     --colour-gradient-start: #E9D5FF;
     --colour-gradient-middle: #FFE4E6;
     --colour-gradient-end: #FFEDD5;
+    --input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .gradient-bg {
@@ -23,6 +24,13 @@
     --tw-gradient-from: var(--colour-gradient-start) var(--tw-gradient-from-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--colour-gradient-middle) var(--tw-gradient-via-position), var(--tw-gradient-to);
     --tw-gradient-to: var(--colour-gradient-end) var(--tw-gradient-to-position);
+}
+
+.wb-logo {
+    flex: none;
+    color: var(--colour-accent-primary);
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .wb-title {
@@ -46,10 +54,18 @@
 
 .wb-text-link {
     color: var(--colour-accent-primary);
-    font-weight: 600;
+    font-weight: 500;
 }
-.wb-text-link:hover {
+
+.wb-text-link:hover, .wb-logo:hover {
     color: var(--colour-accent-primary-alt);
+}
+
+.wb-checkbox {
+    border-color: var(--colour-background-outline);
+    color: var(--colour-accent-primary);
+    box-shadow: var(--input-shadow);
+    border-radius: 4px;
 }
 
 .wb-input-box {
@@ -62,13 +78,15 @@
     border-color: var(--colour-background-outline);
     width: 100%;
     font-size: 14px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--input-shadow);
 }
-.wb-input-box:hover {
+
+.wb-input-box:hover, .wb-checkbox:hover {
     border-color: var(--colour-background-alt);
 }
-.wb-input-box:focus {
+.wb-input-box:focus, .wb-checkbox:focus {
     border-color: var(--colour-accent-primary-alt);
+    box-shadow: var(--input-shadow);
 }
 
 .wb-primary-button, .wb-secondary-button {
