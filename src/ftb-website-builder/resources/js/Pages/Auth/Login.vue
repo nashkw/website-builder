@@ -35,10 +35,6 @@ const submit = () => {
     <LoggedOutLayout>
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
-
         <form @submit.prevent="submit">
             <div class="w-80 sm:w-96 my-7 bg-white rounded-xl shadow-sm p-7 space-y-5">
                 <div class="space-y-2 text-center mb-8">
@@ -73,19 +69,10 @@ const submit = () => {
                 </div>
 
                 <div class="space-y-2">
-                    <div class="flex justify-between items-center">
-                        <InputLabel
-                            for="password"
-                            value="Password"
-                        />
-                        <Link
-                            v-if="canResetPassword"
-                            :href="route('password.request')"
-                            class="wb-text-link text-sm"
-                        >
-                            Forgot your password?
-                        </Link>
-                    </div>
+                    <InputLabel
+                        for="password"
+                        value="Password"
+                    />
                     <TextInput
                         id="password"
                         type="password"
