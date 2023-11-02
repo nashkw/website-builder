@@ -7,8 +7,8 @@
     --colour-accent-primary-alt: #6D28D9;
     --colour-accent-secondary: #FEF4E6;
     --colour-title: #000000;
-    --colour-sub-title: #1F2937;
-    --colour-sub-sub-title: #475569;
+    --colour-subtitle: #1F2937;
+    --colour-text: #475569;
     --colour-background: #FFFFFF;
     --colour-background-outline: #E8E3F5;
     --colour-background-alt: #C1BBD2;
@@ -25,8 +25,55 @@
     --tw-gradient-to: var(--colour-gradient-end) var(--tw-gradient-to-position);
 }
 
+.wb-title {
+    display: block;
+    color: var(--colour-title);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.wb-subtitle {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--colour-subtitle);
+}
+
+.wb-text {
+    color: var(--colour-text);
+    font-size: 15px;
+}
+
+.wb-text-link {
+    color: var(--colour-accent-primary);
+    font-weight: 600;
+}
+.wb-text-link:hover {
+    color: var(--colour-accent-primary-alt);
+}
+
+.wb-input-box {
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 6px;
+    border-color: var(--colour-background-outline);
+    width: 100%;
+    font-size: 14px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.wb-input-box:hover {
+    border-color: var(--colour-background-alt);
+}
+.wb-input-box:focus {
+    border-color: var(--colour-accent-primary-alt);
+}
+
 .wb-primary-button, .wb-secondary-button {
     display: inline-flex;
+    gap: 8px;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;
@@ -36,16 +83,15 @@
     border-radius: 0.375rem;
     border-width: 1px;
     border-color: transparent;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
     text-align: center;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
 
 .wb-primary-button {
-    column-gap: 0.75rem;
-    font-weight: 500;
     color: var(--colour-background);
     background-color: var(--colour-accent-primary);
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
@@ -55,12 +101,10 @@
 }
 
 .wb-secondary-button {
-    gap: 0.5rem;
-    font-weight: 600;
-    color: var(--colour-sub-title);
+    color: var(--colour-subtitle);
     transition-property: all;
 }
 .wb-secondary-button:hover {
     color: var(--colour-background);
-    background-color: var(--colour-sub-title);
+    background-color: var(--colour-subtitle);
 }
