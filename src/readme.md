@@ -39,3 +39,30 @@ Examples:
 * Run automated tests by running `pytest`
 * Start the software by running `bin/editor.exe` and opening the file `examples/example_01.bin`
 
+
+
+# Notes
+
+* install php
+   * on windows can choco install php
+* install composer
+   * https://getcomposer.org/doc/00-intro.md
+   * must have php installed first
+   * windows is just an .exe installer
+* install sqlite
+   * on windows can choco install sqlite
+* enable php extensions (note not sure which of these are 100% required, will need to test with a fresh install)
+   * mbstring
+   * curl
+   * fileinfo
+   * mysqli
+   * openssl
+   * pdo_mysql
+   * pdo_sqlite
+   * sqlite3
+   * xsl
+   * zip
+* install node.js?
+* composer install
+* npm install
+* npm start

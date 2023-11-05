@@ -137,3 +137,7 @@
 ### 02 Nov 2023
 
 * *8 hours* continued setup of authentication system (including sign up and log in pages)
+
+### 05 Nov 2023
+
+* *1 hour* set up project on personal laptop and made notes on installation steps
