@@ -1,7 +1,6 @@
 <script setup>
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
-import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -34,7 +33,7 @@ const updatePassword = () => {
 </script>
 
 <template>
-    <section>
+    <section class="space-y-6">
         <header>
             <h2 class="wb-subtitle">
                 Update Password
@@ -44,7 +43,10 @@ const updatePassword = () => {
             </p>
         </header>
 
-        <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
+        <form
+            @submit.prevent="updatePassword"
+            class="space-y-6"
+        >
             <div class="space-y-2">
                 <InputLabel
                     for="current_password"
@@ -90,9 +92,12 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">
+                <button
+                    :disabled="form.processing"
+                    class="wb-primary-button"
+                >
                     Save
-                </PrimaryButton>
+                </button>
                 <Transition
                     enter-active-class="transition ease-in-out"
                     enter-from-class="opacity-0"

@@ -21,9 +21,8 @@ const submit = () => {
 </script>
 
 <template>
+    <Head title="Register" />
     <LoggedOutLayout>
-        <Head title="Register" />
-
         <form @submit.prevent="submit">
             <div class="w-80 sm:w-96 my-7 wb-page-container rounded-xl shadow-sm space-y-5">
                 <div class="space-y-2 text-center mb-8">

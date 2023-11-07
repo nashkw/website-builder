@@ -115,7 +115,7 @@ export default {
     </div>
 
     <div class="flex w-full min-h-screen sm:p-6 md:p-8 lg:pl-72 gradient-bg">
-        <div class="wb-page-container w-full sm:rounded-lg">
+        <div class="wb-page-container w-full sm:rounded-lg space-y-6">
             <slot />
         </div>
     </div>

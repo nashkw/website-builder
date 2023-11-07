@@ -30,75 +30,80 @@ const submit = () => {
 </script>
 
 <template>
+    <Head title="Log in" />
     <LoggedOutLayout>
-        <Head title="Log in" />
-
-        <form @submit.prevent="submit">
-            <div class="w-80 sm:w-96 my-7 wb-page-container rounded-xl shadow-sm space-y-5">
-                <div class="space-y-2 text-center mb-8">
-                    <h1 class="wb-title">
-                        Sign in
-                    </h1>
-                    <p class="wb-text">
-                        Dont have an account?
-                        <Link
-                            class="wb-text-link ml-1"
-                            :href="route('register')"
-                        >
-                            Sign up here
-                        </Link>
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <InputLabel
-                        for="email"
-                        value="Email"
-                    />
-                    <TextInput
-                        id="email"
-                        type="email"
-                        v-model="form.email"
-                        required
-                        autofocus
-                        autocomplete="username"
-                    />
-                    <InputError :message="form.errors.email" />
-                </div>
-
-                <div class="space-y-2">
-                    <InputLabel
-                        for="password"
-                        value="Password"
-                    />
-                    <TextInput
-                        id="password"
-                        type="password"
-                        v-model="form.password"
-                        required
-                        autocomplete="current-password"
-                    />
-                    <InputError :message="form.errors.password" />
-                </div>
-
-                <div class="block">
-                    <label class="flex items-center">
-                        <Checkbox name="remember" v-model:checked="form.remember" />
-                        <span class="ml-2 wb-text">Remember me</span>
-                    </label>
-                </div>
-
-                <div>
-                    <button
-                        type="submit"
-                        class="wb-primary-button w-full mt-4"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
+        <form
+            @submit.prevent="submit"
+            class="w-80 sm:w-96 my-7 wb-page-container rounded-xl shadow-sm space-y-5"
+        >
+            <div class="space-y-2 text-center mb-8">
+                <h1 class="wb-title">
+                    Sign in
+                </h1>
+                <p class="wb-text">
+                    Dont have an account?
+                    <Link
+                        class="wb-text-link ml-1"
+                        :href="route('register')"
                     >
-                        Sign in
-                        <ArrowIcon />
-                    </button>
-                </div>
+                        Sign up here
+                    </Link>
+                </p>
+            </div>
+
+            <div class="space-y-2">
+                <InputLabel
+                    for="email"
+                    value="Email"
+                />
+                <TextInput
+                    id="email"
+                    type="email"
+                    v-model="form.email"
+                    required
+                    autofocus
+                    autocomplete="username"
+                />
+                <InputError :message="form.errors.email" />
+            </div>
+
+            <div class="space-y-2">
+                <InputLabel
+                    for="password"
+                    value="Password"
+                />
+                <TextInput
+                    id="password"
+                    type="password"
+                    v-model="form.password"
+                    required
+                    autocomplete="current-password"
+                />
+                <InputError :message="form.errors.password" />
+            </div>
+
+            <div class="block">
+                <label class="flex items-center">
+                    <Checkbox
+                        name="remember"
+                        v-model:checked="form.remember"
+                    />
+                    <span class="ml-2 wb-text">
+                        Remember me
+                    </span>
+                </label>
+            </div>
+
+            <div>
+                <button
+                    type="submit"
+                    class="wb-primary-button w-full mt-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    Sign in
+                    <ArrowIcon />
+                </button>
             </div>
         </form>
     </LoggedOutLayout>

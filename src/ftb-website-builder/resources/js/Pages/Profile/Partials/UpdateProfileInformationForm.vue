@@ -1,14 +1,10 @@
 <script setup>
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
-import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 
 defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
-    },
     status: {
         type: String,
     },
@@ -23,7 +19,7 @@ const form = useForm({
 </script>
 
 <template>
-    <section>
+    <section class="space-y-6">
         <header>
             <h2 class="wb-subtitle">
                 Profile Information
@@ -33,7 +29,10 @@ const form = useForm({
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
+        <form
+            @submit.prevent="form.patch(route('profile.update'))"
+            class="space-y-6"
+        >
             <div class="space-y-2">
                 <InputLabel
                     for="name"
@@ -66,9 +65,12 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">
+                <button
+                    :disabled="form.processing"
+                    class="wb-primary-button"
+                >
                     Save
-                </PrimaryButton>
+                </button>
                 <Transition
                     enter-active-class="transition ease-in-out"
                     enter-from-class="opacity-0"

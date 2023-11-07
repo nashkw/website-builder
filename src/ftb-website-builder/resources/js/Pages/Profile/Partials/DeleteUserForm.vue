@@ -1,9 +1,7 @@
 <script setup>
-import DangerButton from '@/Components/Breeze/DangerButton.vue';
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
-import Modal from '@/Components/Breeze/Modal.vue';
-import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import Modal from '@/Components/Forms/Modal.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
@@ -49,11 +47,17 @@ const closeModal = () => {
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">
+        <button
+            @click="confirmUserDeletion"
+            class="wb-primary-button"
+        >
             Delete Account
-        </DangerButton>
+        </button>
 
-        <Modal :show="confirmingUserDeletion" @close="closeModal">
+        <Modal
+            :show="confirmingUserDeletion"
+            @close="closeModal"
+        >
             <div class="p-6 space-y-4">
                 <h2 class="wb-subtitle">
                     Are you sure you want to delete your account?
@@ -81,16 +85,20 @@ const closeModal = () => {
                 </div>
 
                 <div class="flex justify-end space-x-3">
-                    <SecondaryButton @click="closeModal">
+                    <button
+                        @click="closeModal"
+                        class="wb-secondary-button"
+                    >
                         Cancel
-                    </SecondaryButton>
-                    <DangerButton
-                        :class="{ 'opacity-25': form.processing }"
+                    </button>
+                    <button
                         :disabled="form.processing"
                         @click="deleteUser"
+                        class="wb-primary-button"
+                        :class="{ 'opacity-25': form.processing }"
                     >
                         Delete Account
-                    </DangerButton>
+                    </button>
                 </div>
             </div>
         </Modal>
