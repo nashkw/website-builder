@@ -34,11 +34,14 @@ export default {
     >
         <ApplicationLogo class="px-6"/>
 
-        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+        <nav
+            class="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
+            data-hs-accordion-always-open
+        >
             <ul class="space-y-1.5">
                 <li>
                     <a
-                        class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100"
+                        class="wb-sidebar-item"
                         href="/"
                     >
                         <GearIcon />
@@ -47,7 +50,7 @@ export default {
                 </li>
                 <li>
                     <a
-                        class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100"
+                        class="wb-sidebar-item"
                         href="/"
                     >
                         <PageIcon />
@@ -56,7 +59,7 @@ export default {
                 </li>
                 <li>
                     <a
-                        class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100"
+                        class="wb-sidebar-item"
                         href="/"
                     >
                         <AccountIcon />
@@ -67,7 +70,7 @@ export default {
         </nav>
     </div>
 
-    <div class="w-full min-h-screen sm:p-6 md:p-8 lg:pl-72 gradient-bg">
+    <div class="flex w-full min-h-screen sm:p-6 md:p-8 lg:pl-72 gradient-bg">
         <div class="bg-white bg-opacity-75 sm:rounded-lg p-6">
             <slot />
         </div>
