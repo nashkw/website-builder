@@ -19,9 +19,13 @@ Route::get('/', function () {
     return Inertia::render('LandingPage');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/edit', function () {
+    return Inertia::render('EditContent/EditContent');
+})->middleware(['auth'])->name('edit');
+
+Route::get('/add', function () {
+    return Inertia::render('AddContent/AddContent');
+})->middleware(['auth'])->name('add');
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountController::class, 'edit'])->name('account');

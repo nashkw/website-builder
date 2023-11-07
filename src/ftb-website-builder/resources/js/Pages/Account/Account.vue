@@ -3,7 +3,7 @@ import AccountFormDelete from './AccountFormDelete.vue';
 import AccountFormPassword from './AccountFormPassword.vue';
 import AccountFormInfo from './AccountFormInfo.vue';
 import { Head } from '@inertiajs/vue3';
-import LoggedInLayout from "@/Layouts/LoggedInLayout.vue";
+import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 </script>
 
 <template>

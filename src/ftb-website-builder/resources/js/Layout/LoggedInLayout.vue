@@ -4,7 +4,7 @@ import GearIcon from "@/Components/Icons/GearIcon.vue";
 import PageIcon from "@/Components/Icons/PageIcon.vue";
 import AccountIcon from "@/Components/Icons/AccountIcon.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
-import WebsiteBuilderFooter from "@/Components/Structural/WebsiteBuilderFooter.vue";
+import WebsiteBuilderFooter from "@/Layout/WebsiteBuilderFooter.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 import MenuIcon from "@/Components/Icons/MenuIcon.vue";
@@ -48,14 +48,14 @@ export default {
                 <ApplicationLogo />
                 <ArrowIcon class="wb-text max-sm:hidden" />
                 <li class="flex items-center wb-text max-sm:hidden">
-                    Edit your website
+                    Tier 1
                 </li>
                 <ArrowIcon  class="wb-text max-sm:hidden" />
                 <li
                     class="flex items-center wb-text max-sm:hidden"
                     aria-current="page"
                 >
-                    Dashboard
+                    Tier 2
                 </li>
             </ol>
         </div>
@@ -76,7 +76,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        href="/"
+                        href="edit"
                     >
                         <GearIcon />
                         Edit your website
@@ -85,7 +85,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        href="/"
+                        href="add"
                     >
                         <PageIcon />
                         Add more pages
@@ -112,7 +112,7 @@ export default {
         </div>
     </div>
 
-    <div class="flex w-full min-h-screen sm:p-6 md:p-8 lg:pl-72 gradient-bg">
+    <div class="flex w-full min-h-screen sm:p-8 lg:pl-72 gradient-bg">
         <div class="wb-page-container w-full sm:rounded-lg space-y-6">
             <slot />
         </div>

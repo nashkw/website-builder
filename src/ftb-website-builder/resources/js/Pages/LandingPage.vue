@@ -2,7 +2,7 @@
 import { Head } from '@inertiajs/vue3';
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
-import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
+import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
 </script>
 
 <template>
@@ -26,7 +26,7 @@ import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
                     class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center"
                 >
                     <ArrowButton
-                        href="dashboard"
+                        href="edit"
                         text="Continue your journey"
                     />
                 </div>

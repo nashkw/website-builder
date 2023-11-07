@@ -4,7 +4,7 @@ import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
+import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
 
 defineProps({
