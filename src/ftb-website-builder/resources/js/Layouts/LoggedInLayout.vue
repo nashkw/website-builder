@@ -94,7 +94,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        :href="route('profile.edit')"
+                        :href="route('account')"
                     >
                         <AccountIcon />
                         Manage your account

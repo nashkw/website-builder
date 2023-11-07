@@ -16,7 +16,7 @@ const form = useForm({
     <section class="space-y-6">
         <header>
             <h2 class="wb-subtitle">
-                Profile Information
+                Account Information
             </h2>
             <p class="mt-1 wb-text">
                 Update your account's profile information and email address.
@@ -24,7 +24,7 @@ const form = useForm({
         </header>
 
         <form
-            @submit.prevent="form.patch(route('profile.update'))"
+            @submit.prevent="form.patch(route('account.update'))"
             class="space-y-6"
         >
             <div class="space-y-2">
