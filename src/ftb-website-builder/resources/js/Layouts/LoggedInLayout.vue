@@ -96,7 +96,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        href="/"
+                        :href="route('profile.edit')"
                     >
                         <AccountIcon />
                         Manage your account
@@ -115,7 +115,7 @@ export default {
     </div>
 
     <div class="flex w-full min-h-screen sm:p-6 md:p-8 lg:pl-72 gradient-bg">
-        <div class="wb-page-container sm:rounded-lg">
+        <div class="wb-page-container w-full sm:rounded-lg">
             <slot />
         </div>
     </div>
