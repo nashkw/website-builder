@@ -130,7 +130,6 @@
 }
 
 .wb-sidebar {
-    display: none;
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -144,7 +143,6 @@
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
-
 }
 
 .wb-sidebar-item {
@@ -156,11 +154,16 @@
     column-gap: 14px;
     align-items: center;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 15px;
     background-color: var(--colour-background);
 }
 .wb-sidebar-item:hover {
     background-color: var(--colour-accent-secondary);
+}
+
+.wb-bg {
+    border-color: var(--colour-background-outline);
+    background-color: var(--colour-background);
 }
 
 .wb-page-container {

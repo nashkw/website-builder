@@ -1,5 +1,5 @@
 <template>
-    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4">
+    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full wb-bg text-sm py-4">
         <nav
             aria-label="Global"
             class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
@@ -10,7 +10,7 @@
                     <button
                         aria-controls="navbar-collapse-with-animation"
                         aria-label="Toggle navigation"
-                        class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
+                        class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium wb-bg text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
                         data-hs-collapse="#navbar-collapse-with-animation"
                         type="button"
                     >

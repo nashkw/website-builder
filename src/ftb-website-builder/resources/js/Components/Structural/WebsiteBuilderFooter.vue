@@ -1,5 +1,5 @@
 <template>
-    <footer class="mt-auto w-full py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-white">
+    <footer class="mt-auto w-full py-10 px-4 sm:px-6 lg:px-8 mx-auto wb-bg">
         <div class="text-center">
             <p class="wb-text">
                 This website builder is a partner of
