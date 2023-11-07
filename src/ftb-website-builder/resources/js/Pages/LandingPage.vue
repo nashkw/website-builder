@@ -11,7 +11,7 @@ import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
             <div class="max-w-2xl text-center mx-auto">
                 <div class="mt-5 max-w-2xl">
-                    <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+                    <h1 class="wb-title max-sm:text-4xl sm:text-5xl lg:text-6xl">
                         Website Builder
                     </h1>
                 </div>

@@ -4,7 +4,6 @@ import GearIcon from "@/Components/Icons/GearIcon.vue";
 import PageIcon from "@/Components/Icons/PageIcon.vue";
 import AccountIcon from "@/Components/Icons/AccountIcon.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
-import WebsiteBuilderHeader from "@/Components/Structural/WebsiteBuilderHeader.vue";
 import WebsiteBuilderFooter from "@/Components/Structural/WebsiteBuilderFooter.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
@@ -16,7 +15,6 @@ export default {
         MenuIcon,
         ArrowButton,
         SignInOutButton,
-        WebsiteBuilderHeader,
         WebsiteBuilderFooter,
         ArrowIcon,
         AccountIcon,

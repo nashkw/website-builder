@@ -6,7 +6,9 @@ import LoggedInLayout from "@/Layouts/LoggedInLayout.vue";
 <template>
     <Head title="Dashboard" />
     <LoggedInLayout>
-        <h1 class="wb-title text-center">Edit your website</h1>
+        <h1 class="wb-title">
+            Edit your website
+        </h1>
         <p class="wb-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Diam vel quam elementum pulvinar etiam non quam lacus suspendisse. At volutpat diam ut venenatis tellus in metus. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Feugiat nisl pretium fusce id velit ut tortor pretium viverra. Tristique senectus et netus et malesuada fames. Nisl tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Ac turpis egestas sed tempus. Orci phasellus egestas tellus rutrum tellus. Dolor sit amet consectetur adipiscing. Habitant morbi tristique senectus et netus et malesuada fames. Erat nam at lectus urna duis.
         </p>

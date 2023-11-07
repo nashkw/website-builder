@@ -37,8 +37,9 @@
 
 .wb-title {
     display: block;
+    text-align: center;
     color: var(--colour-title);
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
 }
 
@@ -169,4 +170,16 @@
 .wb-page-container {
     padding: 28px;
     background-color: var(--colour-background-blur);
+}
+
+.wb-card {
+    padding: 24px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: var(--colour-background-outline);
+    background-color: var(--colour-background);
+
+    @media (min-width: 640px) {
+        padding: 32px;
+    }
 }
