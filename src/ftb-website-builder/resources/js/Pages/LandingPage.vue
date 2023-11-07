@@ -25,13 +25,19 @@ import LoggedOutLayout from "@/Layouts/LoggedOutLayout.vue";
                     v-if="$page.props.auth.user"
                     class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center"
                 >
-                    <ArrowButton href="dashboard" text="Continue your journey" />
+                    <ArrowButton
+                        href="dashboard"
+                        text="Continue your journey"
+                    />
                 </div>
                 <div
                     v-else
                     class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center"
                 >
-                    <ArrowButton href="register" text="Get started" />
+                    <ArrowButton
+                        href="register"
+                        text="Get started"
+                    />
                     <SignInOutButton />
                 </div>
             </div>

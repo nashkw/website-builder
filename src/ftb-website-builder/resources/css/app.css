@@ -10,6 +10,7 @@
     --colour-subtitle: #1F2937;
     --colour-text: #475569;
     --colour-background: #FFFFFF;
+    --colour-background-blur: rgba(255, 255, 255, 0.75);
     --colour-background-outline: #E8E3F5;
     --colour-background-alt: #C1BBD2;
     --colour-disabled: #BABAC2;
@@ -28,6 +29,7 @@
 
 .wb-logo {
     flex: none;
+    text-align: center;
     color: var(--colour-accent-primary);
     font-size: 24px;
     font-weight: 600;
@@ -127,6 +129,24 @@
     background-color: var(--colour-subtitle);
 }
 
+.wb-sidebar {
+    display: none;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 40px 24px 40px 24px;
+    border-right-width: 1px;
+    border-color: var(--colour-background-outline);
+    width: 256px;
+    background-color: var(--colour-background);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+
+}
+
 .wb-sidebar-item {
     display: flex;
     padding-top: 8px;
@@ -141,4 +161,9 @@
 }
 .wb-sidebar-item:hover {
     background-color: var(--colour-accent-secondary);
+}
+
+.wb-page-container {
+    padding: 28px;
+    background-color: var(--colour-background-blur);
 }
