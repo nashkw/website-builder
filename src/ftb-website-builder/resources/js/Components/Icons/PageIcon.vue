@@ -9,11 +9,8 @@
         height="14"
         viewBox="0 0 14 14"
         fill="none"
-        aria-labelledby="pageIconAltText"
+        aria-hidden="true"
     >
-        <title id="pageIconAltText">
-            Page icon
-        </title>
         <g clip-path="url(#clip0_16_15220)">
             <mask
                 id="path-1-inside-1_16_15220"

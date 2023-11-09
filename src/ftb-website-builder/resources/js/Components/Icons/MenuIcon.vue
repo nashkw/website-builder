@@ -12,7 +12,7 @@
         aria-labelledby="menuIconAltText"
     >
         <title id="menuIconAltText">
-            Menu icon
+            Toggle menu
         </title>
         <path
             fill-rule="evenodd"

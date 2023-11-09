@@ -10,11 +10,8 @@
         height="16"
         fill="currentColor"
         viewBox="0 0 16 16"
-        aria-labelledby="accountIconAltText"
+        aria-hidden="true"
     >
-        <title id="accountIconAltText">
-            Account Icon
-        </title>
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
         <path
             fill-rule="evenodd"
