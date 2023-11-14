@@ -165,3 +165,9 @@
 ### 13 Nov 2023
 
 * *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 14 Nov 2023
+
+* *4 hours* set up project with mysql database, ensuring previous code still works
+* *1 hour* clean up (renaming of and deletion of) project migrations
+* *3 hours* added migrations for all tables and folders for all images
