@@ -141,3 +141,27 @@
 ### 05 Nov 2023
 
 * *1 hour* set up project on personal laptop and made notes on installation steps
+
+
+## Week 8
+
+### 07 Nov 2023
+
+* *8 hours* continued setup of authentication system (including routes and account page)
+
+### 08 Nov 2023
+
+* *0.5 hours* set up project on personal desktop pc and set up demo on personal laptop
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 09 Nov 2023
+
+* *3.5 hours* research into search engine optimisation options relevant to generated sites
+* *3.5 hours* planned database structure, including default values and if fields are nullable
+
+
+## Week 9
+
+### 13 Nov 2023
+
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
