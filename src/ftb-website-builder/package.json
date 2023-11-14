@@ -4,7 +4,9 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "concurrently  \"php artisan config:cache\" \"php artisan serve\" \"npm run dev\""
+        "start": "concurrently  \"php artisan config:cache\" \"php artisan serve\" \"npm run dev\"",
+        "clear": "php artisan config:clear && php artisan cache:clear",
+        "migrate": "php artisan config:clear && php artisan cache:clear && php artisan migrate"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
