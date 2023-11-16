@@ -6,7 +6,8 @@
         "build": "vite build",
         "start": "concurrently  \"php artisan config:cache\" \"php artisan serve\" \"npm run dev\"",
         "clear": "composer dump && php artisan config:clear && php artisan cache:clear",
-        "migrate": "php artisan config:clear && php artisan cache:clear && php artisan migrate"
+        "migrate": "php artisan config:clear && php artisan cache:clear && php artisan migrate",
+        "reseed": "php artisan config:clear && php artisan cache:clear && php artisan migrate:fresh && php artisan db:seed"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",

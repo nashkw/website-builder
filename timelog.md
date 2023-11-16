@@ -170,4 +170,8 @@
 
 * *4 hours* set up project with mysql database, ensuring previous code still works
 * *1 hour* clean up (renaming of and deletion of) project migrations
-* *3 hours* added migrations for all tables and folders for all images
+* *3 hours* began set up of project backend (migrations defining all planned tables)
+
+### 16 Nov 2023
+
+* *8 hours* continued set up of project backend (models, relationships, database seeder)
