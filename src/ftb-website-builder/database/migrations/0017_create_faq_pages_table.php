@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('property_id');
             $table->string('meta_page_title')->nullable();
             $table->string('meta_page_description')->nullable();
-            $table->string('faq_page_section_header');
+            $table->string('faq_page_section_header')->default("Frequently asked questions");
             $table->string('faq_page_section_paragraph')->nullable();
             $table->string('faq_page_section_image')->nullable();
             $table->string('faq_page_section_image_description')->nullable();

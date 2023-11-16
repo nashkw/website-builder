@@ -15,10 +15,10 @@ return new class extends Migration
             $table->foreignId('property_id');
             $table->string('primary_colour');
             $table->string('secondary_colour');
-            $table->string('background_colour');
-            $table->string('text_colour');
+            $table->string('background_colour')->default("FFFFFF");
+            $table->string('text_colour')->default("000000");
             $table->string('divider_art')->nullable();
-            $table->string('font');
+            $table->string('font_family')->nullable();
             $table->timestamps();
         });
     }
