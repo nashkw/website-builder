@@ -9,7 +9,7 @@ import UserIcon from "@/Components/Icons/UserIcon.vue";
         :href="route('logout')"
         method="post"
         as="button"
-        class="wb-secondary-button"
+        class="wb-tertiary-button"
     >
         <UserIcon />
         Sign out
@@ -17,7 +17,7 @@ import UserIcon from "@/Components/Icons/UserIcon.vue";
     <Link
         v-else
         :href="route('login')"
-        class="wb-secondary-button"
+        class="wb-tertiary-button"
     >
         <UserIcon />
         Sign in

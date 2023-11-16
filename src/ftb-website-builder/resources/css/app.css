@@ -92,7 +92,7 @@
     box-shadow: var(--input-shadow);
 }
 
-.wb-primary-button, .wb-secondary-button {
+.wb-primary-button, .wb-secondary-button, .wb-tertiary-button {
     display: inline-flex;
     gap: 8px;
     padding-top: 0.75rem;
@@ -115,17 +115,25 @@
 .wb-primary-button {
     color: var(--colour-background);
     background-color: var(--colour-accent-primary);
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-property: all;
 }
 .wb-primary-button:hover {
     background-color: var(--colour-accent-primary-alt);
 }
 
 .wb-secondary-button {
-    color: var(--colour-subtitle);
+    color: var(--colour-accent-primary);
     transition-property: all;
 }
 .wb-secondary-button:hover {
+    color: var(--colour-accent-primary-alt);
+}
+
+.wb-tertiary-button {
+    color: var(--colour-subtitle);
+    transition-property: all;
+}
+.wb-tertiary-button:hover {
     color: var(--colour-background);
     background-color: var(--colour-subtitle);
 }

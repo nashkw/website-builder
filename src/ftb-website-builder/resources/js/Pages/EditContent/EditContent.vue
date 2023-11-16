@@ -1,6 +1,8 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
+import ClickableCard from "@/Components/Buttons/ClickableCard.vue";
+import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 </script>
 
 <template>
@@ -9,6 +11,12 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
         <h1 class="wb-title">
             Edit your website
         </h1>
+        <ClickableCard
+            heading="Home"
+            description="This includes your introduction paragraph, your welcome paragraph, and your cover images."
+            button="Edit your home page"
+            href="edit/home"
+        />
         <p class="wb-text">
             On this page you will be able to edit existing content on and choices you have made about your website. This page has not yet been created.
         </p>
