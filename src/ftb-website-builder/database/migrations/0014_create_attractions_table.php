@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('attraction_id');
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('attraction_header');
-            $table->string('attraction_paragraph');
+            $table->text('attraction_paragraph');
             $table->string('attraction_image')->nullable();
             $table->string('attraction_image_description')->nullable();
             $table->timestamps();

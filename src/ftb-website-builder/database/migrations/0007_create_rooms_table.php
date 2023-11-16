@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id('room_id');
+            $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('room_name');
-            $table->string('room_description');
+            $table->text('room_description');
             $table->string('room_image_primary');
             $table->string('room_image_primary_description')->nullable();
             $table->timestamps();

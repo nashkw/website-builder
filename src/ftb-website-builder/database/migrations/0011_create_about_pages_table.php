@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('meta_page_title')->nullable();
             $table->string('meta_page_description')->nullable();
             $table->string('about_page_section_header')->default("Our story");
-            $table->string('about_page_section_paragraph');
+            $table->text('about_page_section_paragraph');
             $table->string('about_page_section_image')->nullable();
             $table->string('about_page_section_image_description')->nullable();
             $table->timestamps();

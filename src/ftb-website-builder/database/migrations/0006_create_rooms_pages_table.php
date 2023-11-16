@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('meta_page_title')->nullable();
             $table->string('meta_page_description')->nullable();
             $table->string('rooms_page_section_header')->default("Our rooms");
-            $table->string('rooms_page_section_paragraph')->nullable();
+            $table->text('rooms_page_section_paragraph')->nullable();
             $table->string('rooms_page_section_image')->nullable();
             $table->string('rooms_page_section_image_description')->nullable();
             $table->timestamps();

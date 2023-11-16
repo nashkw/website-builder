@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('website_details', function (Blueprint $table) {
+        Schema::create('websites', function (Blueprint $table) {
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
-            $table->string('primary_colour');
-            $table->string('secondary_colour');
-            $table->string('background_colour')->default("FFFFFF");
-            $table->string('text_colour')->default("000000");
+            $table->char('primary_colour', 6);
+            $table->char('secondary_colour', 6);
+            $table->char('background_colour', 6)->default("FFFFFF");
+            $table->char('text_colour', 6)->default("000000");
             $table->string('divider_art')->nullable();
             $table->string('font_family')->nullable();
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('website_details');
+        Schema::dropIfExists('websites');
     }
 };

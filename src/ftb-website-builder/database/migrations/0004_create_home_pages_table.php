@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('cover_image_primary');
             $table->string('cover_image_primary_description')->nullable();
             $table->string('intro_section_header');
-            $table->string('intro_section_paragraph');
+            $table->text('intro_section_paragraph');
             $table->string('intro_section_image')->nullable();
             $table->string('intro_section_image_description')->nullable();
             $table->string('welcome_section_header');
-            $table->string('welcome_section_paragraph');
+            $table->text('welcome_section_paragraph');
             $table->string('welcome_section_image')->nullable();
             $table->string('welcome_section_image_description')->nullable();
             $table->timestamps();
