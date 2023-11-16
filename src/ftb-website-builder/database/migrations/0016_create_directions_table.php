@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('directions_id');
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('directions_label');
-            $table->string('attraction_paragraph');
+            $table->text('directions_paragraph');
             $table->timestamps();
         });
     }
