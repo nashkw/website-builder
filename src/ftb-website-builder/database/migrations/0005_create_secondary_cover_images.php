@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('secondary_cover_images', function (Blueprint $table) {
             $table->id('secondary_cover_image_id');
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('secondary_cover_image');
             $table->string('secondary_cover_image_description')->nullable();
             $table->timestamps();

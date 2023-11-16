@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('website_details', function (Blueprint $table) {
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('primary_colour');
             $table->string('secondary_colour');
             $table->string('background_colour')->default("FFFFFF");

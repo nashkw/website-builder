@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('questions_and_answers', function (Blueprint $table) {
             $table->id('question_id');
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('question_label');
             $table->string('answer_paragraph');
             $table->timestamps();

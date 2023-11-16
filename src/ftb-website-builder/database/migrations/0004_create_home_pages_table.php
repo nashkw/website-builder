@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('home_pages', function (Blueprint $table) {
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('meta_page_title')->nullable();
             $table->string('meta_page_description')->nullable();
             $table->string('cover_image_primary');

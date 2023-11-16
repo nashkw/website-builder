@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('directions', function (Blueprint $table) {
             $table->id('directions_id');
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('directions_label');
             $table->string('attraction_paragraph');
             $table->timestamps();

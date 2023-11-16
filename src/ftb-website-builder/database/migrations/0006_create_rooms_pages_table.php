@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rooms_pages', function (Blueprint $table) {
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('meta_page_title')->nullable();
             $table->string('meta_page_description')->nullable();
             $table->string('rooms_page_section_header')->default("Our rooms");
