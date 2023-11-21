@@ -175,3 +175,12 @@
 ### 16 Nov 2023
 
 * *8 hours* continued set up of project backend (models, relationships, database seeder)
+
+
+## Week 10
+
+### 21 Nov 2023
+
+* *3 hours* continued set up of project backend (controllers, casts, fillables, key definition)
+* *1 hour* created the top level page for the editing section of the application
+* *3 hours* began creation of an edit subpage for user home page information

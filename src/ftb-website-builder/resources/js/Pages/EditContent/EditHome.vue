@@ -44,7 +44,6 @@ const form = useForm({
                     type="text"
                     v-model="form.intro_section_header"
                     required
-                    autofocus
                     autocomplete="intro_section_header"
                     placeholder="Introducing our property..."
                 />
@@ -59,7 +58,6 @@ const form = useForm({
                     type="text"
                     v-model="form.intro_section_paragraph"
                     required
-                    autofocus
                     autocomplete="intro_section_paragraph"
                     placeholder="Our property is..."
                 />
@@ -80,7 +78,6 @@ const form = useForm({
                     type="text"
                     v-model="form.welcome_section_header"
                     required
-                    autofocus
                     autocomplete="welcome_section_header"
                     placeholder="Welcome to our property..."
                 />
@@ -95,7 +92,6 @@ const form = useForm({
                     type="text"
                     v-model="form.welcome_section_paragraph"
                     required
-                    autofocus
                     autocomplete="welcome_section_paragraph"
                     placeholder="Here at our property we..."
                 />

@@ -5,7 +5,7 @@
         "dev": "vite",
         "build": "vite build",
         "start": "concurrently  \"php artisan config:cache\" \"php artisan serve\" \"npm run dev\"",
-        "clear": "composer dump && php artisan config:clear && php artisan cache:clear",
+        "clear": "composer dump && php artisan config:clear && php artisan cache:clear && php artisan route:clear",
         "migrate": "php artisan config:clear && php artisan cache:clear && php artisan migrate",
         "reseed": "php artisan config:clear && php artisan cache:clear && php artisan migrate:fresh && php artisan db:seed"
     },
