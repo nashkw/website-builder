@@ -23,20 +23,22 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="wb-card">
-        <a
-            :href="href"
-        >
-            <h2 class="wb-subtitle">
-                {{ heading }}
-            </h2>
-            <p class="wb-text">
-                {{ description }}
-            </p>
+    <a
+        :href="href"
+    >
+        <div class="wb-card space-y-4">
+            <div class="space-y-2">
+                <h2 class="wb-subtitle">
+                    {{ heading }}
+                </h2>
+                <p class="wb-text">
+                    {{ description }}
+                </p>
+            </div>
             <SecondaryButton
                 :text="button"
                 :href="href"
             />
-        </a>
-    </div>
+        </div>
+    </a>
 </template>
