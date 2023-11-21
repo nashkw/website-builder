@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class FAQPage extends Model
 {
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'property_id';
+
+    /**
      * The table associated with the model.
      *
      * @var string

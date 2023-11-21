@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class AboutPage extends Model
 {
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'property_id';
+
+    /**
      * Get the property that owns the about page.
      */
     public function property(): BelongsTo
