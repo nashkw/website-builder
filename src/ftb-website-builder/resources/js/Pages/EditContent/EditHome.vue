@@ -5,11 +5,18 @@ import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 
+const props = defineProps({
+    currentIntroSectionHeader: String,
+    currentIntroSectionParagraph: String,
+    currentWelcomeSectionHeader: String,
+    currentWelcomeSectionParagraph: String,
+})
+
 const form = useForm({
-    intro_section_header: 'current intro header',
-    intro_section_paragraph: 'current intro paragraph',
-    welcome_section_header: 'current welcome header',
-    welcome_section_paragraph: 'current welcome paragraph',
+    intro_section_header: props.currentIntroSectionHeader,
+    intro_section_paragraph: props.currentIntroSectionParagraph,
+    welcome_section_header: props.currentWelcomeSectionHeader,
+    welcome_section_paragraph: props.currentWelcomeSectionParagraph,
 });
 </script>
 

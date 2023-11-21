@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class HomePageController
+class HomePageController extends Controller
 {
     /**
      * Display the edit subpage for the generated site home page.
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('EditContent/EditHome');
+        $homePage = User::find($request->user()->id)->property->homePage;
+        return Inertia::render('EditContent/EditHome', [
+            'currentIntroSectionHeader' => $homePage->intro_section_header,
+            'currentIntroSectionParagraph' => $homePage->intro_section_paragraph,
+            'currentWelcomeSectionHeader' => $homePage->welcome_section_header,
+            'currentWelcomeSectionParagraph' => $homePage->welcome_section_paragraph,
+        ]);
     }
 
     /**
@@ -26,9 +32,9 @@ class HomePageController
     {
         $request->validate([
             'intro_section_header' => ['required', 'string', 'max:255'],
-            'intro_section_paragraph' => ['required', 'string', 'max:255'],
+            'intro_section_paragraph' => ['required', 'string', 'max:65535'],
             'welcome_section_header' => ['required', 'string', 'max:255'],
-            'welcome_section_paragraph' => ['required', 'string', 'max:255'],
+            'welcome_section_paragraph' => ['required', 'string', 'max:65535'],
         ]);
 
         $homePage = User::find($request->user()->id)->property->homePage;
