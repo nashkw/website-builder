@@ -15,37 +15,37 @@ import ClickableCard from "@/Components/Buttons/ClickableCard.vue";
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
             <ClickableCard
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
             <ClickableCard
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
             <ClickableCard
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
             <ClickableCard
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
             <ClickableCard
                 heading="Home"
                 description="This is the landing page of your website, intended to help potential customers quickly understand what you're all about. The information needed for this page includes your introduction paragraph, your welcome paragraph, and your cover images."
                 button="Edit your home page"
-                href="edit/home"
+                :href="route('edit.home')"
             />
         </div>
     </LoggedInLayout>

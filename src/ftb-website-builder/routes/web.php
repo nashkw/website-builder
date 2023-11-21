@@ -20,11 +20,17 @@ Route::get('/', function () {
 });
 
 Route::get('/edit', function () {
-    return Inertia::render('EditContent/EditContent');
+    return Inertia::render('EditContent/Edit');
 })->middleware(['auth'])->name('edit');
 
+Route::name('edit.')->group(function () {
+    Route::get('edit/home-page', function () {
+        return Inertia::render('EditContent/EditHome');
+    })->middleware(['auth'])->name('home');
+});
+
 Route::get('/add', function () {
-    return Inertia::render('AddContent/AddContent');
+    return Inertia::render('AddContent/Add');
 })->middleware(['auth'])->name('add');
 
 Route::middleware('auth')->group(function () {

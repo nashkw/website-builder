@@ -76,7 +76,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        href="edit"
+                        :href="route('edit')"
                     >
                         <GearIcon />
                         Edit your website
@@ -85,7 +85,7 @@ export default {
                 <li>
                     <a
                         class="wb-sidebar-item"
-                        href="add"
+                        :href="route('add')"
                     >
                         <PageIcon />
                         Add more pages
