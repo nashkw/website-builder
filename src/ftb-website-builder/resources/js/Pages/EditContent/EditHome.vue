@@ -1,6 +1,16 @@
 <script setup>
-import {Head} from "@inertiajs/vue3";
+import {Head, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
+import TextInput from "@/Components/Forms/TextInput.vue";
+import InputLabel from "@/Components/Forms/InputLabel.vue";
+import InputError from "@/Components/Forms/InputError.vue";
+
+const form = useForm({
+    intro_section_header: 'current intro header',
+    intro_section_paragraph: 'current intro paragraph',
+    welcome_section_header: 'current welcome header',
+    welcome_section_paragraph: 'current welcome paragraph',
+});
 </script>
 
 <template>
@@ -9,9 +19,104 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
         <h1 class="wb-title">
             Edit your Home page
         </h1>
-        <p class="wb-text">
-            Hello world
-        </p>
+        <form
+            @submit.prevent="form.patch(route('edit.home.update'))"
+            class="space-y-6"
+        >
+            <div class="space-y-2">
+                <p class="wb-text">
+                    Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.
+                </p>
+                <InputLabel
+                    for="intro_section_header"
+                    value="Introduction header"
+                    class="sr-only"
+                />
+                <TextInput
+                    id="intro_section_header"
+                    type="text"
+                    v-model="form.intro_section_header"
+                    required
+                    autofocus
+                    autocomplete="intro_section_header"
+                    placeholder="Introducing our property..."
+                />
+                <InputError :message="form.errors.intro_section_header" />
+                <InputLabel
+                    for="intro_section_paragraph"
+                    value="Introduction paragraph"
+                    class="sr-only"
+                />
+                <TextInput
+                    id="intro_section_paragraph"
+                    type="text"
+                    v-model="form.intro_section_paragraph"
+                    required
+                    autofocus
+                    autocomplete="intro_section_paragraph"
+                    placeholder="Our property is..."
+                />
+                <InputError :message="form.errors.intro_section_paragraph" />
+            </div>
+
+            <div class="space-y-2">
+                <p class="wb-text">
+                    Write a longer description to welcome the user to your website and tell them why they should make a booking with your property. This should be no more than a few paragraphs long.
+                </p>
+                <InputLabel
+                    for="welcome_section_header"
+                    value="Welcome header"
+                    class="sr-only"
+                />
+                <TextInput
+                    id="welcome_section_header"
+                    type="text"
+                    v-model="form.welcome_section_header"
+                    required
+                    autofocus
+                    autocomplete="welcome_section_header"
+                    placeholder="Welcome to our property..."
+                />
+                <InputError :message="form.errors.welcome_section_header" />
+                <InputLabel
+                    for="welcome_section_paragraph"
+                    value="Welcome paragraph"
+                    class="sr-only"
+                />
+                <TextInput
+                    id="welcome_section_paragraph"
+                    type="text"
+                    v-model="form.welcome_section_paragraph"
+                    required
+                    autofocus
+                    autocomplete="welcome_section_paragraph"
+                    placeholder="Here at our property we..."
+                />
+                <InputError :message="form.errors.welcome_section_paragraph" />
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button
+                    :disabled="form.processing"
+                    class="wb-primary-button"
+                >
+                    Save
+                </button>
+                <Transition
+                    enter-active-class="transition ease-in-out"
+                    enter-from-class="opacity-0"
+                    leave-active-class="transition ease-in-out"
+                    leave-to-class="opacity-0"
+                >
+                    <p
+                        v-if="form.recentlySuccessful"
+                        class="wb-text"
+                    >
+                        Saved.
+                    </p>
+                </Transition>
+            </div>
+        </form>
     </LoggedInLayout>
 </template>
 

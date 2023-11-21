@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,9 +25,10 @@ Route::get('/edit', function () {
 })->middleware(['auth'])->name('edit');
 
 Route::name('edit.')->group(function () {
-    Route::get('edit/home-page', function () {
-        return Inertia::render('EditContent/EditHome');
-    })->middleware(['auth'])->name('home');
+    Route::middleware('auth')->group(function () {
+        Route::get('/edit/home-page', [HomePageController::class, 'edit'])->name('home');
+        Route::patch('/edit/home-page', [HomePageController::class, 'update'])->name('home.update');
+    });
 });
 
 Route::get('/add', function () {
