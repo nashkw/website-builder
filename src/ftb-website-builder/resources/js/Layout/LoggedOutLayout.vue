@@ -1,7 +1,7 @@
 <script>
 import ApplicationLogo from "@/Components/Icons/ApplicationLogo.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
-import WebsiteBuilderFooter from "@/Layout/WebsiteBuilderFooter.vue";
+import WebsiteBuilderFooter from "@/Components/Structural/WebsiteBuilderFooter.vue";
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 
 export default {

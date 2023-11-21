@@ -1,7 +1,7 @@
 <script setup>
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
-import Modal from '@/Components/Forms/Modal.vue';
+import Modal from '@/Components/Structural/Modal.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';

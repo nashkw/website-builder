@@ -4,7 +4,7 @@ import GearIcon from "@/Components/Icons/GearIcon.vue";
 import PageIcon from "@/Components/Icons/PageIcon.vue";
 import AccountIcon from "@/Components/Icons/AccountIcon.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
-import WebsiteBuilderFooter from "@/Layout/WebsiteBuilderFooter.vue";
+import WebsiteBuilderFooter from "@/Components/Structural/WebsiteBuilderFooter.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 import MenuIcon from "@/Components/Icons/MenuIcon.vue";
