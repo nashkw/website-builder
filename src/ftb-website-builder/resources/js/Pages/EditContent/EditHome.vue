@@ -10,9 +10,10 @@ const props = defineProps({
     currentIntroSectionParagraph: String,
     currentWelcomeSectionHeader: String,
     currentWelcomeSectionParagraph: String,
-})
+});
 
 const form = useForm({
+    cover_image_primary: null,
     intro_section_header: props.currentIntroSectionHeader,
     intro_section_paragraph: props.currentIntroSectionParagraph,
     intro_section_image: null,
@@ -30,8 +31,28 @@ const form = useForm({
         </h1>
         <form
             @submit.prevent="form.patch(route('edit.home.update'))"
-            class="space-y-6"
+            class="space-y-8"
         >
+            <div class="space-y-2">
+                <p class="wb-subtitle p-2">
+                    Upload a cover photo for your website.
+                </p>
+                <InputLabel
+                    for="cover_image_primary"
+                    value="Choose file"
+                    class="sr-only"
+                />
+                <input
+                    id="cover_image_primary"
+                    type="file"
+                    @input="form.cover_image_primary = $event.target.files[0]"
+                    name="cover_image_primary"
+                    class="wb-file-input"
+                    accept="image/*"
+                >
+                <InputError :message="form.errors.cover_image_primary" />
+            </div>
+
             <div class="space-y-2">
                 <p class="wb-subtitle p-2">
                     Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.
@@ -80,6 +101,7 @@ const form = useForm({
                     @input="form.intro_section_image = $event.target.files[0]"
                     name="intro_section_image"
                     class="wb-file-input"
+                    accept="image/*"
                 >
                 <InputError :message="form.errors.intro_section_image" />
             </div>
@@ -132,6 +154,7 @@ const form = useForm({
                     @input="form.welcome_section_image = $event.target.files[0]"
                     name="welcome_section_image"
                     class="wb-file-input"
+                    accept="image/*"
                 >
                 <InputError :message="form.errors.welcome_section_image" />
             </div>
