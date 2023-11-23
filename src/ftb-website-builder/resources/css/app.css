@@ -77,19 +77,51 @@
     padding-bottom: 12px;
     padding-left: 16px;
     padding-right: 16px;
+    border-width: thin;
     border-radius: 6px;
     border-color: var(--colour-background-outline);
+    background-color: var(--colour-background);
     width: 100%;
     font-size: 14px;
     box-shadow: var(--input-shadow);
+    color: var(--colour-text);
 }
 
-.wb-input-box:hover, .wb-checkbox:hover {
+.wb-file-input {
+    display: block;
+    border-width: thin;
+    border-radius: 6px;
+    border-color: var(--colour-background-outline);
+    background-color: var(--colour-background);
+    width: 100%;
+    font-size: 14px;
+    box-shadow: var(--input-shadow);
+    color: var(--colour-text);
+}
+.wb-file-input::file-selector-button {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: 16px;
+    font-weight: 500;
+    border-radius: 6px 0 0 6px;
+    border: none;
+    background-color: var(--colour-background-outline);
+    color: var(--colour-subtitle);
+}
+.wb-file-input::file-selector-button:hover {
+    color: var(--colour-title);
+    cursor: pointer;
+}
+
+.wb-input-box:hover, .wb-checkbox:hover, .wb-file-input:hover {
     border-color: var(--colour-background-alt);
 }
-.wb-input-box:focus, .wb-checkbox:focus {
+.wb-input-box:focus, .wb-checkbox:focus, .wb-file-input:focus {
     border-color: var(--colour-accent-primary-alt);
     box-shadow: var(--input-shadow);
+    outline: none;
 }
 
 .wb-primary-button, .wb-secondary-button, .wb-tertiary-button {

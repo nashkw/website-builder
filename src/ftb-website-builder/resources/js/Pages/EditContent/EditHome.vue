@@ -15,8 +15,10 @@ const props = defineProps({
 const form = useForm({
     intro_section_header: props.currentIntroSectionHeader,
     intro_section_paragraph: props.currentIntroSectionParagraph,
+    intro_section_image: null,
     welcome_section_header: props.currentWelcomeSectionHeader,
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
+    welcome_section_image: null,
 });
 </script>
 
@@ -31,7 +33,7 @@ const form = useForm({
             class="space-y-6"
         >
             <div class="space-y-2">
-                <p class="wb-text">
+                <p class="wb-subtitle p-2">
                     Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.
                 </p>
                 <InputLabel
@@ -62,10 +64,27 @@ const form = useForm({
                     placeholder="Our property is..."
                 />
                 <InputError :message="form.errors.intro_section_paragraph" />
+
+                <p class="wb-subtitle p-2">
+                    Optionally, you can attach an image to accompany this introduction.
+                </p>
+                <InputLabel
+                    for="intro_section_image"
+                    value="Choose file"
+                    class="sr-only"
+                />
+                <input
+                    id="intro_section_image"
+                    type="file"
+                    @input="form.intro_section_image = $event.target.files[0]"
+                    name="intro_section_image"
+                    class="wb-file-input"
+                >
+                <InputError :message="form.errors.intro_section_image" />
             </div>
 
             <div class="space-y-2">
-                <p class="wb-text">
+                <p class="wb-subtitle p-2">
                     Write a longer description to welcome the user to your website and tell them why they should make a booking with your property. This should be no more than a few paragraphs long.
                 </p>
                 <InputLabel
@@ -96,6 +115,23 @@ const form = useForm({
                     placeholder="Here at our property we..."
                 />
                 <InputError :message="form.errors.welcome_section_paragraph" />
+
+                <p class="wb-subtitle p-2">
+                    Optionally, you can attach an image to accompany this description.
+                </p>
+                <InputLabel
+                    for="welcome_section_image"
+                    value="Choose file"
+                    class="sr-only"
+                />
+                <input
+                    id="welcome_section_image"
+                    type="file"
+                    @input="form.welcome_section_image = $event.target.files[0]"
+                    name="welcome_section_image"
+                    class="wb-file-input"
+                >
+                <InputError :message="form.errors.welcome_section_image" />
             </div>
 
             <div class="flex items-center gap-4">
