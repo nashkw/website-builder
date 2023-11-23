@@ -23,7 +23,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
     <input
-        class="wb-input-box block w-full"
+        class="wb-input-box"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"

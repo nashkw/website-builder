@@ -55,10 +55,11 @@ const form = useForm({
                     value="Introduction paragraph"
                     class="sr-only"
                 />
-                <TextInput
+                <textarea
                     id="intro_section_paragraph"
                     type="text"
                     v-model="form.intro_section_paragraph"
+                    class="wb-input-box h-40 s:h-20"
                     required
                     autocomplete="intro_section_paragraph"
                     placeholder="Our property is..."
@@ -106,10 +107,11 @@ const form = useForm({
                     value="Welcome paragraph"
                     class="sr-only"
                 />
-                <TextInput
+                <textarea
                     id="welcome_section_paragraph"
                     type="text"
                     v-model="form.welcome_section_paragraph"
+                    class="wb-input-box h-60 s:h-40"
                     required
                     autocomplete="welcome_section_paragraph"
                     placeholder="Here at our property we..."
