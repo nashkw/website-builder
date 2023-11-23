@@ -184,3 +184,11 @@
 * *3 hours* continued set up of project backend (controllers, casts, fillables, key definition)
 * *1 hour* created the top level page for the editing section of the application
 * *3 hours* began creation of an edit subpage for user home page information
+
+### 22 Nov 2023
+
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 23 Nov 2023
+
+* *7.5 hours* set up basic file upload functionality (backend and frontend)
