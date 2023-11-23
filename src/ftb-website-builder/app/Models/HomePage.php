@@ -24,12 +24,15 @@ class HomePage extends Model
         'property_id' => 'integer',
         'meta_page_title' => 'string',
         'meta_page_description' => 'string',
+        'cover_image_primary' => 'string',
         'cover_image_primary_description' => 'string',
         'intro_section_header' => 'string',
         'intro_section_paragraph' => 'string',
+        'intro_section_image' => 'string',
         'intro_section_image_description' => 'string',
         'welcome_section_header' => 'string',
         'welcome_section_paragraph' => 'string',
+        'welcome_section_image' => 'string',
         'welcome_section_image_description' => 'string',
     ];
 

@@ -46,29 +46,25 @@ class HomePageController extends Controller
 
         $updatedData = $this->uploadImage(
             $request,
-            $homePage->property->id,
             'cover_image_primary',
-            'coverImagePrimary',
+            'images/coverImagePrimary/',
+            $homePage,
             $updatedData
         );
-        if($request['intro_section_image']) {
-            $updatedData = $this->uploadImage(
-                $request,
-                $homePage->property->id,
-                'intro_section_image',
-                'sectionImages/homeIntro',
-                $updatedData
-            );
-        }
-        if($request['welcome_section_image']) {
-            $updatedData = $this->uploadImage(
-                $request,
-                $homePage->property->id,
-                'welcome_section_image',
-                'sectionImages/homeWelcome',
-                $updatedData
-            );
-        }
+        $updatedData = $this->uploadImage(
+            $request,
+            'intro_section_image',
+            'images/sectionImages/homeIntro/',
+            $homePage,
+            $updatedData
+        );
+        $updatedData = $this->uploadImage(
+            $request,
+            'welcome_section_image',
+            'images/sectionImages/homeWelcome/',
+            $homePage,
+            $updatedData
+        );
 
         $homePage->fill($updatedData);
         $homePage->save();
@@ -76,11 +72,18 @@ class HomePageController extends Controller
         return Redirect::route('edit.home');
     }
 
-    private function uploadImage ($request, $id, $field, $path, $data): Array
+    private function uploadImage (Request $request, string $field, string $path, $currentData, $updatedData): Array
     {
-        $filename = $id . "_" . time() . "." . $request[$field]->extension();
-        $request[$field]->move(public_path($path), $filename);
-        $data[$field] = $filename;
-        return $data;
+        if ($request[$field]) {
+            if ($currentData[$field]) {
+                Storage::disk("public")->delete($currentData[$field]);
+            }
+            $filepath = Storage::disk("public")->putFile($path, $request[$field]);
+            $updatedData[$field] = $filepath;
+        }
+        else {
+            unset($updatedData[$field]);
+        }
+        return $updatedData;
     }
 }
