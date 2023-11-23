@@ -27,7 +27,7 @@ Route::get('/edit', function () {
 Route::name('edit.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/edit/home-page', [HomePageController::class, 'edit'])->name('home');
-        Route::patch('/edit/home-page', [HomePageController::class, 'update'])->name('home.update');
+        Route::post('/edit/home-page', [HomePageController::class, 'update'])->name('home.update');
     });
 });
 

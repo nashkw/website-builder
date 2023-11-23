@@ -4,6 +4,7 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
+import FileInput from "@/Components/Forms/FileInput.vue";
 
 const props = defineProps({
     currentIntroSectionHeader: String,
@@ -21,6 +22,10 @@ const form = useForm({
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
     welcome_section_image: null,
 });
+
+function submit() {
+    form.post(route('edit.home.update'))
+}
 </script>
 
 <template>
@@ -30,26 +35,17 @@ const form = useForm({
             Edit your Home page
         </h1>
         <form
-            @submit.prevent="form.patch(route('edit.home.update'))"
+            @submit.prevent="submit"
             class="space-y-8"
         >
             <div class="space-y-2">
                 <p class="wb-subtitle p-2">
                     Upload a cover photo for your website.
                 </p>
-                <InputLabel
-                    for="cover_image_primary"
-                    value="Choose file"
-                    class="sr-only"
+                <FileInput
+                    v-model="form.cover_image_primary"
+                    field-name="cover_image_primary"
                 />
-                <input
-                    id="cover_image_primary"
-                    type="file"
-                    @input="form.cover_image_primary = $event.target.files[0]"
-                    name="cover_image_primary"
-                    class="wb-file-input"
-                    accept="image/*"
-                >
                 <InputError :message="form.errors.cover_image_primary" />
             </div>
 
@@ -90,19 +86,10 @@ const form = useForm({
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this introduction.
                 </p>
-                <InputLabel
-                    for="intro_section_image"
-                    value="Choose file"
-                    class="sr-only"
+                <FileInput
+                    v-model="form.intro_section_image"
+                    field-name="intro_section_image"
                 />
-                <input
-                    id="intro_section_image"
-                    type="file"
-                    @input="form.intro_section_image = $event.target.files[0]"
-                    name="intro_section_image"
-                    class="wb-file-input"
-                    accept="image/*"
-                >
                 <InputError :message="form.errors.intro_section_image" />
             </div>
 
@@ -143,19 +130,10 @@ const form = useForm({
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this description.
                 </p>
-                <InputLabel
-                    for="welcome_section_image"
-                    value="Choose file"
-                    class="sr-only"
+                <FileInput
+                    v-model="form.welcome_section_image"
+                    field-name="welcome_section_image"
                 />
-                <input
-                    id="welcome_section_image"
-                    type="file"
-                    @input="form.welcome_section_image = $event.target.files[0]"
-                    name="welcome_section_image"
-                    class="wb-file-input"
-                    accept="image/*"
-                >
                 <InputError :message="form.errors.welcome_section_image" />
             </div>
 
