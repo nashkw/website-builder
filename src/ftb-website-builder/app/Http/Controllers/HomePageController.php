@@ -19,10 +19,13 @@ class HomePageController extends Controller
     {
         $homePage = User::find($request->user()->id)->property->homePage;
         return Inertia::render('EditContent/EditHome', [
+            'currentCoverImagePrimary' => Storage::url($homePage->cover_image_primary),
             'currentIntroSectionHeader' => $homePage->intro_section_header,
             'currentIntroSectionParagraph' => $homePage->intro_section_paragraph,
+            'currentIntroSectionImage' => Storage::url($homePage->intro_section_image),
             'currentWelcomeSectionHeader' => $homePage->welcome_section_header,
             'currentWelcomeSectionParagraph' => $homePage->welcome_section_paragraph,
+            'currentWelcomeSectionImage' => Storage::url($homePage->welcome_section_image),
         ]);
     }
 

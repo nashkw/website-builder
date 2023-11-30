@@ -7,21 +7,28 @@ import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 
 const props = defineProps({
+    currentCoverImagePrimary: String,
     currentIntroSectionHeader: String,
     currentIntroSectionParagraph: String,
+    currentIntroSectionImage: String,
     currentWelcomeSectionHeader: String,
     currentWelcomeSectionParagraph: String,
+    currentWelcomeSectionImage: String,
 });
 
 const form = useForm({
-    cover_image_primary: null,
+    cover_image_primary: props.currentCoverImagePrimary,
     intro_section_header: props.currentIntroSectionHeader,
     intro_section_paragraph: props.currentIntroSectionParagraph,
-    intro_section_image: null,
+    intro_section_image: props.currentIntroSectionImage,
     welcome_section_header: props.currentWelcomeSectionHeader,
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
-    welcome_section_image: null,
+    welcome_section_image: props.currentWelcomeSectionImage,
 });
+
+const imagePreview = image => {
+    return typeof image === 'string' ? image : URL.createObjectURL(image);
+};
 
 function submit() {
     form.post(route('edit.home.update'))
@@ -91,6 +98,18 @@ function submit() {
                     field-name="intro_section_image"
                 />
                 <InputError :message="form.errors.intro_section_image" />
+                <div
+                    v-if="form.intro_section_image !== null"
+                    class="border p-4 space-y-4 wb-text"
+                >
+                    <p class="wb-subtitle">
+                        Current introduction image:
+                    </p>
+                    <img
+                        :src="imagePreview(form.intro_section_image)"
+                        alt="Current image chosen to accompany the introduction section."
+                    />
+                </div>
             </div>
 
             <div class="space-y-2">
