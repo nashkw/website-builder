@@ -191,4 +191,11 @@
 
 ### 23 Nov 2023
 
-* *7.5 hours* set up basic file upload functionality (backend and frontend)
+* *7.5 hours* began set up of file upload functionality (storage and upload)
+
+
+## Week 11
+
+### 30 Nov 2023
+
+* *7 hours* continued set up of file upload functionality (previews and nullability)
