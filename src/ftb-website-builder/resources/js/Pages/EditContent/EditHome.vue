@@ -7,6 +7,8 @@ import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
+import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
+import Checkbox from "@/Components/Forms/Checkbox.vue";
 
 const props = defineProps({
     currentCoverImagePrimary: String,
@@ -23,16 +25,18 @@ const form = useForm({
     intro_section_header: props.currentIntroSectionHeader,
     intro_section_paragraph: props.currentIntroSectionParagraph,
     intro_section_image: null,
+    remove_intro_section_image: false,
     welcome_section_header: props.currentWelcomeSectionHeader,
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
     welcome_section_image: null,
+    remove_welcome_section_image: false,
 });
 
 const coverImagePrimary = computed(() => {
     return form.cover_image_primary ?? props.currentCoverImagePrimary
 })
 const introSectionImage = computed(() => {
-    return form.intro_section_image ?? props.currentIntroSectionImage
+    return form.remove_intro_section_image ? null : form.intro_section_image ?? props.currentIntroSectionImage
 })
 const welcomeSectionImage = computed(() => {
     return form.welcome_section_image ?? props.currentWelcomeSectionImage
@@ -114,6 +118,19 @@ function submit() {
                     v-model="introSectionImage"
                     field-title="introduction image"
                 />
+                <label class="wb-secondary-button ml-2">
+                    <Checkbox
+                        name="remember"
+                        v-model:checked="form.remove_intro_section_image"
+                        class="hidden"
+                    />
+                    <span v-if="form.remove_intro_section_image">
+                        Use saved image
+                    </span>
+                    <span v-else-if="props.currentIntroSectionImage">
+                        Remove current image
+                    </span>
+                </label>
             </div>
 
             <div class="space-y-2">
@@ -166,6 +183,7 @@ function submit() {
 
             <div class="flex items-center gap-4">
                 <button
+                    type="submit"
                     :disabled="form.processing"
                     class="wb-primary-button"
                 >

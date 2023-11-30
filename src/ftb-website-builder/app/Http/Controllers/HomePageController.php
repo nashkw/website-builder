@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HomePage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,13 +20,13 @@ class HomePageController extends Controller
     {
         $homePage = User::find($request->user()->id)->property->homePage;
         return Inertia::render('EditContent/EditHome', [
-            'currentCoverImagePrimary' => Storage::url($homePage->cover_image_primary),
+            'currentCoverImagePrimary' => $this->getImageIfExists($homePage->cover_image_primary),
             'currentIntroSectionHeader' => $homePage->intro_section_header,
             'currentIntroSectionParagraph' => $homePage->intro_section_paragraph,
-            'currentIntroSectionImage' => Storage::url($homePage->intro_section_image),
+            'currentIntroSectionImage' => $this->getImageIfExists($homePage->intro_section_image),
             'currentWelcomeSectionHeader' => $homePage->welcome_section_header,
             'currentWelcomeSectionParagraph' => $homePage->welcome_section_paragraph,
-            'currentWelcomeSectionImage' => Storage::url($homePage->welcome_section_image),
+            'currentWelcomeSectionImage' => $this->getImageIfExists($homePage->welcome_section_image),
         ]);
     }
 
@@ -39,54 +40,85 @@ class HomePageController extends Controller
             'intro_section_header' => ['required', 'string', 'max:255'],
             'intro_section_paragraph' => ['required', 'string', 'max:65535'],
             'intro_section_image' => ['nullable', 'image'],
+            'remove_intro_section_image' => ['required', 'boolean'],
             'welcome_section_header' => ['required', 'string', 'max:255'],
             'welcome_section_paragraph' => ['required', 'string', 'max:65535'],
             'welcome_section_image' => ['nullable', 'image'],
+            'remove_welcome_section_image' => ['required', 'boolean'],
         ]);
 
         $homePage = User::find($request->user()->id)->property->homePage;
-        $updatedData = $request->all();
+        $data = $request->all();
 
-        $updatedData = $this->uploadImage(
+        $data = $this->uploadImage(
             $request,
             'cover_image_primary',
+            null,
             'images/coverImagePrimary/',
             $homePage,
-            $updatedData
+            $data
         );
-        $updatedData = $this->uploadImage(
+        $data = $this->uploadImage(
             $request,
             'intro_section_image',
+            'remove_intro_section_image',
             'images/sectionImages/homeIntro/',
             $homePage,
-            $updatedData
+            $data
         );
-        $updatedData = $this->uploadImage(
+        $data = $this->uploadImage(
             $request,
             'welcome_section_image',
+            'remove_welcome_section_image',
             'images/sectionImages/homeWelcome/',
             $homePage,
-            $updatedData
+            $data
         );
 
-        $homePage->fill($updatedData);
+        $homePage->fill($data);
         $homePage->save();
 
         return Redirect::route('edit.home');
     }
 
-    private function uploadImage (Request $request, string $field, string $path, $currentData, $updatedData): Array
+    private function getImageIfExists (?string $path): ?string
     {
-        if ($request[$field]) {
-            if ($currentData[$field]) {
-                Storage::disk("public")->delete($currentData[$field]);
+        if($path && Storage::disk('public')->exists($path)) {
+            return Storage::url($path);
+        }
+        return null;
+    }
+
+    private function deleteImage (string $field, HomePage $currentData) : void
+    {
+        if ($currentData[$field]) {
+            Storage::disk("public")->delete($currentData[$field]);
+        }
+    }
+
+    private function uploadImage (
+        Request $request,
+        string $field,
+        ?string $shouldDelete,
+        string $path,
+        HomePage $currentData,
+        array $data
+    ): array
+    {
+        if($shouldDelete) {
+            if ($request[$shouldDelete] || $request[$field]) {
+                $this->deleteImage($field, $currentData);
+                $data[$field] = null;
             }
+            unset($data[$shouldDelete]);
+        }
+        if ($request[$field]) {
             $filepath = Storage::disk("public")->putFile($path, $request[$field]);
-            $updatedData[$field] = $filepath;
+            $data[$field] = $filepath;
         }
         else {
-            unset($updatedData[$field]);
+            unset($data[$field]);
         }
-        return $updatedData;
+        return $data;
     }
 }

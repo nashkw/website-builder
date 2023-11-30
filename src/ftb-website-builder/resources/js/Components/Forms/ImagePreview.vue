@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
     modelValue: {
-        type: [String, File],
+        type: [String, File, null],
         required: true,
     },
     fieldTitle: {
