@@ -5,6 +5,7 @@ import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
+import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 
 const props = defineProps({
     currentCoverImagePrimary: String,
@@ -25,10 +26,6 @@ const form = useForm({
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
     welcome_section_image: props.currentWelcomeSectionImage,
 });
-
-const imagePreview = image => {
-    return typeof image === 'string' ? image : URL.createObjectURL(image);
-};
 
 function submit() {
     form.post(route('edit.home.update'))
@@ -54,6 +51,10 @@ function submit() {
                     field-name="cover_image_primary"
                 />
                 <InputError :message="form.errors.cover_image_primary" />
+                <ImagePreview
+                    v-model="form.cover_image_primary"
+                    field-title="cover image"
+                />
             </div>
 
             <div class="space-y-2">
@@ -98,18 +99,10 @@ function submit() {
                     field-name="intro_section_image"
                 />
                 <InputError :message="form.errors.intro_section_image" />
-                <div
-                    v-if="form.intro_section_image !== null"
-                    class="border p-4 space-y-4 wb-text"
-                >
-                    <p class="wb-subtitle">
-                        Current introduction image:
-                    </p>
-                    <img
-                        :src="imagePreview(form.intro_section_image)"
-                        alt="Current image chosen to accompany the introduction section."
-                    />
-                </div>
+                <ImagePreview
+                    v-model="form.intro_section_image"
+                    field-title="introduction image"
+                />
             </div>
 
             <div class="space-y-2">
@@ -154,6 +147,10 @@ function submit() {
                     field-name="welcome_section_image"
                 />
                 <InputError :message="form.errors.welcome_section_image" />
+                <ImagePreview
+                    v-model="form.welcome_section_image"
+                    field-title="welcome image"
+                />
             </div>
 
             <div class="flex items-center gap-4">
