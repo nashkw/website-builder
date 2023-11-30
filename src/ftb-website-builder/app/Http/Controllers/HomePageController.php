@@ -35,13 +35,13 @@ class HomePageController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $request->validate([
-            'cover_image_primary' => ['required', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
+            'cover_image_primary' => ['nullable', 'image'],
             'intro_section_header' => ['required', 'string', 'max:255'],
             'intro_section_paragraph' => ['required', 'string', 'max:65535'],
-            'intro_section_image' => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
+            'intro_section_image' => ['nullable', 'image'],
             'welcome_section_header' => ['required', 'string', 'max:255'],
             'welcome_section_paragraph' => ['required', 'string', 'max:65535'],
-            'welcome_section_image' => ['nullable', 'mimes:jpg,jpeg,png,gif', 'max:10240'],
+            'welcome_section_image' => ['nullable', 'image'],
         ]);
 
         $homePage = User::find($request->user()->id)->property->homePage;

@@ -1,5 +1,6 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
+import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
@@ -18,14 +19,24 @@ const props = defineProps({
 });
 
 const form = useForm({
-    cover_image_primary: props.currentCoverImagePrimary,
+    cover_image_primary: null,
     intro_section_header: props.currentIntroSectionHeader,
     intro_section_paragraph: props.currentIntroSectionParagraph,
-    intro_section_image: props.currentIntroSectionImage,
+    intro_section_image: null,
     welcome_section_header: props.currentWelcomeSectionHeader,
     welcome_section_paragraph: props.currentWelcomeSectionParagraph,
-    welcome_section_image: props.currentWelcomeSectionImage,
+    welcome_section_image: null,
 });
+
+const coverImagePrimary = computed(() => {
+    return form.cover_image_primary ?? props.currentCoverImagePrimary
+})
+const introSectionImage = computed(() => {
+    return form.intro_section_image ?? props.currentIntroSectionImage
+})
+const welcomeSectionImage = computed(() => {
+    return form.welcome_section_image ?? props.currentWelcomeSectionImage
+})
 
 function submit() {
     form.post(route('edit.home.update'))
@@ -44,7 +55,7 @@ function submit() {
         >
             <div class="space-y-2">
                 <p class="wb-subtitle p-2">
-                    Upload a cover photo for your website.
+                    Upload a cover image for your website.
                 </p>
                 <FileInput
                     v-model="form.cover_image_primary"
@@ -52,7 +63,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.cover_image_primary" />
                 <ImagePreview
-                    v-model="form.cover_image_primary"
+                    v-model="coverImagePrimary"
                     field-title="cover image"
                 />
             </div>
@@ -100,7 +111,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.intro_section_image" />
                 <ImagePreview
-                    v-model="form.intro_section_image"
+                    v-model="introSectionImage"
                     field-title="introduction image"
                 />
             </div>
@@ -148,7 +159,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.welcome_section_image" />
                 <ImagePreview
-                    v-model="form.welcome_section_image"
+                    v-model="welcomeSectionImage"
                     field-title="welcome image"
                 />
             </div>
