@@ -18,7 +18,7 @@ const imagePreview = image => {
 <template>
     <div
         v-if="modelValue !== null"
-        class="space-y-2 wb-text p-2"
+        class="space-y-2 wb-text px-2"
     >
         <p>
             Current {{ fieldTitle }}:

@@ -39,7 +39,7 @@ const introSectionImage = computed(() => {
     return form.remove_intro_section_image ? null : form.intro_section_image ?? props.currentIntroSectionImage
 })
 const welcomeSectionImage = computed(() => {
-    return form.welcome_section_image ?? props.currentWelcomeSectionImage
+    return form.remove_welcome_section_image ? null : form.welcome_section_image ?? props.currentWelcomeSectionImage
 })
 
 function submit() {
@@ -124,10 +124,10 @@ function submit() {
                         v-model:checked="form.remove_intro_section_image"
                         class="hidden"
                     />
-                    <span v-if="form.remove_intro_section_image">
-                        Use saved image
+                    <span v-if="form.remove_intro_section_image && (props.currentIntroSectionImage || form.intro_section_image)">
+                        No image selected. Use saved image?
                     </span>
-                    <span v-else-if="props.currentIntroSectionImage">
+                    <span v-else-if="props.currentIntroSectionImage || form.intro_section_image">
                         Remove current image
                     </span>
                 </label>
@@ -179,6 +179,19 @@ function submit() {
                     v-model="welcomeSectionImage"
                     field-title="welcome image"
                 />
+                <label class="wb-secondary-button ml-2">
+                    <Checkbox
+                        name="remember"
+                        v-model:checked="form.remove_welcome_section_image"
+                        class="hidden"
+                    />
+                    <span v-if="form.remove_welcome_section_image && (props.currentWelcomeSectionImage || form.welcome_section_image)">
+                        No image selected - use saved image?
+                    </span>
+                    <span v-else-if="props.currentWelcomeSectionImage || form.welcome_section_image">
+                        Remove current image
+                    </span>
+                </label>
             </div>
 
             <div class="flex items-center gap-4">

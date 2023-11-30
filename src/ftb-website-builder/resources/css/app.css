@@ -53,6 +53,7 @@
 .wb-text {
     color: var(--colour-text);
     font-size: 15px;
+    font-weight: 400;
 }
 
 .wb-text-error {
