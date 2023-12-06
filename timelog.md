@@ -199,3 +199,18 @@
 ### 30 Nov 2023
 
 * *7 hours* continued set up of file upload functionality (previews and nullability)
+
+
+## Week 12
+
+### 05 Dec 2023
+
+* *1 hour* preliminary research into different methods of creating the generated site pages
+* *2.5 hours* began research into different methods of implementing automatic hosting
+
+### 06 Dec 2023
+
+* *4.5 hours* continued research into different methods of implementing automatic hosting
+* *0.5 hours* meeting with various stakeholders at freetobook
+* *1 hours* review of the slides for the second level 4 project guidance lecture
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
