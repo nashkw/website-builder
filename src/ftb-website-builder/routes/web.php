@@ -41,14 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 });
 
-Route::get('/preview', function () {
-    return Inertia::render('GeneratedSite/Home');
-})->middleware(['auth'])->name('preview');
-
-Route::name('preview.')->group(function () {
+Route::middleware('auth')->group(function () {
+    Route::get('/preview', [HomePageController::class, 'preview'])->name('preview');
     Route::get('/preview/about', function () {
         return Inertia::render('GeneratedSite/About');
-    })->middleware(['auth'])->name('about');
+    })->middleware(['auth'])->name('preview.about');
 });
 
 require __DIR__.'/auth.php';

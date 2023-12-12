@@ -9,6 +9,31 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'user_id' => 'integer',
+        'property_name' => 'string',
+        'property_address_line_1' => 'string',
+        'property_address_line_2' => 'string',
+        'property_address_area' => 'string',
+        'property_address_country' => 'string',
+        'property_address_postcode' => 'string',
+        'property_telephone' => 'string',
+        'property_email' => 'string',
+        'property_twitter_link' => 'string',
+        'property_youtube_link' => 'string',
+        'property_linkedin_link' => 'string',
+        'property_facebook_link' => 'string',
+        'property_instagram_link' => 'string',
+        'property_tripadvisor_link' => 'string',
+        'property_logo' => 'string',
+    ];
+
+    /**
      * Get the user that owns the property.
      */
     public function user(): BelongsTo

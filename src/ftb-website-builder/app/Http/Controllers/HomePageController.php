@@ -31,6 +31,29 @@ class HomePageController extends Controller
     }
 
     /**
+     * Display a preview of the generated site home page.
+     */
+    public function preview(Request $request): Response
+    {
+        $homePage = User::find($request->user()->id)->property->homePage;
+        return Inertia::render('GeneratedSite/Home', [
+            'propertyName' => $homePage->property->property_name,
+            'metaPageTitle' => $homePage->meta_page_title,
+            'metaPageDescription' => $homePage->meta_page_description,
+            'coverImagePrimary' => $this->getImageIfExists($homePage->cover_image_primary),
+            'coverImagePrimaryDescription' => $homePage->cover_image_primary_description,
+            'introSectionHeader' => $homePage->intro_section_header,
+            'introSectionParagraph' => $homePage->intro_section_paragraph,
+            'introSectionImage' => $this->getImageIfExists($homePage->intro_section_image),
+            'introSectionImageDescription' => $homePage->intro_section_image_description,
+            'welcomeSectionHeader' => $homePage->welcome_section_header,
+            'welcomeSectionParagraph' => $homePage->welcome_section_paragraph,
+            'welcomeSectionImage' => $this->getImageIfExists($homePage->welcome_section_image),
+            'welcomeSectionImageDescription' => $homePage->welcome_section_image_description,
+        ]);
+    }
+
+    /**
      * Update the user's generated site home page information.
      */
     public function update(Request $request): RedirectResponse

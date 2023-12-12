@@ -28,11 +28,23 @@ export default {
         Pagination,
         Navigation,
     },
+    props: {
+        propertyName: String,
+        metaPageTitle: String,
+        metaPageDescription: String,
+        coverImagePrimary: String,
+        coverImagePrimaryDescription: String,
+        introSectionHeader: String,
+        introSectionParagraph: String,
+        introSectionImage: String,
+        introSectionImageDescription: String,
+        welcomeSectionHeader: String,
+        welcomeSectionParagraph: String,
+        welcomeSectionImage: String,
+        welcomeSectionImageDescription: String,
+    },
     data() {
         return {
-            property_name: "Test Hotel",
-            cover_image_primary: primary_cover_image,
-            cover_image_primary_description: "cover_image_primary_description",
             secondary_cover_images: [
                 {
                     secondary_cover_image: secondary_cover_image_1,
@@ -43,28 +55,20 @@ export default {
                     secondary_cover_image_description: "secondary_cover_image_2_description",
                 },
             ],
-            intro_section_header: "Glasgow's finest",
-            intro_section_paragraph: "Discover luxury at its peak with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.",
-            intro_section_image: intro_image,
-            intro_section_image_description: "intro_image_description",
-            welcome_section_header: "Welcome to Test Hotel...",
-            welcome_section_paragraph: "Welcome to a world of unparalleled hospitality and comfort! We are delighted to have you as our guest. From the moment you step through our doors, expect an experience tailored to exceed your expectations. Our dedicated team is committed to ensuring your stay is nothing short of extraordinary. Whether you are here for business or leisure, we invite you to relax, indulge, and make yourself at home. Your journey with us begins now, and we are honored to be a part of it.",
-            welcome_section_image: welcome_image,
-            welcome_section_image_description: "welcome_image_description",
         }
     },
     computed: {
         coverImages() {
             return [
                 {
-                    secondary_cover_image: this.cover_image_primary,
-                    secondary_cover_image_description: this.cover_image_primary_description,
+                    secondary_cover_image: this.coverImagePrimary,
+                    secondary_cover_image_description: this.coverImagePrimaryDescription,
                 },
                 ...this.secondary_cover_images
             ]
         },
         welcomeHeader() {
-            return this.welcome_section_header ?? "Welcome to " + this.property_name + "..."
+            return this.welcomeSectionHeader ?? "Welcome to " + this.propertyName + "..."
         },
     },
 }
@@ -102,10 +106,10 @@ export default {
         </Carousel>
 
         <PageSection
-            :header="intro_section_header"
-            :paragraph="intro_section_paragraph"
-            :image="intro_section_image"
-            :image-description="intro_section_image_description"
+            :header="introSectionHeader"
+            :paragraph="introSectionParagraph"
+            :image="introSectionImage"
+            :image-description="introSectionImageDescription"
         >
             <div class="flex justify-center gap-8 pt-4">
                 <BookingButton
@@ -121,9 +125,9 @@ export default {
 
         <PageSection
             :header="welcomeHeader"
-            :paragraph="welcome_section_paragraph"
-            :image="welcome_section_image"
-            :image-description="welcome_section_image_description"
+            :paragraph="welcomeSectionParagraph"
+            :image="welcomeSectionImage"
+            :image-description="welcomeSectionImageDescription"
             :flipped="true"
         >
             <div class="flex justify-center gap-8 pt-4">
