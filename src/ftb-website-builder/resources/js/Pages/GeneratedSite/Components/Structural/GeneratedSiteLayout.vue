@@ -11,10 +11,12 @@ import PhoneIcon from "@/Pages/GeneratedSite/Components/Icons/PhoneIcon.vue";
 import EmailIcon from "@/Pages/GeneratedSite/Components/Icons/EmailIcon.vue";
 import HeaderButton from "@/Pages/GeneratedSite/Components/Interactive/HeaderButton.vue";
 import HeaderIcon from "@/Pages/GeneratedSite/Components/Icons/HeaderIcon.vue";
+import BookingButton from "@/Pages/GeneratedSite/Components/Interactive/BookingButton.vue";
 
 export default {
     name: "GeneratedSiteLayout",
     components: {
+        BookingButton,
         HeaderIcon,
         HeaderButton,
         EmailIcon,
@@ -59,7 +61,7 @@ export default {
                     <div class="lg:hidden">
                         <button
                             type="button"
-                            class="hs-collapse-toggle w-9 h-9 flex justify-center items-center text-sm font-semibold rounded-lg gs-bg"
+                            class="hs-collapse-toggle w-9 h-9 flex justify-center items-center text-sm font-semibold rounded-lg"
                             data-hs-collapse="#navbar-collapse-with-animation"
                             aria-controls="navbar-collapse-with-animation"
                             aria-label="Toggle navigation"
@@ -72,20 +74,31 @@ export default {
                     id="navbar-collapse-with-animation"
                     class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow lg:block"
                 >
-                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-y-4 gap-x-0 mt-5  lg:flex lg:flex-row lg:items-center lg:justify-end lg:gap-y-0 lg:gap-x-2 lg:mt-0 lg:ps-7">
-                        <HeaderButton text="Home" href="/" />
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-5 lg:flex lg:flex-row lg:items-center lg:justify-end lg:gap-y-0 lg:gap-x-2 lg:mt-0 lg:ps-7">
+                        <HeaderButton
+                            text="Home"
+                            :href="route('preview')"
+                        />
                         <HeaderButton text="Rooms" href="/" />
                         <HeaderButton text="Reviews" href="/" />
-                        <HeaderButton text="About" href="/" />
+                        <HeaderButton
+                            text="About"
+                            :href="route('preview.about')"
+                        />
                         <HeaderButton text="Explore" href="/" />
                         <HeaderButton text="Find Us" href="/" />
                         <HeaderButton text="FAQ" href="/" />
+                        <BookingButton
+                            text="Book Now"
+                            booking-link=""
+                            class="lg:ml-4"
+                        />
                     </div>
                 </div>
             </nav>
         </header>
 
-        <div class="space-y-8">
+        <div class="space-y-10">
             <slot />
         </div>
 

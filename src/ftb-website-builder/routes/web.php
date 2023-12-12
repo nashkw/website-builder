@@ -45,4 +45,10 @@ Route::get('/preview', function () {
     return Inertia::render('GeneratedSite/Home');
 })->middleware(['auth'])->name('preview');
 
+Route::name('preview.')->group(function () {
+    Route::get('/preview/about', function () {
+        return Inertia::render('GeneratedSite/About');
+    })->middleware(['auth'])->name('about');
+});
+
 require __DIR__.'/auth.php';

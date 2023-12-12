@@ -1,17 +1,18 @@
 <script>
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import LeftArrowIcon from "@/Pages/GeneratedSite/Components/Icons/LeftArrowIcon.vue";
+import RightArrowIcon from "@/Pages/GeneratedSite/Components/Icons/RightArrowIcon.vue";
 import GeneratedSiteLayout from "@/Pages/GeneratedSite/Components/Structural/GeneratedSiteLayout.vue";
+import PageSection from "@/Pages/GeneratedSite/Components/Structural/PageSection.vue";
+import LinkButton from "@/Pages/GeneratedSite/Components/Interactive/LinkButton.vue";
+import BookingButton from "@/Pages/GeneratedSite/Components/Interactive/BookingButton.vue";
+
 import primary_cover_image from './Data/primary_cover_image.jpg';
 import secondary_cover_image_1 from './Data/secondary_cover_image_1.jpg';
 import secondary_cover_image_2 from './Data/secondary_cover_image_2.jpg';
 import intro_image from './Data/introduction_section_image.jpg';
 import welcome_image from './Data/welcome_section_image.jpg';
-import LeftArrowIcon from "@/Pages/GeneratedSite/Components/Icons/LeftArrowIcon.vue";
-import RightArrowIcon from "@/Pages/GeneratedSite/Components/Icons/RightArrowIcon.vue";
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-import 'vue3-carousel/dist/carousel.css'
-import PageSection from "@/Pages/GeneratedSite/Components/Structural/PageSection.vue";
-import LinkButton from "@/Pages/GeneratedSite/Components/Interactive/LinkButton.vue";
-import BookingButton from "@/Pages/GeneratedSite/Components/Interactive/BookingButton.vue";
 
 export default {
     name: "Home",
@@ -109,7 +110,7 @@ export default {
                 />
                 <LinkButton
                     text="Learn more"
-                    href=""
+                    :href="route('preview.about')"
                 />
             </div>
         </PageSection>
@@ -124,7 +125,7 @@ export default {
             <div class="flex justify-center gap-8 pt-4">
                 <LinkButton
                     text="Our story"
-                    href=""
+                    :href="route('preview.about')"
                 />
                 <LinkButton
                     text="Things to do in our area"

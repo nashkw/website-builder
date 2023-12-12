@@ -2,7 +2,7 @@
 const props = defineProps({
     header: {
         type: String,
-        required: true,
+        required: false,
     },
     paragraph: {
         type: String,
@@ -10,11 +10,11 @@ const props = defineProps({
     },
     image: {
         type: String,
-        required: true,
+        required: false,
     },
     imageDescription: {
         type: String,
-        required: true,
+        required: false,
     },
     flipped: {
         type: Boolean,
@@ -25,11 +25,14 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8"
+        class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8 mt-10"
         :class="{'md:flex-row-reverse': flipped}"
     >
         <div class="flex flex-col p-10 space-y-8">
-            <h1 class="gs-title">
+            <h1
+                v-if="header"
+                class="gs-title"
+            >
                 {{ header }}
             </h1>
             <p class="gs-text">
@@ -38,9 +41,11 @@ const props = defineProps({
             <slot />
         </div>
         <img
+            v-if="image"
             :src="image"
             :alt="imageDescription"
             class="flex object-cover md:w-1/2 md:min-w-[50%] max-h-[800px]"
+            :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
         />
     </div>
 </template>
