@@ -1,5 +1,5 @@
 <script>
-import GeneratedSiteLayout from "@/Pages/GeneratedSite/Components/GeneratedSiteLayout.vue";
+import GeneratedSiteLayout from "@/Pages/GeneratedSite/Components/Structural/GeneratedSiteLayout.vue";
 import primary_cover_image from './Data/primary_cover_image.jpg';
 import secondary_cover_image_1 from './Data/secondary_cover_image_1.jpg';
 import secondary_cover_image_2 from './Data/secondary_cover_image_2.jpg';
@@ -9,10 +9,12 @@ import LeftArrowIcon from "@/Pages/GeneratedSite/Components/Icons/LeftArrowIcon.
 import RightArrowIcon from "@/Pages/GeneratedSite/Components/Icons/RightArrowIcon.vue";
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import PageSection from "@/Pages/GeneratedSite/Components/Structural/PageSection.vue";
 
 export default {
     name: "Home",
     components: {
+        PageSection,
         RightArrowIcon,
         LeftArrowIcon,
         GeneratedSiteLayout,
@@ -90,9 +92,20 @@ export default {
             </template>
         </Carousel>
 
-        <div class="flex flex-col w-full justify-center items-center">
-            This is the home page.
-        </div>
+        <PageSection
+            :header="intro_section_header"
+            :paragraph="intro_section_paragraph"
+            :image="intro_section_image"
+            :image-description="intro_section_image_description"
+        />
+
+        <PageSection
+            :header="welcome_section_header"
+            :paragraph="welcome_section_paragraph"
+            :image="welcome_section_image"
+            :image-description="welcome_section_image_description"
+            :flipped="true"
+        />
     </GeneratedSiteLayout>
 </template>
 

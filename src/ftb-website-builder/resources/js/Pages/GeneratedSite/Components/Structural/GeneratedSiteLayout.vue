@@ -1,7 +1,7 @@
 <script>
-import '../generatedSite.css'
+import '../../generatedSite.css'
 
-import GeneratedSiteLogo from "./Icons/GeneratedSiteLogo.vue";
+import GeneratedSiteLogo from "../Icons/GeneratedSiteLogo.vue";
 import Footer from "@/Components/Structural/WebsiteBuilderFooter.vue";
 import FacebookIcon from "@/Pages/GeneratedSite/Components/Icons/FacebookIcon.vue";
 import TwitterIcon from "@/Pages/GeneratedSite/Components/Icons/TwitterIcon.vue";
@@ -85,7 +85,7 @@ export default {
             </nav>
         </header>
 
-        <div>
+        <div class="space-y-8">
             <slot />
         </div>
 
