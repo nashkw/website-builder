@@ -41,4 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 });
 
+Route::get('/preview', function () {
+    return Inertia::render('GeneratedSite/Home');
+})->middleware(['auth'])->name('preview');
+
 require __DIR__.'/auth.php';
