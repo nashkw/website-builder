@@ -10,10 +10,14 @@ import RightArrowIcon from "@/Pages/GeneratedSite/Components/Icons/RightArrowIco
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import PageSection from "@/Pages/GeneratedSite/Components/Structural/PageSection.vue";
+import LinkButton from "@/Pages/GeneratedSite/Components/Interactive/LinkButton.vue";
+import BookingButton from "@/Pages/GeneratedSite/Components/Interactive/BookingButton.vue";
 
 export default {
     name: "Home",
     components: {
+        BookingButton,
+        LinkButton,
         PageSection,
         RightArrowIcon,
         LeftArrowIcon,
@@ -37,11 +41,11 @@ export default {
                     secondary_cover_image_description: "secondary_cover_image_2_description",
                 },
             ],
-            intro_section_header: "Introducing Test Hotel...",
-            intro_section_paragraph: "Discover luxury at its finest with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.",
+            intro_section_header: "Glasgow's finest",
+            intro_section_paragraph: "Discover luxury at its peak with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.",
             intro_section_image: intro_image,
             intro_section_image_description: "intro_image_description",
-            welcome_section_header: "Welcome to Test Hotel",
+            welcome_section_header: "Welcome to Test Hotel...",
             welcome_section_paragraph: "Welcome to a world of unparalleled hospitality and comfort! We are delighted to have you as our guest. From the moment you step through our doors, expect an experience tailored to exceed your expectations. Our dedicated team is committed to ensuring your stay is nothing short of extraordinary. Whether you are here for business or leisure, we invite you to relax, indulge, and make yourself at home. Your journey with us begins now, and we are honored to be a part of it.",
             welcome_section_image: welcome_image,
             welcome_section_image_description: "welcome_image_description",
@@ -97,7 +101,18 @@ export default {
             :paragraph="intro_section_paragraph"
             :image="intro_section_image"
             :image-description="intro_section_image_description"
-        />
+        >
+            <div class="flex justify-center gap-8 pt-4">
+                <BookingButton
+                    text="Make a booking"
+                    bookingLink="/"
+                />
+                <LinkButton
+                    text="Learn more"
+                    href=""
+                />
+            </div>
+        </PageSection>
 
         <PageSection
             :header="welcome_section_header"
@@ -105,7 +120,18 @@ export default {
             :image="welcome_section_image"
             :image-description="welcome_section_image_description"
             :flipped="true"
-        />
+        >
+            <div class="flex justify-center gap-8 pt-4">
+                <LinkButton
+                    text="Our story"
+                    href=""
+                />
+                <LinkButton
+                    text="Things to do in our area"
+                    href=""
+                />
+            </div>
+        </PageSection>
     </GeneratedSiteLayout>
 </template>
 

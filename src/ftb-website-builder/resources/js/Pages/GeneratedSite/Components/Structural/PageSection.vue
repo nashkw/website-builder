@@ -25,16 +25,17 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex flex-col md:flex-row w-full justify-center items-center px-8"
+        class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8"
         :class="{'md:flex-row-reverse': flipped}"
     >
-        <div class="flex flex-col p-10 space-y-4">
+        <div class="flex flex-col p-10 space-y-8">
             <h1 class="gs-title">
                 {{ header }}
             </h1>
             <p class="gs-text">
                 {{ paragraph }}
             </p>
+            <slot />
         </div>
         <img
             :src="image"

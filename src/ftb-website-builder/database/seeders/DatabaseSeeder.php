@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
             'meta_page_title' => 'Welcome to Test Hotel',
             'meta_page_description' => 'Experience luxury at its finest. Stylish accommodations, top-notch amenities, and personalized service in a prime location. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.',
             'cover_image_primary' => '',
-            'intro_section_header' => 'Introducing Test Hotel...',
-            'intro_section_paragraph' => 'Discover luxury at its finest with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.',
-            'welcome_section_header' => 'Welcome to Test Hotel',
+            'intro_section_header' => "Glasgow's finest",
+            'intro_section_paragraph' => 'Discover luxury at its peak with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.',
+            'welcome_section_header' => 'Welcome to Test Hotel...',
             'welcome_section_paragraph' => 'Welcome to a world of unparalleled hospitality and comfort! We are delighted to have you as our guest. From the moment you step through our doors, expect an experience tailored to exceed your expectations. Our dedicated team is committed to ensuring your stay is nothing short of extraordinary. Whether you are here for business or leisure, we invite you to relax, indulge, and make yourself at home. Your journey with us begins now, and we are honored to be a part of it.',
         ]);
         DB::table('rooms_pages')->insert([

@@ -9,7 +9,7 @@ import InstagramIcon from "@/Pages/GeneratedSite/Components/Icons/InstagramIcon.
 import MapIcon from "@/Pages/GeneratedSite/Components/Icons/MapIcon.vue";
 import PhoneIcon from "@/Pages/GeneratedSite/Components/Icons/PhoneIcon.vue";
 import EmailIcon from "@/Pages/GeneratedSite/Components/Icons/EmailIcon.vue";
-import HeaderButton from "@/Pages/GeneratedSite/Components/HeaderButton.vue";
+import HeaderButton from "@/Pages/GeneratedSite/Components/Interactive/HeaderButton.vue";
 import HeaderIcon from "@/Pages/GeneratedSite/Components/Icons/HeaderIcon.vue";
 
 export default {
@@ -89,18 +89,18 @@ export default {
             <slot />
         </div>
 
-        <footer class="w-full py-10 px-4 sm:px-8 lg:px-10 mx-auto gs-bg flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex flex-col sm:w-1/3 space-y-2">
-                <div class="gs-footer-item items-center">
+        <footer class="w-full py-10 px-4 md:px-8 lg:px-10 mx-auto gs-bg flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex flex-col md:w-1/3 space-y-2 justify-center">
+                <div class="gs-footer-item items-center max-md:justify-center">
                     <PhoneIcon/>
                     <p>{{ property_telephone }}</p>
                 </div>
-                <div class="gs-footer-item items-center">
+                <div class="gs-footer-item items-center max-md:justify-center">
                     <EmailIcon/>
                     <p>{{ property_email }}</p>
                 </div>
             </div>
-            <div class="flex flex-col space-y-2 sm:w-1/3 justify-center">
+            <div class="flex flex-col space-y-2 md:w-1/3 justify-center max-md:order-first">
                 <GeneratedSiteLogo/>
                 <div class="flex flex-row justify-center gap-4">
                     <a
@@ -126,7 +126,7 @@ export default {
                     </a>
                 </div>
             </div>
-            <div class="gs-footer-item sm:w-1/3 justify-end">
+            <div class="gs-footer-item md:w-1/3 justify-end">
                 <MapIcon/>
                 <div class="text-left leading-5">
                     <p>{{ property_address_line_1 }}</p>
