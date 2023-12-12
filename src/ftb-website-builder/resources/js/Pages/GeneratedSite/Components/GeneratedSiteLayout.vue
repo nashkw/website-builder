@@ -30,7 +30,7 @@ export default {
         return {
             property_name: 'Test Hotel',
             property_address_line_1: '100 Berkeley Street',
-            property_address_line_2: null,
+            property_address_line_2: "2nd Floor",
             property_address_area: 'Glasgow',
             property_address_country: 'Scotland',
             property_address_postcode: 'G3 7HU',
