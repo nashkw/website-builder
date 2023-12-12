@@ -98,7 +98,7 @@ export default {
             </nav>
         </header>
 
-        <div class="space-y-10">
+        <div class="space-y-16 gs-gradient-bg pb-8">
             <slot />
         </div>
 

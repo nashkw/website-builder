@@ -30,6 +30,7 @@ export default {
     },
     data() {
         return {
+            property_name: "Test Hotel",
             cover_image_primary: primary_cover_image,
             cover_image_primary_description: "cover_image_primary_description",
             secondary_cover_images: [
@@ -61,7 +62,10 @@ export default {
                 },
                 ...this.secondary_cover_images
             ]
-        }
+        },
+        welcomeHeader() {
+            return this.welcome_section_header ?? "Welcome to " + this.property_name + "..."
+        },
     },
 }
 </script>
@@ -116,7 +120,7 @@ export default {
         </PageSection>
 
         <PageSection
-            :header="welcome_section_header"
+            :header="welcomeHeader"
             :paragraph="welcome_section_paragraph"
             :image="welcome_section_image"
             :image-description="welcome_section_image_description"

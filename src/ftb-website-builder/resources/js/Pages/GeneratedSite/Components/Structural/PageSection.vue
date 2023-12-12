@@ -25,8 +25,8 @@ const props = defineProps({
 
 <template>
     <div
-        class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8 mt-10"
-        :class="{'md:flex-row-reverse': flipped}"
+        class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8"
+        :class="{'md:flex-row-reverse': flipped, 'px-48': !image}"
     >
         <div class="flex flex-col p-10 space-y-8">
             <h1

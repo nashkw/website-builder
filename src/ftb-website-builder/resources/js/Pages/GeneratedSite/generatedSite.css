@@ -11,8 +11,7 @@
     --gs-colour-subtitle: #29374a;
     --gs-colour-text: #475569;
     --gs-colour-background: #FFFFFF;
-    --gs-colour-background-blur: rgba(255, 255, 255, 0.75);
-    --gs-colour-background-outline: #f2f5e9;
+    --gs-colour-background-alt: #f2f5e9;
     --gs-input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -58,13 +57,20 @@
 }
 
 .gs-bg {
-    border-color: var(--gs-colour-background-outline);
+    border-color: var(--gs-colour-background-alt);
     background-color: var(--gs-colour-background);
 }
 
 .gs-bg-alt {
     border-color: var(--gs-colour-background);
-    background-color: var(--gs-colour-background-outline);
+    background-color: var(--gs-colour-background-alt);
+}
+
+.gs-gradient-bg {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+    --tw-gradient-from: var(--gs-colour-background-alt) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-to: var(--gs-colour-background) var(--tw-gradient-to-position);
 }
 
 .gs-footer-item {

@@ -42,7 +42,7 @@ export default {
     computed: {
         pageHeader() {
             return this.about_page_section_header ?? "About " + this.property_name
-        }
+        },
     }
 }
 </script>
