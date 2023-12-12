@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/preview', [HomePageController::class, 'preview'])->name('preview');
-    Route::get('/preview/about', function () {
-        return Inertia::render('GeneratedSite/About');
-    })->middleware(['auth'])->name('preview.about');
+    Route::get('/preview/about', [AboutPageController::class, 'preview'])->name('preview.about');
 });
 
 require __DIR__.'/auth.php';
