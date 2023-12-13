@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --gs-colour-accent-primary: #10b981;
+    --gs-colour-accent-primary-alt: #059669;
+    --gs-colour-accent-secondary: #84cc16;
+    --gs-colour-accent-secondary-alt: #65a30d;
+    --gs-colour-title: #1F2937;
+    --gs-colour-subtitle: #29374a;
+    --gs-colour-text: #475569;
+    --gs-colour-background: #FFFFFF;
+    --gs-colour-background-alt: #f2f5e9;
+    --gs-input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.gs-logo {
+    flex: none;
+    text-align: center;
+    color: var(--gs-colour-accent-primary);
+    font-size: 30px;
+    font-weight: 600;
+}
+.gs-logo:hover {
+    color: var(--gs-colour-accent-primary-alt);
+}
+
+.gs-title {
+    display: block;
+    text-align: center;
+    color: var(--gs-colour-title);
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.gs-subtitle {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--gs-colour-subtitle);
+}
+
+.gs-text {
+    color: var(--gs-colour-text);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.gs-text-link {
+    color: var(--gs-colour-accent-secondary);
+    font-size: 18px;
+    font-weight: 500;
+}
+.gs-text-link:hover {
+    color: var(--gs-colour-accent-secondary-alt);
+}
+
+.gs-bg {
+    border-color: var(--gs-colour-background-alt);
+    background-color: var(--gs-colour-background);
+}
+
+.gs-bg-alt {
+    border-color: var(--gs-colour-background);
+    background-color: var(--gs-colour-background-alt);
+}
+
+.gs-gradient-bg {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+    --tw-gradient-from: var(--gs-colour-background-alt) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-to: var(--gs-colour-background) var(--tw-gradient-to-position);
+}
+
+.gs-footer-item {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    text-align: center;
+    color: var(--gs-colour-text);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.gs-header-button, .gs-link-button, .gs-booking-button {
+    display: inline-flex;
+    gap: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+
+.gs-header-button {
+    color: var(--gs-colour-text);
+    transition-property: all;
+}
+.gs-header-button:hover {
+    color: var(--gs-colour-subtitle);
+    background-color: var(--gs-colour-accent-primary);
+}
+
+.gs-link-button {
+    color: var(--gs-colour-accent-primary);
+    transition-property: all;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.gs-link-button:hover {
+    color: var(--gs-colour-accent-primary-alt);
+}
+
+.gs-booking-button {
+    color: var(--gs-colour-background);
+    background-color: var(--gs-colour-accent-secondary);
+    transition-property: all;
+}
+.gs-booking-button:hover {
+    background-color: var(--gs-colour-accent-secondary-alt);
+}

@@ -1,0 +1,64 @@
+{
+  "home_page": {
+    "metaPageTitle": "store testing",
+    "metaPageDescription": "store testing",
+    "coverImagePrimary": "images/coverImagePrimary/test_cover_image_1.jpg",
+    "coverImagePrimaryDescription": "store testing",
+    "introSectionHeader": "store testing",
+    "introSectionParagraph": "store testing",
+    "introSectionImage": "images/sectionImages/homeIntro/test_intro_image.jpg",
+    "introSectionImageDescription": "store testing",
+    "welcomeSectionHeader": "store testing",
+    "welcomeSectionParagraph": "store testing",
+    "welcomeSectionImage": "images/sectionImages/homeWelcome/test_welcome_image.jpg",
+    "welcomeSectionImageDescription": "store testing",
+    "secondaryCoverImages": [
+      {
+        "secondaryCoverImage": "images/coverImageSecondary/test_cover_image_2.jpg",
+        "secondaryCoverImageDescription": "store testing"
+      },
+      {
+        "secondaryCoverImage": "images/coverImageSecondary/test_cover_image_3.jpg",
+        "secondaryCoverImageDescription": "store testing"
+      }
+    ]
+  },
+  "about_page": {
+    "metaPageTitle": "store testing",
+    "metaPageDescription": "store testing",
+    "aboutPageSectionHeader": "store testing",
+    "aboutPageSectionParagraph": "store testing",
+    "aboutPageSectionImage": "images/sectionImages/aboutPrimary/test_about_image_1.jpg",
+    "aboutPageSectionImageDescription": "store testing",
+    "secondaryAboutSections": [
+        {
+            "secondaryAboutSectionHeader": "store testing",
+            "secondaryAboutSectionParagraph": "store testing",
+            "secondaryAboutSectionImage": "images/sectionImages/aboutSecondary/test_about_image_2.jpg",
+            "secondaryAboutSectionImageDescription": "store testing"
+        },
+        {
+            "secondaryAboutSectionHeader": "store testing",
+            "secondaryAboutSectionParagraph": "store testing",
+            "secondaryAboutSectionImage": "images/sectionImages/aboutSecondary/test_about_image_3.jpg",
+            "secondaryAboutSectionImageDescription": "store testing"
+        }
+    ]
+  },
+  "property": {
+      "propertyName": "store testing",
+      "propertyAddressLine1": "store testing",
+      "propertyAddressLine2": "store testing",
+      "propertyAddressArea": "store testing",
+      "propertyAddressCountry": "store testing",
+      "propertyAddressPostcode": "store testing",
+      "propertyTelephone": "store testing",
+      "propertyEmail": "store testing",
+      "propertyTwitterLink": "store testing",
+      "propertyYoutubeLink": "store testing",
+      "propertyLinkedinLink": "store testing",
+      "propertyFacebookLink": "store testing",
+      "propertyInstagramLink": "store testing",
+      "propertyTripadvisorLink": "store testing"
+  }
+}
