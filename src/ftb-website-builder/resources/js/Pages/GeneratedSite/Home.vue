@@ -92,7 +92,7 @@ export default {
             :image="introSectionImage"
             :image-description="introSectionImageDescription"
         >
-            <div class="flex justify-center gap-8 pt-4">
+            <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <BookingButton
                     text="Make a booking"
                     bookingLink="/"
@@ -111,7 +111,7 @@ export default {
             :image-description="welcomeSectionImageDescription"
             :flipped="true"
         >
-            <div class="flex justify-center gap-8 pt-4">
+            <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <LinkButton
                     text="Our story"
                     :href="route('preview.about')"
@@ -128,8 +128,7 @@ export default {
 <style scoped>
 .carousel__item {
     object-fit: cover;
-    min-height: 300px;
-    max-height: 400px;
+    height: 400px;
     width: 100%;
     display: flex;
     justify-content: center;

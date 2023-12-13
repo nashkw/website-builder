@@ -105,7 +105,7 @@ export default {
 
         <div class="sticky top-[100vh] space-y-2">
             <ArrowButton
-                href="/"
+                :href="route('preview')"
                 text="View your website"
             />
             <SignInOutButton />

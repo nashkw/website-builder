@@ -7,7 +7,6 @@ import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
-import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
 const props = defineProps({
