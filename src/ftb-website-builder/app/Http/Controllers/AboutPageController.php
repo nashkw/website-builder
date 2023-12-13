@@ -25,7 +25,7 @@ class AboutPageController extends Controller
             $secondaryAboutSections[] = [
                 'secondaryAboutSectionHeader' => $aboutSection->secondary_about_section_header,
                 'secondaryAboutSectionParagraph' => $aboutSection->secondary_about_section_paragraph,
-                'secondaryAboutSectionImage' => $aboutSection->secondary_about_section_image,
+                'secondaryAboutSectionImage' => $this->getImageIfExists($aboutSection->secondary_about_section_image),
                 'secondaryAboutSectionImageDescription' => $aboutSection->secondary_about_section_image_description,
             ];
         }

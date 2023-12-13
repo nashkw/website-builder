@@ -43,11 +43,26 @@ class DatabaseSeeder extends Seeder
             'property_id' => $property_id,
             'meta_page_title' => 'Welcome to Test Hotel',
             'meta_page_description' => 'Experience luxury at its finest. Stylish accommodations, top-notch amenities, and personalized service in a prime location. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.',
-            'cover_image_primary' => '',
+            'cover_image_primary' => 'images/coverImagePrimary/test_cover_image_1.jpg',
+            'cover_image_primary_description' => 'A front facing view of our main building.',
             'intro_section_header' => "Glasgow's finest",
             'intro_section_paragraph' => 'Discover luxury at its peak with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.',
+            'intro_section_image' => 'images/sectionImages/homeIntro/test_intro_image.jpg',
+            'intro_section_image_description' => 'A photo of our gorgeous lounge area.',
             'welcome_section_header' => 'Welcome to Test Hotel...',
             'welcome_section_paragraph' => 'Welcome to a world of unparalleled hospitality and comfort! We are delighted to have you as our guest. From the moment you step through our doors, expect an experience tailored to exceed your expectations. Our dedicated team is committed to ensuring your stay is nothing short of extraordinary. Whether you are here for business or leisure, we invite you to relax, indulge, and make yourself at home. Your journey with us begins now, and we are honored to be a part of it.',
+            'welcome_section_image' => 'images/sectionImages/homeWelcome/test_welcome_image.jpg',
+            'welcome_section_image_description' => 'A photo of one of our sleek modern hallways.',
+        ]);
+        DB::table('secondary_cover_images')->insert([
+            'property_id' => $property_id,
+            'secondary_cover_image' => 'images/coverImageSecondary/test_cover_image_2.jpg',
+            'secondary_cover_image_description' => 'A photo of one of our fashionable lobby areas.',
+        ]);
+        DB::table('secondary_cover_images')->insert([
+            'property_id' => $property_id,
+            'secondary_cover_image' => 'images/coverImageSecondary/test_cover_image_3.jpg',
+            'secondary_cover_image_description' => 'A photo of one of our beautiful waiting rooms.',
         ]);
         DB::table('rooms_pages')->insert([
             'property_id' => $property_id,
@@ -92,16 +107,21 @@ class DatabaseSeeder extends Seeder
             'meta_page_title' => 'All about Test Hotel',
             'meta_page_description' => 'At our core, we are a story of passion and dedication, weaving modern luxury and genuine hospitality into every experience. Join us in creating unforgettable moments at our welcoming haven.',
             'about_page_section_paragraph' => 'In the heart of the city, our hotel began as a vision—a dream to create a space where luxury and hospitality seamlessly intertwined. Guided by this passion, we embarked on a journey of meticulous planning and thoughtful design. From the initial sketches to the final touches, every detail was crafted to evoke a sense of comfort and sophistication, setting the stage for an exceptional stay.',
+            'about_page_section_image' => 'images/sectionImages/aboutPrimary/test_about_image_1.jpg',
+            'about_page_section_image_description' => 'A photo of one of the outside of one of our buildings.',
         ]);
         DB::table('secondary_about_sections')->insert([
-            [
-                'property_id' => $property_id,
-                'secondary_about_section_paragraph' => 'As the doors opened, our story unfolded through the experiences of our guests. They discovered the warmth of our attentive staff, the stylish allure of our accommodations, and the seamless fusion of modern amenities with timeless charm. Positive reviews echoed the success of our endeavor, reinforcing our commitment to delivering an unparalleled escape for each visitor.',
-            ],
-            [
-                'property_id' => $property_id,
-                'secondary_about_section_paragraph' => 'Today, our hotel stands as a testament to the dedication that birthed its existence. It is a living story, where every check-in adds a new chapter. Whether guests are here for business or leisure, the narrative continues to evolve, creating a legacy of cherished moments and satisfied smiles. Our story is ongoing, and we invite you to be a part of it—your chapter awaits at our doors.',
-            ],
+            'property_id' => $property_id,
+            'secondary_about_section_paragraph' => 'As the doors opened, our story unfolded through the experiences of our guests. They discovered the warmth of our attentive staff, the stylish allure of our accommodations, and the seamless fusion of modern amenities with timeless charm. Positive reviews echoed the success of our endeavor, reinforcing our commitment to delivering an unparalleled escape for each visitor.',
+            'secondary_about_section_image' => 'images/sectionImages/aboutSecondary/test_about_image_2.jpg',
+            'secondary_about_section_image_description' => 'A photo of one of one of our welcoming reception rooms.',
+        ]);
+        DB::table('secondary_about_sections')->insert([
+            'property_id' => $property_id,
+            'secondary_about_section_header' => 'Where we are today',
+            'secondary_about_section_paragraph' => 'Today, our hotel stands as a testament to the dedication that birthed its existence. It is a living story, where every check-in adds a new chapter. Whether guests are here for business or leisure, the narrative continues to evolve, creating a legacy of cherished moments and satisfied smiles. Our story is ongoing, and we invite you to be a part of it—your chapter awaits at our doors.',
+            'secondary_about_section_image' => 'images/sectionImages/aboutSecondary/test_about_image_3.jpg',
+            'secondary_about_section_image_description' => 'A photo of one of one of our elegant pool areas.',
         ]);
         DB::table('explore_pages')->insert([
             'property_id' => $property_id,

@@ -39,7 +39,7 @@ class HomePageController extends Controller
         $secondaryCoverImages = [];
         foreach ($homePage->secondaryCoverImages as $coverImage) {
             $secondaryCoverImages[] = [
-                'secondaryCoverImage' => $coverImage->secondary_cover_image,
+                'secondaryCoverImage' => $this->getImageIfExists($coverImage->secondary_cover_image),
                 'secondaryCoverImageDescription' => $coverImage->secondary_cover_image_description,
             ];
         }
