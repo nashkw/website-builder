@@ -30,7 +30,7 @@ class AboutPageController extends Controller
             ];
         }
 
-        return Inertia::render('GeneratedSite/About', [
+        return Inertia::render('GeneratedSite/AboutPreview', [
             'metaPageTitle' => $aboutPage->meta_page_title,
             'metaPageDescription' => $aboutPage->meta_page_description,
             'aboutPageSectionHeader' => $aboutPage->about_page_section_header,

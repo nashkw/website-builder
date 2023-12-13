@@ -43,7 +43,7 @@ class HomePageController extends Controller
                 'secondaryCoverImageDescription' => $coverImage->secondary_cover_image_description,
             ];
         }
-        return Inertia::render('GeneratedSite/Home', [
+        return Inertia::render('GeneratedSite/HomePreview', [
             'propertyName' => $homePage->property->property_name,
             'metaPageTitle' => $homePage->meta_page_title,
             'metaPageDescription' => $homePage->meta_page_description,
