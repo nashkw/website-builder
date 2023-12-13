@@ -35,8 +35,12 @@ const props = defineProps({
             >
                 {{ header }}
             </h1>
-            <p class="gs-text">
-                {{ paragraph }}
+            <p
+                v-for="(line, index) of paragraph.split('\\n')"
+                :key="index"
+                class="gs-text"
+            >
+                {{ line }}
             </p>
             <slot />
         </div>

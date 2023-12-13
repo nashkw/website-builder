@@ -112,14 +112,14 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('secondary_about_sections')->insert([
             'property_id' => $property_id,
-            'secondary_about_section_paragraph' => 'As the doors opened, our story unfolded through the experiences of our guests. They discovered the warmth of our attentive staff, the stylish allure of our accommodations, and the seamless fusion of modern amenities with timeless charm. Positive reviews echoed the success of our endeavor, reinforcing our commitment to delivering an unparalleled escape for each visitor.',
+            'secondary_about_section_paragraph' => 'As the doors opened, our story began to unfold through the unique experiences of our cherished guests. They quickly discovered the genuine warmth radiating from our attentive staff, experienced the stylish allure embedded in every corner of our accommodations, and marveled at the seamless fusion of modern amenities with timeless charm.\nThe resounding positivity echoed in the reviews served as a testament to the success of our endeavor, further solidifying our commitment to delivering an unparalleled escape for each and every visitor. These testimonials not only inspire us but also motivate our dedicated team to continually raise the bar, ensuring that every guest enjoys a truly exceptional and memorable stay.',
             'secondary_about_section_image' => 'images/sectionImages/aboutSecondary/test_about_image_2.jpg',
             'secondary_about_section_image_description' => 'A photo of one of one of our welcoming reception rooms.',
         ]);
         DB::table('secondary_about_sections')->insert([
             'property_id' => $property_id,
             'secondary_about_section_header' => 'Where we are today',
-            'secondary_about_section_paragraph' => 'Today, our hotel stands as a testament to the dedication that birthed its existence. It is a living story, where every check-in adds a new chapter. Whether guests are here for business or leisure, the narrative continues to evolve, creating a legacy of cherished moments and satisfied smiles. Our story is ongoing, and we invite you to be a part of it—your chapter awaits at our doors.',
+            'secondary_about_section_paragraph' => 'Today, our hotel stands as a testament to the dedication that brought it into existence. It serves as a living story, with every check-in marking the addition of a new chapter. Whether our guests are here for business or leisure, the narrative of our establishment continues to evolve, weaving a legacy of cherished moments and leaving behind a trail of satisfied smiles.\nOur story is an ongoing journey, and we extend a warm invitation for you to become a part of it. Your chapter awaits at our doors, where each guest contributes to the vibrant tapestry of experiences that define our hotel. Join us in creating and sharing moments that make our story truly extraordinary.',
             'secondary_about_section_image' => 'images/sectionImages/aboutSecondary/test_about_image_3.jpg',
             'secondary_about_section_image_description' => 'A photo of one of one of our elegant pool areas.',
         ]);
