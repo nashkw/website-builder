@@ -58,6 +58,6 @@ class HomePage extends Model
      */
     public function secondaryCoverImages(): HasMany
     {
-        return $this->hasMany(SecondaryCoverImage::class);
+        return $this->hasMany(SecondaryCoverImage::class, 'property_id');
     }
 }

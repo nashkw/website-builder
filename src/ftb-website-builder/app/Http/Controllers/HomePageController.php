@@ -36,6 +36,13 @@ class HomePageController extends Controller
     public function preview(Request $request): Response
     {
         $homePage = User::find($request->user()->id)->property->homePage;
+        $secondaryCoverImages = [];
+        foreach ($homePage->secondaryCoverImages as $coverImage) {
+            $secondaryCoverImages[] = [
+                'secondaryCoverImage' => $coverImage->secondary_cover_image,
+                'secondaryCoverImageDescription' => $coverImage->secondary_cover_image_description,
+            ];
+        }
         return Inertia::render('GeneratedSite/Home', [
             'propertyName' => $homePage->property->property_name,
             'metaPageTitle' => $homePage->meta_page_title,
@@ -50,6 +57,7 @@ class HomePageController extends Controller
             'welcomeSectionParagraph' => $homePage->welcome_section_paragraph,
             'welcomeSectionImage' => $this->getImageIfExists($homePage->welcome_section_image),
             'welcomeSectionImageDescription' => $homePage->welcome_section_image_description,
+            'secondaryCoverImages' => $secondaryCoverImages,
         ]);
     }
 

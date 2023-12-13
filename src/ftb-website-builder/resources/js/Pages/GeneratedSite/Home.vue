@@ -8,12 +8,6 @@ import PageSection from "@/Pages/GeneratedSite/Components/Structural/PageSection
 import LinkButton from "@/Pages/GeneratedSite/Components/Interactive/LinkButton.vue";
 import BookingButton from "@/Pages/GeneratedSite/Components/Interactive/BookingButton.vue";
 
-import primary_cover_image from './Data/primary_cover_image.jpg';
-import secondary_cover_image_1 from './Data/secondary_cover_image_1.jpg';
-import secondary_cover_image_2 from './Data/secondary_cover_image_2.jpg';
-import intro_image from './Data/introduction_section_image.jpg';
-import welcome_image from './Data/welcome_section_image.jpg';
-
 export default {
     name: "Home",
     components: {
@@ -42,29 +36,16 @@ export default {
         welcomeSectionParagraph: String,
         welcomeSectionImage: String,
         welcomeSectionImageDescription: String,
-    },
-    data() {
-        return {
-            secondary_cover_images: [
-                {
-                    secondary_cover_image: secondary_cover_image_1,
-                    secondary_cover_image_description: "secondary_cover_image_1_description",
-                },
-                {
-                    secondary_cover_image: secondary_cover_image_2,
-                    secondary_cover_image_description: "secondary_cover_image_2_description",
-                },
-            ],
-        }
+        secondaryCoverImages: Array,
     },
     computed: {
         coverImages() {
             return [
                 {
-                    secondary_cover_image: this.coverImagePrimary,
-                    secondary_cover_image_description: this.coverImagePrimaryDescription,
+                    secondaryCoverImage: this.coverImagePrimary,
+                    secondaryCoverImageDescription: this.coverImagePrimaryDescription,
                 },
-                ...this.secondary_cover_images
+                ...this.secondaryCoverImages
             ]
         },
         welcomeHeader() {
@@ -86,8 +67,8 @@ export default {
                 :key="slide"
             >
                 <img
-                    :src="slide.secondary_cover_image"
-                    :alt="slide.secondary_cover_image_description"
+                    :src="slide.secondaryCoverImage"
+                    :alt="slide.secondaryCoverImageDescription"
                     class="carousel__item"
                 />
             </Slide>
