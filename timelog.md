@@ -214,3 +214,21 @@
 * *0.5 hours* meeting with various stakeholders at freetobook
 * *1 hours* review of the slides for the second level 4 project guidance lecture
 * *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+
+## Week 12
+
+### 11 Dec 2023
+
+* *3 hours* continued research into different methods of implementing automatic hosting
+* *1.5 hours* continued research into different methods of creating the generated site pages
+* *3 hours* began creation of the generated site pages (header, footer, reusable components)
+
+### 12 Dec 2023
+
+* *8 hours* continued creation of the generated site pages (home page, about page)
+
+### 13 Dec 2023
+
+* *6.5 hours* set up the generated site app so that the pages are accessible by both apps
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work

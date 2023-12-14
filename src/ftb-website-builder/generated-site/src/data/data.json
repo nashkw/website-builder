@@ -4,14 +4,14 @@
     "metaPageDescription": "store testing",
     "coverImagePrimary": "images/coverImagePrimary/test_cover_image_1.jpg",
     "coverImagePrimaryDescription": "store testing",
-    "introSectionHeader": "store testing",
-    "introSectionParagraph": "store testing",
+    "introSectionHeader": "Glasgow's finest",
+    "introSectionParagraph": "Discover luxury at its peak with stylish accommodations, top-notch amenities, and personalized service. Indulge in gourmet dining, spa retreats, and unparalleled hospitality. Book now for an unforgettable stay.",
     "introSectionImage": "images/sectionImages/homeIntro/test_intro_image.jpg",
     "introSectionImageDescription": "store testing",
-    "welcomeSectionHeader": "store testing",
-    "welcomeSectionParagraph": "store testing",
+    "welcomeSectionHeader": "Welcome to Test Hotel...",
+    "welcomeSectionParagraph": "Welcome to a world of unparalleled hospitality and comfort! We are delighted to have you as our guest. From the moment you step through our doors, expect an experience tailored to exceed your expectations. Our dedicated team is committed to ensuring your stay is nothing short of extraordinary. Whether you are here for business or leisure, we invite you to relax, indulge, and make yourself at home. Your journey with us begins now, and we are honored to be a part of it.",
     "welcomeSectionImage": "images/sectionImages/homeWelcome/test_welcome_image.jpg",
-    "welcomeSectionImageDescription": "store testing",
+    "welcomeSectionImageDescription": "A photo of one of our sleek modern hallways.",
     "secondaryCoverImages": [
       {
         "secondaryCoverImage": "images/coverImageSecondary/test_cover_image_2.jpg",
@@ -26,34 +26,34 @@
   "about_page": {
     "metaPageTitle": "store testing",
     "metaPageDescription": "store testing",
-    "aboutPageSectionHeader": "store testing",
-    "aboutPageSectionParagraph": "store testing",
+    "aboutPageSectionHeader": "Our story",
+    "aboutPageSectionParagraph": "In the heart of the city, our hotel began as a vision—a dream to create a space where luxury and hospitality seamlessly intertwined. Guided by this passion, we embarked on a journey of meticulous planning and thoughtful design. From the initial sketches to the final touches, every detail was crafted to evoke a sense of comfort and sophistication, setting the stage for an exceptional stay.",
     "aboutPageSectionImage": "images/sectionImages/aboutPrimary/test_about_image_1.jpg",
     "aboutPageSectionImageDescription": "store testing",
     "secondaryAboutSections": [
         {
-            "secondaryAboutSectionHeader": "store testing",
-            "secondaryAboutSectionParagraph": "store testing",
+            "secondaryAboutSectionHeader": null,
+            "secondaryAboutSectionParagraph": "As the doors opened, our story began to unfold through the unique experiences of our cherished guests. They quickly discovered the genuine warmth radiating from our attentive staff, experienced the stylish allure embedded in every corner of our accommodations, and marveled at the seamless fusion of modern amenities with timeless charm.\\nThe resounding positivity echoed in the reviews served as a testament to the success of our endeavor, further solidifying our commitment to delivering an unparalleled escape for each and every visitor. These testimonials not only inspire us but also motivate our dedicated team to continually raise the bar, ensuring that every guest enjoys a truly exceptional and memorable stay.",
             "secondaryAboutSectionImage": "images/sectionImages/aboutSecondary/test_about_image_2.jpg",
             "secondaryAboutSectionImageDescription": "store testing"
         },
         {
-            "secondaryAboutSectionHeader": "store testing",
-            "secondaryAboutSectionParagraph": "store testing",
+            "secondaryAboutSectionHeader": "Where we are today",
+            "secondaryAboutSectionParagraph": "Today, our hotel stands as a testament to the dedication that brought it into existence. It serves as a living story, with every check-in marking the addition of a new chapter. Whether our guests are here for business or leisure, the narrative of our establishment continues to evolve, weaving a legacy of cherished moments and leaving behind a trail of satisfied smiles.\\nOur story is an ongoing journey, and we extend a warm invitation for you to become a part of it. Your chapter awaits at our doors, where each guest contributes to the vibrant tapestry of experiences that define our hotel. Join us in creating and sharing moments that make our story truly extraordinary.",
             "secondaryAboutSectionImage": "images/sectionImages/aboutSecondary/test_about_image_3.jpg",
             "secondaryAboutSectionImageDescription": "store testing"
         }
     ]
   },
   "property": {
-      "propertyName": "store testing",
-      "propertyAddressLine1": "store testing",
-      "propertyAddressLine2": "store testing",
-      "propertyAddressArea": "store testing",
-      "propertyAddressCountry": "store testing",
-      "propertyAddressPostcode": "store testing",
-      "propertyTelephone": "store testing",
-      "propertyEmail": "store testing",
+      "propertyName": "Test Hotel",
+      "propertyAddressLine1": "100 Berkeley Street",
+      "propertyAddressLine2": "2nd Floor",
+      "propertyAddressArea": "Glasgow",
+      "propertyAddressCountry": "Scotland",
+      "propertyAddressPostcode": "G3 7HU",
+      "propertyTelephone": "0141 270 2173",
+      "propertyEmail": "info@freetobook.com",
       "propertyTwitterLink": "store testing",
       "propertyYoutubeLink": "store testing",
       "propertyLinkedinLink": "store testing",

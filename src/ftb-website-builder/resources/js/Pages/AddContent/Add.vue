@@ -9,14 +9,6 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
         <h1 class="wb-title">
             Add more pages to your website
         </h1>
-        <iframe
-            class="w-full h-96"
-            src="http://localhost:5174/"
-        />
-        <iframe
-            class="w-full h-96"
-            :src="route('preview')"
-        />
         <p class="wb-text">
             On this page you will be able to add new pages to your website. This page has not yet been created.
         </p>
