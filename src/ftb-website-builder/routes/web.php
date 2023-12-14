@@ -17,34 +17,26 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('LandingPage');
-});
+Route::get('/', function () { return Inertia::render('LandingPage'); });
 
-Route::get('/edit', function () {
-    return Inertia::render('EditContent/Edit');
-})->middleware(['auth'])->name('edit');
-
-Route::name('edit.')->group(function () {
-    Route::middleware('auth')->group(function () {
-        Route::get('/edit/home-page', [HomePageController::class, 'edit'])->name('home');
-        Route::post('/edit/home-page', [HomePageController::class, 'update'])->name('home.update');
+Route::middleware('auth')->group(function () {
+    Route::name('account')->prefix('account')->group(function () {
+        Route::get('/', [AccountController::class, 'edit']);
+        Route::patch('/', [AccountController::class, 'update'])->name('.update');
+        Route::delete('/', [AccountController::class, 'destroy'])->name('.destroy');
     });
-});
-
-Route::get('/add', function () {
-    return Inertia::render('AddContent/Add');
-})->middleware(['auth'])->name('add');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/account', [AccountController::class, 'edit'])->name('account');
-    Route::patch('/account', [AccountController::class, 'update'])->name('account.update');
-    Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/preview', [HomePageController::class, 'preview'])->name('preview');
-    Route::get('/preview/about', [AboutPageController::class, 'preview'])->name('preview.about');
+    Route::name('edit')->prefix('edit')->group(function () {
+        Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
+        Route::get('/home-page', [HomePageController::class, 'edit'])->name('.home');
+        Route::post('/home-page', [HomePageController::class, 'update'])->name('.home.update');
+    });
+    Route::name('add')->prefix('add')->group(function () {
+        Route::get('/', function () { return Inertia::render('AddContent/Add'); });
+    });
+    Route::name('preview')->prefix('preview')->group(function () {
+        Route::get('/', [HomePageController::class, 'preview']);
+        Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
+    });
 });
 
 require __DIR__.'/auth.php';
