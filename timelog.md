@@ -232,3 +232,14 @@
 
 * *6.5 hours* set up the generated site app so that the pages are accessible by both apps
 * *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 14 Dec 2023
+
+* *4.5 hours* research into multi-tenant applications, reverse proxies, and domain management
+* *2 hours* meeting with freetobook director, including pre-meeting and post-meeting trello notes
+* *1 hour* research into laravel routing options and reorganisation of project routes
+
+### 15 Dec 2023
+
+* *1 hour* consideration of evaluation and redraft of project timeline
+* *2.5 hours* write up and submission of status report

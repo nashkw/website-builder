@@ -1,6 +1,6 @@
 # Plan
 
-* **Project Title** Website Builder (for freetobook)
+* **Project Title** Website builder for Freetobook
 * **Project Lead** Nash Waugh
 * **Student ID** 2517003W
 * **Supervisor** Alistair Morrison
@@ -24,8 +24,8 @@
 
 ## Spring Semester
 
-*  **Week 13** Testing
-*  **Week 14** Testing
+*  **Week 13** Implementation
+*  **Week 14** Implementation
 *  **Week 15** Evaluation
 *  **Week 16** Evaluation
 *  **Week 17** Dissertation
