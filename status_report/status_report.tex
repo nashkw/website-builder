@@ -1,0 +1,88 @@
+        
+\documentclass[11pt]{article}
+\usepackage{times}
+\usepackage{fullpage}
+    
+\title{ Website builder for Freetobook }
+\author{ Nash Waugh - 2517003W }
+
+\begin{document}
+\maketitle
+    
+    
+     
+
+\section{Status report}
+
+\subsection{Proposal}\label{proposal}
+
+
+\subsubsection{Motivation}\label{motivation}
+
+Freetobook is a small business that provides booking software for rental properties such as hotels, B\&Bs, hostels, etc. They currently lose sign ups because many aspects of the software can only be used if the property already has a website that freetobook can be connected to. However, freetobook already stores much of the information that would be necessary to create such a website. They would like a website builder service tailored to their userbase that can generate a website based on either data that the property provides or data that they have stored with freetobook.
+
+
+\subsubsection{Aims}\label{aims}
+
+This project should result in an application that can generate professional websites for rental properties. These websites should be made publicly available once generated. Properties should be able to input all the data needed to generate the website, and edit this data as needed. The publicly available website should update when this data is edited.
+
+
+\subsection{Progress}\label{progress}
+
+\begin{itemize}
+
+\item Background research was conducted on rental property websites, existing website builder services, search engine optimisation, and automatic website hosting.
+\item Requirements were gathered through interviews with stakeholders at Freetobook. These were analysed, prioritised, and confirmed with stakeholders.
+\item Front-end design was planned using Figma wireframes and confirmed with stakeholders.
+\item The development environment was set up with a Laravel project for the backend, a Vue app for the frontend, Tailwind and Preline for styling, a MySQL database, Inertia for routing, Laravel Breeze for authentication, and Pinia for state management in the generated sites.
+\item Infrastructure for the back-end (migrations, models, controllers, image storage, and a database seeder) was set up and connected to the front-end. This was tested by creating several front-end forms.
+\item Stylesheets and reusable Vue components were used to style all front-end elements professionally.
+\item Generated site pages were created and made available both stand alone and from the main application.
+
+\end{itemize}
+
+
+
+\subsection{Problems and risks}\label{problems-and-risks}
+
+
+\subsubsection{Problems}\label{problems}
+
+\begin{itemize}
+
+\item The long term vision for the scalalbility and commercial viability of the application had to be constantly balanced against the scope and time constraints of this project.
+\item It was difficult to structure the generated site pages such that they could draw from both static data (when run as a stand alone app) and from the database (when displaying previews in the main app).
+\item It is unclear which automatic hosting option is most appropriate for this project in the long term.
+
+\end{itemize}
+
+
+\subsubsection{Risks}\label{risks}
+
+\begin{itemize}
+
+\item Using a hosting option that requires payment would make it challenging to carry out an evaluation. \textbf{Mitigation}: select a hosting option that does not require payment at any stage.
+\item It might not be possible to use real properties in an evaluation. \textbf{Mitigation}: create packages of test data that can be used by evaluators who do not own rental properties.
+\item Creating a website from scratch using the application might take too long for an evaluation. \textbf{Mitigation}: if necessary design discrete evaluation tasks that are not prohibitively time consuming.
+
+\end{itemize}
+
+
+\subsection{Plan}\label{plan}
+
+\begin{itemize}
+
+\item Week 1-2: Continue any implementation work not completed over winter break. \textbf{Deliverable: prototype complete and ready for evaluation.} 
+\item Week 3-5: Plan and run evaluation. Analyse and write up results. \textbf{Deliverable: evaluation complete and results written up.} 
+\item Week 5-9: Write dissertation. \textbf{Deliverable: first draft of dissertation submitted to supervisor.} 
+\item Week 9-11: Refine dissertation and create presentation. \textbf{Deliverable: both dissertation and presentation complete.} 
+
+\end{itemize}
+
+
+    
+\subsection{Ethics and data}\label{ethics}
+
+This project will be evaluated using tests with human users. Only standard hardware will be used and no personally identifiable data will be captured. The ethics checklist will apply to any evaluation needed for this project. This checklist will be signed and completed before any evaluation is carried out.
+
+\end{document}
