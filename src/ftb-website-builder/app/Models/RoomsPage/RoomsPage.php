@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\RoomsPage;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class FindUsPage extends Model
+class RoomsPage extends Model
 {
     /**
      * The primary key associated with the table.
@@ -16,7 +17,7 @@ class FindUsPage extends Model
     protected $primaryKey = 'property_id';
 
     /**
-     * Get the property that owns the find us page.
+     * Get the property that owns the rooms page.
      */
     public function property(): BelongsTo
     {
@@ -24,10 +25,10 @@ class FindUsPage extends Model
     }
 
     /**
-     * Get the directions for the find us page.
+     * Get the rooms for the rooms page.
      */
-    public function directions(): HasMany
+    public function rooms(): HasMany
     {
-        return $this->hasMany(Direction::class);
+        return $this->hasMany(Room::class);
     }
 }

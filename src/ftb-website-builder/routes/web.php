@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\ExplorePageController;
-use App\Http\Controllers\FAQPageController;
-use App\Http\Controllers\FindUsPageController;
-use App\Http\Controllers\HomePageController;
-use App\Http\Controllers\ReviewsPageController;
-use App\Http\Controllers\RoomsPageController;
+use App\Http\Controllers\Pages\AboutPageController;
+use App\Http\Controllers\Pages\ExplorePageController;
+use App\Http\Controllers\Pages\FAQPageController;
+use App\Http\Controllers\Pages\FindUsPageController;
+use App\Http\Controllers\Pages\HomePageController;
+use App\Http\Controllers\Pages\ReviewsPageController;
+use App\Http\Controllers\Pages\RoomsPageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 

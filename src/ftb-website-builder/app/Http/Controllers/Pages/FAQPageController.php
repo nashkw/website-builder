@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
-use App\Models\RoomsPage;
+use App\Http\Controllers\Controller;
+use App\Models\FAQPage\FAQPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class RoomsPageController extends Controller
+class FAQPageController extends Controller
 {
 
 
@@ -18,7 +19,7 @@ class RoomsPageController extends Controller
         return null;
     }
 
-    private function deleteImage (string $field, RoomsPage $currentData) : void
+    private function deleteImage (string $field, FAQPage $currentData) : void
     {
         if ($currentData[$field]) {
             Storage::disk("public")->delete($currentData[$field]);
@@ -30,7 +31,7 @@ class RoomsPageController extends Controller
         string $field,
         ?string $shouldDelete,
         string $path,
-        RoomsPage $currentData,
+        FAQPage $currentData,
         array $data
     ): array
     {

@@ -2,9 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\AboutPage\AboutPage;
+use App\Models\ExplorePage\ExplorePage;
+use App\Models\FAQPage\FAQPage;
+use App\Models\FindUsPage\FindUsPage;
+use App\Models\HomePage\HomePage;
+use App\Models\ReviewsPage\ReviewsPage;
+use App\Models\RoomsPage\RoomsPage;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {

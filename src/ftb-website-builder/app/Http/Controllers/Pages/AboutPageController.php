@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
-use App\Models\AboutPage;
+use App\Http\Controllers\Controller;
+use App\Models\AboutPage\AboutPage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ use Inertia\Response;
 class AboutPageController extends Controller
 {
     /**
-     * Display a preview of the generated site home page.
+     * Display a preview of the generated site about page.
      */
     public function preview(Request $request): Response
     {
@@ -70,7 +71,7 @@ class AboutPageController extends Controller
     }
 
     /**
-     * Update the user's generated site home page information.
+     * Update the user's generated site about page information.
      */
     public function update(Request $request): RedirectResponse
     {

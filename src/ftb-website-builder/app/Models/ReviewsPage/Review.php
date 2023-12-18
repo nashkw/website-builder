@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\ReviewsPage;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
