@@ -2,7 +2,12 @@
 
 use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ExplorePageController;
+use App\Http\Controllers\FAQPageController;
+use App\Http\Controllers\FindUsPageController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ReviewsPageController;
+use App\Http\Controllers\RoomsPageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,6 +34,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
         Route::get('/home-page', [HomePageController::class, 'edit'])->name('.home');
         Route::post('/home-page', [HomePageController::class, 'update'])->name('.home.update');
+        Route::get('/rooms-page', [RoomsPageController::class, 'edit'])->name('.rooms');
+        Route::post('/rooms-page', [RoomsPageController::class, 'update'])->name('.rooms.update');
+        Route::get('/reviews-page', [ReviewsPageController::class, 'edit'])->name('.reviews');
+        Route::post('/reviews-page', [ReviewsPageController::class, 'update'])->name('.reviews.update');
+        Route::get('/about-page', [AboutPageController::class, 'edit'])->name('.about');
+        Route::post('/about-page', [AboutPageController::class, 'update'])->name('.about.update');
+        Route::get('/explore-page', [ExplorePageController::class, 'edit'])->name('.explore');
+        Route::post('/explore-page', [ExplorePageController::class, 'update'])->name('.explore.update');
+        Route::get('/find-us-page', [FindUsPageController::class, 'edit'])->name('.findus');
+        Route::post('/find-us-page', [FindUsPageController::class, 'update'])->name('.findus.update');
+        Route::get('/faq-page', [FAQPageController::class, 'edit'])->name('.faq');
+        Route::post('/faq-page', [FAQPageController::class, 'update'])->name('.faq.update');
     });
     Route::name('add')->prefix('add')->group(function () {
         Route::get('/', function () { return Inertia::render('AddContent/Add'); });
