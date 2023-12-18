@@ -42,7 +42,7 @@ export default {
                     <GeneratedSiteLogo
                         class="mx-6"
                         :routes="routes"
-                        :propertyName="property.propertyName"
+                        :propertyName="property.property_name"
                     />
                     <div class="lg:hidden">
                         <button
@@ -92,37 +92,37 @@ export default {
             <div class="flex flex-col md:w-1/3 space-y-2 justify-center">
                 <div class="gs-footer-item items-center max-md:justify-center">
                     <PhoneIcon/>
-                    <p>{{ property.propertyTelephone }}</p>
+                    <p>{{ property.property_telephone }}</p>
                 </div>
                 <div class="gs-footer-item items-center max-md:justify-center">
                     <EmailIcon/>
-                    <p>{{ property.propertyEmail }}</p>
+                    <p>{{ property.property_email }}</p>
                 </div>
             </div>
             <div class="flex flex-col space-y-2 md:w-1/3 justify-center max-md:order-first">
                 <GeneratedSiteLogo
                     :routes="routes"
-                    :propertyName="property.propertyName"
+                    :propertyName="property.property_name"
                 />
                 <div class="flex flex-row justify-center gap-4">
                     <a
                         class="gs-text-link"
-                        v-if="property.propertyFacebookLink"
-                        :href="property.propertyFacebookLink"
+                        v-if="property.property_facebook_link"
+                        :href="property.property_facebook_link"
                     >
                         <FacebookIcon />
                     </a>
                     <a
                         class="gs-text-link"
-                        v-if="property.propertyTwitterLink"
-                        :href="property.propertyTwitterLink"
+                        v-if="property.property_twitter_link"
+                        :href="property.property_twitter_link"
                     >
                         <TwitterIcon />
                     </a>
                     <a
                         class="gs-text-link"
-                        v-if="property.propertyInstagramLink"
-                        :href="property.propertyInstagramLink"
+                        v-if="property.property_instagram_link"
+                        :href="property.property_instagram_link"
                     >
                         <InstagramIcon />
                     </a>
@@ -131,11 +131,11 @@ export default {
             <div class="gs-footer-item md:w-1/3 justify-end">
                 <MapIcon/>
                 <div class="text-left leading-5">
-                    <p>{{ property.propertyAddressLine1 }}</p>
-                    <p>{{ property.propertyAddressLine2 }}</p>
-                    <p>{{ property.propertyAddressArea }}</p>
-                    <p>{{ property.propertyAddressCountry }}</p>
-                    <p>{{ property.propertyAddressPostcode }}</p>
+                    <p>{{ property.property_address_line1 }}</p>
+                    <p>{{ property.property_address_line2 }}</p>
+                    <p>{{ property.property_address_area }}</p>
+                    <p>{{ property.property_address_country }}</p>
+                    <p>{{ property.property_address_postcode }}</p>
                 </div>
             </div>
         </footer>
