@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\HomePage\HomePage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -56,7 +54,7 @@ class HomePageController extends Controller
         $homePage = User::find($request->user()->id)->property->homePage;
         $data = $request->all();
 
-        $data = $this->uploadImage(
+        $data = PageControllerServices::uploadImage(
             $request,
             'cover_image_primary',
             null,
@@ -64,7 +62,7 @@ class HomePageController extends Controller
             $homePage,
             $data
         );
-        $data = $this->uploadImage(
+        $data = PageControllerServices::uploadImage(
             $request,
             'intro_section_image',
             'remove_intro_section_image',
@@ -72,7 +70,7 @@ class HomePageController extends Controller
             $homePage,
             $data
         );
-        $data = $this->uploadImage(
+        $data = PageControllerServices::uploadImage(
             $request,
             'welcome_section_image',
             'remove_welcome_section_image',
@@ -87,48 +85,7 @@ class HomePageController extends Controller
         return Redirect::route('edit.home');
     }
 
-    private function getImageIfExists (?string $path) : ?string
-    {
-        if($path && Storage::disk('public')->exists($path)) {
-            return Storage::url($path);
-        }
-        return null;
-    }
-
-    private function deleteImage (string $field, HomePage $currentData) : void
-    {
-        if ($currentData[$field]) {
-            Storage::disk("public")->delete($currentData[$field]);
-        }
-    }
-
-    private function uploadImage (
-        Request $request,
-        string $field,
-        ?string $shouldDelete,
-        string $path,
-        HomePage $currentData,
-        array $data
-    ) : array
-    {
-        if($shouldDelete) {
-            if ($request[$shouldDelete] || $request[$field]) {
-                $this->deleteImage($field, $currentData);
-                $data[$field] = null;
-            }
-            unset($data[$shouldDelete]);
-        }
-        if ($request[$field]) {
-            $filepath = Storage::disk("public")->putFile($path, $request[$field]);
-            $data[$field] = $filepath;
-        }
-        else {
-            unset($data[$field]);
-        }
-        return $data;
-    }
-
-    private function getHomePageData(int $userID) : array
+    private function getHomePageData(int $userID): array
     {
         $homePage = User::find($userID)->property->homePage;
         $data = $homePage->toArray();
@@ -136,14 +93,14 @@ class HomePageController extends Controller
         $secondaryCoverImages = [];
         foreach ($homePage->secondaryCoverImages as $coverImage) {
             $coverImageData = $coverImage->toArray();
-            $coverImageData['secondary_cover_image'] = $this->getImageIfExists($coverImageData['secondary_cover_image']);
+            $coverImageData['secondary_cover_image'] = PageControllerServices::getImageIfExists($coverImageData['secondary_cover_image']);
             $secondaryCoverImages[] = $coverImageData;
         }
         $data['secondary_cover_images'] = $secondaryCoverImages;
 
-        $data['cover_image_primary'] = $this->getImageIfExists($data['cover_image_primary']);
-        $data['intro_section_image'] = $this->getImageIfExists($data['intro_section_image']);
-        $data['welcome_section_image'] = $this->getImageIfExists($data['welcome_section_image']);
+        $data['cover_image_primary'] = PageControllerServices::getImageIfExists($data['cover_image_primary']);
+        $data['intro_section_image'] = PageControllerServices::getImageIfExists($data['intro_section_image']);
+        $data['welcome_section_image'] = PageControllerServices::getImageIfExists($data['welcome_section_image']);
 
         return $data;
     }
