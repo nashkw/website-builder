@@ -8,6 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        './generated-site/src/**/*.vue',
         'node_modules/preline/dist/*.js',
     ],
 
