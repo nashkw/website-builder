@@ -16,23 +16,23 @@ export default {
             'property',
             'routes',
         ]),
-        formattedSecondaryAboutSections() {
-            let formattedData = [];
-            for (const item of this.about_page.secondaryAboutSections) {
-                formattedData.push({
-                    secondaryAboutSectionHeader: item.secondaryAboutSectionHeader,
-                    secondaryAboutSectionParagraph: item.secondaryAboutSectionParagraph,
-                    secondaryAboutSectionImage: this.formatImagePath(item.secondaryAboutSectionImage),
-                    secondaryAboutSectionImageDescription: item.secondaryAboutSectionImageDescription,
-                });
+        formattedAboutPage() {
+            let formattedData = this.deepClone(this.about_page);
+            formattedData.about_page_section_image = this.formatImagePath(formattedData.about_page_section_image);
+            for (let section of formattedData.secondary_about_sections) {
+                section.secondary_about_section_image = this.formatImagePath(section.secondary_about_section_image);
             }
             return formattedData;
         },
+
     },
     methods: {
         formatImagePath(path) {
             return '/src/data/' + path;
         },
+        deepClone(object) {
+            return JSON.parse(JSON.stringify(object));
+        }
     },
 }
 </script>
@@ -40,13 +40,7 @@ export default {
 <template>
     <About
         :property="property"
-        :metaPageTitle="about_page.metaPageTitle"
-        :metaPageDescription="about_page.metaPageDescription"
-        :aboutPageSectionHeader="about_page.aboutPageSectionHeader"
-        :aboutPageSectionParagraph="about_page.aboutPageSectionParagraph"
-        :aboutPageSectionImage="formatImagePath(about_page.aboutPageSectionImage)"
-        :aboutPageSectionImageDescription="about_page.aboutPageSectionImageDescription"
-        :secondaryAboutSections="formattedSecondaryAboutSections"
+        :about_page="formattedAboutPage"
         :routes="routes"
     />
 </template>

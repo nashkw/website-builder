@@ -14,23 +14,6 @@ use Inertia\Response;
 class HomePageController extends Controller
 {
     /**
-     * Display the edit subpage for the generated site home page.
-     */
-    public function edit(Request $request): Response
-    {
-        $homePage = User::find($request->user()->id)->property->homePage;
-        return Inertia::render('EditContent/EditHome', [
-            'currentCoverImagePrimary' => $this->getImageIfExists($homePage->cover_image_primary),
-            'currentIntroSectionHeader' => $homePage->intro_section_header,
-            'currentIntroSectionParagraph' => $homePage->intro_section_paragraph,
-            'currentIntroSectionImage' => $this->getImageIfExists($homePage->intro_section_image),
-            'currentWelcomeSectionHeader' => $homePage->welcome_section_header,
-            'currentWelcomeSectionParagraph' => $homePage->welcome_section_paragraph,
-            'currentWelcomeSectionImage' => $this->getImageIfExists($homePage->welcome_section_image),
-        ]);
-    }
-
-    /**
      * Display a preview of the generated site home page.
      */
     public function preview(Request $request): Response
@@ -39,25 +22,44 @@ class HomePageController extends Controller
         $secondaryCoverImages = [];
         foreach ($homePage->secondaryCoverImages as $coverImage) {
             $secondaryCoverImages[] = [
-                'secondaryCoverImage' => $this->getImageIfExists($coverImage->secondary_cover_image),
-                'secondaryCoverImageDescription' => $coverImage->secondary_cover_image_description,
+                'secondary_cover_image' => $this->getImageIfExists($coverImage->secondary_cover_image),
+                'secondary_cover_image_description' => $coverImage->secondary_cover_image_description,
             ];
         }
         return Inertia::render('GeneratedSite/HomePreview', [
-            'propertyName' => $homePage->property->property_name,
-            'metaPageTitle' => $homePage->meta_page_title,
-            'metaPageDescription' => $homePage->meta_page_description,
-            'coverImagePrimary' => $this->getImageIfExists($homePage->cover_image_primary),
-            'coverImagePrimaryDescription' => $homePage->cover_image_primary_description,
-            'introSectionHeader' => $homePage->intro_section_header,
-            'introSectionParagraph' => $homePage->intro_section_paragraph,
-            'introSectionImage' => $this->getImageIfExists($homePage->intro_section_image),
-            'introSectionImageDescription' => $homePage->intro_section_image_description,
-            'welcomeSectionHeader' => $homePage->welcome_section_header,
-            'welcomeSectionParagraph' => $homePage->welcome_section_paragraph,
-            'welcomeSectionImage' => $this->getImageIfExists($homePage->welcome_section_image),
-            'welcomeSectionImageDescription' => $homePage->welcome_section_image_description,
-            'secondaryCoverImages' => $secondaryCoverImages,
+            'home_page' => [
+                'property_name' => $homePage->property->property_name,
+                'meta_page_title' => $homePage->meta_page_title,
+                'meta_page_description' => $homePage->meta_page_description,
+                'cover_image_primary' => $this->getImageIfExists($homePage->cover_image_primary),
+                'cover_image_primary_description' => $homePage->cover_image_primary_description,
+                'intro_section_header' => $homePage->intro_section_header,
+                'intro_section_paragraph' => $homePage->intro_section_paragraph,
+                'intro_section_image' => $this->getImageIfExists($homePage->intro_section_image),
+                'intro_section_image_description' => $homePage->intro_section_image_description,
+                'welcome_section_header' => $homePage->welcome_section_header,
+                'welcome_section_paragraph' => $homePage->welcome_section_paragraph,
+                'welcome_section_image' => $this->getImageIfExists($homePage->welcome_section_image),
+                'welcome_section_image_description' => $homePage->welcome_section_image_description,
+                'secondary_cover_images' => $secondaryCoverImages,
+            ],
+        ]);
+    }
+
+    /**
+     * Display the edit subpage for the generated site home page.
+     */
+    public function edit(Request $request): Response
+    {
+        $homePage = User::find($request->user()->id)->property->homePage;
+        return Inertia::render('EditContent/EditHome', [
+            'cover_image_primary' => $this->getImageIfExists($homePage->cover_image_primary),
+            'intro_section_header' => $homePage->intro_section_header,
+            'intro_section_paragraph' => $homePage->intro_section_paragraph,
+            'intro_section_image' => $this->getImageIfExists($homePage->intro_section_image),
+            'welcome_section_header' => $homePage->welcome_section_header,
+            'welcome_section_paragraph' => $homePage->welcome_section_paragraph,
+            'welcome_section_image' => $this->getImageIfExists($homePage->welcome_section_image),
         ]);
     }
 

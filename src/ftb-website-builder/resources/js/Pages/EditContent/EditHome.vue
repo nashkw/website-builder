@@ -10,36 +10,36 @@ import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
 const props = defineProps({
-    currentCoverImagePrimary: String,
-    currentIntroSectionHeader: String,
-    currentIntroSectionParagraph: String,
-    currentIntroSectionImage: String,
-    currentWelcomeSectionHeader: String,
-    currentWelcomeSectionParagraph: String,
-    currentWelcomeSectionImage: String,
+    cover_image_primary: String,
+    intro_section_header: String,
+    intro_section_paragraph: String,
+    intro_section_image: String,
+    welcome_section_header: String,
+    welcome_section_paragraph: String,
+    welcome_section_image: String,
 });
 
 const form = useForm({
     cover_image_primary: null,
-    intro_section_header: props.currentIntroSectionHeader,
-    intro_section_paragraph: props.currentIntroSectionParagraph,
+    intro_section_header: props.intro_section_header,
+    intro_section_paragraph: props.intro_section_paragraph,
     intro_section_image: null,
     remove_intro_section_image: false,
-    welcome_section_header: props.currentWelcomeSectionHeader,
-    welcome_section_paragraph: props.currentWelcomeSectionParagraph,
+    welcome_section_header: props.welcome_section_header,
+    welcome_section_paragraph: props.welcome_section_paragraph,
     welcome_section_image: null,
     remove_welcome_section_image: false,
 });
 
-const coverImagePrimary = computed(() => {
-    return form.cover_image_primary ?? props.currentCoverImagePrimary
-})
-const introSectionImage = computed(() => {
-    return form.remove_intro_section_image ? null : form.intro_section_image ?? props.currentIntroSectionImage
-})
-const welcomeSectionImage = computed(() => {
-    return form.remove_welcome_section_image ? null : form.welcome_section_image ?? props.currentWelcomeSectionImage
-})
+const cover_image_primary = computed(() => {
+    return form.cover_image_primary ?? props.cover_image_primary
+});
+const intro_section_image = computed(() => {
+    return form.remove_intro_section_image ? null : form.intro_section_image ?? props.intro_section_image
+});
+const welcome_section_image = computed(() => {
+    return form.remove_welcome_section_image ? null : form.welcome_section_image ?? props.welcome_section_image
+});
 
 function submit() {
     form.post(route('edit.home.update'))
@@ -66,7 +66,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.cover_image_primary" />
                 <ImagePreview
-                    v-model="coverImagePrimary"
+                    v-model="cover_image_primary"
                     field-title="cover image"
                 />
             </div>
@@ -114,7 +114,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.intro_section_image" />
                 <ImagePreview
-                    v-model="introSectionImage"
+                    v-model="intro_section_image"
                     field-title="introduction image"
                 />
                 <label class="wb-secondary-button ml-2">
@@ -123,10 +123,10 @@ function submit() {
                         v-model:checked="form.remove_intro_section_image"
                         class="hidden"
                     />
-                    <span v-if="form.remove_intro_section_image && (props.currentIntroSectionImage || form.intro_section_image)">
+                    <span v-if="form.remove_intro_section_image && (props.intro_section_image || form.intro_section_image)">
                         No image selected. Use saved image?
                     </span>
-                    <span v-else-if="props.currentIntroSectionImage || form.intro_section_image">
+                    <span v-else-if="props.intro_section_image || form.intro_section_image">
                         Remove current image
                     </span>
                 </label>
@@ -175,7 +175,7 @@ function submit() {
                 />
                 <InputError :message="form.errors.welcome_section_image" />
                 <ImagePreview
-                    v-model="welcomeSectionImage"
+                    v-model="welcome_section_image"
                     field-title="welcome image"
                 />
                 <label class="wb-secondary-button ml-2">
@@ -184,10 +184,10 @@ function submit() {
                         v-model:checked="form.remove_welcome_section_image"
                         class="hidden"
                     />
-                    <span v-if="form.remove_welcome_section_image && (props.currentWelcomeSectionImage || form.welcome_section_image)">
+                    <span v-if="form.remove_welcome_section_image && (props.welcome_section_image || form.welcome_section_image)">
                         No image selected - use saved image?
                     </span>
-                    <span v-else-if="props.currentWelcomeSectionImage || form.welcome_section_image">
+                    <span v-else-if="props.welcome_section_image || form.welcome_section_image">
                         Remove current image
                     </span>
                 </label>

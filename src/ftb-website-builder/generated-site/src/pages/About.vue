@@ -14,13 +14,7 @@ export default {
     },
     props: {
         property: Object,
-        metaPageTitle: String,
-        metaPageDescription: String,
-        aboutPageSectionHeader: String,
-        aboutPageSectionParagraph: String,
-        aboutPageSectionImage: String,
-        aboutPageSectionImageDescription: String,
-        secondaryAboutSections: Array,
+        about_page: Object,
         routes: Object,
     },
 }
@@ -32,18 +26,18 @@ export default {
         :routes="routes"
     >
         <PageSection
-            :header="aboutPageSectionHeader"
-            :paragraph="aboutPageSectionParagraph"
-            :image="aboutPageSectionImage"
-            :image-description="aboutPageSectionImageDescription"
+            :header="about_page.about_page_section_header"
+            :paragraph="about_page.about_page_section_paragraph"
+            :image="about_page.about_page_section_image"
+            :image-description="about_page.about_page_section_image_description"
         />
 
         <PageSection
-            v-for="(section, index) in secondaryAboutSections"
-            :header="section.secondaryAboutSectionHeader"
-            :paragraph="section.secondaryAboutSectionParagraph"
-            :image="section.secondaryAboutSectionImage"
-            :image-description="section.secondaryAboutSectionImageDescription"
+            v-for="(section, index) in about_page.secondary_about_sections"
+            :header="section.secondary_about_section_header"
+            :paragraph="section.secondary_about_section_paragraph"
+            :image="section.secondary_about_section_image"
+            :image-description="section.secondary_about_section_image_description"
             :flipped="index % 2 === 0"
         />
     </GeneratedSiteLayout>

@@ -24,33 +24,21 @@ export default {
     },
     props: {
         property: Object,
-        metaPageTitle: String,
-        metaPageDescription: String,
-        coverImagePrimary: String,
-        coverImagePrimaryDescription: String,
-        introSectionHeader: String,
-        introSectionParagraph: String,
-        introSectionImage: String,
-        introSectionImageDescription: String,
-        welcomeSectionHeader: String,
-        welcomeSectionParagraph: String,
-        welcomeSectionImage: String,
-        welcomeSectionImageDescription: String,
-        secondaryCoverImages: Array,
+        home_page: Object,
         routes: Object,
     },
     computed: {
         coverImages() {
             return [
                 {
-                    secondaryCoverImage: this.coverImagePrimary,
-                    secondaryCoverImageDescription: this.coverImagePrimaryDescription,
+                    secondary_cover_image: this.home_page.cover_image_primary,
+                    secondary_cover_image_description: this.home_page.cover_image_primary_description,
                 },
-                ...this.secondaryCoverImages
+                ...this.home_page.secondary_cover_images
             ]
         },
         welcomeHeader() {
-            return this.welcomeSectionHeader ?? "Welcome to " + this.property.propertyName + "..."
+            return this.home_page.welcome_section_header ?? "Welcome to " + this.property.property_name + "..."
         },
     },
 }
@@ -71,8 +59,8 @@ export default {
                 :key="slide"
             >
                 <img
-                    :src="slide.secondaryCoverImage"
-                    :alt="slide.secondaryCoverImageDescription"
+                    :src="slide.secondary_cover_image"
+                    :alt="slide.secondary_cover_image_description"
                     class="carousel__item"
                 />
             </Slide>
@@ -91,10 +79,10 @@ export default {
         </Carousel>
 
         <PageSection
-            :header="introSectionHeader"
-            :paragraph="introSectionParagraph"
-            :image="introSectionImage"
-            :image-description="introSectionImageDescription"
+            :header="home_page.intro_section_header"
+            :paragraph="home_page.intro_section_paragraph"
+            :image="home_page.intro_section_image"
+            :image-description="home_page.intro_section_image_description"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <BookingButton
@@ -110,9 +98,9 @@ export default {
 
         <PageSection
             :header="welcomeHeader"
-            :paragraph="welcomeSectionParagraph"
-            :image="welcomeSectionImage"
-            :image-description="welcomeSectionImageDescription"
+            :paragraph="home_page.welcome_section_paragraph"
+            :image="home_page.welcome_section_image"
+            :image-description="home_page.welcome_section_image_description"
             :flipped="true"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">

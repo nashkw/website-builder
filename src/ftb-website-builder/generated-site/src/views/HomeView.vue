@@ -16,14 +16,14 @@ export default {
             'property',
             'routes',
         ]),
-        formattedSecondaryCoverImages() {
-            let formattedData = [];
-            for (const item of this.home_page.secondaryCoverImages) {
-                formattedData.push({
-                    secondaryCoverImage: this.formatImagePath(item.secondaryCoverImage),
-                    secondaryCoverImageDescription: item.secondaryCoverImageDescription,
-                });
+        formattedHomePage() {
+            let formattedData = this.deepClone(this.home_page);
+            formattedData.cover_image_primary = this.formatImagePath(formattedData.cover_image_primary);
+            for (let image of formattedData.secondary_cover_images) {
+                image.secondary_cover_image = this.formatImagePath(image.secondary_cover_image);
             }
+            formattedData.intro_section_image = this.formatImagePath(formattedData.intro_section_image);
+            formattedData.welcome_section_image = this.formatImagePath(formattedData.welcome_section_image);
             return formattedData;
         },
     },
@@ -31,6 +31,9 @@ export default {
         formatImagePath(path) {
             return '/src/data/' + path;
         },
+        deepClone(object) {
+            return JSON.parse(JSON.stringify(object));
+        }
     },
 }
 </script>
@@ -38,19 +41,7 @@ export default {
 <template>
     <Home
         :property="property"
-        :metaPageTitle="home_page.metaPageTitle"
-        :metaPageDescription="home_page.metaPageDescription"
-        :coverImagePrimary="formatImagePath(home_page.coverImagePrimary)"
-        :coverImagePrimaryDescription="home_page.coverImagePrimaryDescription"
-        :introSectionHeader="home_page.introSectionHeader"
-        :introSectionParagraph="home_page.introSectionParagraph"
-        :introSectionImage="formatImagePath(home_page.introSectionImage)"
-        :introSectionImageDescription="home_page.introSectionImageDescription"
-        :welcomeSectionHeader="home_page.welcomeSectionHeader"
-        :welcomeSectionParagraph="home_page.welcomeSectionParagraph"
-        :welcomeSectionImage="formatImagePath(home_page.welcomeSectionImage)"
-        :welcomeSectionImageDescription="home_page.welcomeSectionImageDescription"
-        :secondaryCoverImages="formattedSecondaryCoverImages"
+        :home_page="formattedHomePage"
         :routes="routes"
     />
 </template>

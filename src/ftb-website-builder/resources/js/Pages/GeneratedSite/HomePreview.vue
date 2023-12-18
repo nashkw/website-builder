@@ -10,38 +10,25 @@ export default {
         Home,
     },
     props: {
-        propertyName: String,
-        metaPageTitle: String,
-        metaPageDescription: String,
-        coverImagePrimary: String,
-        coverImagePrimaryDescription: String,
-        introSectionHeader: String,
-        introSectionParagraph: String,
-        introSectionImage: String,
-        introSectionImageDescription: String,
-        welcomeSectionHeader: String,
-        welcomeSectionParagraph: String,
-        welcomeSectionImage: String,
-        welcomeSectionImageDescription: String,
-        secondaryCoverImages: Array,
+        home_page: Object,
     },
     data() {
         return {
             property: {
-                propertyName: 'Test Hotel',
-                propertyAddressLine1: '100 Berkeley Street',
-                propertyAddressLine2: "2nd Floor",
-                propertyAddressArea: 'Glasgow',
-                propertyAddressCountry: 'Scotland',
-                propertyAddressPostcode: 'G3 7HU',
-                propertyTelephone: '+44 7123 456789',
-                propertyEmail: 'example.property@email.com',
-                propertyTwitterLink: 'https://twitter.com/freetobook',
-                propertyYoutubeLink: 'https://www.youtube.com/user/freetobook',
-                propertyLinkedinLink: 'https://www.linkedin.com/company/freetobook/',
-                propertyFacebookLink: 'https://www.facebook.com/freetobook',
-                propertyInstagramLink: 'https://www.instagram.com/freetobook/',
-                propertyTripadvisorLink: null,
+                property_name: 'Test Hotel',
+                property_address_line1: '100 Berkeley Street',
+                property_address_line2: "2nd Floor",
+                property_address_area: 'Glasgow',
+                property_address_country: 'Scotland',
+                property_address_postcode: 'G3 7HU',
+                property_telephone: '+44 7123 456789',
+                property_email: 'example.property@email.com',
+                property_twitter_link: 'https://twitter.com/freetobook',
+                property_youtube_link: 'https://www.youtube.com/user/freetobook',
+                property_linkedin_link: 'https://www.linkedin.com/company/freetobook/',
+                property_facebook_link: 'https://www.facebook.com/freetobook',
+                property_instagram_link: 'https://www.instagram.com/freetobook/',
+                property_tripadvisor_link: null,
             },
             routes: {
                 home: route('preview'),
@@ -53,22 +40,10 @@ export default {
 </script>
 
 <template>
-    <Head title="Home preview" />
+    <Head title="Home (preview)" />
     <Home
         :property="property"
-        :metaPageTitle="metaPageTitle"
-        :metaPageDescription="metaPageDescription"
-        :coverImagePrimary="coverImagePrimary"
-        :coverImagePrimaryDescription="coverImagePrimaryDescription"
-        :introSectionHeader="introSectionHeader"
-        :introSectionParagraph="introSectionParagraph"
-        :introSectionImage="introSectionImage"
-        :introSectionImageDescription="introSectionImageDescription"
-        :welcomeSectionHeader="welcomeSectionHeader"
-        :welcomeSectionParagraph="welcomeSectionParagraph"
-        :welcomeSectionImage="welcomeSectionImage"
-        :welcomeSectionImageDescription="welcomeSectionImageDescription"
-        :secondaryCoverImages="secondaryCoverImages"
+        :home_page="home_page"
         :routes="routes"
     />
 </template>
