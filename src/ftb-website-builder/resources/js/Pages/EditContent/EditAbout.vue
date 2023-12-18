@@ -13,7 +13,6 @@ const props = defineProps({
     about_page_section_header: String,
     about_page_section_paragraph: String,
     about_page_section_image: String,
-    about_page_section_image_description: String,
 });
 
 const form = useForm({
@@ -21,7 +20,6 @@ const form = useForm({
     about_page_section_paragraph: props.about_page_section_paragraph,
     about_page_section_image: null,
     remove_about_page_section_image: false,
-    about_page_section_image_description: props.about_page_section_image_description,
 });
 
 const about_page_section_image = computed(() => {

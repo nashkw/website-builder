@@ -19,32 +19,10 @@ class HomePageController extends Controller
      */
     public function preview(Request $request): Response
     {
-        $homePage = User::find($request->user()->id)->property->homePage;
-        $secondaryCoverImages = [];
-        foreach ($homePage->secondaryCoverImages as $coverImage) {
-            $secondaryCoverImages[] = [
-                'secondary_cover_image' => $this->getImageIfExists($coverImage->secondary_cover_image),
-                'secondary_cover_image_description' => $coverImage->secondary_cover_image_description,
-            ];
-        }
-        return Inertia::render('GeneratedSite/HomePreview', [
-            'home_page' => [
-                'property_name' => $homePage->property->property_name,
-                'meta_page_title' => $homePage->meta_page_title,
-                'meta_page_description' => $homePage->meta_page_description,
-                'cover_image_primary' => $this->getImageIfExists($homePage->cover_image_primary),
-                'cover_image_primary_description' => $homePage->cover_image_primary_description,
-                'intro_section_header' => $homePage->intro_section_header,
-                'intro_section_paragraph' => $homePage->intro_section_paragraph,
-                'intro_section_image' => $this->getImageIfExists($homePage->intro_section_image),
-                'intro_section_image_description' => $homePage->intro_section_image_description,
-                'welcome_section_header' => $homePage->welcome_section_header,
-                'welcome_section_paragraph' => $homePage->welcome_section_paragraph,
-                'welcome_section_image' => $this->getImageIfExists($homePage->welcome_section_image),
-                'welcome_section_image_description' => $homePage->welcome_section_image_description,
-                'secondary_cover_images' => $secondaryCoverImages,
-            ],
-        ]);
+        return Inertia::render(
+            'GeneratedSite/HomePreview',
+            ['home_page' => $this->getHomePageData($request->user()->id)]
+        );
     }
 
     /**
@@ -52,16 +30,10 @@ class HomePageController extends Controller
      */
     public function edit(Request $request): Response
     {
-        $homePage = User::find($request->user()->id)->property->homePage;
-        return Inertia::render('EditContent/EditHome', [
-            'cover_image_primary' => $this->getImageIfExists($homePage->cover_image_primary),
-            'intro_section_header' => $homePage->intro_section_header,
-            'intro_section_paragraph' => $homePage->intro_section_paragraph,
-            'intro_section_image' => $this->getImageIfExists($homePage->intro_section_image),
-            'welcome_section_header' => $homePage->welcome_section_header,
-            'welcome_section_paragraph' => $homePage->welcome_section_paragraph,
-            'welcome_section_image' => $this->getImageIfExists($homePage->welcome_section_image),
-        ]);
+        return Inertia::render(
+            'EditContent/EditHome',
+            $this->getHomePageData($request->user()->id)
+        );
     }
 
     /**
@@ -115,7 +87,7 @@ class HomePageController extends Controller
         return Redirect::route('edit.home');
     }
 
-    private function getImageIfExists (?string $path): ?string
+    private function getImageIfExists (?string $path) : ?string
     {
         if($path && Storage::disk('public')->exists($path)) {
             return Storage::url($path);
@@ -137,7 +109,7 @@ class HomePageController extends Controller
         string $path,
         HomePage $currentData,
         array $data
-    ): array
+    ) : array
     {
         if($shouldDelete) {
             if ($request[$shouldDelete] || $request[$field]) {
@@ -153,6 +125,26 @@ class HomePageController extends Controller
         else {
             unset($data[$field]);
         }
+        return $data;
+    }
+
+    private function getHomePageData(int $userID) : array
+    {
+        $homePage = User::find($userID)->property->homePage;
+        $data = $homePage->toArray();
+
+        $secondaryCoverImages = [];
+        foreach ($homePage->secondaryCoverImages as $coverImage) {
+            $coverImageData = $coverImage->toArray();
+            $coverImageData['secondary_cover_image'] = $this->getImageIfExists($coverImageData['secondary_cover_image']);
+            $secondaryCoverImages[] = $coverImageData;
+        }
+        $data['secondary_cover_images'] = $secondaryCoverImages;
+
+        $data['cover_image_primary'] = $this->getImageIfExists($data['cover_image_primary']);
+        $data['intro_section_image'] = $this->getImageIfExists($data['intro_section_image']);
+        $data['welcome_section_image'] = $this->getImageIfExists($data['welcome_section_image']);
+
         return $data;
     }
 }

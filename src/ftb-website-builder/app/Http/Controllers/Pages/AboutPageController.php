@@ -19,28 +19,10 @@ class AboutPageController extends Controller
      */
     public function preview(Request $request): Response
     {
-        $aboutPage = User::find($request->user()->id)->property->aboutPage;
-        $secondaryAboutSections = [];
-        foreach ($aboutPage->secondaryAboutSections as $aboutSection) {
-            $secondaryAboutSections[] = [
-                'secondary_about_section_header' => $aboutSection->secondary_about_section_header,
-                'secondary_about_section_paragraph' => $aboutSection->secondary_about_section_paragraph,
-                'secondary_about_section_image' => $this->getImageIfExists($aboutSection->secondary_about_section_image),
-                'secondary_about_section_image_description' => $aboutSection->secondary_about_section_image_description,
-            ];
-        }
-
-        return Inertia::render('GeneratedSite/AboutPreview', [
-            'about_page' => [
-                'meta_page_title' => $aboutPage->meta_page_title,
-                'meta_page_description' => $aboutPage->meta_page_description,
-                'about_page_section_header' => $aboutPage->about_page_section_header,
-                'about_page_section_paragraph' => $aboutPage->about_page_section_paragraph,
-                'about_page_section_image' => $this->getImageIfExists($aboutPage->about_page_section_image),
-                'about_page_section_image_description' => $aboutPage->about_page_section_image_description,
-                'secondary_about_sections' => $secondaryAboutSections
-            ],
-        ]);
+        return Inertia::render(
+            'GeneratedSite/AboutPreview',
+            ['about_page' => $this->getAboutPageData($request->user()->id)]
+        );
     }
 
     /**
@@ -48,26 +30,10 @@ class AboutPageController extends Controller
      */
     public function edit(Request $request): Response
     {
-        $aboutPage = User::find($request->user()->id)->property->aboutPage;
-        $secondaryAboutSections = [];
-        foreach ($aboutPage->secondaryAboutSections as $aboutSection) {
-            $secondaryAboutSections[] = [
-                'secondary_about_section_header' => $aboutSection->secondary_about_section_header,
-                'secondary_about_section_paragraph' => $aboutSection->secondary_about_section_paragraph,
-                'secondary_about_section_image' => $this->getImageIfExists($aboutSection->secondary_about_section_image),
-                'secondary_about_section_image_description' => $aboutSection->secondary_about_section_image_description,
-            ];
-        }
-
-        return Inertia::render('EditContent/EditAbout', [
-            'meta_page_title' => $aboutPage->meta_page_title,
-            'meta_page_description' => $aboutPage->meta_page_description,
-            'about_page_section_header' => $aboutPage->about_page_section_header,
-            'about_page_section_paragraph' => $aboutPage->about_page_section_paragraph,
-            'about_page_section_image' => $this->getImageIfExists($aboutPage->about_page_section_image),
-            'about_page_section_image_description' => $aboutPage->about_page_section_image_description,
-            'secondary_about_sections' => $secondaryAboutSections
-        ]);
+        return Inertia::render(
+            'EditContent/EditAbout',
+            $this->getAboutPageData($request->user()->id)
+        );
     }
 
     /**
@@ -101,7 +67,7 @@ class AboutPageController extends Controller
         return Redirect::route('edit.about');
     }
 
-    private function getImageIfExists (?string $path): ?string
+    private function getImageIfExists (?string $path) : ?string
     {
         if($path && Storage::disk('public')->exists($path)) {
             return Storage::url($path);
@@ -123,7 +89,7 @@ class AboutPageController extends Controller
         string $path,
         AboutPage $currentData,
         array $data
-    ): array
+    ) : array
     {
         if($shouldDelete) {
             if ($request[$shouldDelete] || $request[$field]) {
@@ -139,6 +105,24 @@ class AboutPageController extends Controller
         else {
             unset($data[$field]);
         }
+        return $data;
+    }
+
+    private function getAboutPageData(int $userID) : array
+    {
+        $aboutPage = User::find($userID)->property->aboutPage;
+        $data = $aboutPage->toArray();
+
+        $secondaryAboutSections = [];
+        foreach ($aboutPage->secondaryAboutSections as $aboutSection) {
+            $sectionData = $aboutSection->toArray();
+            $sectionData['secondary_about_section_image'] = $this->getImageIfExists($sectionData['secondary_about_section_image']);
+            $secondaryAboutSections[] = $sectionData;
+        }
+        $data['secondary_about_sections'] = $secondaryAboutSections;
+
+        $data['about_page_section_image'] = $this->getImageIfExists($data['about_page_section_image']);
+
         return $data;
     }
 }
