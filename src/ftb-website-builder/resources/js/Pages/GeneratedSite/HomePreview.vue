@@ -1,10 +1,12 @@
 <script>
 import Home from "../../../../generated-site/src/pages/Home.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
+import {Head} from "@inertiajs/vue3";
 
 export default {
     name: "HomePreview",
     components: {
+        Head,
         Home,
     },
     props: {
@@ -51,6 +53,7 @@ export default {
 </script>
 
 <template>
+    <Head title="Home preview" />
     <Home
         :property="property"
         :metaPageTitle="metaPageTitle"

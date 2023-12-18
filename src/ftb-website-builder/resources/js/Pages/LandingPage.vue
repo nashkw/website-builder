@@ -6,7 +6,7 @@ import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
 </script>
 
 <template>
-    <Head title="Website Builder" />
+    <Head title="Welcome" />
     <LoggedOutLayout>
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
             <div class="max-w-2xl text-center mx-auto">

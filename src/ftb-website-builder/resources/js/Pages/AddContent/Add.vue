@@ -4,7 +4,7 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 </script>
 
 <template>
-    <Head title="Add Pages" />
+    <Head title="Add pages" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Add more pages to your website
