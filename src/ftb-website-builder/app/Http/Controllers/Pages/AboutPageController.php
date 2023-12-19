@@ -44,7 +44,6 @@ class AboutPageController extends Controller
             'about_page_section_paragraph' => ['required', 'string', 'max:65535'],
             'about_page_section_image' => ['nullable', 'image'],
             'remove_about_page_section_image' => ['required', 'boolean'],
-            'about_page_section_image_description' => ['required', 'string', 'max:255'],
         ]);
 
         $aboutPage = User::find($request->user()->id)->property->aboutPage;
