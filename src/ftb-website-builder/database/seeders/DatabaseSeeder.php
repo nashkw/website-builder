@@ -133,12 +133,12 @@ class DatabaseSeeder extends Seeder
         DB::table('secondary_room_images')->insert([
             'room_id' => $room4_id,
             'secondary_room_image' => 'images/roomListingSecondary/test_room_4_1.jpg',
-            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+            'secondary_room_image_description' => 'A photo of our Swan Suite.',
         ]);
         DB::table('secondary_room_images')->insert([
             'room_id' => $room4_id,
             'secondary_room_image' => 'images/roomListingSecondary/test_room_4_2.jpg',
-            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+            'secondary_room_image_description' => 'A photo of our Swan Suite.',
         ]);
         DB::table('secondary_room_images')->insert([
             'room_id' => $room4_id,

@@ -82,19 +82,19 @@
               "room_name":"Swan Suite",
               "room_description": "Indulge in the pinnacle of romance with our exquisite Swan Suite, a haven for love and luxury. This enchanting retreat is meticulously designed to captivate the senses, offering an intimate escape for couples seeking a romantic getaway. The Swan Suite features a blend of timeless elegance and modern opulence, creating an atmosphere of pure romance. Revel in the spacious interiors, adorned with tasteful décor and sumptuous furnishings. Immerse yourselves in the allure of the suites private amenities, from a lavish en-suite spa to a breathtaking view that sets the stage for unforgettable moments. Elevate your romantic experience with the Swan Suite, where every detail is crafted to ignite passion and create cherished memories in the lap of unparalleled luxury.",
               "room_image_primary": "images/roomListingPrimary/test_room_4.jpg",
-              "room_image_primary_description": "A photo of one of our Swan Suite.",
+              "room_image_primary_description": "A photo of our Swan Suite.",
               "secondary_room_images": [
                   {
                       "secondary_room_image": "images/roomListingSecondary/test_room_4_1.jpg",
-                      "secondary_room_image_description": "A photo of one of our Swan Suite."
+                      "secondary_room_image_description": "A photo of our Swan Suite."
                   },
                   {
                       "secondary_room_image": "images/roomListingSecondary/test_room_4_2.jpg",
-                      "secondary_room_image_description": "A photo of one of our Swan Suite."
+                      "secondary_room_image_description": "A photo of our Swan Suite."
                   },
                   {
                       "secondary_room_image": "images/roomListingSecondary/test_room_4_3.jpg",
-                      "secondary_room_image_description": "A photo of one of our Swan Suite."
+                      "secondary_room_image_description": "A photo of our Swan Suite."
                   }
               ]
           }
