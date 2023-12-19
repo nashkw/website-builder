@@ -7,6 +7,7 @@ export const useStore = defineStore('store', {
         ...data,
         routes: {
             home: "/",
+            rooms: "/rooms",
             about: "/about",
         }
     };

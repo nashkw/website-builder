@@ -17,6 +17,11 @@ export default {
         rooms_page: Object,
         routes: Object,
     },
+    computed: {
+        pageHeader() {
+            return this.rooms_page.rooms_page_section_header ?? "Rooms at " + this.property.property_name
+        },
+    },
 }
 </script>
 
@@ -26,7 +31,7 @@ export default {
         :routes="routes"
     >
         <PageSection
-            :header="rooms_page.rooms_page_section_header"
+            :header="pageHeader"
             :paragraph="rooms_page.rooms_page_section_paragraph"
             :image="rooms_page.rooms_page_section_image"
             :image-description="rooms_page.rooms_page_section_image_description"

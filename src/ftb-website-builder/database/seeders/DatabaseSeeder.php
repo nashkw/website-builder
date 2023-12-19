@@ -69,20 +69,81 @@ class DatabaseSeeder extends Seeder
             'meta_page_title' => 'Rooms at Test Hotel',
             'meta_page_description' => 'Experience pure comfort and style in our meticulously designed rooms. Whether you are here for business or leisure, indulge in modern amenities and elegant decor. Book now for a stay that redefines luxury.',
             'rooms_page_section_paragraph' => 'Step into a realm of luxury and tranquility with our meticulously designed rooms. Each space is a sanctuary of comfort, featuring modern amenities and elegant decor to elevate your stay. Whether you are seeking a restful retreat or a productive work environment, our rooms cater to your every need. Immerse yourself in the perfect blend of style and functionality. Book your room now for an exceptional experience that goes beyond accommodation – it is a celebration of comfort and sophistication.',
+            'rooms_page_section_image' => 'images/sectionImages/roomsPrimary/test_rooms_page.jpg',
+            'rooms_page_section_image_description' => 'A photo of one of our gorgeous lounge areas.',
         ]);
-        DB::table('rooms')->insert([
-            [
-                'property_id' => $property_id,
-                'room_name' => 'Single Room',
-                'room_description' => 'Discover comfort for two in our spacious double room, thoughtfully designed for a relaxing stay. Enjoy modern amenities, a cozy atmosphere, and the perfect blend of style. Your retreat awaits – book now for an elevated experience.',
-                'room_image_primary' => '',
-            ],
-            [
-                'property_id' => $property_id,
-                'room_name' => 'Double Room',
-                'room_description' => 'Experience solo comfort in our inviting single room, tailored for a restful stay. Enjoy modern amenities and a cozy atmosphere designed just for you. Book now for a tranquil retreat.',
-                'room_image_primary' => '',
-            ],
+        $room1_id = DB::table('rooms')->insertGetId([
+            'property_id' => $property_id,
+            'room_name' => 'Standard Double',
+            'room_description' => 'Discover comfort for two in our spacious double room, thoughtfully designed for a relaxing stay. Enjoy modern amenities, a cozy atmosphere, and the perfect blend of style. Your retreat awaits – book now for an elevated experience.',
+            'room_image_primary' => 'images/roomListingPrimary/test_room_1.jpg',
+            'room_image_primary_description' => 'A photo of one of our standard double rooms.',
+        ]);
+        $room2_id = DB::table('rooms')->insertGetId([
+            'property_id' => $property_id,
+            'room_name' => 'Double Deluxe',
+            'room_description' => 'Indulge in the epitome of luxury with our Double Deluxe Rooms, where sophistication meets unparalleled comfort. Elegantly designed to exceed expectations, these opulent retreats boast spacious interiors, lavish furnishings, and panoramic views that redefine the art of relaxation. Immerse yourself in a haven of tranquility, where every detail, from the sumptuous bedding to the carefully curated amenities, is crafted to elevate your stay. Whether you are seeking a romantic getaway or simply unwinding in style, our Double Deluxe Rooms provide an enchanting escape in the heart of luxury, ensuring an unforgettable experience for the discerning traveler.',
+            'room_image_primary' => 'images/roomListingPrimary/test_room_2.jpg',
+            'room_image_primary_description' => 'A photo of one of our double deluxe rooms.',
+        ]);
+        $room3_id = DB::table('rooms')->insertGetId([
+            'property_id' => $property_id,
+            'room_name' => 'Standard Twin',
+            'room_description' => 'Experience refined comfort and chic sophistication in our luxurious Twin Rooms. Thoughtfully designed for the discerning traveler, these rooms offer a harmonious blend of style and functionality. Immerse yourself in the plush surroundings adorned with modern amenities, ensuring a seamless stay. Whether you are traveling with a companion or seeking a spacious haven for yourself, our Twin Rooms provide the perfect retreat. Revel in the opulence of our hotel, where every detail is curated to exceed your expectations, promising an unforgettable stay in the lap of luxury.',
+            'room_image_primary' => 'images/roomListingPrimary/test_room_3.jpg',
+            'room_image_primary_description' => 'A photo of one of our twin rooms.',
+        ]);
+        $room4_id = DB::table('rooms')->insertGetId([
+            'property_id' => $property_id,
+            'room_name' => 'Swan Suite',
+            'room_description' => 'Indulge in the pinnacle of romance with our exquisite Swan Suite, a haven for love and luxury. This enchanting retreat is meticulously designed to captivate the senses, offering an intimate escape for couples seeking a romantic getaway. The Swan Suite features a blend of timeless elegance and modern opulence, creating an atmosphere of pure romance. Revel in the spacious interiors, adorned with tasteful décor and sumptuous furnishings. Immerse yourselves in the allure of the suites private amenities, from a lavish en-suite spa to a breathtaking view that sets the stage for unforgettable moments. Elevate your romantic experience with the Swan Suite, where every detail is crafted to ignite passion and create cherished memories in the lap of unparalleled luxury.',
+            'room_image_primary' => 'images/roomListingPrimary/test_room_4.jpg',
+            'room_image_primary_description' => 'A photo of our Swan Suite.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room1_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_1_1.jpg',
+            'secondary_room_image_description' => 'A photo of one of our standard double rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room2_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_2_1.jpg',
+            'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room2_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_2_2.jpg',
+            'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room3_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_1.jpg',
+            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room3_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_2.jpg',
+            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room3_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_3.jpg',
+            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room4_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_1.jpg',
+            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room4_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_2.jpg',
+            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+        ]);
+        DB::table('secondary_room_images')->insert([
+            'room_id' => $room4_id,
+            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_3.jpg',
+            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
         ]);
         DB::table('reviews_pages')->insert([
             'property_id' => $property_id,
