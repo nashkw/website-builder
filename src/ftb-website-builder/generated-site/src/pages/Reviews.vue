@@ -17,6 +17,11 @@ export default {
         reviews_page: Object,
         routes: Object,
     },
+    computed: {
+        pageHeader() {
+            return this.reviews_page.reviews_page_section_header ?? "Hear from our guests";
+        },
+    },
 }
 </script>
 
@@ -26,7 +31,7 @@ export default {
         :routes="routes"
     >
         <PageSection
-            :header="reviews_page.reviews_page_section_header"
+            :header="pageHeader"
             :paragraph="reviews_page.reviews_page_section_paragraph"
             :image="reviews_page.reviews_page_section_image"
             :image-description="reviews_page.reviews_page_section_image_description"

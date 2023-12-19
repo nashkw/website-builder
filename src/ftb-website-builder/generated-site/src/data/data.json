@@ -100,6 +100,45 @@
           }
       ]
   },
+  "reviews_page" : {
+      "meta_page_title": "Hear from our guests",
+      "meta_page_description": "Discover delighted guest stories of exceptional hospitality and stylish comfort. Join them in experiencing our unparalleled service.",
+      "reviews_page_section_paragraph":"Explore the genuine experiences of our guests through heartfelt reviews that capture the essence of our exceptional hospitality. From glowing testimonials about our attentive staff to raving comments on the stylish and comfortable accommodations, each review reflects the dedication we pour into creating memorable stays. We take pride in the positive stories shared by those who have made our hotel their home away from home. Join the chorus of satisfied guests and discover firsthand why our hotel is a beacon of comfort and unparalleled service.",
+      "reviews": [
+          {
+              "review_quote": "An absolute gem! From the attentive staff to the stylish and comfortable accommodations, this hotel exceeded all expectations. A perfect blend of luxury and warmth. Highly recommended for a truly exceptional experience.",
+              "reviewer_name": "René Descartes"
+          },
+          {
+              "review_quote": "Exceptional stay! The personalized service made for a perfect getaway. Comfortable rooms, attentive staff, and a prime location — an ideal choice for a relaxing experience. Cannot wait to return!",
+              "reviewer_name": "Friedrich Nietzsche"
+          },
+          {
+              "review_quote": "Wow, this place is a dream! Our room was like stepping into a luxury magazine—stylish and cozy. The staff made us feel like VIPs. Cannot wait for round two!",
+              "reviewer_name": "Ludwig Wittgenstein"
+          },
+          {
+              "review_quote": "High-end heaven! From the lobby to the bed, everything was on point. Shoutout to the staff for being the real MVPs of our stay. Five stars all the way!",
+              "reviewer_name": "Simone de Beauvoir"
+          },
+          {
+              "review_quote": "Lovely romantic getaway. The Swan Suite is beautiful, we could not get enough of it. Super comfy and very Instagram-worthy. Hope to return next year!",
+              "reviewer_name": "Immanuel Kant"
+          },
+          {
+              "review_quote": "Amazing stay! The suite was swanky, the food was divine, and the vibe was perfect. Kudos to the friendly staff for making us feel right at home.",
+              "reviewer_name": "David Hume"
+          },
+          {
+              "review_quote": "The Swan Suite was pure perfection! Immaculate interiors and an enchanting view made our getaway unforgettable. The staff were very attentive. Highly recommended for those seeking a high end experience.",
+              "reviewer_name": "Thomas Hobbes"
+          },
+          {
+              "review_quote": "Our stay was a sensory delight - plush accommodations, gourmet dining, and attentive staff had us feeling like royalty. This hotel surpassed all expectations, already planning our next trip.",
+              "reviewer_name": "Michel Foucault"
+          }
+      ]
+  },
   "about_page": {
     "meta_page_title": "store testing",
     "meta_page_description": "store testing",

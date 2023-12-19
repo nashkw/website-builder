@@ -8,6 +8,7 @@ export const useStore = defineStore('store', {
         routes: {
             home: "/",
             rooms: "/rooms",
+            reviews: "/reviews",
             about: "/about",
         }
     };

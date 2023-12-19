@@ -106,61 +106,97 @@ class DatabaseSeeder extends Seeder
             'secondary_room_image_description' => 'A photo of one of our standard double rooms.',
         ]);
         DB::table('secondary_room_images')->insert([
-            'room_id' => $room2_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_2_1.jpg',
-            'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+            [
+                'room_id' => $room2_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_2_1.jpg',
+                'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+            ],
+            [
+                'room_id' => $room2_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_2_2.jpg',
+                'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+            ],
         ]);
         DB::table('secondary_room_images')->insert([
-            'room_id' => $room2_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_2_2.jpg',
-            'secondary_room_image_description' => 'A photo of one of our double deluxe rooms.',
+            [
+                'room_id' => $room3_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_3_1.jpg',
+                'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+            ],
+            [
+                'room_id' => $room3_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_3_2.jpg',
+                'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+            ],
+            [
+                'room_id' => $room3_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_3_3.jpg',
+                'secondary_room_image_description' => 'A photo of one of our twin rooms.',
+            ],
         ]);
         DB::table('secondary_room_images')->insert([
-            'room_id' => $room3_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_1.jpg',
-            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
-        ]);
-        DB::table('secondary_room_images')->insert([
-            'room_id' => $room3_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_2.jpg',
-            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
-        ]);
-        DB::table('secondary_room_images')->insert([
-            'room_id' => $room3_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_3_3.jpg',
-            'secondary_room_image_description' => 'A photo of one of our twin rooms.',
-        ]);
-        DB::table('secondary_room_images')->insert([
-            'room_id' => $room4_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_1.jpg',
-            'secondary_room_image_description' => 'A photo of our Swan Suite.',
-        ]);
-        DB::table('secondary_room_images')->insert([
-            'room_id' => $room4_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_2.jpg',
-            'secondary_room_image_description' => 'A photo of our Swan Suite.',
-        ]);
-        DB::table('secondary_room_images')->insert([
-            'room_id' => $room4_id,
-            'secondary_room_image' => 'images/roomListingSecondary/test_room_4_3.jpg',
-            'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+            [
+                'room_id' => $room4_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_4_1.jpg',
+                'secondary_room_image_description' => 'A photo of our Swan Suite.',
+            ],
+            [
+                'room_id' => $room4_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_4_2.jpg',
+                'secondary_room_image_description' => 'A photo of our Swan Suite.',
+            ],
+            [
+                'room_id' => $room4_id,
+                'secondary_room_image' => 'images/roomListingSecondary/test_room_4_3.jpg',
+                'secondary_room_image_description' => 'A photo of one of our Swan Suite.',
+            ],
         ]);
         DB::table('reviews_pages')->insert([
             'property_id' => $property_id,
-            'meta_page_title' => 'Reviews of Test Hotel',
+            'meta_page_title' => 'Hear from our guests',
             'meta_page_description' => 'Discover delighted guest stories of exceptional hospitality and stylish comfort. Join them in experiencing our unparalleled service.',
             'reviews_page_section_paragraph' => 'Explore the genuine experiences of our guests through heartfelt reviews that capture the essence of our exceptional hospitality. From glowing testimonials about our attentive staff to raving comments on the stylish and comfortable accommodations, each review reflects the dedication we pour into creating memorable stays. We take pride in the positive stories shared by those who have made our hotel their home away from home. Join the chorus of satisfied guests and discover firsthand why our hotel is a beacon of comfort and unparalleled service.',
         ]);
         DB::table('reviews')->insert([
             [
                 'property_id' => $property_id,
-                'review_quote' => 'An absolute gem! From the attentive staff to the stylish and comfortable accommodations, this hotel exceeded all expectations. A perfect blend of luxury and warmth, creating an unforgettable stay. Highly recommended for a truly exceptional experience.',
-                'reviewer_name' => 'Nash Waugh',
+                'review_quote' => 'An absolute gem! From the attentive staff to the stylish and comfortable accommodations, this hotel exceeded all expectations. A perfect blend of luxury and warmth. Highly recommended for a truly exceptional experience.',
+                'reviewer_name' => 'René Descartes',
             ],
             [
                 'property_id' => $property_id,
-                'review_quote' => 'Exceptional stay! The modern amenities and personalized service made for a perfect getaway. Comfortable rooms, attentive staff, and a prime location — an ideal choice for a memorable and relaxing experience. Cannot wait to return!',
-                'reviewer_name' => 'Nathan Douglas',
+                'review_quote' => 'Exceptional stay! The personalized service made for a perfect getaway. Comfortable rooms, attentive staff, and a prime location — an ideal choice for a relaxing experience. Cannot wait to return!',
+                'reviewer_name' => 'Friedrich Nietzsche',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'Wow, this place is a dream! Our room was like stepping into a luxury magazine—stylish and cozy. The staff made us feel like VIPs. Cannot wait for round two!',
+                'reviewer_name' => 'Ludwig Wittgenstein',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'High-end heaven! From the lobby to the bed, everything was on point. Shoutout to the staff for being the real MVPs of our stay. Five stars all the way!',
+                'reviewer_name' => 'Simone de Beauvoir',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'Lovely romantic getaway. The Swan Suite is beautiful, we could not get enough of it. Super comfy and very Instagram-worthy. Hope to return next year!',
+                'reviewer_name' => 'Immanuel Kant',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'Amazing stay! The suite was swanky, the food was divine, and the vibe was perfect. Kudos to the friendly staff for making us feel right at home.',
+                'reviewer_name' => 'David Hume',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'The Swan Suite was pure perfection! Immaculate interiors and an enchanting view made our getaway unforgettable. The staff were very attentive. Highly recommended for those seeking a high end experience.',
+                'reviewer_name' => 'Thomas Hobbes',
+            ],
+            [
+                'property_id' => $property_id,
+                'review_quote' => 'Our stay was a sensory delight - plush accommodations, gourmet dining, and attentive staff had us feeling like royalty. This hotel surpassed all expectations, already planning our next trip.',
+                'reviewer_name' => 'Michel Foucault',
             ],
         ]);
         DB::table('about_pages')->insert([
