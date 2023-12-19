@@ -19,7 +19,23 @@ export default {
     },
     computed: {
         pageHeader() {
-            return this.rooms_page.rooms_page_section_header ?? "Rooms at " + this.property.property_name
+            return this.rooms_page.rooms_page_section_header ?? "Rooms at " + this.property.property_name;
+        },
+    },
+    methods: {
+        roomImages(room) {
+            let images = [];
+            images.push({
+                image: room.room_image_primary,
+                description: room.room_image_primary_description,
+            });
+            for (const secondaryImage of room.secondary_room_images) {
+                images.push({
+                    image: secondaryImage.secondary_room_image,
+                    description: secondaryImage.secondary_room_image_description,
+                });
+            }
+            return images;
         },
     },
 }
@@ -38,16 +54,22 @@ export default {
         />
 
         <PageSection
-            v-for="(room, index) in rooms_page.rooms"
+            v-for="room in rooms_page.rooms"
             :header="room.room_name"
             :paragraph="room.room_description"
-            :image="room.room_image_primary"
-            :image-description="room.room_image_primary_description"
-            :flipped="index % 2 === 0"
-        />
+            :images="roomImages(room)"
+            :flipped="true"
+        >
+            <div class="flex justify-center">
+                <BookingButton
+                    text="Book a room"
+                    booking-link=""
+                    class="w-fit"
+                />
+            </div>
+        </PageSection>
     </GeneratedSiteLayout>
 </template>
 
 <style scoped>
-
 </style>

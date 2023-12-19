@@ -1,4 +1,6 @@
 <script setup>
+import GeneratedSiteCarousel from "../Interactive/GeneratedSiteCarousel.vue";
+
 const props = defineProps({
     header: {
         type: String,
@@ -14,6 +16,10 @@ const props = defineProps({
     },
     imageDescription: {
         type: String,
+        required: false,
+    },
+    images: {
+        type: Array,
         required: false,
     },
     flipped: {
@@ -51,6 +57,13 @@ const props = defineProps({
             class="flex object-cover md:w-1/2 md:min-w-[50%] max-h-[800px]"
             :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
         />
+        <div
+            class="flex md:w-1/2 md:min-w-[50%] max-h-[800px]"
+            :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
+            v-else-if="images"
+        >
+            <GeneratedSiteCarousel :images="images" />
+        </div>
     </div>
 </template>
 
