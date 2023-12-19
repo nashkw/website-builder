@@ -32,6 +32,7 @@ export default {
             },
             routes: {
                 home: route('preview'),
+                rooms: route('preview.rooms'),
                 about: route('preview.about'),
             },
         }

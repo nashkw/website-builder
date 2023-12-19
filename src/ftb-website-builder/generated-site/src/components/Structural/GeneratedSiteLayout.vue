@@ -65,7 +65,10 @@ export default {
                             text="Home"
                             :href="routes.home"
                         />
-                        <HeaderButton text="Rooms" href="/" />
+                        <HeaderButton
+                            text="Rooms"
+                            :href="routes.rooms"
+                        />
                         <HeaderButton text="Reviews" href="/" />
                         <HeaderButton
                             text="About"

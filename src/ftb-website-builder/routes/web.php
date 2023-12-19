@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::name('preview')->prefix('preview')->group(function () {
         Route::get('/', [HomePageController::class, 'preview']);
+        Route::get('/rooms', [RoomsPageController::class, 'preview'])->name('.rooms');
         Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
     });
 });
