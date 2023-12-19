@@ -27,8 +27,8 @@
       "meta_page_title": "Rooms at Test Hotel",
       "meta_page_description": "Experience pure comfort and style in our meticulously designed rooms. Whether you are here for business or leisure, indulge in modern amenities and elegant decor. Book now for a stay that redefines luxury.",
       "rooms_page_section_paragraph": "Step into a realm of luxury and tranquility with our meticulously designed rooms. Each space is a sanctuary of comfort, featuring modern amenities and elegant decor to elevate your stay. Whether you are seeking a restful retreat or a productive work environment, our rooms cater to your every need. Immerse yourself in the perfect blend of style and functionality. Book your room now for an exceptional experience that goes beyond accommodation – it is a celebration of comfort and sophistication.",
-      "rooms_page_section_image": "images/sectionImages/roomsPrimary/test_rooms_page.jpg",
-      "rooms_page_section_image_description": "A photo of one of our gorgeous lounge areas.",
+      "rooms_page_section_image": null,
+      "rooms_page_section_image_description": null,
       "rooms": [
           {
               "room_name":"Standard Double",

@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         formatImagePath(path) {
-            return '/src/data/' + path;
+            return path ? '/src/data/' + path : path;
         },
         deepClone(object) {
             return JSON.parse(JSON.stringify(object));
