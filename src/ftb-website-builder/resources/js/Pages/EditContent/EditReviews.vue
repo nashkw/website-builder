@@ -10,32 +10,32 @@ import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 
 const props = defineProps({
-    rooms_page_section_header: String,
-    rooms_page_section_paragraph: String,
-    rooms_page_section_image: String,
+    reviews_page_section_header: String,
+    reviews_page_section_paragraph: String,
+    reviews_page_section_image: String,
 });
 
 const form = useForm({
-    rooms_page_section_header: props.rooms_page_section_header,
-    rooms_page_section_paragraph: props.rooms_page_section_paragraph,
-    rooms_page_section_image: null,
-    remove_rooms_page_section_image: false,
+    reviews_page_section_header: props.reviews_page_section_header,
+    reviews_page_section_paragraph: props.reviews_page_section_paragraph,
+    reviews_page_section_image: null,
+    remove_reviews_page_section_image: false,
 });
 
-const rooms_page_section_image = computed(() => {
-    return form.remove_rooms_page_section_image ? null : form.rooms_page_section_image ?? props.rooms_page_section_image
+const reviews_page_section_image = computed(() => {
+    return form.remove_reviews_page_section_image ? null : form.reviews_page_section_image ?? props.reviews_page_section_image
 })
 
 function submit() {
-    form.post(route('edit.rooms.update'))
+    form.post(route('edit.reviews.update'))
 }
 </script>
 
 <template>
-    <Head title="Edit rooms page" />
+    <Head title="Edit reviews page" />
     <LoggedInLayout>
         <h1 class="wb-title">
-            Edit your Rooms page
+            Edit your Reviews page
         </h1>
         <form
             @submit.prevent="submit"
@@ -43,60 +43,60 @@ function submit() {
         >
             <div class="space-y-2">
                 <p class="wb-subtitle p-2">
-                    Write a header to sit at the top of your Rooms page. Optionally, you can write a body paragraph giving potential customers an overview of the rooms you have available. This can be however long you want, although detailed information about each room would work better as room descriptions.
+                    Write a header to sit at the top of your Reviews page. Optionally, you can write a body paragraph telling potential customers what guests think of your property and your approach to feedback. This can be however long you want, but the reviews themselves should be added separately.
                 </p>
                 <InputLabel
-                    for="rooms_page_section_header"
+                    for="reviews_page_section_header"
                     value="Page header"
                     class="sr-only"
                 />
                 <TextInput
-                    id="rooms_page_section_header"
+                    id="reviews_page_section_header"
                     type="text"
-                    v-model="form.rooms_page_section_header"
+                    v-model="form.reviews_page_section_header"
                     required
-                    autocomplete="rooms_page_section_header"
-                    placeholder="Our Rooms"
+                    autocomplete="reviews_page_section_header"
+                    placeholder="Hear from our guests"
                 />
-                <InputError :message="form.errors.rooms_page_section_header" />
+                <InputError :message="form.errors.reviews_page_section_header" />
                 <InputLabel
-                    for="rooms_page_section_paragraph"
-                    value="Rooms paragraph"
+                    for="reviews_page_section_paragraph"
+                    value="Reviews paragraph"
                     class="sr-only"
                 />
                 <textarea
-                    id="rooms_page_section_paragraph"
+                    id="reviews_page_section_paragraph"
                     type="text"
-                    v-model="form.rooms_page_section_paragraph"
+                    v-model="form.reviews_page_section_paragraph"
                     class="wb-input-box h-40 s:h-20"
                     required
-                    autocomplete="rooms_page_section_paragraph"
-                    placeholder="Our rooms are..."
+                    autocomplete="reviews_page_section_paragraph"
+                    placeholder="Your feedback is very important to us..."
                 />
-                <InputError :message="form.errors.rooms_page_section_paragraph" />
+                <InputError :message="form.errors.reviews_page_section_paragraph" />
 
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this section.
                 </p>
                 <FileInput
-                    v-model="form.rooms_page_section_image"
-                    field-name="rooms_page_section_image"
+                    v-model="form.reviews_page_section_image"
+                    field-name="reviews_page_section_image"
                 />
-                <InputError :message="form.errors.rooms_page_section_image" />
+                <InputError :message="form.errors.reviews_page_section_image" />
                 <ImagePreview
-                    v-model="rooms_page_section_image"
+                    v-model="reviews_page_section_image"
                     field-title="section image"
                 />
                 <label class="wb-secondary-button ml-2">
                     <Checkbox
                         name="remember"
-                        v-model:checked="form.remove_rooms_page_section_image"
+                        v-model:checked="form.remove_reviews_page_section_image"
                         class="hidden"
                     />
-                    <span v-if="form.remove_rooms_page_section_image && (props.rooms_page_section_image || form.rooms_page_section_image)">
+                    <span v-if="form.remove_reviews_page_section_image && (props.reviews_page_section_image || form.reviews_page_section_image)">
                         No image selected. Use saved image?
                     </span>
-                    <span v-else-if="props.rooms_page_section_image || form.rooms_page_section_image">
+                    <span v-else-if="props.reviews_page_section_image || form.reviews_page_section_image">
                         Remove current image
                     </span>
                 </label>
