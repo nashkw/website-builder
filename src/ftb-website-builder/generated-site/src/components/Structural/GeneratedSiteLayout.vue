@@ -69,7 +69,10 @@ export default {
                             text="Rooms"
                             :href="routes.rooms"
                         />
-                        <HeaderButton text="Reviews" href="/" />
+                        <HeaderButton
+                            text="Reviews"
+                            :href="routes.reviews"
+                        />
                         <HeaderButton
                             text="About"
                             :href="routes.about"

@@ -33,6 +33,7 @@ export default {
             routes: {
                 home: route('preview'),
                 rooms: route('preview.rooms'),
+                reviews: route('preview.reviews'),
                 about: route('preview.about'),
             },
         }

@@ -1,16 +1,16 @@
 <script>
-import About from "../../../../generated-site/src/pages/About.vue";
+import Reviews from "../../../../generated-site/src/pages/Reviews.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
 
 export default {
-    name: "AboutPreview",
+    name: "ReviewsPreview",
     components: {
         Head,
-        About,
+        Reviews,
     },
     props: {
-        about_page: Object,
+        reviews_page: Object,
     },
     data() {
         return {
@@ -42,10 +42,10 @@ export default {
 </script>
 
 <template>
-    <Head title="About (preview)" />
-    <About
+    <Head title="Reviews (preview)" />
+    <Reviews
         :property="property"
-        :about_page="about_page"
+        :reviews_page="reviews_page"
         :routes="routes"
     />
 </template>
