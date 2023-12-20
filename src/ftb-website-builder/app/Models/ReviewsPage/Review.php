@@ -18,8 +18,8 @@ class Review extends Model
         'property_id' => 'integer',
         'review_quote' => 'string',
         'reviewer_name' => 'string',
-        'star_rating' => 'string',
-        'review_date' => 'string',
+        'star_rating' => 'integer',
+        'review_date' => 'datetime:F Y',
     ];
 
     /**

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('review_quote');
             $table->string('reviewer_name');
-            $table->string('star_rating')->nullable();
-            $table->string('review_date')->nullable();
+            $table->unsignedTinyInteger('star_rating')->nullable();
+            $table->date('review_date')->nullable();
             $table->timestamps();
         });
     }

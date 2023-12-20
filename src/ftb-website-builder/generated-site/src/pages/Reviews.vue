@@ -35,11 +35,13 @@ export default {
             :image-description="reviews_page.reviews_page_section_image_description"
         />
 
-        <div class="flex flex-col lg:grid grid-cols-2 2xl:grid-cols-3 gap-6 px-8 lg:px-16">
+        <div class="flex flex-col xl:grid grid-cols-2 gap-6 px-8 xl:px-16">
             <ReviewSection
                 v-for="review in reviews_page.reviews"
                 :quote="review.review_quote"
                 :reviewer="review.reviewer_name"
+                :date="review.review_date"
+                :rating="review.star_rating"
             />
         </div>
     </GeneratedSiteLayout>
