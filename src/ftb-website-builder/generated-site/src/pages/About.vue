@@ -1,14 +1,10 @@
 <script>
 import GeneratedSiteLayout from "../components/Structural/GeneratedSiteLayout.vue";
 import PageSection from "../components/Structural/PageSection.vue";
-import LinkButton from "../components/Interactive/LinkButton.vue";
-import BookingButton from "../components/Interactive/BookingButton.vue";
 
 export default {
     name: "About",
     components: {
-        BookingButton,
-        LinkButton,
         PageSection,
         GeneratedSiteLayout,
     },

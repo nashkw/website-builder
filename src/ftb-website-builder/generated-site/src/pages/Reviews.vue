@@ -1,14 +1,12 @@
 <script>
 import GeneratedSiteLayout from "../components/Structural/GeneratedSiteLayout.vue";
 import PageSection from "../components/Structural/PageSection.vue";
-import LinkButton from "../components/Interactive/LinkButton.vue";
-import BookingButton from "../components/Interactive/BookingButton.vue";
+import ReviewSection from "../components/Structural/ReviewSection.vue";
 
 export default {
     name: "Reviews",
     components: {
-        BookingButton,
-        LinkButton,
+        ReviewSection,
         PageSection,
         GeneratedSiteLayout,
     },
@@ -37,12 +35,13 @@ export default {
             :image-description="reviews_page.reviews_page_section_image_description"
         />
 
-        <PageSection
-            v-for="(review, index) in reviews_page.reviews"
-            :header="review.reviewer_name"
-            :paragraph="review.review_quote"
-            :flipped="index % 2 === 0"
-        />
+        <div class="flex flex-col lg:grid grid-cols-2 2xl:grid-cols-3 gap-6 px-8 lg:px-16">
+            <ReviewSection
+                v-for="review in reviews_page.reviews"
+                :quote="review.review_quote"
+                :reviewer="review.reviewer_name"
+            />
+        </div>
     </GeneratedSiteLayout>
 </template>
 

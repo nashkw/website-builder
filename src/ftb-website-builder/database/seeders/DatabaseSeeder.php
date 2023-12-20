@@ -170,7 +170,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'property_id' => $property_id,
-                'review_quote' => 'Wow, this place is a dream! Our room was like stepping into a luxury magazine—stylish and cozy. The staff made us feel like VIPs. Cannot wait for round two!',
+                'review_quote' => 'Wow, this place is a dream! Our room was like stepping into a luxury magazine — stylish and cozy. The staff made us feel like VIPs. Cannot wait for round two!',
                 'reviewer_name' => 'Ludwig Wittgenstein',
             ],
             [

@@ -133,3 +133,21 @@
 .gs-booking-button:hover {
     background-color: var(--gs-colour-accent-secondary-alt);
 }
+
+.gs-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: var(--gs-colour-background-alt);
+    background-color: var(--gs-colour-background);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gs-colour-subtitle);
+
+    @media (min-width: 640px) {
+        padding: 32px;
+    }
+}
