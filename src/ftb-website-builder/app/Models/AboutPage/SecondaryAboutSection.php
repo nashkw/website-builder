@@ -36,6 +36,6 @@ class SecondaryAboutSection extends Model
      */
     public function aboutPage(): BelongsTo
     {
-        return $this->belongsTo(AboutPage::class);
+        return $this->belongsTo(AboutPage::class, 'property_id', 'property_id');
     }
 }
