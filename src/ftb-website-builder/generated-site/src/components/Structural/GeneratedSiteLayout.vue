@@ -77,7 +77,10 @@ export default {
                             text="About"
                             :href="routes.about"
                         />
-                        <HeaderButton text="Explore" href="/" />
+                        <HeaderButton
+                            text="Explore"
+                            :href="routes.explore"
+                        />
                         <HeaderButton text="Find Us" href="/" />
                         <HeaderButton text="FAQ" href="/" />
                         <BookingButton

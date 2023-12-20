@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/rooms', [RoomsPageController::class, 'preview'])->name('.rooms');
         Route::get('/reviews', [ReviewsPageController::class, 'preview'])->name('.reviews');
         Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
+        Route::get('/explore', [ExplorePageController::class, 'preview'])->name('.explore');
     });
 });
 

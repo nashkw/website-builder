@@ -35,6 +35,7 @@ export default {
                 rooms: route('preview.rooms'),
                 reviews: route('preview.reviews'),
                 about: route('preview.about'),
+                explore: route('preview.explore'),
             },
         }
     },
