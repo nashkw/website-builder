@@ -40,6 +40,7 @@ export default {
             :image="attraction.attraction_image"
             :image-description="attraction.attraction_image_description"
             :flipped="index % 2 === 0"
+            :subtitle="true"
         />
     </GeneratedSiteLayout>
 </template>

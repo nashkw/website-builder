@@ -26,6 +26,10 @@ const props = defineProps({
         type: Boolean,
         required: false,
     },
+    subtitle: {
+        type: Boolean,
+        required: false,
+    }
 });
 </script>
 
@@ -37,7 +41,8 @@ const props = defineProps({
         <div class="flex flex-col p-10 space-y-8">
             <h1
                 v-if="header"
-                class="gs-title"
+                class="text-center"
+                :class="{'gs-subtitle': subtitle, 'gs-title': !subtitle}"
             >
                 {{ header }}
             </h1>

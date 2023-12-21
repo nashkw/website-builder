@@ -57,6 +57,7 @@ export default {
             :paragraph="room.room_description"
             :images="roomImages(room)"
             :flipped="true"
+            :subtitle="true"
         >
             <div class="flex justify-center">
                 <BookingButton
