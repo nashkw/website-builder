@@ -1,10 +1,12 @@
 <script>
 import GeneratedSiteLayout from "../components/Structural/GeneratedSiteLayout.vue";
 import PageSection from "../components/Structural/PageSection.vue";
+import GridSections from "../components/Structural/GridSections.vue";
 
 export default {
     name: "FindUs",
     components: {
+        GridSections,
         PageSection,
         GeneratedSiteLayout,
     },
@@ -17,6 +19,16 @@ export default {
         pageHeader() {
             return this.find_us_page.find_us_page_section_header ?? "How to find " + this.property.property_name;
         },
+        formattedDirections() {
+            let items = [];
+            for (const direction of this.find_us_page.directions) {
+                items.push({
+                    header: direction.directions_label,
+                    paragraph: direction.directions_paragraph,
+                });
+            }
+            return items;
+        }
     },
 }
 </script>
@@ -33,12 +45,7 @@ export default {
             :image-description="find_us_page.find_us_page_section_image_description"
         />
 
-        <PageSection
-            v-for="direction in find_us_page.directions"
-            :header="direction.directions_label"
-            :paragraph="direction.directions_paragraph"
-            :subtitle="true"
-        />
+        <GridSections :items="formattedDirections" />
     </GeneratedSiteLayout>
 </template>
 

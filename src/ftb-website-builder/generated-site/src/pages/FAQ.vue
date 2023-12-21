@@ -1,10 +1,12 @@
 <script>
 import GeneratedSiteLayout from "../components/Structural/GeneratedSiteLayout.vue";
 import PageSection from "../components/Structural/PageSection.vue";
+import GridSections from "../components/Structural/GridSections.vue";
 
 export default {
     name: "FAQ",
     components: {
+        GridSections,
         PageSection,
         GeneratedSiteLayout,
     },
@@ -17,6 +19,18 @@ export default {
         pageHeader() {
             return this.faq_page.faq_page_section_header ?? "Frequently asked questions";
         },
+        questionAndAnswers() {
+            let items = [];
+            for (const questionAndAnswer of this.faq_page.question_and_answers) {
+                items.push({
+                    header: questionAndAnswer.question_label,
+                    paragraph: questionAndAnswer.answer_paragraph,
+                });
+            }
+            return items;
+        },
+    },
+    methods: {
     },
 }
 </script>
@@ -33,12 +47,7 @@ export default {
             :image-description="faq_page.faq_page_section_image_description"
         />
 
-        <PageSection
-            v-for="item in faq_page.question_and_answers"
-            :header="item.question_label"
-            :paragraph="item.answer_paragraph"
-            :subtitle="true"
-        />
+        <GridSections :items="questionAndAnswers" />
     </GeneratedSiteLayout>
 </template>
 

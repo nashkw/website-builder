@@ -307,6 +307,26 @@ class DatabaseSeeder extends Seeder
                 'directions_label' => 'Directions from the City Center',
                 'directions_paragraph' => 'Depart the city center on Central Street, heading North. Continue straight for 4 miles until you reach the intersection with Main Street. Turn left onto Main Street and follow it for 3 miles. Our hotel will be situated on the left, easily recognizable by Camusport Beach.',
             ],
+            [
+                'property_id' => $property_id,
+                'directions_label' => 'Directions from the Train Station',
+                'directions_paragraph' => 'Exiting the train station, head west on Railroad Avenue. Merge onto Expressway 123 and continue for 3 miles. Take the exit toward Camusport and follow signs to Main Street. Travel 2 miles on Main Street, and you will find our hotel on the right.',
+            ],
+            [
+                'property_id' => $property_id,
+                'directions_label' => 'Directions from the Bus Terminal',
+                'directions_paragraph' => 'Leaving the bus terminal, head south on Motorhill Road. Merge onto City Bypass and continue for 4 miles. Take the exit toward Camusport and follow signs to Main Street. Drive 1.5 miles on Main Street, and our hotel will be on your right.',
+            ],
+            [
+                'property_id' => $property_id,
+                'directions_label' => 'Directions from the Highway',
+                'directions_paragraph' => 'If you are approaching from the highway, take Exit 42 toward Camusport. Merge onto Highway 456 and continue for 6 miles. Turn left onto Main Street and proceed for 2 miles. Our hotel will be on your left, easily recognizable by the scenic views of Camusport Beach.',
+            ],
+            [
+                'property_id' => $property_id,
+                'directions_label' => 'Directions from the Shopping District',
+                'directions_paragraph' => 'Navigating from the shopping district, head East on Shoppers Lane. Turn right onto Main Street and continue for 1 mile. Our hotel will be on your left, offering a seamless transition from shopping delights to the luxurious ambiance of our accommodations.',
+            ]
         ]);
         DB::table('faq_pages')->insert([
             'property_id' => $property_id,
