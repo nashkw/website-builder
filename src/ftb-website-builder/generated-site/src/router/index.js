@@ -4,6 +4,7 @@ import RoomsView from "../views/RoomsView.vue";
 import ReviewsView from "../views/ReviewsView.vue";
 import AboutView from '../views/AboutView.vue'
 import ExploreView from "../views/ExploreView.vue";
+import FindUsView from "../views/FindUsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
           path: '/explore',
           name: 'explore',
           component: ExploreView,
+      },
+      {
+          path: '/find-us',
+          name: 'findus',
+          component: FindUsView,
       },
   ]
 })

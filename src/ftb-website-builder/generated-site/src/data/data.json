@@ -223,6 +223,24 @@
           }
       ]
   },
+  "find_us_page": {
+      "meta_page_title": "store testing",
+      "meta_page_description": "store testing",
+      "find_us_page_section_header": null,
+      "find_us_page_section_paragraph": "Locating us is as easy as the decision to stay with us. Nestled in the heart of the city, our hotel is conveniently situated for your accessibility and enjoyment. Use the map below to pinpoint our exact location, and feel free to reach out to our concierge for personalized directions. We look forward to welcoming you to our doorstep, where comfort meets convenience.",
+      "find_us_page_section_image": "images/sectionImages/findUsPrimary/test_find_us_page.jpg",
+      "find_us_page_section_image_description": "store testing",
+      "directions": [
+          {
+              "directions_label": "Directions from the Airport",
+              "directions_paragraph": "Upon leaving the airport, head southeast on Airport Road. Merge onto the expressway and continue for approximately 5 miles. Take the exit toward Camusport and merge onto Main Street. Follow Main Street for 2 miles, and you will find our hotel conveniently located on the right."
+          },
+          {
+              "directions_label": "Directions from the City Center",
+              "directions_paragraph": "Depart the city center on Central Street, heading North. Continue straight for 4 miles until you reach the intersection with Main Street. Turn left onto Main Street and follow it for 3 miles. Our hotel will be situated on the left, easily recognizable by Camusport Beach."
+          }
+    ]
+  },
   "property": {
       "property_name": "Test Hotel",
       "property_address_line1": "100 Berkeley Street",

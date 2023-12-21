@@ -2,12 +2,10 @@
 import {useStore} from "@/stores/store.js";
 import {mapState} from "pinia";
 import Home from "@/pages/Home.vue";
-import GeneratedSiteLayout from "@/components/Structural/GeneratedSiteLayout.vue";
 
 export default {
     name: "HomeView",
     components: {
-        GeneratedSiteLayout,
         Home,
     },
     computed: {

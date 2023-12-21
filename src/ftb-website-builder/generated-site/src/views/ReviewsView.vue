@@ -2,12 +2,10 @@
 import {mapState} from "pinia";
 import {useStore} from "@/stores/store.js";
 import Reviews from "@/pages/Reviews.vue";
-import Home from "@/pages/Home.vue";
 
 export default {
     name: "ReviewsView",
     components: {
-        Home,
         Reviews,
     },
     computed: {

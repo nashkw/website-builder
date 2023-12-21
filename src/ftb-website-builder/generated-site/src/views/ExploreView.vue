@@ -2,12 +2,10 @@
 import {mapState} from "pinia";
 import {useStore} from "@/stores/store.js";
 import Explore from "@/pages/Explore.vue";
-import Home from "@/pages/Home.vue";
 
 export default {
     name: "ExploreView",
     components: {
-        Home,
         Explore,
     },
     computed: {

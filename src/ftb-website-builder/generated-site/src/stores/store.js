@@ -11,6 +11,7 @@ export const useStore = defineStore('store', {
             reviews: "/reviews",
             about: "/about",
             explore: "/explore",
+            findus: "/find-us",
         }
     };
   },

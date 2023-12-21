@@ -291,19 +291,21 @@ class DatabaseSeeder extends Seeder
         DB::table('find_us_pages')->insert([
             'property_id' => $property_id,
             'meta_page_title' => 'Come and find Test Hotel',
-            'meta_page_description' => 'Discover us at the heart of Glasgow, offering unparalleled convenience. For precise directions, explore the map below or contact our concierge for assistance.',
-            'find_us_page_section_paragraph' => 'Locating us is as easy as the decision to stay with us. Nestled in the heart of Glasgow, our hotel is conveniently situated for your accessibility and enjoyment. Use the map below to pinpoint our exact location, and feel free to reach out to our concierge for personalized directions. We look forward to welcoming you to our doorstep, where comfort meets convenience.',
+            'meta_page_description' => 'Discover us at the heart of the city, offering unparalleled convenience. For precise directions, explore the map below or contact our concierge for assistance.',
+            'find_us_page_section_paragraph' => 'Locating us is as easy as the decision to stay with us. Nestled in the heart of the city, our hotel is conveniently situated for your accessibility and enjoyment. Use the map below to pinpoint our exact location, and feel free to reach out to our concierge for personalized directions. We look forward to welcoming you to our doorstep, where comfort meets convenience.',
+            'find_us_page_section_image' => 'images/sectionImages/findUsPrimary/test_find_us_page.jpg',
+            'find_us_page_section_image_description' => 'A photo of the front of our hotel.',
         ]);
         DB::table('directions')->insert([
             [
                 'property_id' => $property_id,
                 'directions_label' => 'Directions from the Airport',
-                'directions_paragraph' => 'Upon leaving the airport, head southeast on Airport Road. Merge onto the expressway and continue for approximately 5 miles. Take the exit toward Finneston and merge onto Sauchiehall Street. Follow Sauchiehall Street for 2 miles, and you will find our hotel conveniently located on the right.',
+                'directions_paragraph' => 'Upon leaving the airport, head southeast on Airport Road. Merge onto the expressway and continue for approximately 5 miles. Take the exit toward Camusport and merge onto Main Street. Follow Main Street for 2 miles, and you will find our hotel conveniently located on the right.',
             ],
             [
                 'property_id' => $property_id,
                 'directions_label' => 'Directions from the City Center',
-                'directions_paragraph' => 'Depart the city center on Bath Street, heading North. Continue straight for 4 miles until you reach the intersection with Sauchiehall Street. Turn left onto Sauchiehall Street and follow it for 3 miles. Our hotel will be situated on the left, easily recognizable by Kelvingrove Park.',
+                'directions_paragraph' => 'Depart the city center on Central Street, heading North. Continue straight for 4 miles until you reach the intersection with Main Street. Turn left onto Main Street and follow it for 3 miles. Our hotel will be situated on the left, easily recognizable by Camusport Beach.',
             ],
         ]);
         DB::table('faq_pages')->insert([

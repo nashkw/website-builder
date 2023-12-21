@@ -2,12 +2,10 @@
 import {mapState} from "pinia";
 import {useStore} from "@/stores/store.js";
 import Rooms from "@/pages/Rooms.vue";
-import Home from "@/pages/Home.vue";
 
 export default {
     name: "RoomsView",
     components: {
-        Home,
         Rooms,
     },
     computed: {
