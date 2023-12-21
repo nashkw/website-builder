@@ -10,6 +10,7 @@ export const useStore = defineStore('store', {
             rooms: "/rooms",
             reviews: "/reviews",
             about: "/about",
+            explore: "/explore",
         }
     };
   },

@@ -239,19 +239,53 @@ class DatabaseSeeder extends Seeder
         DB::table('explore_pages')->insert([
             'property_id' => $property_id,
             'meta_page_title' => 'Things to do near Test Hotel',
-            'meta_page_description' => 'Unlock a world of experiences with our curated list of things to do in and around Glasgow. From cultural gems to outdoor adventures, enrich your stay with memorable activities that complement your visit.',
+            'meta_page_description' => 'Unlock a world of experiences with our curated list of things to do near Test Hotel. From cultural gems to outdoor adventures, enrich your stay with memorable activities that complement your visit.',
             'explore_page_section_paragraph' => 'Embark on a journey of exploration and enrichment with our curated list of things to do in and around Glasgow. Whether you are an art enthusiast, history buff, or nature lover, our prime location opens the door to a myriad of experiences. Discover local attractions, cultural gems, and outdoor adventures that complement your stay, ensuring that every moment with us is filled with excitement and discovery. Immerse yourself in the vibrant tapestry of our surroundings, creating lasting memories to cherish.',
+            'explore_page_section_image' => 'images/sectionImages/explorePrimary/test_explore_page.jpg',
+            'explore_page_section_image_description' => 'A photo of our luxurious pool area.',
         ]);
         DB::table('attractions')->insert([
             [
                 'property_id' => $property_id,
-                'attraction_header' => 'Glasgow Cathedral',
-                'attraction_paragraph' => 'Explore the awe-inspiring Glasgow Cathedral, a masterpiece of medieval architecture that dates back to the 12th century. Immerse yourself in the rich history and intricate design of this iconic landmark, featuring stunning stained glass windows, a Gothic nave, and the atmospheric crypt. As you wander through its hallowed halls, you will discover centuries of Scottish history and culture, making it a must-visit destination for history enthusiasts and architecture admirers alike.',
+                'attraction_header' => 'Camusport Beach',
+                'attraction_paragraph' => 'Discover the epitome of coastal elegance at Camusport Beach, an idyllic retreat nestled alongside Test Hotel. With its pristine golden sands and crystal-clear waters, this beachfront haven offers an exclusive escape for our discerning guests. Whether you are seeking a leisurely stroll along the shoreline, a rejuvenating dip in the ocean, or simply basking in the suns warm embrace, Camusport Beach promises a seamless blend of relaxation and luxury. Immerse yourself in the natural beauty of this coastal paradise, complemented by our hotels unparalleled amenities and personalized service, creating a harmonious synergy between opulent accommodations and the serenity of the sea.',
+                'attraction_image' => 'images/attractionListing/test_attraction_1.jpg',
+                'attraction_image_description' => 'A photo of Camusport Beach.',
             ],
             [
                 'property_id' => $property_id,
-                'attraction_header' => 'Kelvingrove Art Gallery and Museum',
-                'attraction_paragraph' => 'Indulge your cultural curiosity at the Kelvingrove Art Gallery and Museum, a captivating institution nestled in the heart of Glasgow. Home to a diverse collection of art, artifacts, and exhibits, this world-class venue showcases everything from European paintings to ancient Egyptian relics. Wander through themed galleries, marvel at the Salvador Dalí masterpiece, and experience the immersive displays that bring history and art to life. With free admission, it is a perfect destination for art lovers, families, and anyone seeking a vibrant cultural experience in Glasgow.',
+                'attraction_header' => 'Millside Trail',
+                'attraction_paragraph' => 'Embark on a journey of discovery along The Millside Trail, an enchanting hiking experience conveniently located to the East of Test Hotel. This scenic trail beckons adventurers to explore lush landscapes, meandering through picturesque woodlands and offering breathtaking views at every turn. Whether you are an avid hiker or seeking a leisurely stroll in nature, The Millside Trail caters to all levels of outdoor enthusiasts. After an invigorating day on the trail, return to the comfort of our luxury hotel, where indulgent amenities and personalized service await.',
+                'attraction_image' => 'images/attractionListing/test_attraction_2.jpg',
+                'attraction_image_description' => 'A photo of The Millside Trail.',
+            ],
+            [
+                'property_id' => $property_id,
+                'attraction_header' => 'The Russell Collection',
+                'attraction_paragraph' => 'Step into the cultural tapestry of The Russell Collection, a captivating museum located in close proximity to Test Hotel. This cultural gem beckons enthusiasts to explore a curated array of art and artifacts, showcasing the rich history and creativity of the region. Whether you are an art aficionado or simply seeking a dose of inspiration, this museum offers a captivating journey through time and artistic expression.',
+                'attraction_image' => 'images/attractionListing/test_attraction_3.jpg',
+                'attraction_image_description' => 'A photo of The Russell Collection.',
+            ],
+            [
+                'property_id' => $property_id,
+                'attraction_header' => 'Central Square Market',
+                'attraction_paragraph' => 'Experience the vibrant pulse of the city at Central Square Market, a local treasure conveniently situated just streets away from Test Hotel. This bustling market invites you to immerse yourself in a sensory journey, where the aromas of freshly prepared delicacies, the vibrant colors of artisan crafts, and the lively atmosphere create an unforgettable tapestry of local culture. From farm-fresh produce to unique handmade goods, Central Square Market offers a feast for the senses.',
+                'attraction_image' => 'images/attractionListing/test_attraction_4.jpg',
+                'attraction_image_description' => 'A photo of Central Square Market.',
+            ],
+            [
+                'property_id' => $property_id,
+                'attraction_header' => 'Epicurus Scuba Diving',
+                'attraction_paragraph' => 'Dive into the exhilarating world beneath the waves with Epicurus Scuba Diving, a thrilling adventure located just steps away from Test Hotel, nestled around the scenic Camusport Beach. Explore the mesmerizing underwater landscapes and vibrant marine life under the expert guidance of the experienced Epicurus instructors.\nWhether you are a seasoned diver or a first-timer, Epicurus Scuba Diving caters to all skill levels, promising an unforgettable subaquatic experience.',
+                'attraction_image' => 'images/attractionListing/test_attraction_5.jpg',
+                'attraction_image_description' => 'A photo of Epicurus Scuba Diving.',
+            ],
+            [
+                'property_id' => $property_id,
+                'attraction_header' => 'WLL Nordic Style Saunas',
+                'attraction_paragraph' => 'Indulge in the epitome of relaxation with WLL Nordic Style Saunas, an oasis of tranquility located only a short walk away from Test Hotel. Immerse yourself in the soothing ambiance of authentic Nordic-style saunas, meticulously designed to provide a rejuvenating escape from the everyday. The blend of traditional craftsmanship and modern luxury ensures a unique and revitalizing experience.',
+                'attraction_image' => 'images/attractionListing/test_attraction_6.jpg',
+                'attraction_image_description' => 'A photo of one of the WLL Nordic Style Saunas.',
             ],
         ]);
         DB::table('find_us_pages')->insert([

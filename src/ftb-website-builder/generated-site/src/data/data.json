@@ -177,6 +177,52 @@
         }
     ]
   },
+  "explore_page": {
+      "meta_page_title": "store testing",
+      "meta_page_description": "store testing",
+      "explore_page_section_header": null,
+      "explore_page_section_paragraph": "Embark on a journey of exploration and enrichment with our curated list of things to do in and around Glasgow. Whether you are an art enthusiast, history buff, or nature lover, our prime location opens the door to a myriad of experiences. Discover local attractions, cultural gems, and outdoor adventures that complement your stay, ensuring that every moment with us is filled with excitement and discovery. Immerse yourself in the vibrant tapestry of our surroundings, creating lasting memories to cherish.",
+      "explore_page_section_image": "images/sectionImages/explorePrimary/test_explore_page.jpg",
+      "explore_page_section_image_description": "store testing",
+      "attractions": [
+          {
+              "attraction_header": "Camusport Beach",
+              "attraction_paragraph": "Discover the epitome of coastal elegance at Camusport Beach, an idyllic retreat nestled alongside Test Hotel. With its pristine golden sands and crystal-clear waters, this beachfront haven offers an exclusive escape for our discerning guests. Whether you are seeking a leisurely stroll along the shoreline, a rejuvenating dip in the ocean, or simply basking in the suns warm embrace, Camusport Beach promises a seamless blend of relaxation and luxury. Immerse yourself in the natural beauty of this coastal paradise, complemented by our hotels unparalleled amenities and personalized service, creating a harmonious synergy between opulent accommodations and the serenity of the sea.",
+              "attraction_image": "images/attractionListing/test_attraction_1.jpg",
+              "attraction_image_description": "store testing"
+          },
+          {
+              "attraction_header": "Millside Trail",
+              "attraction_paragraph": "Embark on a journey of discovery along The Millside Trail, an enchanting hiking experience conveniently located to the East of Test Hotel. This scenic trail beckons adventurers to explore lush landscapes, meandering through picturesque woodlands and offering breathtaking views at every turn. Whether you are an avid hiker or seeking a leisurely stroll in nature, The Millside Trail caters to all levels of outdoor enthusiasts. After an invigorating day on the trail, return to the comfort of our luxury hotel, where indulgent amenities and personalized service await.",
+              "attraction_image": "images/attractionListing/test_attraction_2.jpg",
+              "attraction_image_description": "store testing"
+          },
+          {
+              "attraction_header": "The Russell Collection",
+              "attraction_paragraph": "Step into the cultural tapestry of The Russell Collection, a captivating museum located in close proximity to Test Hotel. This cultural gem beckons enthusiasts to explore a curated array of art and artifacts, showcasing the rich history and creativity of the region. Whether you are an art aficionado or simply seeking a dose of inspiration, this museum offers a captivating journey through time and artistic expression.",
+              "attraction_image": "images/attractionListing/test_attraction_3.jpg",
+              "attraction_image_description": "store testing"
+          },
+          {
+              "attraction_header": "Central Square Market",
+              "attraction_paragraph": "Experience the vibrant pulse of the city at Central Square Market, a local treasure conveniently situated just streets away from Test Hotel. This bustling market invites you to immerse yourself in a sensory journey, where the aromas of freshly prepared delicacies, the vibrant colors of artisan crafts, and the lively atmosphere create an unforgettable tapestry of local culture. From farm-fresh produce to unique handmade goods, Central Square Market offers a feast for the senses.",
+              "attraction_image": "images/attractionListing/test_attraction_4.jpg",
+              "attraction_image_description": "store testing"
+          },
+          {
+              "attraction_header": "Epicurus Scuba Diving",
+              "attraction_paragraph": "Dive into the exhilarating world beneath the waves with Epicurus Scuba Diving, a thrilling adventure located just steps away from Test Hotel, nestled around the scenic Camusport Beach. Explore the mesmerizing underwater landscapes and vibrant marine life under the expert guidance of the experienced Epicurus instructors.\\nWhether you are a seasoned diver or a first-timer, Epicurus Scuba Diving caters to all skill levels, promising an unforgettable subaquatic experience.",
+              "attraction_image": "images/attractionListing/test_attraction_5.jpg",
+              "attraction_image_description": "store testing"
+          },
+          {
+              "attraction_header": "WLL Nordic Style Saunas",
+              "attraction_paragraph": "Indulge in the epitome of relaxation with WLL Nordic Style Saunas, an oasis of tranquility located only a short walk away from Test Hotel. Immerse yourself in the soothing ambiance of authentic Nordic-style saunas, meticulously designed to provide a rejuvenating escape from the everyday. The blend of traditional craftsmanship and modern luxury ensures a unique and revitalizing experience.",
+              "attraction_image": "images/attractionListing/test_attraction_6.jpg",
+              "attraction_image_description": "store testing"
+          }
+      ]
+  },
   "property": {
       "property_name": "Test Hotel",
       "property_address_line1": "100 Berkeley Street",
