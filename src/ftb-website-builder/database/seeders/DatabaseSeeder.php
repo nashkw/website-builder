@@ -313,6 +313,8 @@ class DatabaseSeeder extends Seeder
             'meta_page_title' => 'Your questions about Test Hotel',
             'meta_page_description' => 'Explore our FAQ page for quick answers to common queries about our hotel, amenities, and more. If you need further assistance, our dedicated team is here to help—your seamless stay starts here.',
             'faq_page_section_paragraph' => 'Welcome to our FAQ page, your go-to resource for answers to common queries and helpful information about our hotel. Whether you are curious about our amenities, reservation process, or local attractions, we have compiled a comprehensive list to ensure your stay is seamless and enjoyable. If you do not find what you are looking for, our dedicated team is always ready to assist you. Explore the FAQs below and embark on a journey of clarity and convenience with us.',
+            'faq_page_section_image' => 'images/sectionImages/faqPrimary/test_faq_page.jpg',
+            'faq_page_section_image_description' => 'A photo of the mirror in one of our rooms.',
         ]);
         DB::table('questions_and_answers')->insert([
             [
@@ -324,6 +326,26 @@ class DatabaseSeeder extends Seeder
                 'property_id' => $property_id,
                 'question_label' => 'What amenities are included in the room rate?',
                 'answer_paragraph' => 'Your room rate covers a range of amenities, including complimentary Wi-Fi, access to our fitness center, and daily housekeeping. Additionally, we offer extra pillows to ensure your stay is as comfortable and enjoyable as possible.',
+            ],
+            [
+                'property_id' => $property_id,
+                'question_label' => 'Is there parking available at the hotel?',
+                'answer_paragraph' => 'Yes, we provide secure and convenient parking facilities for our guests. Please inquire about parking options and fees when making your reservation.',
+            ],
+            [
+                'property_id' => $property_id,
+                'question_label' => 'Are there dining options within the hotel?',
+                'answer_paragraph' => 'Absolutely! Our hotel boasts three dining options, ranging from fine dining to casual lounges, offering a diverse culinary experience for every palate.',
+            ],
+            [
+                'property_id' => $property_id,
+                'question_label' => 'What recreational activities are available near the hotel?',
+                'answer_paragraph' => 'The hotel is surrounded by various recreational opportunities, including Camusport Beach and The Millside Trail. Our concierge will be delighted to assist you in planning memorable excursions during your stay.',
+            ],
+            [
+                'property_id' => $property_id,
+                'question_label' => 'Are pets allowed in the hotel?',
+                'answer_paragraph' => 'While we love pets, we maintain a pet-free environment to ensure a comfortable and allergy-free experience for all our guests.',
             ],
         ]);
     }

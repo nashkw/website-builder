@@ -37,6 +37,7 @@ export default {
             v-for="item in faq_page.question_and_answers"
             :header="item.question_label"
             :paragraph="item.answer_paragraph"
+            :subtitle="true"
         />
     </GeneratedSiteLayout>
 </template>

@@ -5,6 +5,7 @@ import ReviewsView from "../views/ReviewsView.vue";
 import AboutView from '../views/AboutView.vue'
 import ExploreView from "../views/ExploreView.vue";
 import FindUsView from "../views/FindUsView.vue";
+import FAQView from "../views/FAQView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
           path: '/find-us',
           name: 'findus',
           component: FindUsView,
+      },
+      {
+          path: '/faq',
+          name: 'faq',
+          component: FAQView,
       },
   ]
 })

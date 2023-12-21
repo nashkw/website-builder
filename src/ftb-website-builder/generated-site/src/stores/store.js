@@ -12,6 +12,7 @@ export const useStore = defineStore('store', {
             about: "/about",
             explore: "/explore",
             findus: "/find-us",
+            faq: "/faq",
         }
     };
   },
