@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
         Route::get('/explore', [ExplorePageController::class, 'preview'])->name('.explore');
         Route::get('/find-us', [FindUsPageController::class, 'preview'])->name('.findus');
+        Route::get('/faq', [FAQPageController::class, 'preview'])->name('.faq');
     });
 });
 

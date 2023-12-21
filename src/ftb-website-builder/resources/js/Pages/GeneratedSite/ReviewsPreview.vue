@@ -37,6 +37,7 @@ export default {
                 about: route('preview.about'),
                 explore: route('preview.explore'),
                 findus: route('preview.findus'),
+                faq: route('preview.faq'),
             },
         }
     },

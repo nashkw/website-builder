@@ -85,7 +85,10 @@ export default {
                             text="Find Us"
                             :href="routes.findus"
                         />
-                        <HeaderButton text="FAQ" href="/" />
+                        <HeaderButton
+                            text="FAQ"
+                            :href="routes.faq"
+                        />
                         <BookingButton
                             text="Book Now"
                             booking-link=""
