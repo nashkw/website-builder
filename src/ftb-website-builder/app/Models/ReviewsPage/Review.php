@@ -30,6 +30,7 @@ class Review extends Model
     protected $guarded = [
         'property_id',
     ];
+
     /**
      * Get the reviews page that owns the review.
      */
