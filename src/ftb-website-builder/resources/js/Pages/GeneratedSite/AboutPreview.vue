@@ -36,6 +36,7 @@ export default {
                 reviews: route('preview.reviews'),
                 about: route('preview.about'),
                 explore: route('preview.explore'),
+                findus: route('preview.findus'),
             },
         }
     },

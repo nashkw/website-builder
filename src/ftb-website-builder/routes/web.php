@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/reviews', [ReviewsPageController::class, 'preview'])->name('.reviews');
         Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
         Route::get('/explore', [ExplorePageController::class, 'preview'])->name('.explore');
+        Route::get('/find-us', [FindUsPageController::class, 'preview'])->name('.findus');
     });
 });
 

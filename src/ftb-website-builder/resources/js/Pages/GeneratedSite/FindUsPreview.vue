@@ -1,16 +1,16 @@
 <script>
-import Rooms from "../../../../generated-site/src/pages/Rooms.vue";
+import FindUs from "../../../../generated-site/src/pages/FindUs.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
 
 export default {
-    name: "RoomsPreview",
+    name: "FindUsPreview",
     components: {
         Head,
-        Rooms,
+        FindUs,
     },
     props: {
-        rooms_page: Object,
+        find_us_page: Object,
     },
     data() {
         return {
@@ -44,10 +44,10 @@ export default {
 </script>
 
 <template>
-    <Head title="Rooms (preview)" />
-    <Rooms
+    <Head title="Find Us (preview)" />
+    <FindUs
         :property="property"
-        :rooms_page="rooms_page"
+        :find_us_page="find_us_page"
         :routes="routes"
     />
 </template>
