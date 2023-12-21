@@ -13,7 +13,7 @@ class Attraction extends Model
      * @var array
      */
     protected $casts = [
-        'attraction_id' => 'integer',
+        'id' => 'integer',
         'property_id' => 'integer',
         'attraction_header' => 'string',
         'attraction_paragraph' => 'string',
@@ -27,7 +27,7 @@ class Attraction extends Model
      * @var array
      */
     protected $guarded = [
-        'attraction_id',
+        'id',
         'property_id',
     ];
     /**

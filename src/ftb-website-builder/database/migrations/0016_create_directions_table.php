@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('directions', function (Blueprint $table) {
-            $table->id('direction_id');
+            $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('directions_label');
             $table->text('directions_paragraph');

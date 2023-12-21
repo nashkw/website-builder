@@ -47,7 +47,7 @@ function submit() {
 </script>
 
 <template>
-    <Head title="Edit home page" />
+    <Head title="Edit your Home page" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your Home page

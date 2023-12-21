@@ -13,7 +13,7 @@ class Direction extends Model
      * @var array
      */
     protected $casts = [
-        'direction_id' => 'integer',
+        'id' => 'integer',
         'property_id' => 'integer',
         'directions_label' => 'string',
         'directions_paragraph' => 'string',
@@ -25,6 +25,7 @@ class Direction extends Model
      * @var array
      */
     protected $guarded = [
+        'id',
         'property_id',
     ];
 

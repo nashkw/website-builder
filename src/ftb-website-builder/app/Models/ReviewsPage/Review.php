@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
-
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
     protected $casts = [
-        'review_id' => 'integer',
+        'id' => 'integer',
         'property_id' => 'integer',
         'review_quote' => 'string',
         'reviewer_name' => 'string',
@@ -28,6 +27,7 @@ class Review extends Model
      * @var array
      */
     protected $guarded = [
+        'id',
         'property_id',
     ];
 

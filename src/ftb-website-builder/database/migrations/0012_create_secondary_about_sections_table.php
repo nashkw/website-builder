@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('secondary_about_sections', function (Blueprint $table) {
-            $table->id('secondary_about_section_id');
+            $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('secondary_about_section_header')->nullable();
             $table->text('secondary_about_section_paragraph');

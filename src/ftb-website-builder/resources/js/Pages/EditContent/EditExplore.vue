@@ -32,7 +32,7 @@ function submit() {
 </script>
 
 <template>
-    <Head title="Edit explore page" />
+    <Head title="Edit your Explore page" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your Explore page

@@ -13,7 +13,7 @@ class SecondaryAboutSection extends Model
      * @var array
      */
     protected $casts = [
-        'secondary_about_section_id' => 'integer',
+        'id' => 'integer',
         'property_id' => 'integer',
         'secondary_about_section_header' => 'string',
         'secondary_about_section_paragraph' => 'string',
@@ -27,7 +27,7 @@ class SecondaryAboutSection extends Model
      * @var array
      */
     protected $guarded = [
-        'secondary_about_section_id',
+        'id',
         'property_id',
     ];
 

@@ -13,7 +13,7 @@ class SecondaryCoverImage extends Model
      * @var array
      */
     protected $casts = [
-        'secondary_cover_image_id' => 'integer',
+        'id' => 'integer',
         'property_id' => 'integer',
         'secondary_cover_image' => 'string',
         'secondary_cover_image_description' => 'string',
@@ -25,7 +25,7 @@ class SecondaryCoverImage extends Model
      * @var array
      */
     protected $guarded = [
-        'secondary_cover_image_id',
+        'id',
         'property_id',
     ];
 

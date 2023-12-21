@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('secondary_cover_images', function (Blueprint $table) {
-            $table->id('secondary_cover_image_id');
+            $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('secondary_cover_image');
             $table->string('secondary_cover_image_description')->nullable();

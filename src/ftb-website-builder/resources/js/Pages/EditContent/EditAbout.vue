@@ -32,7 +32,7 @@ function submit() {
 </script>
 
 <template>
-    <Head title="Edit about page" />
+    <Head title="Edit your About page" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your About page
