@@ -294,7 +294,7 @@
   "property": {
       "property_name": "Test Hotel",
       "property_address_line1": "100 Berkeley Street",
-      "property_address_line2": "2nd Floor",
+      "property_address_line2": null,
       "property_address_area": "Glasgow",
       "property_address_country": "Scotland",
       "property_address_postcode": "G3 7HU",

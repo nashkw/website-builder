@@ -28,7 +28,23 @@ export default {
                 });
             }
             return items;
-        }
+        },
+        formattedAddress() {
+            let address = this.property.property_address_line1.split(' ').join('+');
+            let lines = [
+                this.property.property_address_line2,
+                this.property.property_address_area,
+                this.property.property_address_country,
+                this.property.property_address_postcode,
+            ];
+            for (const line of lines) {
+                address = line ? address + ", " + line.split(' ').join('+') : address;
+            }
+            return address;
+        },
+        apiKey() {
+            return import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+        },
     },
 }
 </script>
@@ -44,8 +60,22 @@ export default {
             :image="find_us_page.find_us_page_section_image"
             :image-description="find_us_page.find_us_page_section_image_description"
         />
-
         <GridSections :items="formattedDirections" />
+        <div
+            v-if="apiKey"
+            class="px-8"
+        >
+            <iframe
+                class="w-full"
+                width="600"
+                height="400"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                :src="'https://www.google.com/maps/embed/v1/place?key=' + apiKey + '&q=' + formattedAddress">
+            </iframe>
+        </div>
     </GeneratedSiteLayout>
 </template>
 
