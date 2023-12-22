@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
+use App\Http\Controllers\PropertyController;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,10 @@ class RoomsPageController extends Controller
     {
         return Inertia::render(
             'GeneratedSite/RoomsPreview',
-            ['rooms_page' => $this->getRoomsPageData($request->user()->id)]
+            [
+                'rooms_page' => $this->getRoomsPageData($request->user()->id),
+                'property' => PropertyController::getPropertyData($request->user()->id),
+            ]
         );
     }
 

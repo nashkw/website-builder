@@ -30,9 +30,9 @@ export default {
             return items;
         },
         formattedAddress() {
-            let address = this.property.property_address_line1.split(' ').join('+');
+            let address = this.property.property_address_line_1.split(' ').join('+');
             let lines = [
-                this.property.property_address_line2,
+                this.property.property_address_line_2,
                 this.property.property_address_area,
                 this.property.property_address_country,
                 this.property.property_address_postcode,

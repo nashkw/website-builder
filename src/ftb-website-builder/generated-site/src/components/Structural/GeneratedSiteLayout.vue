@@ -146,8 +146,8 @@ export default {
             <div class="gs-footer-item md:w-1/3 justify-end">
                 <MapIcon/>
                 <div class="text-left leading-5">
-                    <p>{{ property.property_address_line1 }}</p>
-                    <p>{{ property.property_address_line2 }}</p>
+                    <p>{{ property.property_address_line_1 }}</p>
+                    <p>{{ property.property_address_line_2 }}</p>
                     <p>{{ property.property_address_area }}</p>
                     <p>{{ property.property_address_country }}</p>
                     <p>{{ property.property_address_postcode }}</p>
