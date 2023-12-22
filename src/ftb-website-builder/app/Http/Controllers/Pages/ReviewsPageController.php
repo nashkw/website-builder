@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class ReviewsPageController extends Controller
         $reviewsPage = User::find($request->user()->id)->property->reviewsPage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'reviews_page_section_image',
             'remove_reviews_page_section_image',
@@ -75,7 +76,7 @@ class ReviewsPageController extends Controller
         }
         $data['reviews'] = $reviews;
 
-        $data['reviews_page_section_image'] = PageControllerServices::getImageIfExists($data['reviews_page_section_image']);
+        $data['reviews_page_section_image'] = ControllerServices::getImageIfExists($data['reviews_page_section_image']);
 
         return $data;
     }

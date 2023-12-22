@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class AboutPageController extends Controller
         $aboutPage = User::find($request->user()->id)->property->aboutPage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'about_page_section_image',
             'remove_about_page_section_image',
@@ -72,12 +73,12 @@ class AboutPageController extends Controller
         $secondaryAboutSections = [];
         foreach ($aboutPage->secondaryAboutSections as $aboutSection) {
             $sectionData = $aboutSection->toArray();
-            $sectionData['secondary_about_section_image'] = PageControllerServices::getImageIfExists($sectionData['secondary_about_section_image']);
+            $sectionData['secondary_about_section_image'] = ControllerServices::getImageIfExists($sectionData['secondary_about_section_image']);
             $secondaryAboutSections[] = $sectionData;
         }
         $data['secondary_about_sections'] = $secondaryAboutSections;
 
-        $data['about_page_section_image'] = PageControllerServices::getImageIfExists($data['about_page_section_image']);
+        $data['about_page_section_image'] = ControllerServices::getImageIfExists($data['about_page_section_image']);
 
         return $data;
     }

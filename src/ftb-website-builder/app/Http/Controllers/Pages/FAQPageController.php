@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class FAQPageController extends Controller
         $faqPage = User::find($request->user()->id)->property->faqPage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'faq_page_section_image',
             'remove_faq_page_section_image',
@@ -75,7 +76,7 @@ class FAQPageController extends Controller
         }
         $data['question_and_answers'] = $questionAndAnswers;
 
-        $data['faq_page_section_image'] = PageControllerServices::getImageIfExists($data['faq_page_section_image']);
+        $data['faq_page_section_image'] = ControllerServices::getImageIfExists($data['faq_page_section_image']);
 
         return $data;
     }

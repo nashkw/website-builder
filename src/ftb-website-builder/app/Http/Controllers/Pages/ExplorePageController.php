@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class ExplorePageController extends Controller
         $explorePage = User::find($request->user()->id)->property->explorePage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'explore_page_section_image',
             'remove_explore_page_section_image',
@@ -72,12 +73,12 @@ class ExplorePageController extends Controller
         $attractions = [];
         foreach ($explorePage->attractions as $attraction) {
             $attractionData = $attraction->toArray();
-            $attractionData['attraction_image'] = PageControllerServices::getImageIfExists($attractionData['attraction_image']);
+            $attractionData['attraction_image'] = ControllerServices::getImageIfExists($attractionData['attraction_image']);
             $attractions[] = $attractionData;
         }
         $data['attractions'] = $attractions;
 
-        $data['explore_page_section_image'] = PageControllerServices::getImageIfExists($data['explore_page_section_image']);
+        $data['explore_page_section_image'] = ControllerServices::getImageIfExists($data['explore_page_section_image']);
 
         return $data;
     }

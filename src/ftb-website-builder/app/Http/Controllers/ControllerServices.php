@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PageControllerServices
+class ControllerServices
 {
     public static function getImageIfExists (?string $path): ?string
     {

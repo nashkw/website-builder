@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class FindUsPageController extends Controller
         $findUsPage = User::find($request->user()->id)->property->findUsPage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'find_us_page_section_image',
             'remove_find_us_page_section_image',
@@ -75,7 +76,7 @@ class FindUsPageController extends Controller
         }
         $data['directions'] = $directions;
 
-        $data['find_us_page_section_image'] = PageControllerServices::getImageIfExists($data['find_us_page_section_image']);
+        $data['find_us_page_section_image'] = ControllerServices::getImageIfExists($data['find_us_page_section_image']);
 
         return $data;
     }

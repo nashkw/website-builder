@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -54,7 +55,7 @@ class HomePageController extends Controller
         $homePage = User::find($request->user()->id)->property->homePage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'cover_image_primary',
             null,
@@ -62,7 +63,7 @@ class HomePageController extends Controller
             $homePage,
             $data
         );
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'intro_section_image',
             'remove_intro_section_image',
@@ -70,7 +71,7 @@ class HomePageController extends Controller
             $homePage,
             $data
         );
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'welcome_section_image',
             'remove_welcome_section_image',
@@ -93,14 +94,14 @@ class HomePageController extends Controller
         $secondaryCoverImages = [];
         foreach ($homePage->secondaryCoverImages as $coverImage) {
             $coverImageData = $coverImage->toArray();
-            $coverImageData['secondary_cover_image'] = PageControllerServices::getImageIfExists($coverImageData['secondary_cover_image']);
+            $coverImageData['secondary_cover_image'] = ControllerServices::getImageIfExists($coverImageData['secondary_cover_image']);
             $secondaryCoverImages[] = $coverImageData;
         }
         $data['secondary_cover_images'] = $secondaryCoverImages;
 
-        $data['cover_image_primary'] = PageControllerServices::getImageIfExists($data['cover_image_primary']);
-        $data['intro_section_image'] = PageControllerServices::getImageIfExists($data['intro_section_image']);
-        $data['welcome_section_image'] = PageControllerServices::getImageIfExists($data['welcome_section_image']);
+        $data['cover_image_primary'] = ControllerServices::getImageIfExists($data['cover_image_primary']);
+        $data['intro_section_image'] = ControllerServices::getImageIfExists($data['intro_section_image']);
+        $data['welcome_section_image'] = ControllerServices::getImageIfExists($data['welcome_section_image']);
 
         return $data;
     }

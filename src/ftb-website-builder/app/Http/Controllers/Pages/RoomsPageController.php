@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerServices;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class RoomsPageController extends Controller
         $roomsPage = User::find($request->user()->id)->property->roomsPage;
         $data = $request->all();
 
-        $data = PageControllerServices::uploadImage(
+        $data = ControllerServices::uploadImage(
             $request,
             'rooms_page_section_image',
             'remove_rooms_page_section_image',
@@ -72,12 +73,12 @@ class RoomsPageController extends Controller
         $rooms = [];
         foreach ($roomsPage->rooms as $room) {
             $roomData = $room->toArray();
-            $roomData['room_image_primary'] = PageControllerServices::getImageIfExists($roomData['room_image_primary']);
+            $roomData['room_image_primary'] = ControllerServices::getImageIfExists($roomData['room_image_primary']);
 
             $secondaryRoomImages = [];
             foreach ($room->secondaryRoomImages as $secondaryRoomImage) {
                 $roomImageData = $secondaryRoomImage->toArray();
-                $roomImageData['secondary_room_image'] = PageControllerServices::getImageIfExists($roomImageData['secondary_room_image']);
+                $roomImageData['secondary_room_image'] = ControllerServices::getImageIfExists($roomImageData['secondary_room_image']);
                 $secondaryRoomImages[] = $roomImageData;
             }
             $roomData['secondary_room_images'] = $secondaryRoomImages;
@@ -86,7 +87,7 @@ class RoomsPageController extends Controller
         }
         $data['rooms'] = $rooms;
 
-        $data['rooms_page_section_image'] = PageControllerServices::getImageIfExists($data['rooms_page_section_image']);
+        $data['rooms_page_section_image'] = ControllerServices::getImageIfExists($data['rooms_page_section_image']);
 
         return $data;
     }
