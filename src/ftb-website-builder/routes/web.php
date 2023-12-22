@@ -9,6 +9,7 @@ use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\Pages\ReviewsPageController;
 use App\Http\Controllers\Pages\RoomsPageController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
         Route::get('/property', [PropertyController::class, 'edit'])->name('.property');
         Route::post('/property', [PropertyController::class, 'update'])->name('.property.update');
+        Route::get('/website', [WebsiteController::class, 'edit'])->name('.website');
+        Route::post('/website', [WebsiteController::class, 'update'])->name('.website.update');
         Route::get('/home-page', [HomePageController::class, 'edit'])->name('.home');
         Route::post('/home-page', [HomePageController::class, 'update'])->name('.home.update');
         Route::get('/rooms-page', [RoomsPageController::class, 'edit'])->name('.rooms');
