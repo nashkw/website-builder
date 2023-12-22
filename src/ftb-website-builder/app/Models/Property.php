@@ -38,6 +38,17 @@ class Property extends Model
         'property_instagram_link' => 'string',
         'property_tripadvisor_link' => 'string',
         'property_logo' => 'string',
+        'property_booking_link' => 'string',
+    ];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id',
+        'user_id',
     ];
 
     /**

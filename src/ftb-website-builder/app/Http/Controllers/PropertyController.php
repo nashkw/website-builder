@@ -44,6 +44,7 @@ class PropertyController
             'property_tripadvisor_link' => ['required', 'string', 'max:255'],
             'property_logo' => ['nullable', 'image'],
             'remove_property_logo' => ['required', 'boolean'],
+            'property_booking_link' => ['required', 'string', 'max:255'],
         ]);
 
         $property = User::find($request->user()->id)->property;

@@ -91,7 +91,7 @@ export default {
                         />
                         <BookingButton
                             text="Book Now"
-                            booking-link=""
+                            :bookingLink="property.property_booking_link"
                             class="lg:ml-4"
                         />
                     </div>
@@ -153,6 +153,21 @@ export default {
                     <p>{{ property.property_address_postcode }}</p>
                 </div>
             </div>
+        </footer>
+        <div class="h-20">
+            <br />
+        </div>
+        <footer class="flex justify-center items-center gs-bg-alt fixed bottom-0 left-0 right-0 py-4 h-20">
+            <GeneratedSiteLogo
+                class="mx-6 max-sm:hidden"
+                :routes="routes"
+                :propertyName="property.property_name"
+            />
+            <BookingButton
+                text="Book Now"
+                :bookingLink="property.property_booking_link"
+                class="lg:ml-4"
+            />
         </footer>
     </div>
 </template>

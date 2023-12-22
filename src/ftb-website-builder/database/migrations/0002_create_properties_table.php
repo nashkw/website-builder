@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('property_instagram_link')->nullable();
             $table->string('property_tripadvisor_link')->nullable();
             $table->string('property_logo')->nullable();
+            $table->string('property_booking_link');
             $table->timestamps();
         });
     }

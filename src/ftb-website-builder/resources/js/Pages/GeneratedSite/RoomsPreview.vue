@@ -15,7 +15,6 @@ export default {
     },
     data() {
         return {
-            property: {
             routes: {
                 home: route('preview'),
                 rooms: route('preview.rooms'),

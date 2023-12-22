@@ -62,7 +62,7 @@ export default {
             <div class="flex justify-center">
                 <BookingButton
                     text="Book a room"
-                    booking-link=""
+                    :bookingLink="property.property_booking_link"
                     class="w-fit"
                 />
             </div>

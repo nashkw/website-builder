@@ -25,6 +25,7 @@ const props = defineProps({
     property_instagram_link: String,
     property_tripadvisor_link: String,
     property_logo: String,
+    property_booking_link: String,
 });
 
 const form = useForm({
@@ -44,6 +45,7 @@ const form = useForm({
     property_tripadvisor_link: props.property_tripadvisor_link,
     property_logo: null,
     remove_property_logo: false,
+    property_booking_link: props.property_booking_link,
 });
 
 const property_logo = computed(() => {
@@ -196,7 +198,27 @@ function submit() {
 
             <div class="space-y-2">
                 <p class="wb-subtitle p-2">
-                    Enter the contact details for your property.
+                    Enter your booking link. This should take users to a page where they can make a booking with your property.
+                </p>
+                <InputLabel
+                    for="property_booking_link"
+                    value="Booking link"
+                    class="sr-only"
+                />
+                <TextInput
+                    id="property_booking_link"
+                    type="text"
+                    v-model="form.property_booking_link"
+                    required
+                    autocomplete="property_booking_link"
+                    placeholder="Booking link"
+                />
+                <InputError :message="form.errors.property_booking_link" />
+            </div>
+
+            <div class="space-y-2">
+                <p class="wb-subtitle p-2">
+                    Enter a phone number and email address for your property.
                 </p>
                 <InputLabel
                     for="property_telephone"

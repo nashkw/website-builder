@@ -62,7 +62,7 @@ export default {
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <BookingButton
                     text="Make a booking"
-                    bookingLink="/"
+                    :bookingLink="property.property_booking_link"
                 />
                 <LinkButton
                     text="Learn more"
