@@ -42,7 +42,7 @@ export default {
                     <GeneratedSiteLogo
                         class="mx-6"
                         :routes="routes"
-                        :propertyName="property.property_name"
+                        :property="property"
                     />
                     <div class="lg:hidden">
                         <button
@@ -114,10 +114,10 @@ export default {
                     <p>{{ property.property_email }}</p>
                 </div>
             </div>
-            <div class="flex flex-col space-y-2 md:w-1/3 justify-center max-md:order-first">
+            <div class="flex flex-col space-y-2 md:w-1/3 justify-center items-center max-md:order-first">
                 <GeneratedSiteLogo
                     :routes="routes"
-                    :propertyName="property.property_name"
+                    :property="property"
                 />
                 <div class="flex flex-row justify-center gap-4">
                     <a
@@ -161,7 +161,7 @@ export default {
             <GeneratedSiteLogo
                 class="mx-6 max-sm:hidden"
                 :routes="routes"
-                :propertyName="property.property_name"
+                :property="property"
             />
             <BookingButton
                 text="Book Now"

@@ -24,6 +24,11 @@ export default {
             formattedData.welcome_section_image = this.formatImagePath(formattedData.welcome_section_image);
             return formattedData;
         },
+        formattedProperty() {
+            let formattedData = this.deepClone(this.property);
+            formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
+            return formattedData;
+        }
     },
     methods: {
         formatImagePath(path) {
@@ -38,7 +43,7 @@ export default {
 
 <template>
     <Home
-        :property="property"
+        :property="formattedProperty"
         :home_page="formattedHomePage"
         :routes="routes"
     />

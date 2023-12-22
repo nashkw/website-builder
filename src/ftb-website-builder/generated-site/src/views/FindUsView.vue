@@ -19,7 +19,11 @@ export default {
             formattedData.find_us_page_section_image = this.formatImagePath(formattedData.find_us_page_section_image);
             return formattedData;
         },
-
+        formattedProperty() {
+            let formattedData = this.deepClone(this.property);
+            formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
+            return formattedData;
+        }
     },
     methods: {
         formatImagePath(path) {
@@ -34,7 +38,7 @@ export default {
 
 <template>
     <FindUs
-        :property="property"
+        :property="formattedProperty"
         :find_us_page="formattedFindUsPage"
         :routes="routes"
     />

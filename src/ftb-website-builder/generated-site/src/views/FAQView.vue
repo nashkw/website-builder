@@ -19,7 +19,11 @@ export default {
             formattedData.faq_page_section_image = this.formatImagePath(formattedData.faq_page_section_image);
             return formattedData;
         },
-
+        formattedProperty() {
+            let formattedData = this.deepClone(this.property);
+            formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
+            return formattedData;
+        }
     },
     methods: {
         formatImagePath(path) {
@@ -34,7 +38,7 @@ export default {
 
 <template>
     <FAQ
-        :property="property"
+        :property="formattedProperty"
         :faq_page="formattedFAQPage"
         :routes="routes"
     />

@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'property_facebook_link' => 'https://www.facebook.com/freetobook',
             'property_instagram_link' => 'https://www.instagram.com/freetobook/',
             'property_booking_link' => 'https://en.freetobook.com/',
+            'property_logo' => 'images/propertyLogo/test_logo.png',
         ]);
         DB::table('websites')->insert([
             'property_id' => $property_id,

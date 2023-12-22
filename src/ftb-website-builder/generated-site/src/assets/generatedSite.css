@@ -16,8 +16,8 @@
 }
 
 .gs-logo {
-    flex: none;
     text-align: center;
+    white-space: nowrap;
     color: var(--gs-colour-accent-primary);
     font-size: 30px;
     font-weight: 600;

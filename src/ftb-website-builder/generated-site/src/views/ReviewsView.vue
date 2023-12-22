@@ -19,7 +19,11 @@ export default {
             formattedData.reviews_page_section_image = this.formatImagePath(formattedData.reviews_page_section_image);
             return formattedData;
         },
-
+        formattedProperty() {
+            let formattedData = this.deepClone(this.property);
+            formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
+            return formattedData;
+        }
     },
     methods: {
         formatImagePath(path) {
@@ -34,7 +38,7 @@ export default {
 
 <template>
     <Reviews
-        :property="property"
+        :property="formattedProperty"
         :reviews_page="formattedReviewsPage"
         :routes="routes"
     />

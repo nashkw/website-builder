@@ -22,7 +22,11 @@ export default {
             }
             return formattedData;
         },
-
+        formattedProperty() {
+            let formattedData = this.deepClone(this.property);
+            formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
+            return formattedData;
+        }
     },
     methods: {
         formatImagePath(path) {
@@ -37,7 +41,7 @@ export default {
 
 <template>
     <Explore
-        :property="property"
+        :property="formattedProperty"
         :explore_page="formattedExplorePage"
         :routes="routes"
     />
