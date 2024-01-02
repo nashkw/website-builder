@@ -11,6 +11,7 @@
   "dependencies": {
     "pinia": "^2.1.7",
     "preline": "^2.0.2",
+    "tinycolor2": "^1.6.0",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5",
     "vue-star-rating": "^2.1.0",

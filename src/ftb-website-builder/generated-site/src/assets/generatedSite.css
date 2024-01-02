@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --gs-colour-accent-primary: #10b981;
-    --gs-colour-accent-primary-alt: #059669;
-    --gs-colour-accent-secondary: #84cc16;
-    --gs-colour-accent-secondary-alt: #65a30d;
-    --gs-colour-title: #1F2937;
-    --gs-colour-subtitle: #29374a;
-    --gs-colour-text: #475569;
-    --gs-colour-background: #FFFFFF;
-    --gs-colour-background-alt: #f2f5e9;
-    --gs-input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
 .gs-logo {
     text-align: center;
     white-space: nowrap;

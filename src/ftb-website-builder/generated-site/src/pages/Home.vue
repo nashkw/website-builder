@@ -5,6 +5,7 @@ import LinkButton from "../components/Interactive/LinkButton.vue";
 import BookingButton from "../components/Interactive/BookingButton.vue";
 import GeneratedSiteCarousel from "../components/Interactive/GeneratedSiteCarousel.vue";
 import {Carousel} from "vue3-carousel";
+import tinycolor from 'tinycolor2'
 
 export default {
     name: "Home",
@@ -38,7 +39,24 @@ export default {
             return images;
         },
         welcomeHeader() {
-            return this.home_page.welcome_section_header ?? "Welcome to " + this.property.property_name + "..."
+            return this.home_page.welcome_section_header ?? "Welcome to " + this.property.property_name + "...";
+        },
+        colours() {
+            return {
+                accentPrimary: tinycolor(this.website.primary_colour),
+                accentPrimaryAlt: tinycolor(this.website.primary_colour).darken(),
+                accentSecondary: tinycolor(this.website.secondary_colour),
+                accentSecondaryAlt: tinycolor(this.website.secondary_colour).darken(),
+                title: tinycolor(this.website.text_colour),
+                subtitle: tinycolor(this.website.text_colour).lighten(),
+                text: tinycolor(this.website.text_colour).lighten().lighten(),
+                background: tinycolor(this.website.background_colour),
+                backgroundAlt: tinycolor.mix(
+                    tinycolor(this.website.background_colour),
+                    tinycolor(this.website.secondary_colour),
+                    10
+                ),
+            };
         },
     },
 }
@@ -97,5 +115,17 @@ export default {
     </GeneratedSiteLayout>
 </template>
 
-<style scoped>
+<style>
+* {
+    --gs-colour-accent-primary: v-bind('colours.accentPrimary');
+    --gs-colour-accent-primary-alt: v-bind('colours.accentPrimaryAlt');
+    --gs-colour-accent-secondary: v-bind('colours.accentSecondary');
+    --gs-colour-accent-secondary-alt: v-bind('colours.accentSecondaryAlt');
+    --gs-colour-title: v-bind('colours.title');
+    --gs-colour-subtitle: v-bind('colours.subtitle');
+    --gs-colour-text: v-bind('colours.text');
+    --gs-colour-background: v-bind('colours.background');
+    --gs-colour-background-alt: v-bind('colours.backgroundAlt');
+    --gs-input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
 </style>
