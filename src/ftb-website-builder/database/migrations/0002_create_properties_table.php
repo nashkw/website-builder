@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('property_address_country');
             $table->string('property_address_postcode');
             $table->string('property_telephone');
-            $table->string('property_email')->nullable();
+            $table->string('property_email');
             $table->string('property_twitter_link')->nullable();
             $table->string('property_youtube_link')->nullable();
             $table->string('property_linkedin_link')->nullable();

@@ -46,7 +46,7 @@ class FAQPageController extends Controller
     {
         $request->validate([
             'faq_page_section_header' => ['required', 'string', 'max:255'],
-            'faq_page_section_paragraph' => ['required', 'string', 'max:65535'],
+            'faq_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'faq_page_section_image' => ['nullable', 'image'],
             'remove_faq_page_section_image' => ['required', 'boolean'],
         ]);

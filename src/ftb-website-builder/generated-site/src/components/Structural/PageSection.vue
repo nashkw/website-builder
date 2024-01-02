@@ -9,7 +9,7 @@ const props = defineProps({
     },
     paragraph: {
         type: String,
-        required: true,
+        required: false,
     },
     image: {
         type: String,
@@ -56,6 +56,7 @@ const props = defineProps({
                 {{ header }}
             </h1>
             <p
+                v-if="paragraph"
                 v-for="(line, index) of paragraph.split('\\n')"
                 :key="index"
                 class="gs-text"

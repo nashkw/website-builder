@@ -69,7 +69,6 @@ function submit() {
                     type="text"
                     v-model="form.reviews_page_section_paragraph"
                     class="wb-input-box h-40 s:h-20"
-                    required
                     autocomplete="reviews_page_section_paragraph"
                     placeholder="Your feedback is very important to us..."
                 />

@@ -69,7 +69,6 @@ function submit() {
                     type="text"
                     v-model="form.explore_page_section_paragraph"
                     class="wb-input-box h-40 s:h-20"
-                    required
                     autocomplete="explore_page_section_paragraph"
                     placeholder="All explore our property..."
                 />

@@ -144,7 +144,6 @@ function submit() {
                     id="property_address_line_2"
                     type="text"
                     v-model="form.property_address_line_2"
-                    required
                     autocomplete="property_address_line_2"
                     placeholder="Address line 2"
                 />
@@ -264,7 +263,6 @@ function submit() {
                     id="property_twitter_link"
                     type="text"
                     v-model="form.property_twitter_link"
-                    required
                     autocomplete="property_twitter_link"
                     placeholder="Twitter profile link"
                 />
@@ -279,7 +277,6 @@ function submit() {
                     id="property_youtube_link"
                     type="text"
                     v-model="form.property_youtube_link"
-                    required
                     autocomplete="property_youtube_link"
                     placeholder="Youtube channel link"
                 />
@@ -294,7 +291,6 @@ function submit() {
                     id="property_linkedin_link"
                     type="text"
                     v-model="form.property_linkedin_link"
-                    required
                     autocomplete="property_linkedin_link"
                     placeholder="Linkedin profile link"
                 />
@@ -309,7 +305,6 @@ function submit() {
                     id="property_facebook_link"
                     type="text"
                     v-model="form.property_facebook_link"
-                    required
                     autocomplete="property_facebook_link"
                     placeholder="Facebook profile link"
                 />
@@ -324,7 +319,6 @@ function submit() {
                     id="property_instagram_link"
                     type="text"
                     v-model="form.property_instagram_link"
-                    required
                     autocomplete="property_instagram_link"
                     placeholder="Instagram profile link"
                 />
@@ -339,7 +333,6 @@ function submit() {
                     id="property_tripadvisor_link"
                     type="text"
                     v-model="form.property_tripadvisor_link"
-                    required
                     autocomplete="property_tripadvisor_link"
                     placeholder="Tripadvisor page link"
                 />

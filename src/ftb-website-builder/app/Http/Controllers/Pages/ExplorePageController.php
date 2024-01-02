@@ -46,7 +46,7 @@ class ExplorePageController extends Controller
     {
         $request->validate([
             'explore_page_section_header' => ['required', 'string', 'max:255'],
-            'explore_page_section_paragraph' => ['required', 'string', 'max:65535'],
+            'explore_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'explore_page_section_image' => ['nullable', 'image'],
             'remove_explore_page_section_image' => ['required', 'boolean'],
         ]);

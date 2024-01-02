@@ -69,7 +69,6 @@ function submit() {
                     type="text"
                     v-model="form.rooms_page_section_paragraph"
                     class="wb-input-box h-40 s:h-20"
-                    required
                     autocomplete="rooms_page_section_paragraph"
                     placeholder="Our rooms are..."
                 />

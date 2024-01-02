@@ -46,7 +46,7 @@ class ReviewsPageController extends Controller
     {
         $request->validate([
             'reviews_page_section_header' => ['required', 'string', 'max:255'],
-            'reviews_page_section_paragraph' => ['required', 'string', 'max:65535'],
+            'reviews_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'reviews_page_section_image' => ['nullable', 'image'],
             'remove_reviews_page_section_image' => ['required', 'boolean'],
         ]);
