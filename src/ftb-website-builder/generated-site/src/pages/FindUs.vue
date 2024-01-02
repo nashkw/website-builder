@@ -59,7 +59,8 @@ export default {
             :header="pageHeader"
             :paragraph="find_us_page.find_us_page_section_paragraph"
             :image="find_us_page.find_us_page_section_image"
-            :image-description="find_us_page.find_us_page_section_image_description"
+            :imageDescription="find_us_page.find_us_page_section_image_description"
+            :dividerArt="website.divider_art"
         />
         <GridSections :items="formattedDirections" />
         <div

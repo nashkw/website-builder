@@ -310,6 +310,7 @@
   },
   "website": {
       "primary_colour": "00A980",
-      "secondary_colour": "60BD35"
+      "secondary_colour": "60BD35",
+      "divider_art": "images/dividerArt/test_divider_art.png"
   }
 }

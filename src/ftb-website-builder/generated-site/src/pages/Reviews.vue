@@ -2,10 +2,12 @@
 import GeneratedSiteLayout from "../components/Structural/GeneratedSiteLayout.vue";
 import PageSection from "../components/Structural/PageSection.vue";
 import ReviewSection from "../components/Structural/ReviewSection.vue";
+import Divider from "../components/Structural/Divider.vue";
 
 export default {
     name: "Reviews",
     components: {
+        Divider,
         ReviewSection,
         PageSection,
         GeneratedSiteLayout,
@@ -33,7 +35,8 @@ export default {
             :header="pageHeader"
             :paragraph="reviews_page.reviews_page_section_paragraph"
             :image="reviews_page.reviews_page_section_image"
-            :image-description="reviews_page.reviews_page_section_image_description"
+            :imageDescription="reviews_page.reviews_page_section_image_description"
+            :dividerArt="website.divider_art"
         />
 
         <div class="flex flex-col xl:grid grid-cols-2 gap-6 px-8 xl:px-16">

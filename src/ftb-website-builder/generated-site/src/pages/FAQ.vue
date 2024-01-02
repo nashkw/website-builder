@@ -45,7 +45,8 @@ export default {
             :header="pageHeader"
             :paragraph="faq_page.faq_page_section_paragraph"
             :image="faq_page.faq_page_section_image"
-            :image-description="faq_page.faq_page_section_image_description"
+            :imageDescription="faq_page.faq_page_section_image_description"
+            :dividerArt="website.divider_art"
         />
 
         <GridSections :items="questionAndAnswers" />

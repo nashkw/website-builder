@@ -49,7 +49,8 @@ export default {
             :header="pageHeader"
             :paragraph="rooms_page.rooms_page_section_paragraph"
             :image="rooms_page.rooms_page_section_image"
-            :image-description="rooms_page.rooms_page_section_image_description"
+            :imageDescription="rooms_page.rooms_page_section_image_description"
+            :dividerArt="website.divider_art"
         />
 
         <PageSection

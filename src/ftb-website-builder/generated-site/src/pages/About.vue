@@ -26,7 +26,7 @@ export default {
             :header="about_page.about_page_section_header"
             :paragraph="about_page.about_page_section_paragraph"
             :image="about_page.about_page_section_image"
-            :image-description="about_page.about_page_section_image_description"
+            :imageDescription="about_page.about_page_section_image_description"
         />
 
         <PageSection
@@ -34,7 +34,7 @@ export default {
             :header="section.secondary_about_section_header"
             :paragraph="section.secondary_about_section_paragraph"
             :image="section.secondary_about_section_image"
-            :image-description="section.secondary_about_section_image_description"
+            :imageDescription="section.secondary_about_section_image_description"
             :flipped="index % 2 === 0"
         />
     </GeneratedSiteLayout>

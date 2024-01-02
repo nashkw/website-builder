@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'property_id' => $property_id,
             'primary_colour' => '00A980',
             'secondary_colour' => '60BD35',
+            'divider_art' => 'images/dividerArt/test_divider_art.png',
         ]);
         DB::table('home_pages')->insert([
             'property_id' => $property_id,

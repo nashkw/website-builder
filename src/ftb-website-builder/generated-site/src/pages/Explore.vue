@@ -31,7 +31,8 @@ export default {
             :header="pageHeader"
             :paragraph="explore_page.explore_page_section_paragraph"
             :image="explore_page.explore_page_section_image"
-            :image-description="explore_page.explore_page_section_image_description"
+            :imageDescription="explore_page.explore_page_section_image_description"
+            :dividerArt="website.divider_art"
         />
 
         <PageSection

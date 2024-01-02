@@ -58,7 +58,7 @@ export default {
             :header="home_page.intro_section_header"
             :paragraph="home_page.intro_section_paragraph"
             :image="home_page.intro_section_image"
-            :image-description="home_page.intro_section_image_description"
+            :imageDescription="home_page.intro_section_image_description"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <BookingButton
@@ -76,7 +76,7 @@ export default {
             :header="welcomeHeader"
             :paragraph="home_page.welcome_section_paragraph"
             :image="home_page.welcome_section_image"
-            :image-description="home_page.welcome_section_image_description"
+            :imageDescription="home_page.welcome_section_image_description"
             :flipped="true"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">

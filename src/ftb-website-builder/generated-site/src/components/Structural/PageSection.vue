@@ -1,5 +1,6 @@
 <script setup>
 import GeneratedSiteCarousel from "../Interactive/GeneratedSiteCarousel.vue";
+import Divider from "./Divider.vue";
 
 const props = defineProps({
     header: {
@@ -29,7 +30,11 @@ const props = defineProps({
     subtitle: {
         type: Boolean,
         required: false,
-    }
+    },
+    dividerArt: {
+        type: String,
+        required: false,
+    },
 });
 </script>
 
@@ -54,6 +59,11 @@ const props = defineProps({
                 {{ line }}
             </p>
             <slot />
+            <Divider
+                v-if="dividerArt"
+                :art="dividerArt"
+                class="pt-8"
+            />
         </div>
         <img
             v-if="image"
@@ -63,9 +73,9 @@ const props = defineProps({
             :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
         />
         <div
+            v-else-if="images"
             class="flex md:w-1/2 md:min-w-[50%] max-h-[800px]"
             :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
-            v-else-if="images"
         >
             <GeneratedSiteCarousel :images="images" />
         </div>
