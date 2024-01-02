@@ -12,6 +12,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         reviews_page: Object,
         routes: Object,
     },

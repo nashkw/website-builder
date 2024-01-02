@@ -18,6 +18,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         home_page: Object,
         routes: Object,
     },

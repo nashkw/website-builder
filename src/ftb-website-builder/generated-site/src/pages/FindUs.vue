@@ -12,6 +12,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         find_us_page: Object,
         routes: Object,
     },

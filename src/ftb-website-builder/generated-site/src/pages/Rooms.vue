@@ -12,6 +12,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         rooms_page: Object,
         routes: Object,
     },

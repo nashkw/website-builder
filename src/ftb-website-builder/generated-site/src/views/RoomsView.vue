@@ -12,6 +12,7 @@ export default {
         ...mapState(useStore, [
             'rooms_page',
             'property',
+            'website',
             'routes',
         ]),
         formattedRoomsPage() {
@@ -29,7 +30,12 @@ export default {
             let formattedData = this.deepClone(this.property);
             formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
             return formattedData;
-        }
+        },
+        formattedWebsite() {
+            let formattedData = this.deepClone(this.website);
+            formattedData.divider_art = this.formatImagePath(formattedData.divider_art);
+            return formattedData;
+        },
     },
     methods: {
         formatImagePath(path) {
@@ -37,7 +43,7 @@ export default {
         },
         deepClone(object) {
             return JSON.parse(JSON.stringify(object));
-        }
+        },
     },
 }
 </script>
@@ -45,6 +51,7 @@ export default {
 <template>
     <Rooms
         :property="formattedProperty"
+        :website="formattedWebsite"
         :rooms_page="formattedRoomsPage"
         :routes="routes"
     />

@@ -10,6 +10,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         about_page: Object,
         routes: Object,
     },

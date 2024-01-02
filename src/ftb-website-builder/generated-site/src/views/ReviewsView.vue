@@ -12,6 +12,7 @@ export default {
         ...mapState(useStore, [
             'reviews_page',
             'property',
+            'website',
             'routes',
         ]),
         formattedReviewsPage() {
@@ -23,7 +24,12 @@ export default {
             let formattedData = this.deepClone(this.property);
             formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
             return formattedData;
-        }
+        },
+        formattedWebsite() {
+            let formattedData = this.deepClone(this.website);
+            formattedData.divider_art = this.formatImagePath(formattedData.divider_art);
+            return formattedData;
+        },
     },
     methods: {
         formatImagePath(path) {
@@ -39,6 +45,7 @@ export default {
 <template>
     <Reviews
         :property="formattedProperty"
+        :website="formattedWebsite"
         :reviews_page="formattedReviewsPage"
         :routes="routes"
     />

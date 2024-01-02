@@ -12,6 +12,7 @@ export default {
         ...mapState(useStore, [
             'explore_page',
             'property',
+            'website',
             'routes',
         ]),
         formattedExplorePage() {
@@ -26,7 +27,12 @@ export default {
             let formattedData = this.deepClone(this.property);
             formattedData.property_logo = this.formatImagePath(formattedData.property_logo);
             return formattedData;
-        }
+        },
+        formattedWebsite() {
+            let formattedData = this.deepClone(this.website);
+            formattedData.divider_art = this.formatImagePath(formattedData.divider_art);
+            return formattedData;
+        },
     },
     methods: {
         formatImagePath(path) {
@@ -42,6 +48,7 @@ export default {
 <template>
     <Explore
         :property="formattedProperty"
+        :website="formattedWebsite"
         :explore_page="formattedExplorePage"
         :routes="routes"
     />

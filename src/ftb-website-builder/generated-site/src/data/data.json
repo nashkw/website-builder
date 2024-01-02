@@ -307,5 +307,9 @@
       "property_instagram_link": "store testing",
       "property_tripadvisor_link": "store testing",
       "property_logo": "images/propertyLogo/test_logo.png"
+  },
+  "website": {
+      "primary_colour": "00A980",
+      "secondary_colour": "60BD35"
   }
 }

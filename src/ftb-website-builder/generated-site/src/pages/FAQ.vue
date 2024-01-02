@@ -12,6 +12,7 @@ export default {
     },
     props: {
         property: Object,
+        website: Object,
         faq_page: Object,
         routes: Object,
     },
