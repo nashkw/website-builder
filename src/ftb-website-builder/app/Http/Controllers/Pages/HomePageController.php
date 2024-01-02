@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\WebsiteController;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class HomePageController extends Controller
             [
                 'home_page' => $this->getHomePageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
+                'website' => WebsiteController::getWebsiteData($request->user()->id),
             ]
         );
     }

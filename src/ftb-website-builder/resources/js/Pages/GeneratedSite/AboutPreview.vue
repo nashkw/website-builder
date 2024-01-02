@@ -2,9 +2,11 @@
 import About from "../../../../generated-site/src/pages/About.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import {w} from "../../../../public/build/assets/app-31cb9b93.js";
 
 export default {
     name: "AboutPreview",
+    methods: {w},
     components: {
         Head,
         About,
@@ -12,6 +14,7 @@ export default {
     props: {
         about_page: Object,
         property: Object,
+        website: Object,
     },
     data() {
         return {
@@ -33,6 +36,7 @@ export default {
     <Head title="About (preview)" />
     <About
         :property="property"
+        :website="website"
         :about_page="about_page"
         :routes="routes"
     />
