@@ -59,6 +59,8 @@ export default {
             :paragraph="home_page.intro_section_paragraph"
             :image="home_page.intro_section_image"
             :imageDescription="home_page.intro_section_image_description"
+            :dividerArt="website.divider_art"
+            :noDividerIfImage="true"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <BookingButton
@@ -78,6 +80,8 @@ export default {
             :image="home_page.welcome_section_image"
             :imageDescription="home_page.welcome_section_image_description"
             :flipped="true"
+            :dividerArt="website.divider_art"
+            :noDividerIfImage="true"
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <LinkButton

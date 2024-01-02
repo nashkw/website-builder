@@ -151,3 +151,20 @@
         padding: 32px;
     }
 }
+
+.gs-divider {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--gs-colour-accent-secondary);
+    border-color: var(--gs-colour-accent-secondary);
+}
+.gs-divider:before {
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, var(--gs-colour-accent-primary), var(--gs-colour-accent-secondary));
+}
+.gs-divider:after {
+    height: 1px;
+    background-image: linear-gradient(to left, transparent, var(--gs-colour-accent-primary), var(--gs-colour-accent-secondary));
+}

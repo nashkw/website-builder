@@ -35,6 +35,10 @@ const props = defineProps({
         type: String,
         required: false,
     },
+    noDividerIfImage: {
+        type: Boolean,
+        required: false,
+    }
 });
 </script>
 
@@ -60,9 +64,9 @@ const props = defineProps({
             </p>
             <slot />
             <Divider
-                v-if="dividerArt"
+                v-if="dividerArt && !(noDividerIfImage && image)"
                 :art="dividerArt"
-                class="pt-8"
+                class="pt-16"
             />
         </div>
         <img
