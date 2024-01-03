@@ -9,6 +9,7 @@ import EmailIcon from "../Icons/EmailIcon.vue";
 import HeaderButton from "../Interactive/HeaderButton.vue";
 import HeaderIcon from "../Icons/HeaderIcon.vue";
 import BookingButton from "../Interactive/BookingButton.vue";
+import Divider from "../Structural/Divider.vue";
 
 export default {
     name: "GeneratedSiteLayout",
@@ -26,7 +27,8 @@ export default {
         InstagramIcon,
         TwitterIcon,
         FacebookIcon,
-        GeneratedSiteLogo
+        GeneratedSiteLogo,
+        Divider,
     },
 }
 </script>
@@ -158,16 +160,17 @@ export default {
             <br />
         </div>
         <footer class="flex justify-center items-center gs-bg-alt fixed bottom-0 left-0 right-0 py-4 h-20">
-            <GeneratedSiteLogo
-                class="mx-6 max-sm:hidden"
-                :routes="routes"
-                :property="property"
-            />
-            <BookingButton
-                text="Book Now"
-                :bookingLink="property.property_booking_link"
-                class="lg:ml-4"
-            />
+            <Divider class="w-full gap-8">
+                <GeneratedSiteLogo
+                    class="max-sm:hidden"
+                    :routes="routes"
+                    :property="property"
+                />
+                <BookingButton
+                    text="Book Now"
+                    :bookingLink="property.property_booking_link"
+                />
+            </Divider>
         </footer>
     </div>
 </template>

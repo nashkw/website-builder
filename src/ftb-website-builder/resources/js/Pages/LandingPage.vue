@@ -26,7 +26,7 @@ import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
                     class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center"
                 >
                     <ArrowButton
-                        href="edit"
+                        :href="route('edit')"
                         text="Continue your journey"
                     />
                 </div>
@@ -35,7 +35,7 @@ import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
                     class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center"
                 >
                     <ArrowButton
-                        href="register"
+                        :href="route('register')"
                         text="Get started"
                     />
                     <SignInOutButton />

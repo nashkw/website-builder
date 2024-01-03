@@ -9,12 +9,14 @@ const props = defineProps({
 
 <template>
     <div class="gs-divider before:flex-1 after:flex-1">
-        <img
-            v-if="art"
-            :src="art"
-            alt="Divider"
-            class="h-10 px-4"
-        />
+        <slot>
+            <img
+                v-if="art"
+                :src="art"
+                alt="Divider"
+                class="h-10 px-4"
+            />
+        </slot>
     </div>
 </template>
 

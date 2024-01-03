@@ -108,7 +108,7 @@ export default {
                 />
                 <LinkButton
                     text="Things to do in our area"
-                    href=""
+                    :href="routes.explore"
                 />
             </div>
         </PageSection>
