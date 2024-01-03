@@ -76,5 +76,6 @@ export default {
     --gs-colour-background: v-bind('colours.background');
     --gs-colour-background-alt: v-bind('colours.backgroundAlt');
     --gs-input-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-family: v-bind('website.font_family'), Inter, sans-serif;
 }
 </style>

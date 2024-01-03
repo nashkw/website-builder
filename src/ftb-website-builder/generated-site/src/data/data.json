@@ -314,6 +314,7 @@
       "secondary_colour": "84cc16",
       "background_colour": "FFFFFF",
       "text_colour": "1F2937",
-      "divider_art": "images/dividerArt/test_divider_art.png"
+      "divider_art": "images/dividerArt/test_divider_art.png",
+      "font_family": "Noto Sans"
   }
 }
