@@ -216,7 +216,7 @@
 * *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
 
 
-## Week 12
+## Week 13
 
 ### 11 Dec 2023
 
@@ -243,3 +243,41 @@
 
 * *1 hour* consideration of evaluation and redraft of project timeline
 * *2.5 hours* write up and submission of status report
+
+
+## Week 14
+
+### 18 Dec 2023
+
+* *5.5 hours* began fleshing out of edit subpages and generated site (home page, about page)
+
+### 19 Dec 2023
+
+* *7.5 hours* continued work on edit subpages and generated site (rooms page, reviews page)
+
+### 20 Dec 2023
+
+* *3.5 hours* continued work on edit subpages and generated site (reviews page, explore page)
+
+### 21 Dec 2023
+
+* *7.5 hours* continued work on edit subpages and generated site (explore, find us, and FAQ pages)
+
+### 22 Dec 2023
+
+* *7 hours* continued work on edit subpages and generated site (property details, website styling)
+
+
+## Week 15
+
+
+## Week 16
+
+### 02 Jan 2024
+
+* *5 hours* continued work on edit subpages and generated site (dividers, nullability)
+* *3 hours* began work on adding dynamic styling to the generated site (colours)
+
+### 03 Jan 2024
+
+* *7 hours* continued work on adding dynamic styling to the generated site (colours, fonts)
