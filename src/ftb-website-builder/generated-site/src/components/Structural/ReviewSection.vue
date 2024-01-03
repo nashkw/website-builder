@@ -18,6 +18,14 @@ const props = defineProps({
         type: Number,
         required: false,
     },
+    primaryColour: {
+        type: String,
+        required: true,
+    },
+    secondaryColour: {
+        type: String,
+        required: true,
+    }
 });
 </script>
 
@@ -48,8 +56,8 @@ const props = defineProps({
                 :increment="0.5"
                 :show-rating="false"
                 :star-size="30"
-                inactive-color="#BBBBBB"
-                active-color="#222222"
+                :inactive-color="secondaryColour"
+                :active-color="primaryColour"
                 class="max-sm:order-first"
             />
         </div>

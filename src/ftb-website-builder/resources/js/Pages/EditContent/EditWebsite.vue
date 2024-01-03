@@ -73,7 +73,7 @@ function submit() {
                                 value="Primary colour"
                             />
                             <div
-                                class="mr-1 h-100 w-24"
+                                class="wb-color-patch"
                                 :style="{ backgroundColor: '#' + form.primary_colour}"
                             />
                         </div>
@@ -97,7 +97,7 @@ function submit() {
                                 value="Secondary colour"
                             />
                             <div
-                                class="mr-1 h-100 w-24"
+                                class="wb-color-patch"
                                 :style="{ backgroundColor: '#' + form.secondary_colour}"
                             />
                         </div>
@@ -143,7 +143,7 @@ function submit() {
                                 value="Text colour"
                             />
                             <div
-                                class="mr-1 h-100 w-24"
+                                class="wb-color-patch"
                                 :style="{ backgroundColor: '#' + form.text_colour}"
                             />
                         </div>

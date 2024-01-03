@@ -64,6 +64,8 @@ export default {
                 :reviewer="review.reviewer_name"
                 :date="review.review_date"
                 :rating="review.star_rating"
+                :primaryColour="colours.accentPrimary.toHexString()"
+                :secondaryColour="colours.background.toHexString()"
             />
         </div>
     </GeneratedSiteLayout>

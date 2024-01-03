@@ -272,6 +272,7 @@
 .wb-color-patch {
     margin-right: 4px;
     width: 96px;
-    border-width: 2px;
+    border-width: thin;
     border-color: var(--colour-background-outline);
+    box-shadow: var(--input-shadow);
 }
