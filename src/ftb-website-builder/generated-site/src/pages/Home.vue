@@ -54,7 +54,7 @@ export default {
                 backgroundAlt: tinycolor.mix(
                     tinycolor(this.website.background_colour),
                     tinycolor(this.website.secondary_colour),
-                    10
+                    7
                 ),
             };
         },
@@ -115,7 +115,7 @@ export default {
     </GeneratedSiteLayout>
 </template>
 
-<style>
+<style scoped>
 * {
     --gs-colour-accent-primary: v-bind('colours.accentPrimary');
     --gs-colour-accent-primary-alt: v-bind('colours.accentPrimaryAlt');
