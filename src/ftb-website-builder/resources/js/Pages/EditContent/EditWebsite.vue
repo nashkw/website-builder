@@ -8,6 +8,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import { ColorPicker } from 'vue-accessible-color-picker'
 
 const props = defineProps({
     primary_colour: String,
@@ -29,8 +30,21 @@ const form = useForm({
 });
 
 const divider_art = computed(() => {
-    return form.remove_divider_art ? null : form.divider_art ?? props.divider_art
+    return form.remove_divider_art ? null : form.divider_art ?? props.divider_art;
 })
+
+function updatePrimaryColour (eventData) {
+    form.primary_colour = eventData.cssColor.replace('#', '');
+}
+function updateSecondaryColour (eventData) {
+    form.secondary_colour = eventData.cssColor.replace('#', '');
+}
+function updateBackgroundColour (eventData) {
+    form.background_colour = eventData.cssColor.replace('#', '');
+}
+function updateTextColour (eventData) {
+    form.text_colour = eventData.cssColor.replace('#', '');
+}
 
 function submit() {
     form.post(route('edit.website.update'))
@@ -51,65 +65,100 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Select the theme colours for your website.
                 </p>
-                <InputLabel
-                    for="primary_colour"
-                    value="Primary colour"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="primary_colour"
-                    type="text"
-                    v-model="form.primary_colour"
-                    required
-                    autocomplete="primary_colour"
-                    placeholder="Primary colour"
-                />
-                <InputError :message="form.errors.primary_colour" />
+                <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
+                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
+                        <div class="flex flex-row justify-between mx-2">
+                            <InputLabel
+                                for="primary_colour"
+                                value="Primary colour"
+                            />
+                            <div
+                                class="mr-1 h-100 w-24"
+                                :style="{ backgroundColor: '#' + form.primary_colour}"
+                            />
+                        </div>
 
-                <InputLabel
-                    for="secondary_colour"
-                    value="Secondary colour"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="secondary_colour"
-                    type="text"
-                    v-model="form.secondary_colour"
-                    required
-                    autocomplete="secondary_colour"
-                    placeholder="Secondary colour"
-                />
-                <InputError :message="form.errors.secondary_colour" />
+                        <ColorPicker
+                            class="wb-colour-picker"
+                            :color="'#' + form.primary_colour"
+                            alpha-channel="hide"
+                            default-format="hex"
+                            :visible-formats="['hex']"
+                            id="primary_colour"
+                            @color-change="updatePrimaryColour"
+                        />
+                        <InputError :message="form.errors.primary_colour" />
+                    </div>
 
-                <InputLabel
-                    for="background_colour"
-                    value="Background colour"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="background_colour"
-                    type="text"
-                    v-model="form.background_colour"
-                    required
-                    autocomplete="background_colour"
-                    placeholder="Background colour"
-                />
-                <InputError :message="form.errors.background_colour" />
+                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
+                        <div class="flex flex-row justify-between mx-2">
+                            <InputLabel
+                                for="secondary_colour"
+                                value="Secondary colour"
+                            />
+                            <div
+                                class="mr-1 h-100 w-24"
+                                :style="{ backgroundColor: '#' + form.secondary_colour}"
+                            />
+                        </div>
+                        <ColorPicker
+                            class="wb-colour-picker"
+                            :color="'#' + form.secondary_colour"
+                            alpha-channel="hide"
+                            default-format="hex"
+                            :visible-formats="['hex']"
+                            id="secondary_colour"
+                            @color-change="updateSecondaryColour"
+                        />
+                        <InputError :message="form.errors.secondary_colour" />
+                    </div>
 
-                <InputLabel
-                    for="text_colour"
-                    value="Text colour"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="text_colour"
-                    type="text"
-                    v-model="form.text_colour"
-                    required
-                    autocomplete="text_colour"
-                    placeholder="Text colour"
-                />
-                <InputError :message="form.errors.text_colour" />
+                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
+                        <div class="flex flex-row justify-between mx-2">
+                            <InputLabel
+                                for="background_colour"
+                                value="Background colour"
+                            />
+                            <div
+                                class="wb-color-patch"
+                                :style="{ backgroundColor: '#' + form.background_colour}"
+                            />
+                        </div>
+                        <ColorPicker
+                            class="wb-colour-picker"
+                            :color="'#' + form.background_colour"
+                            alpha-channel="hide"
+                            default-format="hex"
+                            :visible-formats="['hex']"
+                            id="background_colour"
+                            @color-change="updateBackgroundColour"
+                        />
+                        <InputError :message="form.errors.background_colour" />
+                    </div>
+
+                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
+                        <div class="flex flex-row justify-between mx-2">
+                            <InputLabel
+                                for="text_colour"
+                                value="Text colour"
+                            />
+                            <div
+                                class="mr-1 h-100 w-24"
+                                :style="{ backgroundColor: '#' + form.text_colour}"
+                            />
+                        </div>
+                        <ColorPicker
+                            class="wb-colour-picker"
+                            :color="'#' + form.text_colour"
+                            alpha-channel="hide"
+                            default-format="hex"
+                            :visible-formats="['hex']"
+                            id="text_colour"
+                            @color-change="updateTextColour"
+                        />
+                        <InputError :message="form.errors.text_colour" />
+                    </div>
+                </div>
             </div>
 
             <div class="space-y-2">

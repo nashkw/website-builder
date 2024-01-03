@@ -37,7 +37,7 @@ class WebsiteController
             'font_family' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $website = User::find($request->user()->id)->website;
+        $website = User::find($request->user()->id)->property->website;
         $data = $request->all();
 
         $data = ControllerServices::uploadImage(

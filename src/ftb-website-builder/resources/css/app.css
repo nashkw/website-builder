@@ -1,3 +1,4 @@
+@import url('vue-accessible-color-picker/styles');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -241,4 +242,36 @@
     @media (min-width: 640px) {
         padding: 32px;
     }
+}
+
+.wb-colour-picker {
+    --vacp-color-background-input: var(--colour-background);
+    --vacp-color-background: var(--colour-background);
+    --vacp-color-border: var(--colour-background-outline);
+    --vacp-color-focus: var(--colour-accent-primary);
+    --vacp-color-text-input: var(--colour-text);
+    --vacp-color-text: var(--colour-subtitle);
+    --vacp-font-family: default;
+    --vacp-font-size: 12px;
+    --vacp-spacing: 8px;
+    --vacp-width-border: 1px;
+    --vacp-width-color-space: 400px;
+    padding: 14px;
+    border-width: thin;
+    border-radius: 6px;
+    border-color: var(--colour-background-outline);
+    box-shadow: var(--input-shadow);
+}
+.wb-colour-picker:hover {
+    border-color: var(--colour-background-alt);
+}
+.wb-colour-picker:focus {
+    border-color: var(--colour-accent-primary);
+}
+
+.wb-color-patch {
+    margin-right: 4px;
+    width: 96px;
+    border-width: 2px;
+    border-color: var(--colour-background-outline);
 }

@@ -25,6 +25,7 @@
         "concurrently": "^8.2.2",
         "preline": "^1.9.0",
         "tinycolor2": "^1.6.0",
+        "vue-accessible-color-picker": "^5.0.1",
         "vue-star-rating": "^2.1.0",
         "vue3-carousel": "^0.3.1"
     }
