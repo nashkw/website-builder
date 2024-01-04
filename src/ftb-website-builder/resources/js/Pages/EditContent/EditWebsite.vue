@@ -104,7 +104,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.divider_art"
                     :currentImage="divider_art"
-                    :errorMessage="form.errors.divider_art ?? ''"
+                    :errorMessage="form.errors.divider_art"
                     fieldTitle="divider art"
                     fieldID="divider_art"
                 />
@@ -133,7 +133,7 @@ function submit() {
                 <LabelledInputPair
                     v-model="form.font_family"
                     label="Font family"
-                    :errorMessage="form.errors.font_family ?? ''"
+                    :errorMessage="form.errors.font_family"
                     fieldID="font_family"
                 />
             </div>

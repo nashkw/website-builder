@@ -71,7 +71,7 @@ function submit() {
                 <LabelledInputPair
                     v-model="form.property_name"
                     label="Property name"
-                    :errorMessage="form.errors.property_name ?? ''"
+                    :errorMessage="form.errors.property_name"
                     fieldID="property_name"
                     required
                 />
@@ -82,7 +82,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.property_logo"
                     :currentImage="property_logo"
-                    :errorMessage="form.errors.property_logo ?? ''"
+                    :errorMessage="form.errors.property_logo"
                     fieldTitle="property logo"
                     fieldID="property_logo"
                 />
@@ -114,7 +114,7 @@ function submit() {
                     showLabel
                     label="Address line 1"
                     labelClass="w-28"
-                    :errorMessage="form.errors.property_address_line_1 ?? ''"
+                    :errorMessage="form.errors.property_address_line_1"
                     fieldID="property_address_line_1"
                     required
                 />
@@ -124,7 +124,7 @@ function submit() {
                     showLabel
                     label="Address line 2"
                     labelClass="w-28"
-                    :errorMessage="form.errors.property_address_line_2 ?? ''"
+                    :errorMessage="form.errors.property_address_line_2"
                     fieldID="property_address_line_2"
                 />
 
@@ -133,7 +133,7 @@ function submit() {
                     showLabel
                     label="City or area"
                     labelClass="w-28"
-                    :errorMessage="form.errors.property_address_area ?? ''"
+                    :errorMessage="form.errors.property_address_area"
                     fieldID="property_address_area"
                     required
                 />
@@ -143,7 +143,7 @@ function submit() {
                     showLabel
                     label="Country"
                     labelClass="w-28"
-                    :errorMessage="form.errors.property_address_country ?? ''"
+                    :errorMessage="form.errors.property_address_country"
                     fieldID="property_address_country"
                     required
                 />
@@ -153,7 +153,7 @@ function submit() {
                     showLabel
                     label="Postcode"
                     labelClass="w-28"
-                    :errorMessage="form.errors.property_address_postcode ?? ''"
+                    :errorMessage="form.errors.property_address_postcode"
                     fieldID="property_address_postcode"
                     required
                 />
@@ -167,7 +167,7 @@ function submit() {
                 <LabelledInputPair
                     v-model="form.property_booking_link"
                     label="Booking link"
-                    :errorMessage="form.errors.property_booking_link ?? ''"
+                    :errorMessage="form.errors.property_booking_link"
                     fieldID="property_booking_link"
                     required
                 />
@@ -183,7 +183,7 @@ function submit() {
                     showLabel
                     label="Telephone number"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_telephone ?? ''"
+                    :errorMessage="form.errors.property_telephone"
                     fieldID="property_telephone"
                     required
                 />
@@ -193,7 +193,7 @@ function submit() {
                     showLabel
                     label="Email address"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_email ?? ''"
+                    :errorMessage="form.errors.property_email"
                     fieldID="property_email"
                     required
                 />
@@ -209,7 +209,7 @@ function submit() {
                     showLabel
                     label="Facebook profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_facebook_link ?? ''"
+                    :errorMessage="form.errors.property_facebook_link"
                     fieldID="property_facebook_link"
                 />
 
@@ -218,7 +218,7 @@ function submit() {
                     showLabel
                     label="Twitter profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_twitter_link ?? ''"
+                    :errorMessage="form.errors.property_twitter_link"
                     fieldID="property_twitter_link"
                 />
 
@@ -227,7 +227,7 @@ function submit() {
                     showLabel
                     label="Instagram profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_instagram_link ?? ''"
+                    :errorMessage="form.errors.property_instagram_link"
                     fieldID="property_instagram_link"
                 />
 
@@ -236,7 +236,7 @@ function submit() {
                     showLabel
                     label="Tripadvisor profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_tripadvisor_link ?? ''"
+                    :errorMessage="form.errors.property_tripadvisor_link"
                     fieldID="property_tripadvisor_link"
                 />
 
@@ -245,7 +245,7 @@ function submit() {
                     showLabel
                     label="LinkedIn profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_linkedin_link ?? ''"
+                    :errorMessage="form.errors.property_linkedin_link"
                     fieldID="property_linkedin_link"
                 />
 
@@ -254,7 +254,7 @@ function submit() {
                     showLabel
                     label="YouTube profile"
                     labelClass="w-36"
-                    :errorMessage="form.errors.property_youtube_link ?? ''"
+                    :errorMessage="form.errors.property_youtube_link"
                     fieldID="property_youtube_link"
                 />
             </div>

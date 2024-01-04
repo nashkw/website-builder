@@ -48,7 +48,7 @@ function submit() {
                     v-model="form.rooms_page_section_header"
                     label="Page header"
                     placeholder="Our Rooms"
-                    :errorMessage="form.errors.rooms_page_section_header ?? ''"
+                    :errorMessage="form.errors.rooms_page_section_header"
                     fieldID="rooms_page_section_header"
                     required
                 />
@@ -74,7 +74,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.rooms_page_section_image"
                     :currentImage="rooms_page_section_image"
-                    :errorMessage="form.errors.rooms_page_section_image ?? ''"
+                    :errorMessage="form.errors.rooms_page_section_image"
                     fieldTitle="section image"
                     fieldID="rooms_page_section_image"
                 />

@@ -48,7 +48,7 @@ function submit() {
                     v-model="form.find_us_page_section_header"
                     label="Page header"
                     placeholder="How to find our property"
-                    :errorMessage="form.errors.find_us_page_section_header ?? ''"
+                    :errorMessage="form.errors.find_us_page_section_header"
                     fieldID="find_us_page_section_header"
                     required
                 />
@@ -75,7 +75,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.find_us_page_section_image"
                     :currentImage="find_us_page_section_image"
-                    :errorMessage="form.errors.find_us_page_section_image ?? ''"
+                    :errorMessage="form.errors.find_us_page_section_image"
                     fieldTitle="section image"
                     fieldID="find_us_page_section_image"
                 />

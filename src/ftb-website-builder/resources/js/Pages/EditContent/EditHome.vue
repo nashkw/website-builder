@@ -62,7 +62,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.cover_image_primary"
                     :currentImage="cover_image_primary"
-                    :errorMessage="form.errors.cover_image_primary ?? ''"
+                    :errorMessage="form.errors.cover_image_primary"
                     fieldTitle="cover image"
                     fieldID="cover_image_primary"
                 />
@@ -76,7 +76,7 @@ function submit() {
                     v-model="form.intro_section_header"
                     label="Introduction header"
                     placeholder="Introducing our property..."
-                    :errorMessage="form.errors.intro_section_header ?? ''"
+                    :errorMessage="form.errors.intro_section_header"
                     fieldID="intro_section_header"
                     required
                 />
@@ -103,7 +103,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.intro_section_image"
                     :currentImage="intro_section_image"
-                    :errorMessage="form.errors.intro_section_image ?? ''"
+                    :errorMessage="form.errors.intro_section_image"
                     fieldTitle="introduction image"
                     fieldID="intro_section_image"
                 />
@@ -130,7 +130,7 @@ function submit() {
                     v-model="form.welcome_section_header"
                     label="Welcome header"
                     placeholder="Welcome to our property..."
-                    :errorMessage="form.errors.welcome_section_header ?? ''"
+                    :errorMessage="form.errors.welcome_section_header"
                     fieldID="intro_section_header"
                     required
                 />
@@ -157,7 +157,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.welcome_section_image"
                     :currentImage="welcome_section_image"
-                    :errorMessage="form.errors.welcome_section_image ?? ''"
+                    :errorMessage="form.errors.welcome_section_image"
                     fieldTitle="welcome image"
                     fieldID="welcome_section_image"
                 />

@@ -48,7 +48,7 @@ function submit() {
                     v-model="form.about_page_section_header"
                     label="Page header"
                     placeholder="Our Story"
-                    :errorMessage="form.errors.about_page_section_header ?? ''"
+                    :errorMessage="form.errors.about_page_section_header"
                     fieldID="about_page_section_header"
                     required
                 />
@@ -75,7 +75,7 @@ function submit() {
                 <ImageInput
                     :modelValue="form.about_page_section_image"
                     :currentImage="about_page_section_image"
-                    :errorMessage="form.errors.about_page_section_image ?? ''"
+                    :errorMessage="form.errors.about_page_section_image"
                     fieldTitle="section image"
                     fieldID="about_page_section_image"
                 />
