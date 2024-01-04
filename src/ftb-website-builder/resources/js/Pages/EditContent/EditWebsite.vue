@@ -2,12 +2,10 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import InputLabel from "@/Components/Forms/InputLabel.vue";
-import InputError from "@/Components/Forms/InputError.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
-import { ColorPicker } from 'vue-accessible-color-picker'
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
+import ColourPickerGridItem from "@/Components/Forms/ColourPickerGridItem.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -65,98 +63,37 @@ function submit() {
                     Select the theme colours for your website.
                 </p>
                 <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
-                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
-                        <div class="flex flex-row justify-between mx-2">
-                            <InputLabel
-                                for="primary_colour"
-                                value="Primary colour"
-                            />
-                            <div
-                                class="wb-color-patch"
-                                :style="{ backgroundColor: '#' + form.primary_colour}"
-                            />
-                        </div>
+                    <ColourPickerGridItem
+                        :modelValue="form.primary_colour"
+                        @update:modelValue="updatePrimaryColour"
+                        :errorMessage="form.errors.primary_colour"
+                        fieldID="primary_colour"
+                        label="Primary colour"
+                    />
 
-                        <ColorPicker
-                            class="wb-colour-picker"
-                            :color="'#' + form.primary_colour"
-                            alpha-channel="hide"
-                            default-format="hex"
-                            :visible-formats="['hex']"
-                            id="primary_colour"
-                            @color-change="updatePrimaryColour"
-                        />
-                        <InputError :message="form.errors.primary_colour" />
-                    </div>
+                    <ColourPickerGridItem
+                        :modelValue="form.secondary_colour"
+                        @update:modelValue="updateSecondaryColour"
+                        :errorMessage="form.errors.secondary_colour"
+                        fieldID="secondary_colour"
+                        label="Secondary colour"
+                    />
 
-                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
-                        <div class="flex flex-row justify-between mx-2">
-                            <InputLabel
-                                for="secondary_colour"
-                                value="Secondary colour"
-                            />
-                            <div
-                                class="wb-color-patch"
-                                :style="{ backgroundColor: '#' + form.secondary_colour}"
-                            />
-                        </div>
-                        <ColorPicker
-                            class="wb-colour-picker"
-                            :color="'#' + form.secondary_colour"
-                            alpha-channel="hide"
-                            default-format="hex"
-                            :visible-formats="['hex']"
-                            id="secondary_colour"
-                            @color-change="updateSecondaryColour"
-                        />
-                        <InputError :message="form.errors.secondary_colour" />
-                    </div>
+                    <ColourPickerGridItem
+                        :modelValue="form.background_colour"
+                        @update:modelValue="updateBackgroundColour"
+                        :errorMessage="form.errors.background_colour"
+                        fieldID="background_colour"
+                        label="Background colour"
+                    />
 
-                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
-                        <div class="flex flex-row justify-between mx-2">
-                            <InputLabel
-                                for="background_colour"
-                                value="Background colour"
-                            />
-                            <div
-                                class="wb-color-patch"
-                                :style="{ backgroundColor: '#' + form.background_colour}"
-                            />
-                        </div>
-                        <ColorPicker
-                            class="wb-colour-picker"
-                            :color="'#' + form.background_colour"
-                            alpha-channel="hide"
-                            default-format="hex"
-                            :visible-formats="['hex']"
-                            id="background_colour"
-                            @color-change="updateBackgroundColour"
-                        />
-                        <InputError :message="form.errors.background_colour" />
-                    </div>
-
-                    <div class="flex flex-col justify-center space-y-2 max-2xl:w-max ">
-                        <div class="flex flex-row justify-between mx-2">
-                            <InputLabel
-                                for="text_colour"
-                                value="Text colour"
-                            />
-                            <div
-                                class="wb-color-patch"
-                                :style="{ backgroundColor: '#' + form.text_colour}"
-                            />
-                        </div>
-                        <ColorPicker
-                            class="wb-colour-picker"
-                            :color="'#' + form.text_colour"
-                            alpha-channel="hide"
-                            default-format="hex"
-                            :visible-formats="['hex']"
-                            id="text_colour"
-                            @color-change="updateTextColour"
-                        />
-                        <InputError :message="form.errors.text_colour" />
-                    </div>
+                    <ColourPickerGridItem
+                        :modelValue="form.text_colour"
+                        @update:modelValue="updateTextColour"
+                        :errorMessage="form.errors.text_colour"
+                        fieldID="text_colour"
+                        label="Text colour"
+                    />
                 </div>
             </div>
 
