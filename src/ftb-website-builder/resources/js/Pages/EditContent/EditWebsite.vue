@@ -2,7 +2,6 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import ColourPickerGridItem from "@/Components/Forms/ColourPickerGridItem.vue";
@@ -103,28 +102,14 @@ function submit() {
                     Optionally, you can attach an image to customise the dividers in your website. Make sure to remove the background of your image if it is meant to be transparent.
                 </p>
                 <ImageInput
-                    :modelValue="form.divider_art"
+                    v-model="form.divider_art"
                     :currentImage="divider_art"
                     :errorMessage="form.errors.divider_art"
                     fieldTitle="divider art"
                     fieldID="divider_art"
+                    v-model:removeCurrentImage="form.remove_divider_art"
+                    :originalImage="props.divider_art"
                 />
-                <label
-                    v-if="props.divider_art || form.divider_art"
-                    class="wb-secondary-button ml-2"
-                >
-                    <Checkbox
-                        name="remember"
-                        v-model:checked="form.remove_divider_art"
-                        class="hidden"
-                    />
-                    <span v-if="form.remove_divider_art && (props.divider_art || form.divider_art)">
-                        No image selected. Use saved image?
-                    </span>
-                    <span v-else-if="props.divider_art || form.divider_art">
-                        Remove current image
-                    </span>
-                </label>
             </div>
 
             <div class="space-y-2">

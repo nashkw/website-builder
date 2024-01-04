@@ -4,7 +4,6 @@ import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
-import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
@@ -74,25 +73,14 @@ function submit() {
                     Optionally, you can attach an image to accompany this section.
                 </p>
                 <ImageInput
-                    :modelValue="form.find_us_page_section_image"
+                    v-model="form.find_us_page_section_image"
                     :currentImage="find_us_page_section_image"
                     :errorMessage="form.errors.find_us_page_section_image"
                     fieldTitle="section image"
                     fieldID="find_us_page_section_image"
+                    v-model:removeCurrentImage="form.remove_find_us_page_section_image"
+                    :originalImage="props.find_us_page_section_image"
                 />
-                <label class="wb-secondary-button ml-2">
-                    <Checkbox
-                        name="remember"
-                        v-model:checked="form.remove_find_us_page_section_image"
-                        class="hidden"
-                    />
-                    <span v-if="form.remove_find_us_page_section_image && (props.find_us_page_section_image || form.find_us_page_section_image)">
-                        No image selected. Use saved image?
-                    </span>
-                    <span v-else-if="props.find_us_page_section_image || form.find_us_page_section_image">
-                        Remove current image
-                    </span>
-                </label>
             </div>
 
             <SaveButton

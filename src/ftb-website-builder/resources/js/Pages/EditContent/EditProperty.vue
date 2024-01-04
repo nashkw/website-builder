@@ -2,7 +2,6 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
@@ -81,28 +80,14 @@ function submit() {
                     Optionally, you can attach an image to serve as the logo for your property.
                 </p>
                 <ImageInput
-                    :modelValue="form.property_logo"
+                    v-model="form.property_logo"
                     :currentImage="property_logo"
                     :errorMessage="form.errors.property_logo"
                     fieldTitle="property logo"
                     fieldID="property_logo"
+                    v-model:removeCurrentImage="form.remove_property_logo"
+                    :originalImage="props.property_logo"
                 />
-                <label
-                    v-if="props.property_logo || form.property_logo"
-                    class="wb-secondary-button ml-2"
-                >
-                    <Checkbox
-                        name="remember"
-                        v-model:checked="form.remove_property_logo"
-                        class="hidden"
-                    />
-                    <span v-if="form.remove_property_logo && (props.property_logo || form.property_logo)">
-                        No image selected. Use saved image?
-                    </span>
-                    <span v-else-if="props.property_logo || form.property_logo">
-                        Remove current image
-                    </span>
-                </label>
             </div>
 
             <div class="space-y-2">

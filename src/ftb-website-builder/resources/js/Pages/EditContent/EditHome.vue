@@ -4,7 +4,6 @@ import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
-import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
@@ -61,7 +60,7 @@ function submit() {
                     Upload a cover image for your website.
                 </p>
                 <ImageInput
-                    :modelValue="form.cover_image_primary"
+                    v-model="form.cover_image_primary"
                     :currentImage="cover_image_primary"
                     :errorMessage="form.errors.cover_image_primary"
                     fieldTitle="cover image"
@@ -102,25 +101,14 @@ function submit() {
                     Optionally, you can attach an image to accompany this introduction.
                 </p>
                 <ImageInput
-                    :modelValue="form.intro_section_image"
+                    v-model="form.intro_section_image"
                     :currentImage="intro_section_image"
                     :errorMessage="form.errors.intro_section_image"
                     fieldTitle="introduction image"
                     fieldID="intro_section_image"
+                    v-model:removeCurrentImage="form.remove_intro_section_image"
+                    :originalImage="props.intro_section_image"
                 />
-                <label class="wb-secondary-button ml-2">
-                    <Checkbox
-                        name="remember"
-                        v-model:checked="form.remove_intro_section_image"
-                        class="hidden"
-                    />
-                    <span v-if="form.remove_intro_section_image && (props.intro_section_image || form.intro_section_image)">
-                        No image selected. Use saved image?
-                    </span>
-                    <span v-else-if="props.intro_section_image || form.intro_section_image">
-                        Remove current image
-                    </span>
-                </label>
             </div>
 
             <div class="space-y-2">
@@ -156,25 +144,14 @@ function submit() {
                     Optionally, you can attach an image to accompany this description.
                 </p>
                 <ImageInput
-                    :modelValue="form.welcome_section_image"
+                    v-model="form.welcome_section_image"
                     :currentImage="welcome_section_image"
                     :errorMessage="form.errors.welcome_section_image"
                     fieldTitle="welcome image"
                     fieldID="welcome_section_image"
+                    v-model:removeCurrentImage="form.remove_welcome_section_image"
+                    :originalImage="props.welcome_section_image"
                 />
-                <label class="wb-secondary-button ml-2">
-                    <Checkbox
-                        name="remember"
-                        v-model:checked="form.remove_welcome_section_image"
-                        class="hidden"
-                    />
-                    <span v-if="form.remove_welcome_section_image && (props.welcome_section_image || form.welcome_section_image)">
-                        No image selected - use saved image?
-                    </span>
-                    <span v-else-if="props.welcome_section_image || form.welcome_section_image">
-                        Remove current image
-                    </span>
-                </label>
             </div>
 
             <SaveButton
