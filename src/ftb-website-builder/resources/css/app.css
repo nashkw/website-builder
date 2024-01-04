@@ -81,6 +81,26 @@
     border-radius: 4px;
 }
 
+.wb-labelled-input-pair {
+    display: flex;
+    margin-top: 4px;
+    flex-direction: column;
+    column-gap: 16px;
+    row-gap: 4px;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.wb-input-label {
+    display: flex;
+    margin-left: 8px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
 .wb-input-box {
     display: block;
     padding-top: 12px;

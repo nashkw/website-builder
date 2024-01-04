@@ -120,78 +120,89 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Enter the address of your property.
                 </p>
-                <InputLabel
-                    for="property_address_line_1"
-                    value="Address line 1"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_address_line_1"
-                    type="text"
-                    v-model="form.property_address_line_1"
-                    required
-                    autocomplete="property_address_line_1"
-                    placeholder="Address line 1"
-                />
+
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_address_line_1"
+                        value="Address line 1 :"
+                        valueClass="wb-input-label w-28"
+                    />
+                    <TextInput
+                        id="property_address_line_1"
+                        type="text"
+                        v-model="form.property_address_line_1"
+                        required
+                        autocomplete="property_address_line_1"
+                        placeholder="Address line 1"
+                    />
+                </div>
                 <InputError :message="form.errors.property_address_line_1" />
 
-                <InputLabel
-                    for="property_address_line_2"
-                    value="Address line 2"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_address_line_2"
-                    type="text"
-                    v-model="form.property_address_line_2"
-                    autocomplete="property_address_line_2"
-                    placeholder="Address line 2"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_address_line_2"
+                        value="Address line 2 :"
+                        valueClass="wb-input-label w-28"
+                    />
+                    <TextInput
+                        id="property_address_line_2"
+                        type="text"
+                        v-model="form.property_address_line_2"
+                        autocomplete="property_address_line_2"
+                        placeholder="Address line 2"
+                    />
+                </div>
                 <InputError :message="form.errors.property_address_line_2" />
 
-                <InputLabel
-                    for="property_address_area"
-                    value="City or area"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_address_area"
-                    type="text"
-                    v-model="form.property_address_area"
-                    required
-                    autocomplete="property_address_area"
-                    placeholder="City or area"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_address_area"
+                        value="City or area :"
+                        valueClass="wb-input-label w-28"
+                    />
+                    <TextInput
+                        id="property_address_area"
+                        type="text"
+                        v-model="form.property_address_area"
+                        required
+                        autocomplete="property_address_area"
+                        placeholder="City or area"
+                    />
+                </div>
                 <InputError :message="form.errors.property_address_area" />
 
-                <InputLabel
-                    for="property_address_country"
-                    value="Country"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_address_country"
-                    type="text"
-                    v-model="form.property_address_country"
-                    required
-                    autocomplete="property_address_country"
-                    placeholder="Country"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_address_country"
+                        value="Country :"
+                        valueClass="wb-input-label w-28"
+                    />
+                    <TextInput
+                        id="property_address_country"
+                        type="text"
+                        v-model="form.property_address_country"
+                        required
+                        autocomplete="property_address_country"
+                        placeholder="Country"
+                    />
+                </div>
                 <InputError :message="form.errors.property_address_country" />
 
-                <InputLabel
-                    for="property_address_postcode"
-                    value="Postcode"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_address_postcode"
-                    type="text"
-                    v-model="form.property_address_postcode"
-                    required
-                    autocomplete="property_address_postcode"
-                    placeholder="Postcode"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_address_postcode"
+                        value="Postcode :"
+                        valueClass="wb-input-label w-28"
+                    />
+                    <TextInput
+                        id="property_address_postcode"
+                        type="text"
+                        v-model="form.property_address_postcode"
+                        required
+                        autocomplete="property_address_postcode"
+                        placeholder="Postcode"
+                    />
+                </div>
                 <InputError :message="form.errors.property_address_postcode" />
             </div>
 
@@ -219,34 +230,39 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Enter a phone number and email address for your property.
                 </p>
-                <InputLabel
-                    for="property_telephone"
-                    value="Telephone number"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_telephone"
-                    type="text"
-                    v-model="form.property_telephone"
-                    required
-                    autocomplete="property_telephone"
-                    placeholder="Telephone number"
-                />
+
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_telephone"
+                        value="Telephone number :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_telephone"
+                        type="text"
+                        v-model="form.property_telephone"
+                        required
+                        autocomplete="property_telephone"
+                        placeholder="Telephone number"
+                    />
+                </div>
                 <InputError :message="form.errors.property_telephone" />
 
-                <InputLabel
-                    for="property_email"
-                    value="Email address"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_email"
-                    type="text"
-                    v-model="form.property_email"
-                    required
-                    autocomplete="property_email"
-                    placeholder="Email address"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_email"
+                        value="Email address :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_email"
+                        type="text"
+                        v-model="form.property_email"
+                        required
+                        autocomplete="property_email"
+                        placeholder="Email address"
+                    />
+                </div>
                 <InputError :message="form.errors.property_email" />
             </div>
 
@@ -254,89 +270,102 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, add links to any social media accounts you have for your property.
                 </p>
-                <InputLabel
-                    for="property_twitter_link"
-                    value="Twitter profile link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_twitter_link"
-                    type="text"
-                    v-model="form.property_twitter_link"
-                    autocomplete="property_twitter_link"
-                    placeholder="Twitter profile link"
-                />
-                <InputError :message="form.errors.property_twitter_link" />
 
-                <InputLabel
-                    for="property_youtube_link"
-                    value="Youtube channel link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_youtube_link"
-                    type="text"
-                    v-model="form.property_youtube_link"
-                    autocomplete="property_youtube_link"
-                    placeholder="Youtube channel link"
-                />
-                <InputError :message="form.errors.property_youtube_link" />
-
-                <InputLabel
-                    for="property_linkedin_link"
-                    value="Linkedin profile link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_linkedin_link"
-                    type="text"
-                    v-model="form.property_linkedin_link"
-                    autocomplete="property_linkedin_link"
-                    placeholder="Linkedin profile link"
-                />
-                <InputError :message="form.errors.property_linkedin_link" />
-
-                <InputLabel
-                    for="property_facebook_link"
-                    value="Facebook profile link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_facebook_link"
-                    type="text"
-                    v-model="form.property_facebook_link"
-                    autocomplete="property_facebook_link"
-                    placeholder="Facebook profile link"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_facebook_link"
+                        value="Facebook profile :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_facebook_link"
+                        type="text"
+                        v-model="form.property_facebook_link"
+                        autocomplete="property_facebook_link"
+                        placeholder="Facebook profile"
+                    />
+                </div>
                 <InputError :message="form.errors.property_facebook_link" />
 
-                <InputLabel
-                    for="property_instagram_link"
-                    value="Instagram profile link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_instagram_link"
-                    type="text"
-                    v-model="form.property_instagram_link"
-                    autocomplete="property_instagram_link"
-                    placeholder="Instagram profile link"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_twitter_link"
+                        value="Twitter profile :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_twitter_link"
+                        type="text"
+                        v-model="form.property_twitter_link"
+                        autocomplete="property_twitter_link"
+                        placeholder="Twitter profile"
+                    />
+                </div>
+                <InputError :message="form.errors.property_twitter_link" />
+
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_instagram_link"
+                        value="Instagram profile :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_instagram_link"
+                        type="text"
+                        v-model="form.property_instagram_link"
+                        autocomplete="property_instagram_link"
+                        placeholder="Instagram profile"
+                    />
+                </div>
                 <InputError :message="form.errors.property_instagram_link" />
 
-                <InputLabel
-                    for="property_tripadvisor_link"
-                    value="Tripadvisor page link"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="property_tripadvisor_link"
-                    type="text"
-                    v-model="form.property_tripadvisor_link"
-                    autocomplete="property_tripadvisor_link"
-                    placeholder="Tripadvisor page link"
-                />
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_tripadvisor_link"
+                        value="Tripadvisor page :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_tripadvisor_link"
+                        type="text"
+                        v-model="form.property_tripadvisor_link"
+                        autocomplete="property_tripadvisor_link"
+                        placeholder="Tripadvisor page link"
+                    />
+                </div>
                 <InputError :message="form.errors.property_tripadvisor_link" />
+
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_linkedin_link"
+                        value="LinkedIn profile :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_linkedin_link"
+                        type="text"
+                        v-model="form.property_linkedin_link"
+                        autocomplete="property_linkedin_link"
+                        placeholder="Linkedin profile link"
+                    />
+                </div>
+                <InputError :message="form.errors.property_linkedin_link" />
+
+                <div class="wb-labelled-input-pair">
+                    <InputLabel
+                        for="property_youtube_link"
+                        value="YouTube channel :"
+                        valueClass="wb-input-label w-36"
+                    />
+                    <TextInput
+                        id="property_youtube_link"
+                        type="text"
+                        v-model="form.property_youtube_link"
+                        autocomplete="property_youtube_link"
+                        placeholder="Youtube channel link"
+                    />
+                </div>
+                <InputError :message="form.errors.property_youtube_link" />
             </div>
 
             <div class="flex items-center gap-4">
