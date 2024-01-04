@@ -3,6 +3,7 @@ import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
+import SaveButton from "@/Components/Buttons/SaveButton.vue";
 
 const user = usePage().props.auth.user;
 
@@ -58,27 +59,10 @@ const form = useForm({
                 <InputError :message="form.errors.email" />
             </div>
 
-            <div class="flex items-center gap-4">
-                <button
-                    :disabled="form.processing"
-                    class="wb-primary-button"
-                >
-                    Save
-                </button>
-                <Transition
-                    enter-active-class="transition ease-in-out"
-                    enter-from-class="opacity-0"
-                    leave-active-class="transition ease-in-out"
-                    leave-to-class="opacity-0"
-                >
-                    <p
-                        v-if="form.recentlySuccessful"
-                        class="wb-text"
-                    >
-                        Saved.
-                    </p>
-                </Transition>
-            </div>
+            <SaveButton
+                :recently-successful="form.recentlySuccessful"
+                :processing="form.processing"
+            />
         </form>
     </section>
 </template>

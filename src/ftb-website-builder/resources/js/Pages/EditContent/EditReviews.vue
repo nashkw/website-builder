@@ -7,6 +7,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
+import SaveButton from "@/Components/Buttons/SaveButton.vue";
 
 const props = defineProps({
     reviews_page_section_header: String,
@@ -93,28 +94,10 @@ function submit() {
                 </label>
             </div>
 
-            <div class="flex items-center gap-4">
-                <button
-                    type="submit"
-                    :disabled="form.processing"
-                    class="wb-primary-button"
-                >
-                    Save
-                </button>
-                <Transition
-                    enter-active-class="transition ease-in-out"
-                    enter-from-class="opacity-0"
-                    leave-active-class="transition ease-in-out"
-                    leave-to-class="opacity-0"
-                >
-                    <p
-                        v-if="form.recentlySuccessful"
-                        class="wb-text"
-                    >
-                        Saved.
-                    </p>
-                </Transition>
-            </div>
+            <SaveButton
+                :recently-successful="form.recentlySuccessful"
+                :processing="form.processing"
+            />
         </form>
     </LoggedInLayout>
 </template>

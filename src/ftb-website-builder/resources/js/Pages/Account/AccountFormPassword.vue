@@ -4,6 +4,7 @@ import InputLabel from '@/Components/Forms/InputLabel.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import SaveButton from "@/Components/Buttons/SaveButton.vue";
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -91,27 +92,10 @@ const updatePassword = () => {
                 <InputError :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center gap-4">
-                <button
-                    :disabled="form.processing"
-                    class="wb-primary-button"
-                >
-                    Save
-                </button>
-                <Transition
-                    enter-active-class="transition ease-in-out"
-                    enter-from-class="opacity-0"
-                    leave-active-class="transition ease-in-out"
-                    leave-to-class="opacity-0"
-                >
-                    <p
-                        v-if="form.recentlySuccessful"
-                        class="wb-text"
-                    >
-                        Saved.
-                    </p>
-                </Transition>
-            </div>
+            <SaveButton
+                :recently-successful="form.recentlySuccessful"
+                :processing="form.processing"
+            />
         </form>
     </section>
 </template>
