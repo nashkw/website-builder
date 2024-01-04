@@ -46,6 +46,10 @@
     color: var(--gs-colour-accent-secondary-alt);
 }
 
+.gs-path-bg {
+    fill: var(--gs-colour-background)
+}
+
 .gs-bg {
     border-color: var(--gs-colour-background-alt);
     background-color: var(--gs-colour-background);

@@ -3,6 +3,9 @@ import GeneratedSiteLogo from "../Icons/GeneratedSiteLogo.vue";
 import FacebookIcon from "../Icons/FacebookIcon.vue";
 import TwitterIcon from "../Icons/TwitterIcon.vue";
 import InstagramIcon from "../Icons/InstagramIcon.vue";
+import YouTubeIcon from "../Icons/YouTubeIcon.vue";
+import LinkedInIcon from "../Icons/LinkedInIcon.vue";
+import TripAdvisorIcon from "../Icons/TripAdvisorIcon.vue";
 import MapIcon from "../Icons/MapIcon.vue";
 import PhoneIcon from "../Icons/PhoneIcon.vue";
 import EmailIcon from "../Icons/EmailIcon.vue";
@@ -18,6 +21,9 @@ export default {
         routes: Object,
     },
     components: {
+        TripAdvisorIcon,
+        LinkedInIcon,
+        YouTubeIcon,
         BookingButton,
         HeaderIcon,
         HeaderButton,
@@ -142,6 +148,27 @@ export default {
                         :href="property.property_instagram_link"
                     >
                         <InstagramIcon />
+                    </a>
+                    <a
+                        class="gs-text-link"
+                        v-if="property.property_tripadvisor_link"
+                        :href="property.property_tripadvisor_link"
+                    >
+                        <TripAdvisorIcon />
+                    </a>
+                    <a
+                        class="gs-text-link"
+                        v-if="property.property_linkedin_link"
+                        :href="property.property_linkedin_link"
+                    >
+                        <LinkedInIcon />
+                    </a>
+                    <a
+                        class="gs-text-link"
+                        v-if="property.property_youtube_link"
+                        :href="property.property_youtube_link"
+                    >
+                        <YouTubeIcon />
                     </a>
                 </div>
             </div>
