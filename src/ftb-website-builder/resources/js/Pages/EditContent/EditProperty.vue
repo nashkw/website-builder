@@ -43,10 +43,6 @@ const form = useForm({
     remove_property_logo: false,
     property_booking_link: props.property_booking_link,
 });
-
-function submit() {
-    form.post(route('edit.property.update'))
-}
 </script>
 
 <template>
@@ -56,7 +52,7 @@ function submit() {
             Edit your property details
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.property.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

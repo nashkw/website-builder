@@ -24,10 +24,6 @@ const form = useForm({
     remove_divider_art: false,
     font_family: props.font_family,
 });
-
-function submit() {
-    form.post(route('edit.website.update'))
-}
 </script>
 
 <template>
@@ -37,7 +33,7 @@ function submit() {
             Edit your styling choices
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.website.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

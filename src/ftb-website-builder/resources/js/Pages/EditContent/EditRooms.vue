@@ -19,10 +19,6 @@ const form = useForm({
     rooms_page_section_image: null,
     remove_rooms_page_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.rooms.update'))
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function submit() {
             Edit your Rooms page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.rooms.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

@@ -19,10 +19,6 @@ const form = useForm({
     faq_page_section_image: null,
     remove_faq_page_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.faq.update'))
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function submit() {
             Edit your FAQ page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.faq.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

@@ -19,10 +19,6 @@ const form = useForm({
     explore_page_section_image: null,
     remove_explore_page_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.explore.update'))
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function submit() {
             Edit your Explore page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.explore.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

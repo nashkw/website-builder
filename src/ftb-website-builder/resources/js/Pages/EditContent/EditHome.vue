@@ -28,10 +28,6 @@ const form = useForm({
     welcome_section_image: null,
     remove_welcome_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.home.update'))
-}
 </script>
 
 <template>
@@ -41,7 +37,7 @@ function submit() {
             Edit your Home page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.home.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

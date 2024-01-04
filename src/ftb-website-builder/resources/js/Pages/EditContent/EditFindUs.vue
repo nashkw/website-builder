@@ -19,10 +19,6 @@ const form = useForm({
     find_us_page_section_image: null,
     remove_find_us_page_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.findus.update'))
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function submit() {
             Edit your Find Us page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.findus.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">

@@ -19,10 +19,6 @@ const form = useForm({
     reviews_page_section_image: null,
     remove_reviews_page_section_image: false,
 });
-
-function submit() {
-    form.post(route('edit.reviews.update'))
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function submit() {
             Edit your Reviews page
         </h1>
         <form
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('edit.reviews.update'))"
             class="space-y-8"
         >
             <div class="space-y-2">
