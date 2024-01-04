@@ -6,6 +6,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     faq_page_section_header: String,
@@ -31,10 +32,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.faq.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write a header to sit at the top of your FAQ page. Optionally, you can write a body paragraph explaining your contact policies and where potential customers can go to answer their questions. This can be however long you want, but specific Q&As themselves should be added separately.
-                </p>
+            <FormSection prompt="Write a header to sit at the top of your FAQ page. Optionally, you can write a body paragraph explaining your contact policies and where potential customers can go to answer their questions. This can be however long you want, but specific Q&As themselves should be added separately.">
                 <LabelledInputPair
                     v-model="form.faq_page_section_header"
                     label="Page header"
@@ -43,7 +41,6 @@ const form = useForm({
                     fieldID="faq_page_section_header"
                     required
                 />
-
                 <InputLabel
                     for="faq_page_section_paragraph"
                     value="FAQ paragraph"
@@ -58,10 +55,9 @@ const form = useForm({
                     placeholder="Your feedback is very important to us..."
                 />
                 <InputError :message="form.errors.faq_page_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this section.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this section.">
                 <ImageInput
                     v-model="form.faq_page_section_image"
                     :errorMessage="form.errors.faq_page_section_image"
@@ -70,10 +66,10 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_faq_page_section_image"
                     :originalImage="props.faq_page_section_image"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

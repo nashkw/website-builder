@@ -6,6 +6,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     cover_image_primary: String,
@@ -40,10 +41,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.home.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Upload a cover image for your website.
-                </p>
+            <FormSection prompt="Upload a cover image for your website.">
                 <ImageInput
                     v-model="form.cover_image_primary"
                     :errorMessage="form.errors.cover_image_primary"
@@ -52,12 +50,9 @@ const form = useForm({
                     :originalImage="props.cover_image_primary"
                     notNullable
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.
-                </p>
+            <FormSection prompt="Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.">
                 <LabelledInputPair
                     v-model="form.intro_section_header"
                     label="Introduction header"
@@ -66,7 +61,6 @@ const form = useForm({
                     fieldID="intro_section_header"
                     required
                 />
-
                 <InputLabel
                     for="intro_section_paragraph"
                     value="Introduction paragraph"
@@ -82,10 +76,9 @@ const form = useForm({
                     placeholder="Our property is..."
                 />
                 <InputError :message="form.errors.intro_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this introduction.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this introduction.">
                 <ImageInput
                     v-model="form.intro_section_image"
                     :errorMessage="form.errors.intro_section_image"
@@ -94,12 +87,9 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_intro_section_image"
                     :originalImage="props.intro_section_image"
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write a longer description to welcome the user to your website and tell them why they should make a booking with your property. This should be no more than a few paragraphs long.
-                </p>
+            <FormSection prompt="Write a longer description to welcome the user to your website and tell them why they should make a booking with your property. This should be no more than a few paragraphs long.">
                 <LabelledInputPair
                     v-model="form.welcome_section_header"
                     label="Welcome header"
@@ -108,7 +98,6 @@ const form = useForm({
                     fieldID="intro_section_header"
                     required
                 />
-
                 <InputLabel
                     for="welcome_section_paragraph"
                     value="Welcome paragraph"
@@ -124,10 +113,9 @@ const form = useForm({
                     placeholder="Here at our property we..."
                 />
                 <InputError :message="form.errors.welcome_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this description.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this description.">
                 <ImageInput
                     v-model="form.welcome_section_image"
                     :errorMessage="form.errors.welcome_section_image"
@@ -136,10 +124,10 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_welcome_section_image"
                     :originalImage="props.welcome_section_image"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

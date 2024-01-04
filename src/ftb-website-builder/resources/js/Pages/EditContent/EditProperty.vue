@@ -4,6 +4,7 @@ import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     property_name: String,
@@ -55,10 +56,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.property.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Enter the name of your property.
-                </p>
+            <FormSection prompt="Enter the name of your property.">
                 <LabelledInputPair
                     v-model="form.property_name"
                     label="Property name"
@@ -66,10 +64,9 @@ const form = useForm({
                     fieldID="property_name"
                     required
                 />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to serve as the logo for your property.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to serve as the logo for your property.">
                 <ImageInput
                     v-model="form.property_logo"
                     :errorMessage="form.errors.property_logo"
@@ -78,13 +75,9 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_property_logo"
                     :originalImage="props.property_logo"
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Enter the address of your property.
-                </p>
-
+            <FormSection prompt="Enter the address of your property.">
                 <LabelledInputPair
                     v-model="form.property_address_line_1"
                     showLabel
@@ -94,7 +87,6 @@ const form = useForm({
                     fieldID="property_address_line_1"
                     required
                 />
-
                 <LabelledInputPair
                     v-model="form.property_address_line_2"
                     showLabel
@@ -103,7 +95,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_address_line_2"
                     fieldID="property_address_line_2"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_address_area"
                     showLabel
@@ -113,7 +104,6 @@ const form = useForm({
                     fieldID="property_address_area"
                     required
                 />
-
                 <LabelledInputPair
                     v-model="form.property_address_country"
                     showLabel
@@ -123,7 +113,6 @@ const form = useForm({
                     fieldID="property_address_country"
                     required
                 />
-
                 <LabelledInputPair
                     v-model="form.property_address_postcode"
                     showLabel
@@ -133,13 +122,9 @@ const form = useForm({
                     fieldID="property_address_postcode"
                     required
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Enter your booking link. This should take users to a page where they can make a booking with your property.
-                </p>
-
+            <FormSection prompt="Enter your booking link. This should take users to a page where they can make a booking with your property.">
                 <LabelledInputPair
                     v-model="form.property_booking_link"
                     label="Booking link"
@@ -147,13 +132,9 @@ const form = useForm({
                     fieldID="property_booking_link"
                     required
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Enter a phone number and email address for your property.
-                </p>
-
+            <FormSection prompt="Enter a phone number and email address for your property.">
                 <LabelledInputPair
                     v-model="form.property_telephone"
                     showLabel
@@ -163,7 +144,6 @@ const form = useForm({
                     fieldID="property_telephone"
                     required
                 />
-
                 <LabelledInputPair
                     v-model="form.property_email"
                     showLabel
@@ -173,13 +153,9 @@ const form = useForm({
                     fieldID="property_email"
                     required
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Optionally, add links to any social media accounts you have for your property.
-                </p>
-
+            <FormSection prompt="Optionally, add links to any social media accounts you have for your property.">
                 <LabelledInputPair
                     v-model="form.property_facebook_link"
                     showLabel
@@ -188,7 +164,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_facebook_link"
                     fieldID="property_facebook_link"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_twitter_link"
                     showLabel
@@ -197,7 +172,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_twitter_link"
                     fieldID="property_twitter_link"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_instagram_link"
                     showLabel
@@ -206,7 +180,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_instagram_link"
                     fieldID="property_instagram_link"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_tripadvisor_link"
                     showLabel
@@ -215,7 +188,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_tripadvisor_link"
                     fieldID="property_tripadvisor_link"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_linkedin_link"
                     showLabel
@@ -224,7 +196,6 @@ const form = useForm({
                     :errorMessage="form.errors.property_linkedin_link"
                     fieldID="property_linkedin_link"
                 />
-
                 <LabelledInputPair
                     v-model="form.property_youtube_link"
                     showLabel
@@ -233,10 +204,10 @@ const form = useForm({
                     :errorMessage="form.errors.property_youtube_link"
                     fieldID="property_youtube_link"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

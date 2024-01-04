@@ -6,6 +6,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     rooms_page_section_header: String,
@@ -31,10 +32,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.rooms.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write a header to sit at the top of your Rooms page. Optionally, you can write a body paragraph giving potential customers an overview of the rooms you have available. This can be however long you want, although detailed information about each room would work better as room descriptions.
-                </p>
+            <FormSection prompt="Write a header to sit at the top of your Rooms page. Optionally, you can write a body paragraph giving potential customers an overview of the rooms you have available. This can be however long you want, although detailed information about each room would work better as room descriptions.">
                 <LabelledInputPair
                     v-model="form.rooms_page_section_header"
                     label="Page header"
@@ -43,7 +41,6 @@ const form = useForm({
                     fieldID="rooms_page_section_header"
                     required
                 />
-
                 <InputLabel
                     for="rooms_page_section_paragraph"
                     value="Rooms paragraph"
@@ -58,10 +55,9 @@ const form = useForm({
                     placeholder="Our rooms are..."
                 />
                 <InputError :message="form.errors.rooms_page_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this section.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this section.">
                 <ImageInput
                     v-model="form.rooms_page_section_image"
                     :errorMessage="form.errors.rooms_page_section_image"
@@ -70,10 +66,10 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_rooms_page_section_image"
                     :originalImage="props.rooms_page_section_image"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

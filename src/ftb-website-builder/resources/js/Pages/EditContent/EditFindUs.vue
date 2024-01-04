@@ -6,6 +6,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     find_us_page_section_header: String,
@@ -31,10 +32,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.findus.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write a header and a body paragraph telling potential customers how they can find your property and what they should do when they arrive. This can be however long you want, although if you want to add directions from specific places these should consider splitting them into individual directions listings.
-                </p>
+            <FormSection prompt="Write a header and a body paragraph telling potential customers how they can find your property and what they should do when they arrive. This can be however long you want, although if you want to add directions from specific places these should consider splitting them into individual directions listings.">
                 <LabelledInputPair
                     v-model="form.find_us_page_section_header"
                     label="Page header"
@@ -43,7 +41,6 @@ const form = useForm({
                     fieldID="find_us_page_section_header"
                     required
                 />
-
                 <InputLabel
                     for="find_us_page_section_paragraph"
                     value="Find Us paragraph"
@@ -59,10 +56,9 @@ const form = useForm({
                     placeholder="Our property can be found by..."
                 />
                 <InputError :message="form.errors.find_us_page_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this section.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this section.">
                 <ImageInput
                     v-model="form.find_us_page_section_image"
                     :errorMessage="form.errors.find_us_page_section_image"
@@ -71,10 +67,10 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_find_us_page_section_image"
                     :originalImage="props.find_us_page_section_image"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

@@ -5,6 +5,7 @@ import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import ColourPickerGridItem from "@/Components/Forms/ColourPickerGridItem.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -36,10 +37,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.website.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Select the theme colours for your website.
-                </p>
+            <FormSection prompt="Select the theme colours for your website.">
                 <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
                     <ColourPickerGridItem
                         v-model="form.primary_colour"
@@ -47,21 +45,18 @@ const form = useForm({
                         fieldID="primary_colour"
                         label="Primary colour"
                     />
-
                     <ColourPickerGridItem
                         v-model="form.secondary_colour"
                         :errorMessage="form.errors.secondary_colour"
                         fieldID="secondary_colour"
                         label="Secondary colour"
                     />
-
                     <ColourPickerGridItem
                         v-model="form.background_colour"
                         :errorMessage="form.errors.background_colour"
                         fieldID="background_colour"
                         label="Background colour"
                     />
-
                     <ColourPickerGridItem
                         v-model="form.text_colour"
                         :errorMessage="form.errors.text_colour"
@@ -69,12 +64,9 @@ const form = useForm({
                         label="Text colour"
                     />
                 </div>
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to customise the dividers in your website. Make sure to remove the background of your image if it is meant to be transparent.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to customise the dividers in your website. Make sure to remove the background of your image if it is meant to be transparent.">
                 <ImageInput
                     v-model="form.divider_art"
                     :errorMessage="form.errors.divider_art"
@@ -83,22 +75,19 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_divider_art"
                     :originalImage="props.divider_art"
                 />
-            </div>
+            </FormSection>
 
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Optionally, you can select a font family to be used accross your website.
-                </p>
+            <FormSection prompt="Optionally, you can select a font family to be used accross your website.">
                 <LabelledInputPair
                     v-model="form.font_family"
                     label="Font family"
                     :errorMessage="form.errors.font_family"
                     fieldID="font_family"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>

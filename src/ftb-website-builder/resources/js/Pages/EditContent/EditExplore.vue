@@ -6,6 +6,7 @@ import InputError from "@/Components/Forms/InputError.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
 
 const props = defineProps({
     explore_page_section_header: String,
@@ -31,10 +32,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.explore.update'))"
             class="space-y-8"
         >
-            <div class="space-y-2">
-                <p class="wb-subtitle p-2">
-                    Write a header to sit at the top of your explore page. Optionally, you can write a body paragraph telling customers what they can do while they stay at your property. This can be however long you want, although detailed information about each attraction would work better as attraction descriptions.
-                </p>
+            <FormSection prompt="Write a header to sit at the top of your explore page. Optionally, you can write a body paragraph telling customers what they can do while they stay at your property. This can be however long you want, although detailed information about each attraction would work better as attraction descriptions.">
                 <LabelledInputPair
                     v-model="form.explore_page_section_header"
                     label="Page header"
@@ -43,8 +41,6 @@ const form = useForm({
                     fieldID="explore_page_section_header"
                     required
                 />
-
-                <InputError :message="form.errors.explore_page_section_header" />
                 <InputLabel
                     for="explore_page_section_paragraph"
                     value="Explore paragraph"
@@ -59,10 +55,9 @@ const form = useForm({
                     placeholder="All explore our property..."
                 />
                 <InputError :message="form.errors.explore_page_section_paragraph" />
+            </FormSection>
 
-                <p class="wb-subtitle p-2">
-                    Optionally, you can attach an image to accompany this section.
-                </p>
+            <FormSection prompt="Optionally, you can attach an image to accompany this section.">
                 <ImageInput
                     v-model="form.explore_page_section_image"
                     :errorMessage="form.errors.explore_page_section_image"
@@ -71,10 +66,10 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_explore_page_section_image"
                     :originalImage="props.explore_page_section_image"
                 />
-            </div>
+            </FormSection>
 
             <SaveButton
-                :recently-successful="form.recentlySuccessful"
+                :recentlySuccessful="form.recentlySuccessful"
                 :processing="form.processing"
             />
         </form>
