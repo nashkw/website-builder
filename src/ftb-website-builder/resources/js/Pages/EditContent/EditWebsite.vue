@@ -9,6 +9,7 @@ import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import { ColorPicker } from 'vue-accessible-color-picker'
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -196,19 +197,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can select a font family to be used accross your website.
                 </p>
-                <InputLabel
-                    for="font_family"
-                    value="Font family"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="font_family"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.font_family"
-                    autocomplete="font_family"
-                    placeholder="Font family"
+                    label="Font family"
+                    :errorMessage="form.errors.font_family ?? ''"
+                    fieldID="font_family"
                 />
-                <InputError :message="form.errors.font_family" />
             </div>
 
             <div class="flex items-center gap-4">

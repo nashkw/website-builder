@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     about_page_section_header: String,
@@ -45,20 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header and a body paragraph telling customers all about your property. This can be however long you want, although if you write more than a few paragraphs you should consider splitting them into multiple sections.
                 </p>
-                <InputLabel
-                    for="about_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="about_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.about_page_section_header"
-                    required
-                    autocomplete="about_page_section_header"
+                    label="Page header"
                     placeholder="Our Story"
+                    :errorMessage="form.errors.about_page_section_header ?? ''"
+                    fieldID="about_page_section_header"
+                    required
                 />
-                <InputError :message="form.errors.about_page_section_header" />
+
                 <InputLabel
                     for="about_page_section_paragraph"
                     value="About paragraph"

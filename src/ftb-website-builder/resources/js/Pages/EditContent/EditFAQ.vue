@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     faq_page_section_header: String,
@@ -45,20 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header to sit at the top of your FAQ page. Optionally, you can write a body paragraph explaining your contact policies and where potential customers can go to answer their questions. This can be however long you want, but specific Q&As themselves should be added separately.
                 </p>
-                <InputLabel
-                    for="faq_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="faq_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.faq_page_section_header"
-                    required
-                    autocomplete="faq_page_section_header"
+                    label="Page header"
                     placeholder="Hear from our guests"
+                    :errorMessage="form.errors.faq_page_section_header ?? ''"
+                    fieldID="faq_page_section_header"
+                    required
                 />
-                <InputError :message="form.errors.faq_page_section_header" />
+
                 <InputLabel
                     for="faq_page_section_paragraph"
                     value="FAQ paragraph"

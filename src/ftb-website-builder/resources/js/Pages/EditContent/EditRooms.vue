@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     rooms_page_section_header: String,
@@ -45,20 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header to sit at the top of your Rooms page. Optionally, you can write a body paragraph giving potential customers an overview of the rooms you have available. This can be however long you want, although detailed information about each room would work better as room descriptions.
                 </p>
-                <InputLabel
-                    for="rooms_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="rooms_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.rooms_page_section_header"
-                    required
-                    autocomplete="rooms_page_section_header"
+                    label="Page header"
                     placeholder="Our Rooms"
+                    :errorMessage="form.errors.rooms_page_section_header ?? ''"
+                    fieldID="rooms_page_section_header"
+                    required
                 />
-                <InputError :message="form.errors.rooms_page_section_header" />
+
                 <InputLabel
                     for="rooms_page_section_paragraph"
                     value="Rooms paragraph"

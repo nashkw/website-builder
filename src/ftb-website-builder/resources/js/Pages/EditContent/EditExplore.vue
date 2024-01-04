@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     explore_page_section_header: String,
@@ -45,19 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header to sit at the top of your explore page. Optionally, you can write a body paragraph telling customers what they can do while they stay at your property. This can be however long you want, although detailed information about each attraction would work better as attraction descriptions.
                 </p>
-                <InputLabel
-                    for="explore_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="explore_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.explore_page_section_header"
+                    label="Page header"
+                    placeholder="Things to do"
+                    :errorMessage="form.errors.explore_page_section_header ?? ''"
+                    fieldID="explore_page_section_header"
                     required
-                    autocomplete="explore_page_section_header"
-                    placeholder="Our Story"
                 />
+
                 <InputError :message="form.errors.explore_page_section_header" />
                 <InputLabel
                     for="explore_page_section_paragraph"

@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     reviews_page_section_header: String,
@@ -45,20 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header to sit at the top of your Reviews page. Optionally, you can write a body paragraph telling potential customers what guests think of your property and your approach to feedback. This can be however long you want, but the reviews themselves should be added separately.
                 </p>
-                <InputLabel
-                    for="reviews_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="reviews_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.reviews_page_section_header"
-                    required
-                    autocomplete="reviews_page_section_header"
+                    label="Page header"
                     placeholder="Hear from our guests"
+                    :errorMessage="form.errors.reviews_page_section_header ?? ''"
+                    fieldID="reviews_page_section_header"
+                    required
                 />
-                <InputError :message="form.errors.reviews_page_section_header" />
+
                 <InputLabel
                     for="reviews_page_section_paragraph"
                     value="Reviews paragraph"

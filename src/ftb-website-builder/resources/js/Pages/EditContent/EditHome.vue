@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     cover_image_primary: String,
@@ -75,20 +75,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.
                 </p>
-                <InputLabel
-                    for="intro_section_header"
-                    value="Introduction header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="intro_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.intro_section_header"
-                    required
-                    autocomplete="intro_section_header"
+                    label="Introduction header"
                     placeholder="Introducing our property..."
+                    :errorMessage="form.errors.intro_section_header ?? ''"
+                    fieldID="intro_section_header"
+                    required
                 />
-                <InputError :message="form.errors.intro_section_header" />
+
                 <InputLabel
                     for="intro_section_paragraph"
                     value="Introduction paragraph"
@@ -136,20 +131,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a longer description to welcome the user to your website and tell them why they should make a booking with your property. This should be no more than a few paragraphs long.
                 </p>
-                <InputLabel
-                    for="welcome_section_header"
-                    value="Welcome header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="welcome_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.welcome_section_header"
-                    required
-                    autocomplete="welcome_section_header"
+                    label="Welcome header"
                     placeholder="Welcome to our property..."
+                    :errorMessage="form.errors.welcome_section_header ?? ''"
+                    fieldID="intro_section_header"
+                    required
                 />
-                <InputError :message="form.errors.welcome_section_header" />
+
                 <InputLabel
                     for="welcome_section_paragraph"
                     value="Welcome paragraph"

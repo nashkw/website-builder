@@ -2,12 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import FileInput from "@/Components/Forms/FileInput.vue";
 import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const props = defineProps({
     find_us_page_section_header: String,
@@ -45,20 +45,15 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Write a header and a body paragraph telling potential customers how they can find your property and what they should do when they arrive. This can be however long you want, although if you want to add directions from specific places these should consider splitting them into individual directions listings.
                 </p>
-                <InputLabel
-                    for="find_us_page_section_header"
-                    value="Page header"
-                    class="sr-only"
-                />
-                <TextInput
-                    id="find_us_page_section_header"
-                    type="text"
+                <LabelledInputPair
                     v-model="form.find_us_page_section_header"
-                    required
-                    autocomplete="find_us_page_section_header"
+                    label="Page header"
                     placeholder="How to find our property"
+                    :errorMessage="form.errors.find_us_page_section_header ?? ''"
+                    fieldID="find_us_page_section_header"
+                    required
                 />
-                <InputError :message="form.errors.find_us_page_section_header" />
+
                 <InputLabel
                     for="find_us_page_section_paragraph"
                     value="Find Us paragraph"
