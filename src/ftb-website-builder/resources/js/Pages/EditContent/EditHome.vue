@@ -1,6 +1,5 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
-import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -30,16 +29,6 @@ const form = useForm({
     remove_welcome_section_image: false,
 });
 
-const cover_image_primary = computed(() => {
-    return form.cover_image_primary ?? props.cover_image_primary
-});
-const intro_section_image = computed(() => {
-    return form.remove_intro_section_image ? null : form.intro_section_image ?? props.intro_section_image
-});
-const welcome_section_image = computed(() => {
-    return form.remove_welcome_section_image ? null : form.welcome_section_image ?? props.welcome_section_image
-});
-
 function submit() {
     form.post(route('edit.home.update'))
 }
@@ -61,10 +50,11 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.cover_image_primary"
-                    :currentImage="cover_image_primary"
                     :errorMessage="form.errors.cover_image_primary"
                     fieldTitle="cover image"
                     fieldID="cover_image_primary"
+                    :originalImage="props.cover_image_primary"
+                    notNullable
                 />
             </div>
 
@@ -102,7 +92,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.intro_section_image"
-                    :currentImage="intro_section_image"
                     :errorMessage="form.errors.intro_section_image"
                     fieldTitle="introduction image"
                     fieldID="intro_section_image"
@@ -145,7 +134,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.welcome_section_image"
-                    :currentImage="welcome_section_image"
                     :errorMessage="form.errors.welcome_section_image"
                     fieldTitle="welcome image"
                     fieldID="welcome_section_image"

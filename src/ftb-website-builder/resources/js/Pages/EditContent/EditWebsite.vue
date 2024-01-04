@@ -1,6 +1,5 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
-import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
@@ -26,23 +25,6 @@ const form = useForm({
     font_family: props.font_family,
 });
 
-const divider_art = computed(() => {
-    return form.remove_divider_art ? null : form.divider_art ?? props.divider_art;
-})
-
-function updatePrimaryColour (eventData) {
-    form.primary_colour = eventData.cssColor.replace('#', '');
-}
-function updateSecondaryColour (eventData) {
-    form.secondary_colour = eventData.cssColor.replace('#', '');
-}
-function updateBackgroundColour (eventData) {
-    form.background_colour = eventData.cssColor.replace('#', '');
-}
-function updateTextColour (eventData) {
-    form.text_colour = eventData.cssColor.replace('#', '');
-}
-
 function submit() {
     form.post(route('edit.website.update'))
 }
@@ -64,32 +46,28 @@ function submit() {
                 </p>
                 <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
                     <ColourPickerGridItem
-                        :modelValue="form.primary_colour"
-                        @update:modelValue="updatePrimaryColour"
+                        v-model="form.primary_colour"
                         :errorMessage="form.errors.primary_colour"
                         fieldID="primary_colour"
                         label="Primary colour"
                     />
 
                     <ColourPickerGridItem
-                        :modelValue="form.secondary_colour"
-                        @update:modelValue="updateSecondaryColour"
+                        v-model="form.secondary_colour"
                         :errorMessage="form.errors.secondary_colour"
                         fieldID="secondary_colour"
                         label="Secondary colour"
                     />
 
                     <ColourPickerGridItem
-                        :modelValue="form.background_colour"
-                        @update:modelValue="updateBackgroundColour"
+                        v-model="form.background_colour"
                         :errorMessage="form.errors.background_colour"
                         fieldID="background_colour"
                         label="Background colour"
                     />
 
                     <ColourPickerGridItem
-                        :modelValue="form.text_colour"
-                        @update:modelValue="updateTextColour"
+                        v-model="form.text_colour"
                         :errorMessage="form.errors.text_colour"
                         fieldID="text_colour"
                         label="Text colour"
@@ -103,7 +81,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.divider_art"
-                    :currentImage="divider_art"
                     :errorMessage="form.errors.divider_art"
                     fieldTitle="divider art"
                     fieldID="divider_art"

@@ -1,6 +1,5 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
-import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -20,10 +19,6 @@ const form = useForm({
     explore_page_section_image: null,
     remove_explore_page_section_image: false,
 });
-
-const explore_page_section_image = computed(() => {
-    return form.remove_explore_page_section_image ? null : form.explore_page_section_image ?? props.explore_page_section_image
-})
 
 function submit() {
     form.post(route('edit.explore.update'))
@@ -74,7 +69,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.explore_page_section_image"
-                    :currentImage="explore_page_section_image"
                     :errorMessage="form.errors.explore_page_section_image"
                     fieldTitle="section image"
                     fieldID="explore_page_section_image"

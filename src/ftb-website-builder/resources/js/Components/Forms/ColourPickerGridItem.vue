@@ -45,7 +45,7 @@ defineEmits(['update:modelValue']);
             default-format="hex"
             :visible-formats="['hex']"
             :id="fieldID"
-            @color-change="$emit('update:modelValue', $event)"
+            @color-change="$emit('update:modelValue', $event.cssColor.replace('#', ''))"
         />
         <InputError :message="errorMessage" />
     </div>

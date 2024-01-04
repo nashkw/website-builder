@@ -1,6 +1,5 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
-import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
@@ -45,10 +44,6 @@ const form = useForm({
     property_booking_link: props.property_booking_link,
 });
 
-const property_logo = computed(() => {
-    return form.remove_property_logo ? null : form.property_logo ?? props.property_logo
-})
-
 function submit() {
     form.post(route('edit.property.update'))
 }
@@ -81,7 +76,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.property_logo"
-                    :currentImage="property_logo"
                     :errorMessage="form.errors.property_logo"
                     fieldTitle="property logo"
                     fieldID="property_logo"

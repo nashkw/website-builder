@@ -1,6 +1,5 @@
 <script setup>
 import {Head, useForm} from "@inertiajs/vue3";
-import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -20,10 +19,6 @@ const form = useForm({
     reviews_page_section_image: null,
     remove_reviews_page_section_image: false,
 });
-
-const reviews_page_section_image = computed(() => {
-    return form.remove_reviews_page_section_image ? null : form.reviews_page_section_image ?? props.reviews_page_section_image
-})
 
 function submit() {
     form.post(route('edit.reviews.update'))
@@ -73,7 +68,6 @@ function submit() {
                 </p>
                 <ImageInput
                     v-model="form.reviews_page_section_image"
-                    :currentImage="reviews_page_section_image"
                     :errorMessage="form.errors.reviews_page_section_image"
                     fieldTitle="section image"
                     fieldID="reviews_page_section_image"

@@ -9,20 +9,16 @@ const props = defineProps({
     modelValue: {
         type: File,
     },
+    originalImage: {
+        type: String,
+        required: true,
+    },
     fieldID: {
         type: String,
         required: true,
     },
     fieldTitle: {
         type: String,
-        required: true,
-    },
-    originalImage: {
-        type: [String, null],
-        required: false,
-    },
-    currentImage: {
-        type: [String, File, null],
         required: true,
     },
     removeCurrentImage: {
@@ -32,6 +28,10 @@ const props = defineProps({
     errorMessage: {
         type: String,
         required: false,
+    },
+    notNullable: {
+        type: Boolean,
+        default: false,
     },
 });
 
@@ -50,11 +50,11 @@ defineEmits(['update:modelValue', 'update:removeCurrentImage']);
     />
     <InputError :message="errorMessage" />
     <ImagePreview
-        :modelValue="currentImage"
+        :image="removeCurrentImage ? null : modelValue ?? originalImage"
         :field-title="fieldTitle"
     />
     <label
-        v-if="isImage"
+        v-if="!notNullable && isImage"
         class="wb-secondary-button ml-2"
     >
         <Checkbox

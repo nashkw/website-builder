@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    modelValue: {
+    image: {
         type: [String, File, null],
         required: true,
     },
@@ -10,21 +10,21 @@ defineProps({
     }
 });
 
-const imagePreview = image => {
-    return typeof image === 'string' ? image : URL.createObjectURL(image);
+const imagePreview = img => {
+    return (typeof img === 'string') ? img : URL.createObjectURL(img);
 };
 </script>
 
 <template>
     <div
-        v-if="modelValue !== null"
+        v-if="image !== null"
         class="space-y-2 wb-text px-2"
     >
         <p>
             Current {{ fieldTitle }}:
         </p>
         <img
-            :src="imagePreview(modelValue)"
+            :src="imagePreview(image)"
             :alt="'Currently selected ' + fieldTitle + '.'"
             class="max-h-96"
         />
