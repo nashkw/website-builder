@@ -4,10 +4,9 @@ import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
-import FileInput from "@/Components/Forms/FileInput.vue";
-import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
+import ImageInput from "@/Components/Forms/ImageInput.vue";
 
 const props = defineProps({
     cover_image_primary: String,
@@ -60,14 +59,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Upload a cover image for your website.
                 </p>
-                <FileInput
-                    v-model="form.cover_image_primary"
-                    field-name="cover_image_primary"
-                />
-                <InputError :message="form.errors.cover_image_primary" />
-                <ImagePreview
-                    v-model="cover_image_primary"
-                    field-title="cover image"
+                <ImageInput
+                    :modelValue="form.cover_image_primary"
+                    :currentImage="cover_image_primary"
+                    :errorMessage="form.errors.cover_image_primary ?? ''"
+                    fieldTitle="cover image"
+                    fieldID="cover_image_primary"
                 />
             </div>
 
@@ -103,14 +100,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this introduction.
                 </p>
-                <FileInput
-                    v-model="form.intro_section_image"
-                    field-name="intro_section_image"
-                />
-                <InputError :message="form.errors.intro_section_image" />
-                <ImagePreview
-                    v-model="intro_section_image"
-                    field-title="introduction image"
+                <ImageInput
+                    :modelValue="form.intro_section_image"
+                    :currentImage="intro_section_image"
+                    :errorMessage="form.errors.intro_section_image ?? ''"
+                    fieldTitle="introduction image"
+                    fieldID="intro_section_image"
                 />
                 <label class="wb-secondary-button ml-2">
                     <Checkbox
@@ -159,14 +154,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this description.
                 </p>
-                <FileInput
-                    v-model="form.welcome_section_image"
-                    field-name="welcome_section_image"
-                />
-                <InputError :message="form.errors.welcome_section_image" />
-                <ImagePreview
-                    v-model="welcome_section_image"
-                    field-title="welcome image"
+                <ImageInput
+                    :modelValue="form.welcome_section_image"
+                    :currentImage="welcome_section_image"
+                    :errorMessage="form.errors.welcome_section_image ?? ''"
+                    fieldTitle="welcome image"
+                    fieldID="welcome_section_image"
                 />
                 <label class="wb-secondary-button ml-2">
                     <Checkbox

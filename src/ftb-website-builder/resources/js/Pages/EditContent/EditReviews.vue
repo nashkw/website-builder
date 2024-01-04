@@ -4,10 +4,9 @@ import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
-import FileInput from "@/Components/Forms/FileInput.vue";
-import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
+import ImageInput from "@/Components/Forms/ImageInput.vue";
 
 const props = defineProps({
     reviews_page_section_header: String,
@@ -72,14 +71,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to accompany this section.
                 </p>
-                <FileInput
-                    v-model="form.reviews_page_section_image"
-                    field-name="reviews_page_section_image"
-                />
-                <InputError :message="form.errors.reviews_page_section_image" />
-                <ImagePreview
-                    v-model="reviews_page_section_image"
-                    field-title="section image"
+                <ImageInput
+                    :modelValue="form.reviews_page_section_image"
+                    :currentImage="reviews_page_section_image"
+                    :errorMessage="form.errors.reviews_page_section_image ?? ''"
+                    fieldTitle="section image"
+                    fieldID="reviews_page_section_image"
                 />
                 <label class="wb-secondary-button ml-2">
                     <Checkbox

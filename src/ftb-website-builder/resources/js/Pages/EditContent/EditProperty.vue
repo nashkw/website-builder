@@ -2,11 +2,9 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import InputError from "@/Components/Forms/InputError.vue";
-import FileInput from "@/Components/Forms/FileInput.vue";
-import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
+import ImageInput from "@/Components/Forms/ImageInput.vue";
 
 const props = defineProps({
     property_name: String,
@@ -81,14 +79,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to serve as the logo for your property.
                 </p>
-                <FileInput
-                    v-model="form.property_logo"
-                    field-name="property_logo"
-                />
-                <InputError :message="form.errors.property_logo" />
-                <ImagePreview
-                    v-model="property_logo"
-                    field-title="property logo"
+                <ImageInput
+                    :modelValue="form.property_logo"
+                    :currentImage="property_logo"
+                    :errorMessage="form.errors.property_logo ?? ''"
+                    fieldTitle="property logo"
+                    fieldID="property_logo"
                 />
                 <label
                     v-if="props.property_logo || form.property_logo"

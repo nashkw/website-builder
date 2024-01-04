@@ -2,14 +2,12 @@
 import {Head, useForm} from "@inertiajs/vue3";
 import {computed} from 'vue'
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
-import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
-import FileInput from "@/Components/Forms/FileInput.vue";
-import ImagePreview from "@/Components/Forms/ImagePreview.vue";
 import Checkbox from "@/Components/Forms/Checkbox.vue";
 import { ColorPicker } from 'vue-accessible-color-picker'
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
+import ImageInput from "@/Components/Forms/ImageInput.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -166,14 +164,12 @@ function submit() {
                 <p class="wb-subtitle p-2">
                     Optionally, you can attach an image to customise the dividers in your website. Make sure to remove the background of your image if it is meant to be transparent.
                 </p>
-                <FileInput
-                    v-model="form.divider_art"
-                    field-name="divider_art"
-                />
-                <InputError :message="form.errors.divider_art" />
-                <ImagePreview
-                    v-model="divider_art"
-                    field-title="divider art"
+                <ImageInput
+                    :modelValue="form.divider_art"
+                    :currentImage="divider_art"
+                    :errorMessage="form.errors.divider_art ?? ''"
+                    fieldTitle="divider art"
+                    fieldID="divider_art"
                 />
                 <label
                     v-if="props.divider_art || form.divider_art"
