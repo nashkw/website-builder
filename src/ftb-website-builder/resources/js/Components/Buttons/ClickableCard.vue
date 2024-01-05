@@ -19,6 +19,10 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    hubCard: {
+        type: Boolean,
+        default: false,
+    },
 });
 </script>
 
@@ -26,7 +30,10 @@ const props = defineProps({
     <a
         :href="href"
     >
-        <div class="wb-card space-y-4">
+        <div
+            class="wb-card space-y-4"
+            :class="hubCard ? 'wb-hub-card' : ''"
+        >
             <div class="space-y-2">
                 <h2 class="wb-subtitle">
                     {{ heading }}

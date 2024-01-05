@@ -131,6 +131,7 @@ const form = useForm({
                     :errorMessage="form.errors.property_booking_link"
                     fieldID="property_booking_link"
                     required
+                    inputType="url"
                 />
             </FormSection>
 
@@ -152,6 +153,7 @@ const form = useForm({
                     :errorMessage="form.errors.property_email"
                     fieldID="property_email"
                     required
+                    inputType="email"
                 />
             </FormSection>
 
@@ -163,6 +165,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_facebook_link"
                     fieldID="property_facebook_link"
+                    inputType="url"
                 />
                 <LabelledInputPair
                     v-model="form.property_twitter_link"
@@ -171,6 +174,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_twitter_link"
                     fieldID="property_twitter_link"
+                    inputType="url"
                 />
                 <LabelledInputPair
                     v-model="form.property_instagram_link"
@@ -179,6 +183,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_instagram_link"
                     fieldID="property_instagram_link"
+                    inputType="url"
                 />
                 <LabelledInputPair
                     v-model="form.property_tripadvisor_link"
@@ -187,6 +192,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_tripadvisor_link"
                     fieldID="property_tripadvisor_link"
+                    inputType="url"
                 />
                 <LabelledInputPair
                     v-model="form.property_linkedin_link"
@@ -195,6 +201,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_linkedin_link"
                     fieldID="property_linkedin_link"
+                    inputType="url"
                 />
                 <LabelledInputPair
                     v-model="form.property_youtube_link"
@@ -203,6 +210,7 @@ const form = useForm({
                     labelClass="w-36"
                     :errorMessage="form.errors.property_youtube_link"
                     fieldID="property_youtube_link"
+                    inputType="url"
                 />
             </FormSection>
 

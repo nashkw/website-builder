@@ -36,6 +36,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    inputType: {
+        type: String,
+        required: false,
+    },
 });
 
 defineEmits(['update:modelValue']);
@@ -51,7 +55,7 @@ defineEmits(['update:modelValue']);
         />
         <TextInput
             :id="fieldID"
-            type="text"
+            :type="inputType ?? 'text'"
             :modelValue="props.modelValue"
             @update:modelValue="$emit('update:modelValue', $event)"
             :autocomplete="fieldID"

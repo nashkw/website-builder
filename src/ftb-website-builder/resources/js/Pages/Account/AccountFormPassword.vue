@@ -1,10 +1,9 @@
 <script setup>
-import InputError from '@/Components/Forms/InputError.vue';
-import InputLabel from '@/Components/Forms/InputLabel.vue';
-import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
+import FormSection from "@/Components/Structural/FormSection.vue";
+import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -48,49 +47,38 @@ const updatePassword = () => {
             @submit.prevent="updatePassword"
             class="space-y-6"
         >
-            <div class="space-y-2">
-                <InputLabel
-                    for="current_password"
-                    value="Current Password"
-                />
-                <TextInput
-                    id="current_password"
-                    ref="currentPasswordInput"
+            <FormSection>
+                <LabelledInputPair
                     v-model="form.current_password"
-                    type="password"
-                    autocomplete="current-password"
+                    showLabel
+                    label="Current Password"
+                    labelClass="w-32"
+                    fieldID="current_password"
+                    :errorMessage="form.errors.current_password"
+                    required
+                    inputType="password"
                 />
-                <InputError :message="form.errors.current_password" />
-            </div>
-
-            <div class="space-y-2">
-                <InputLabel
-                    for="password"
-                    value="New Password"
-                />
-                <TextInput
-                    id="password"
-                    ref="passwordInput"
+                <LabelledInputPair
                     v-model="form.password"
-                    type="password"
-                    autocomplete="new-password"
+                    showLabel
+                    label="New Password"
+                    labelClass="w-32"
+                    fieldID="password"
+                    :errorMessage="form.errors.password"
+                    required
+                    inputType="password"
                 />
-                <InputError :message="form.errors.password" />
-            </div>
-
-            <div class="space-y-2">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-                <TextInput
-                    id="password_confirmation"
+                <LabelledInputPair
                     v-model="form.password_confirmation"
-                    type="password"
-                    autocomplete="new-password"
+                    showLabel
+                    label="Confirm Password"
+                    labelClass="w-32"
+                    fieldID="password_confirmation"
+                    :errorMessage="form.errors.password_confirmation"
+                    required
+                    inputType="password"
                 />
-                <InputError :message="form.errors.password_confirmation" />
-            </div>
+            </FormSection>
 
             <SaveButton
                 :recently-successful="form.recentlySuccessful"
