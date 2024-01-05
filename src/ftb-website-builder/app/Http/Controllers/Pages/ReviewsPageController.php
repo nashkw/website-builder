@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\ReviewsPageUpdateRequest;
+use App\Models\ReviewsPage\Review;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -44,14 +47,9 @@ class ReviewsPageController extends Controller
     /**
      * Update the user's generated site reviews page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(ReviewsPageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'reviews_page_section_header' => ['required', 'string', 'max:255'],
-            'reviews_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
-            'reviews_page_section_image' => ['nullable', 'image'],
-            'remove_reviews_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $reviewsPage = User::find($request->user()->id)->property->reviewsPage;
         $data = $request->all();
@@ -64,6 +62,20 @@ class ReviewsPageController extends Controller
             $reviewsPage,
             $data
         );
+
+        foreach ($data['reviews'] as $review) {
+            $existingReview = Review::firstOrCreate(['id' => $review['id']]);
+
+            if($review['review_date']) {
+                $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
+            }
+            unset($review['id']);
+            unset($review['property_id']);
+
+            $existingReview->fill($review);
+            $existingReview->save();
+        }
+        unset($data['reviews']);
 
         $reviewsPage->fill($data);
         $reviewsPage->save();

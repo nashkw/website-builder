@@ -12,6 +12,7 @@ const props = defineProps({
     reviews_page_section_header: String,
     reviews_page_section_paragraph: String,
     reviews_page_section_image: String,
+    reviews: Object,
 });
 
 const form = useForm({
@@ -19,6 +20,7 @@ const form = useForm({
     reviews_page_section_paragraph: props.reviews_page_section_paragraph,
     reviews_page_section_image: null,
     remove_reviews_page_section_image: false,
+    reviews: props.reviews,
 });
 </script>
 
@@ -65,6 +67,50 @@ const form = useForm({
                     fieldID="reviews_page_section_image"
                     v-model:removeCurrentImage="form.remove_reviews_page_section_image"
                     :originalImage="props.reviews_page_section_image"
+                />
+            </FormSection>
+
+            <FormSection
+                v-for="(review, index) in form.reviews"
+                prompt="Add a review of your property that a previous guest has made."
+            >
+                <LabelledInputPair
+                    v-model="review.review_quote"
+                    showLabel
+                    label="Review text"
+                    labelClass="w-28"
+                    :errorMessage="form.errors['reviews.' + index + '.review_quote']"
+                    :fieldID="'review_quote_' + review.id"
+                    required
+                />
+                <LabelledInputPair
+                    v-model="review.reviewer_name"
+                    showLabel
+                    label="Reviewer name"
+                    labelClass="w-28"
+                    :errorMessage="form.errors['reviews.' + index + '.reviewer_name']"
+                    :fieldID="'reviewer_name_' + review.id"
+                    required
+                />
+                <LabelledInputPair
+                    v-model="review.star_rating"
+                    showLabel
+                    label="Star rating"
+                    labelClass="w-28"
+                    placeholder="1-10"
+                    :errorMessage="form.errors['reviews.' + index + '.star_rating']"
+                    :fieldID="'star_rating_' + review.id"
+                    inputType="number"
+                />
+                <LabelledInputPair
+                    v-model="review.review_date"
+                    showLabel
+                    label="Review date"
+                    labelClass="w-28"
+                    placeholder="1-10"
+                    :errorMessage="form.errors['reviews.' + index + '.review_date']"
+                    :fieldID="'review_date_' + review.id"
+                    inputType="month"
                 />
             </FormSection>
 
