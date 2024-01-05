@@ -100,7 +100,7 @@ const form = useForm({
                     placeholder="1-10"
                     :errorMessage="form.errors['reviews.' + index + '.star_rating']"
                     :fieldID="'star_rating_' + review.id"
-                    inputType="number"
+                    inputType="rating"
                 />
                 <LabelledInputPair
                     v-model="review.review_date"

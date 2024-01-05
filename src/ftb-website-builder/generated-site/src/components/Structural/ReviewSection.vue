@@ -51,7 +51,7 @@ const props = defineProps({
             </div>
             <StarRating
                 v-if="rating"
-                :rating="rating / 2"
+                :rating="rating"
                 :read-only="true"
                 :increment="0.5"
                 :show-rating="false"

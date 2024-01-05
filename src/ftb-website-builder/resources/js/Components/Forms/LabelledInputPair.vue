@@ -2,10 +2,11 @@
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import TextInput from "@/Components/Forms/TextInput.vue";
 import InputError from "@/Components/Forms/InputError.vue";
+import RatingInput from "@/Components/Forms/RatingInput.vue";
 
 const props = defineProps({
     modelValue: {
-        type: [String, null],
+        type: [String, Number, null],
         required: true,
     },
     fieldID: {
@@ -53,7 +54,13 @@ defineEmits(['update:modelValue']);
             :valueClass="showLabel ? 'wb-input-label ' + labelClass : ''"
             :class="showLabel ? '' : 'sr-only'"
         />
+        <RatingInput
+            v-if="inputType === 'rating'"
+            :modelValue="modelValue"
+            @update:modelValue="$emit('update:modelValue', $event)"
+        />
         <TextInput
+            v-else
             :id="fieldID"
             :type="inputType ?? 'text'"
             :modelValue="props.modelValue"

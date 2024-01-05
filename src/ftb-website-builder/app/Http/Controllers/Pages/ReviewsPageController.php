@@ -66,6 +66,9 @@ class ReviewsPageController extends Controller
         foreach ($data['reviews'] as $review) {
             $existingReview = Review::firstOrCreate(['id' => $review['id']]);
 
+            if($review['star_rating']) {
+                $review['star_rating'] = $review['star_rating'] * 2;
+            }
             if($review['review_date']) {
                 $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
             }
@@ -90,7 +93,12 @@ class ReviewsPageController extends Controller
 
         $reviews = [];
         foreach ($reviewsPage->reviews as $review) {
-            $reviews[] = $review->toArray();
+            $reviewData = $review->toArray();
+            if($reviewData['star_rating']) {
+                $reviewData['star_rating'] = $reviewData['star_rating'] / 2;
+            }
+            $reviews[] = $reviewData;
+
         }
         $data['reviews'] = $reviews;
 
