@@ -45,7 +45,7 @@ const updatePassword = () => {
 
         <form
             @submit.prevent="updatePassword"
-            class="space-y-6"
+            class="space-y-6 flex flex-col w-full"
         >
             <FormSection>
                 <LabelledInputPair

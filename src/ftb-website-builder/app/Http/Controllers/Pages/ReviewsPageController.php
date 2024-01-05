@@ -40,7 +40,7 @@ class ReviewsPageController extends Controller
     {
         return Inertia::render(
             'EditContent/EditReviews',
-            $this->getReviewsPageData($request->user()->id)
+            $this->getReviewsPageData($request->user()->id, true)
         );
     }
 
@@ -86,7 +86,7 @@ class ReviewsPageController extends Controller
         return Redirect::route('edit.reviews');
     }
 
-    private function getReviewsPageData(int $userID): array
+    private function getReviewsPageData(int $userID, bool $formatDate = false): array
     {
         $reviewsPage = User::find($userID)->property->reviewsPage;
         $data = $reviewsPage->toArray();
@@ -96,6 +96,9 @@ class ReviewsPageController extends Controller
             $reviewData = $review->toArray();
             if($reviewData['star_rating']) {
                 $reviewData['star_rating'] = $reviewData['star_rating'] / 2;
+            }
+            if($reviewData['review_date'] && $formatDate) {
+                $reviewData['review_date'] = Carbon::parse($reviewData['review_date'])->format('Y-m');
             }
             $reviews[] = $reviewData;
 

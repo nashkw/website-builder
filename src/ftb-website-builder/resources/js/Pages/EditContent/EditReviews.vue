@@ -70,48 +70,52 @@ const form = useForm({
                 />
             </FormSection>
 
-            <FormSection
-                v-for="(review, index) in form.reviews"
-                prompt="Add a review of your property that a previous guest has made."
-            >
-                <LabelledInputPair
-                    v-model="review.review_quote"
-                    showLabel
-                    label="Review text"
-                    labelClass="w-28"
-                    :errorMessage="form.errors['reviews.' + index + '.review_quote']"
-                    :fieldID="'review_quote_' + review.id"
-                    required
-                />
-                <LabelledInputPair
-                    v-model="review.reviewer_name"
-                    showLabel
-                    label="Reviewer name"
-                    labelClass="w-28"
-                    :errorMessage="form.errors['reviews.' + index + '.reviewer_name']"
-                    :fieldID="'reviewer_name_' + review.id"
-                    required
-                />
-                <LabelledInputPair
-                    v-model="review.star_rating"
-                    showLabel
-                    label="Star rating"
-                    labelClass="w-28"
-                    placeholder="1-10"
-                    :errorMessage="form.errors['reviews.' + index + '.star_rating']"
-                    :fieldID="'star_rating_' + review.id"
-                    inputType="rating"
-                />
-                <LabelledInputPair
-                    v-model="review.review_date"
-                    showLabel
-                    label="Review date"
-                    labelClass="w-28"
-                    placeholder="1-10"
-                    :errorMessage="form.errors['reviews.' + index + '.review_date']"
-                    :fieldID="'review_date_' + review.id"
-                    inputType="month"
-                />
+            <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
+                <div class="space-y-4">
+                    <div
+                        v-for="(review, index) in form.reviews"
+                        class="wb-card space-y-2"
+                    >
+                        <LabelledInputPair
+                            v-model="review.review_quote"
+                            showLabel
+                            label="Review text"
+                            labelClass="w-28"
+                            :errorMessage="form.errors['reviews.' + index + '.review_quote']"
+                            :fieldID="'review_quote_' + review.id"
+                            required
+                        />
+                        <LabelledInputPair
+                            v-model="review.reviewer_name"
+                            showLabel
+                            label="Reviewer name"
+                            labelClass="w-28"
+                            :errorMessage="form.errors['reviews.' + index + '.reviewer_name']"
+                            :fieldID="'reviewer_name_' + review.id"
+                            required
+                        />
+                        <LabelledInputPair
+                            v-model="review.star_rating"
+                            showLabel
+                            label="Star rating"
+                            labelClass="w-28"
+                            placeholder="1-10"
+                            :errorMessage="form.errors['reviews.' + index + '.star_rating']"
+                            :fieldID="'star_rating_' + review.id"
+                            inputType="rating"
+                        />
+                        <LabelledInputPair
+                            v-model="review.review_date"
+                            showLabel
+                            label="Review date"
+                            labelClass="w-28"
+                            placeholder="2024-01"
+                            :errorMessage="form.errors['reviews.' + index + '.review_date']"
+                            :fieldID="'review_date_' + review.id"
+                            inputType="month"
+                        />
+                    </div>
+                </div>
             </FormSection>
 
             <SaveButton

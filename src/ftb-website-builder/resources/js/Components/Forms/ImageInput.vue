@@ -10,7 +10,7 @@ const props = defineProps({
         type: File,
     },
     originalImage: {
-        type: String,
+        type: [String, null],
         required: true,
     },
     fieldID: {

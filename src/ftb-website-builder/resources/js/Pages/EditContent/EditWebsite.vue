@@ -37,7 +37,7 @@ const form = useForm({
             @submit.prevent="form.post(route('edit.website.update'))"
             class="space-y-8"
         >
-            <FormSection prompt="Select the theme colours for your website.">
+            <FormSection prompt="Select the theme colours for your website. Make sure that the primary, secondary, and text colours will stand out against the background colour.">
                 <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
                     <ColourPickerGridItem
                         v-model="form.primary_colour"
