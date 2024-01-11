@@ -4,7 +4,7 @@ import InputLabel from "@/Components/Forms/InputLabel.vue";
 
 defineProps({
     modelValue: {
-        type: File,
+        type: [File, String],
     },
     fieldName: {
         type: String,

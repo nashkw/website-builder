@@ -13,7 +13,7 @@ const props = defineProps({
     reviews_page_section_header: String,
     reviews_page_section_paragraph: String,
     reviews_page_section_image: String,
-    reviews: Object,
+    reviews: Array,
 });
 
 const form = useForm({

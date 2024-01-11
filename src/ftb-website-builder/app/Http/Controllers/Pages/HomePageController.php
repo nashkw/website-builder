@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\HomePageUpdateRequest;
+use App\Models\HomePage\SecondaryCoverImage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -44,19 +47,9 @@ class HomePageController extends Controller
     /**
      * Update the user's generated site home page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(HomePageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'cover_image_primary' => ['nullable', 'image'],
-            'intro_section_header' => ['required', 'string', 'max:255'],
-            'intro_section_paragraph' => ['required', 'string', 'max:65535'],
-            'intro_section_image' => ['nullable', 'image'],
-            'remove_intro_section_image' => ['required', 'boolean'],
-            'welcome_section_header' => ['required', 'string', 'max:255'],
-            'welcome_section_paragraph' => ['required', 'string', 'max:65535'],
-            'welcome_section_image' => ['nullable', 'image'],
-            'remove_welcome_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $homePage = User::find($request->user()->id)->property->homePage;
         $data = $request->all();
@@ -85,6 +78,36 @@ class HomePageController extends Controller
             $homePage,
             $data
         );
+
+        if($request->has('secondary_cover_images_to_remove')) {
+            foreach ($data['secondary_cover_images_to_remove'] as $coverImageID) {
+                $coverImage = SecondaryCoverImage::find($coverImageID);
+                ControllerServices::deleteImage('secondary_cover_image', $coverImage);
+                $coverImage->delete();
+            }
+            unset($data['secondary_cover_images_to_remove']);
+        }
+
+        foreach ($data['secondary_cover_images'] as $coverImage) {
+            if($coverImage['id']) {
+                $existingCoverImage = SecondaryCoverImage::find($coverImage['id']);
+            } else {
+                $existingCoverImage = new SecondaryCoverImage;
+                $existingCoverImage->property_id = $homePage->property_id;
+            }
+
+            if(is_file($coverImage['secondary_cover_image'])) {
+                $filepath = Storage::disk("public")->putFile('images/coverImageSecondary/', $coverImage['secondary_cover_image']);
+                $coverImage['secondary_cover_image'] = $filepath;
+
+                unset($coverImage['id']);
+                unset($coverImage['property_id']);
+
+                $existingCoverImage->fill($coverImage);
+                $existingCoverImage->save();
+            }
+        }
+        unset($data['secondary_cover_images']);
 
         $homePage->fill($data);
         $homePage->save();

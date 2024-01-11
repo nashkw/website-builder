@@ -7,6 +7,7 @@ import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 
 const props = defineProps({
     cover_image_primary: String,
@@ -16,6 +17,7 @@ const props = defineProps({
     welcome_section_header: String,
     welcome_section_paragraph: String,
     welcome_section_image: String,
+    secondary_cover_images: Array,
 });
 
 const form = useForm({
@@ -28,7 +30,23 @@ const form = useForm({
     welcome_section_paragraph: props.welcome_section_paragraph,
     welcome_section_image: null,
     remove_welcome_section_image: false,
+    secondary_cover_images: props.secondary_cover_images,
+    secondary_cover_images_to_remove: [],
 });
+
+function addCoverImage() {
+    form.secondary_cover_images.push({
+        id: null,
+        secondary_cover_image: null,
+    });
+}
+
+function removeCoverImage(index) {
+    if(form.secondary_cover_images[index].id) {
+        form.secondary_cover_images_to_remove.push(form.secondary_cover_images[index].id);
+    }
+    form.secondary_cover_images.splice(index, 1);
+}
 </script>
 
 <template>
@@ -50,6 +68,35 @@ const form = useForm({
                     :originalImage="props.cover_image_primary"
                     notNullable
                 />
+            </FormSection>
+
+            <FormSection prompt="Optionally, you can add more cover images for your website. These will be put into a slider that will rotate between all available cover images.">
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <div
+                        v-for="(coverImage, index) in form.secondary_cover_images"
+                        class="wb-card space-y-2"
+                    >
+                        <ImageInput
+                            v-model="coverImage.secondary_cover_image"
+                            :errorMessage="form.errors['secondary_cover_images.' + index + '.secondary_cover_image']"
+                            fieldTitle="secondary cover image"
+                            :fieldID="'secondary_cover_image_' + index"
+                            :originalImage="typeof(coverImage.secondary_cover_image) === String ? coverImage.secondary_cover_image : null"
+                            notNullable
+                        />
+                        <div class="flex w-full justify-end pt-2">
+                            <PlusOrCrossButton
+                                v-on:click="removeCoverImage(index)"
+                                text="Remove cover image"
+                                isCross
+                            />
+                        </div>
+                    </div>
+                    <PlusOrCrossButton
+                        v-on:click="addCoverImage"
+                        text="Add cover image"
+                    />
+                </div>
             </FormSection>
 
             <FormSection prompt="Write an attention grabbing tag-line, and then a brief paragraph introducing your property. This should be no more than a few sentences long.">

@@ -7,7 +7,7 @@ import {computed} from "vue";
 
 const props = defineProps({
     modelValue: {
-        type: File,
+        type: [File, String],
     },
     originalImage: {
         type: [String, null],
@@ -55,7 +55,7 @@ defineEmits(['update:modelValue', 'update:removeCurrentImage']);
     />
     <label
         v-if="!notNullable && isImage"
-        class="wb-secondary-button ml-2"
+        class="wb-secondary-button ml-2 flex w-fit"
     >
         <Checkbox
             name="Remove current image"
@@ -67,7 +67,7 @@ defineEmits(['update:modelValue', 'update:removeCurrentImage']);
             No image selected. Use saved image?
         </span>
         <span v-else-if="isImage">
-            Remove current image
+            Remove current image?
         </span>
     </label>
 </template>

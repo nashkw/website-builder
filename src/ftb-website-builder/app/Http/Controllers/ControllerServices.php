@@ -16,7 +16,7 @@ class ControllerServices
         return null;
     }
 
-    private static function deleteImage (string $field, Model $currentData): void
+    public static function deleteImage (string $field, Model $currentData): void
     {
         if ($currentData[$field]) {
             Storage::disk("public")->delete($currentData[$field]);
