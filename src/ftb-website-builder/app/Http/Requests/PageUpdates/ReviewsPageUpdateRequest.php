@@ -18,10 +18,12 @@ class ReviewsPageUpdateRequest extends FormRequest
             'reviews_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'reviews_page_section_image' => ['nullable', 'image'],
             'remove_reviews_page_section_image' => ['required', 'boolean'],
+            'reviews' => ['nullable', 'array'],
             'reviews.*.review_quote' => ['required', 'string', 'max:1000'],
             'reviews.*.reviewer_name' => ['required', 'string', 'max:255'],
             'reviews.*.star_rating' => ['nullable', 'numeric', 'min:0', 'max:10'],
             'reviews.*.review_date' => ['nullable', 'date'],
+            'reviews_to_remove' => ['nullable', 'array'],
         ];
     }
 

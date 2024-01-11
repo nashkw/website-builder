@@ -63,8 +63,18 @@ class ReviewsPageController extends Controller
             $data
         );
 
+        foreach ($data['reviews_to_remove'] as $reviewID) {
+            Review::find($reviewID)->delete();
+        }
+        unset($data['reviews_to_remove']);
+
         foreach ($data['reviews'] as $review) {
-            $existingReview = Review::firstOrCreate(['id' => $review['id']]);
+            if($review['id']) {
+                $existingReview = Review::find($review['id']);
+            } else {
+                $existingReview = new Review;
+                $existingReview->property_id = $reviewsPage->property_id;
+            }
 
             if($review['star_rating']) {
                 $review['star_rating'] = $review['star_rating'] * 2;
@@ -72,6 +82,7 @@ class ReviewsPageController extends Controller
             if($review['review_date']) {
                 $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
             }
+
             unset($review['id']);
             unset($review['property_id']);
 

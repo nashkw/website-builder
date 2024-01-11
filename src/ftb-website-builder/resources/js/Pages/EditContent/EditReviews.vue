@@ -7,6 +7,7 @@ import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 
 const props = defineProps({
     reviews_page_section_header: String,
@@ -21,7 +22,25 @@ const form = useForm({
     reviews_page_section_image: null,
     remove_reviews_page_section_image: false,
     reviews: props.reviews,
+    reviews_to_remove: [],
 });
+
+function addReview() {
+    form.reviews.push({
+        id: null,
+        review_quote: null,
+        reviewer_name: null,
+        star_rating: null,
+        review_date: null,
+    });
+}
+
+function removeReview(index) {
+    if(form.reviews[index].id) {
+        form.reviews_to_remove.push(form.reviews[index].id);
+    }
+    form.reviews.splice(index, 1);
+}
 </script>
 
 <template>
@@ -71,7 +90,7 @@ const form = useForm({
             </FormSection>
 
             <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
-                <div class="space-y-4">
+                <div class="flex flex-col gap-4 justify-center items-center">
                     <div
                         v-for="(review, index) in form.reviews"
                         class="wb-card space-y-2"
@@ -82,7 +101,7 @@ const form = useForm({
                             label="Review text"
                             labelClass="w-28"
                             :errorMessage="form.errors['reviews.' + index + '.review_quote']"
-                            :fieldID="'review_quote_' + review.id"
+                            :fieldID="'review_quote_' + index"
                             required
                         />
                         <LabelledInputPair
@@ -91,7 +110,7 @@ const form = useForm({
                             label="Reviewer name"
                             labelClass="w-28"
                             :errorMessage="form.errors['reviews.' + index + '.reviewer_name']"
-                            :fieldID="'reviewer_name_' + review.id"
+                            :fieldID="'reviewer_name_' + index"
                             required
                         />
                         <LabelledInputPair
@@ -101,7 +120,7 @@ const form = useForm({
                             labelClass="w-28"
                             placeholder="1-10"
                             :errorMessage="form.errors['reviews.' + index + '.star_rating']"
-                            :fieldID="'star_rating_' + review.id"
+                            :fieldID="'star_rating_' + index"
                             inputType="rating"
                         />
                         <LabelledInputPair
@@ -111,10 +130,21 @@ const form = useForm({
                             labelClass="w-28"
                             placeholder="2024-01"
                             :errorMessage="form.errors['reviews.' + index + '.review_date']"
-                            :fieldID="'review_date_' + review.id"
+                            :fieldID="'review_date_' + index"
                             inputType="month"
                         />
+                        <div class="flex w-full justify-end pt-2">
+                            <PlusOrCrossButton
+                                v-on:click="removeReview(index)"
+                                text="Remove review"
+                                isCross
+                            />
+                        </div>
                     </div>
+                    <PlusOrCrossButton
+                        v-on:click="addReview"
+                        text="Add review"
+                    />
                 </div>
             </FormSection>
 
