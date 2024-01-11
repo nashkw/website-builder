@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {Head, router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -47,6 +47,12 @@ function removeCoverImage(index) {
     }
     form.secondary_cover_images.splice(index, 1);
 }
+
+router.on('success', (event) => {
+    // reset secondary cover image fields when form is submitted successfully
+    form.secondary_cover_images = props.secondary_cover_images;
+    form.secondary_cover_images_to_remove = [];
+})
 </script>
 
 <template>
