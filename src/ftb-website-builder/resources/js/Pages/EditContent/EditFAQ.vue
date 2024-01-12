@@ -41,7 +41,7 @@ function removeQuestionAndAnswer(index) {
 }
 
 router.on('success', (event) => {
-    // reset review fields when form is submitted successfully
+    // reset Q&A fields when form is submitted successfully
     form.questions_and_answers = props.questions_and_answers;
     form.questions_and_answers_to_remove = [];
 })

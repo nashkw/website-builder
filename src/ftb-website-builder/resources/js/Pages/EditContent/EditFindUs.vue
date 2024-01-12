@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {Head, router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -7,11 +7,13 @@ import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 
 const props = defineProps({
     find_us_page_section_header: String,
     find_us_page_section_paragraph: String,
     find_us_page_section_image: String,
+    directions: Array,
 });
 
 const form = useForm({
@@ -19,7 +21,30 @@ const form = useForm({
     find_us_page_section_paragraph: props.find_us_page_section_paragraph,
     find_us_page_section_image: null,
     remove_find_us_page_section_image: false,
+    directions: props.directions,
+    directions_to_remove: [],
 });
+
+function addDirection() {
+    form.directions.push({
+        id: null,
+        directions_label: null,
+        directions_paragraph: null,
+    });
+}
+
+function removeDirection(index) {
+    if(form.directions[index].id) {
+        form.directions_to_remove.push(form.directions[index].id);
+    }
+    form.directions.splice(index, 1);
+}
+
+router.on('success', (event) => {
+    // reset directions fields when form is submitted successfully
+    form.directions = props.directions;
+    form.directions_to_remove = [];
+})
 </script>
 
 <template>
@@ -67,6 +92,51 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_find_us_page_section_image"
                     :originalImage="props.find_us_page_section_image"
                 />
+            </FormSection>
+
+            <FormSection prompt="Optionally, you can add sets of directions to your Find Us page. For best results try to keep the directions a similar length.">
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <div
+                        v-for="(direction, index) in form.directions"
+                        class="wb-card space-y-2"
+                    >
+                        <LabelledInputPair
+                            v-model="direction.directions_label"
+                            label="Directions label"
+                            placeholder="Name of directions set"
+                            :errorMessage="form.errors['directions.' + index + '.directions_label']"
+                            :fieldID="'directions_label_' + index"
+                            required
+                        />
+                        <InputLabel
+                            :for="'directions_paragraph_' + index"
+                            value="Directions paragraph"
+                            class="sr-only"
+                        />
+                        <textarea
+                            :id="'directions_paragraph_' + index"
+                            type="text"
+                            v-model="direction.directions_paragraph"
+                            class="wb-input-box h-40 s:h-20"
+                            required
+                            :autocomplete="'directions_paragraph_' + index"
+                            placeholder="The directions are..."
+                        />
+                        <InputError :message="form.errors['directions.' + index + '.directions_paragraph']" />
+
+                        <div class="flex w-full justify-end pt-2">
+                            <PlusOrCrossButton
+                                v-on:click="removeDirection(index)"
+                                text="Remove set of directions"
+                                isCross
+                            />
+                        </div>
+                    </div>
+                    <PlusOrCrossButton
+                        v-on:click="addDirection"
+                        text="Add set of directions"
+                    />
+                </div>
             </FormSection>
 
             <SaveButton

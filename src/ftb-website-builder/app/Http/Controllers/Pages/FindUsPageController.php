@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\FindUsPageUpdateRequest;
+use App\Models\FindUsPage\Direction;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,14 +46,9 @@ class FindUsPageController extends Controller
     /**
      * Update the user's generated site find us page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(FindUsPageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'find_us_page_section_header' => ['required', 'string', 'max:255'],
-            'find_us_page_section_paragraph' => ['required', 'string', 'max:65535'],
-            'find_us_page_section_image' => ['nullable', 'image'],
-            'remove_find_us_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $findUsPage = User::find($request->user()->id)->property->findUsPage;
         $data = $request->all();
@@ -64,6 +61,27 @@ class FindUsPageController extends Controller
             $findUsPage,
             $data
         );
+
+        foreach ($data['directions_to_remove'] as $directionID) {
+            Direction::find($directionID)->delete();
+        }
+        unset($data['directions_to_remove']);
+
+        foreach ($data['directions'] as $direction) {
+            if($direction['id']) {
+                $existingDirection = Direction::find($direction['id']);
+            } else {
+                $existingDirection = new Direction;
+                $existingDirection->property_id = $findUsPage->property_id;
+            }
+
+            unset($direction['id']);
+            unset($direction['property_id']);
+
+            $existingDirection->fill($direction);
+            $existingDirection->save();
+        }
+        unset($data['directions']);
 
         $findUsPage->fill($data);
         $findUsPage->save();
