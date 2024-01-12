@@ -38,9 +38,12 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('websites')->insert([
             'property_id' => $property_id,
-            'primary_colour' => '00A980',
-            'secondary_colour' => '60BD35',
+            'primary_colour' => '79a900',
+            'secondary_colour' => 'ff7b00',
+            'background_colour' => '040700',
+            'text_colour' => 'f5ffe7',
             'divider_art' => 'images/dividerArt/test_divider_art.png',
+            'font_family' => 'Noto Sans',
         ]);
         DB::table('home_pages')->insert([
             'property_id' => $property_id,
