@@ -22,8 +22,8 @@ class AboutPageUpdateRequest extends FormRequest
             'secondary_about_sections.*.secondary_about_section_header' => ['nullable', 'string', 'max:255'],
             'secondary_about_sections.*.secondary_about_section_paragraph' => ['required', 'string', 'max:65535'],
             'secondary_about_sections.*.secondary_about_section_image' => ['nullable'],
+            'secondary_about_sections.*.remove_secondary_about_section_image' => ['sometimes', 'boolean'],
             'secondary_about_sections_to_remove' => ['nullable', 'array'],
-            'remove_secondary_about_section_image' => ['sometimes', 'boolean'],
         ];
     }
 

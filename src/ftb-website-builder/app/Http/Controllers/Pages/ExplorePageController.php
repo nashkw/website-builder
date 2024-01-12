@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\ExplorePageUpdateRequest;
+use App\Models\ExplorePage\Attraction;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -44,14 +47,9 @@ class ExplorePageController extends Controller
     /**
      * Update the user's generated site explore page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(ExplorePageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'explore_page_section_header' => ['required', 'string', 'max:255'],
-            'explore_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
-            'explore_page_section_image' => ['nullable', 'image'],
-            'remove_explore_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $explorePage = User::find($request->user()->id)->property->explorePage;
         $data = $request->all();
@@ -64,6 +62,48 @@ class ExplorePageController extends Controller
             $explorePage,
             $data
         );
+
+        if ($request->has('attractions_to_remove')) {
+            foreach ($data['attractions_to_remove'] as $attractionID) {
+                $attractionSection = Attraction::find($attractionID);
+                ControllerServices::deleteImage('attraction_image', $attractionSection);
+                $attractionSection->delete();
+            }
+            unset($data['attractions_to_remove']);
+        }
+
+        foreach ($data['attractions'] as $attraction) {
+            if ($attraction['id']) {
+                $existingAttraction = Attraction::find($attraction['id']);
+            } else {
+                $existingAttraction = new Attraction;
+                $existingAttraction->property_id = $explorePage->property_id;
+            }
+
+            if (array_key_exists('remove_attraction_image', $attraction)) {
+                if ($attraction['remove_attraction_image']) {
+                    if (is_string($attraction['attraction_image'])) {
+                        ControllerServices::deleteImage('attraction_image', $existingAttraction);
+                    }
+                    $attraction['secondary_about_section_image'] = null;
+                }
+            }
+
+            if (is_string($attraction['attraction_image'])) {
+                unset($attraction['attraction_image']);
+            } else if ($attraction['attraction_image']) {
+                $filepath = Storage::disk("public")->putFile('images/attractionListing/', $attraction['attraction_image']);
+                $attraction['attraction_image'] = $filepath;
+            }
+
+            unset($attraction['remove_attraction_image']);
+            unset($attraction['id']);
+            unset($attraction['property_id']);
+
+            $existingAttraction->fill($attraction);
+            $existingAttraction->save();
+        }
+        unset($data['attractions']);
 
         $explorePage->fill($data);
         $explorePage->save();
