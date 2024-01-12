@@ -85,7 +85,7 @@ class ExplorePageController extends Controller
                     if (is_string($attraction['attraction_image'])) {
                         ControllerServices::deleteImage('attraction_image', $existingAttraction);
                     }
-                    $attraction['secondary_about_section_image'] = null;
+                    $attraction['attraction_image'] = null;
                 }
             }
 

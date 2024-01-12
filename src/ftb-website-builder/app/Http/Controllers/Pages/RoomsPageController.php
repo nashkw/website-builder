@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\RoomsPageUpdateRequest;
+use App\Models\RoomsPage\Room;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -44,14 +47,9 @@ class RoomsPageController extends Controller
     /**
      * Update the user's generated site rooms page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(RoomsPageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'rooms_page_section_header' => ['required', 'string', 'max:255'],
-            'rooms_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
-            'rooms_page_section_image' => ['nullable', 'image'],
-            'remove_rooms_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $roomsPage = User::find($request->user()->id)->property->roomsPage;
         $data = $request->all();
@@ -64,6 +62,42 @@ class RoomsPageController extends Controller
             $roomsPage,
             $data
         );
+
+        if ($request->has('rooms_to_remove')) {
+            foreach ($data['rooms_to_remove'] as $attractionID) {
+                $attractionSection = Room::find($attractionID);
+                ControllerServices::deleteImage('room_image_primary', $attractionSection);
+                $attractionSection->delete();
+            }
+            unset($data['rooms_to_remove']);
+        }
+
+        foreach ($data['rooms'] as $room) {
+            if ($room['id']) {
+                $existingRoom = Room::find($room['id']);
+            } else {
+                $existingRoom = new Room;
+                $existingRoom->property_id = $roomsPage->property_id;
+            }
+
+            if (is_string($room['room_image_primary'])) {
+                unset($room['room_image_primary']);
+            } else if ($room['room_image_primary']) {
+                $filepath = Storage::disk("public")->putFile('images/roomListingPrimary/', $room['room_image_primary']);
+                $room['room_image_primary'] = $filepath;
+            }
+
+            //temporarily ignore secondary room images. these will be implemented in a future commit
+            unset($room['secondary_room_images']);
+
+            unset($room['remove_room_image_primary']);
+            unset($room['id']);
+            unset($room['property_id']);
+
+            $existingRoom->fill($room);
+            $existingRoom->save();
+        }
+        unset($data['rooms']);
 
         $roomsPage->fill($data);
         $roomsPage->save();

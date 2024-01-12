@@ -105,6 +105,7 @@ router.on('success', (event) => {
                             label="Name of attraction"
                             :errorMessage="form.errors['attractions.' + index + '.attraction_header']"
                             :fieldID="'attraction_header_' + index"
+                            required
                         />
                         <InputLabel
                             :for="'attraction_paragraph_' + index"

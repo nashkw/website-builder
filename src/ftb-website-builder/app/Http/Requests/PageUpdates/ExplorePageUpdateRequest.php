@@ -19,7 +19,7 @@ class ExplorePageUpdateRequest extends FormRequest
             'explore_page_section_image' => ['nullable', 'image'],
             'remove_explore_page_section_image' => ['required', 'boolean'],
             'attractions' => ['nullable', 'array'],
-            'attractions.*.attraction_header' => ['nullable', 'string', 'max:255'],
+            'attractions.*.attraction_header' => ['required', 'string', 'max:255'],
             'attractions.*.attraction_paragraph' => ['required', 'string', 'max:65535'],
             'attractions.*.attraction_image' => ['nullable'],
             'attractions.*.remove_attraction_image' => ['sometimes', 'boolean'],
@@ -35,8 +35,9 @@ class ExplorePageUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'attractions.*.attraction_header.string' => 'The attraction header must be stored as a string.',
-            'attractions.*.attraction_header.max' => 'The attraction header must not be longer than 255 characters.',
+            'attractions.*.attraction_header.required' => 'The attraction name field is required.',
+            'attractions.*.attraction_header.string' => 'The attraction name must be stored as a string.',
+            'attractions.*.attraction_header.max' => 'The attraction name must not be longer than 255 characters.',
             'attractions.*.attraction_paragraph.required' => 'The attraction description field is required.',
             'attractions.*.attraction_paragraph.string' => 'The attraction description must be stored as a string.',
             'attractions.*.attraction_paragraph.max' => 'The attraction description must not be longer than 65535 characters.',
