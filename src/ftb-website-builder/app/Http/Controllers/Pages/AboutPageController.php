@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\AboutPageUpdateRequest;
+use App\Models\AboutPage\SecondaryAboutSection;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -44,14 +47,9 @@ class AboutPageController extends Controller
     /**
      * Update the user's generated site about page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(AboutPageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'about_page_section_header' => ['required', 'string', 'max:255'],
-            'about_page_section_paragraph' => ['required', 'string', 'max:65535'],
-            'about_page_section_image' => ['nullable', 'image'],
-            'remove_about_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $aboutPage = User::find($request->user()->id)->property->aboutPage;
         $data = $request->all();
@@ -64,6 +62,45 @@ class AboutPageController extends Controller
             $aboutPage,
             $data
         );
+
+        if ($request->has('secondary_about_sections_to_remove')) {
+            foreach ($data['secondary_about_sections_to_remove'] as $sectionID) {
+                $aboutSection = SecondaryAboutSection::find($sectionID);
+                ControllerServices::deleteImage('secondary_about_section_image', $aboutSection);
+                $aboutSection->delete();
+            }
+            unset($data['secondary_about_sections_to_remove']);
+        }
+
+        foreach ($data['secondary_about_sections'] as $section) {
+            if ($section['id']) {
+                $existingSection = SecondaryAboutSection::find($section['id']);
+            } else {
+                $existingSection = new SecondaryAboutSection;
+                $existingSection->property_id = $aboutPage->property_id;
+            }
+
+            if (array_key_exists('remove_secondary_about_section_image', $section)) {
+                if ($section['remove_secondary_about_section_image']) {
+                    if (is_string($section['secondary_about_section_image'])) {
+                        ControllerServices::deleteImage('secondary_about_section_image', $existingSection);
+                    }
+                    $section['secondary_about_section_image'] = null;
+                }
+            }
+            if (is_file($section['secondary_about_section_image'])) {
+                $filepath = Storage::disk("public")->putFile('images/sectionImages/aboutSecondary/', $section['secondary_about_section_image']);
+                $section['secondary_about_section_image'] = $filepath;
+            }
+
+            unset($section['remove_secondary_about_section_image']);
+            unset($section['id']);
+            unset($section['property_id']);
+
+            $existingSection->fill($section);
+            $existingSection->save();
+        }
+        unset($data['secondary_about_sections']);
 
         $aboutPage->fill($data);
         $aboutPage->save();

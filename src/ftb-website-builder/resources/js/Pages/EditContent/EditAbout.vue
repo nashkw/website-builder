@@ -7,11 +7,13 @@ import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 
 const props = defineProps({
     about_page_section_header: String,
     about_page_section_paragraph: String,
     about_page_section_image: String,
+    secondary_about_sections: Array,
 });
 
 const form = useForm({
@@ -19,7 +21,25 @@ const form = useForm({
     about_page_section_paragraph: props.about_page_section_paragraph,
     about_page_section_image: null,
     remove_about_page_section_image: false,
+    secondary_about_sections: props.secondary_about_sections,
+    secondary_about_sections_to_remove: [],
 });
+
+function addSection() {
+    form.secondary_about_sections.push({
+        id: null,
+        secondary_about_section_header: null,
+        secondary_about_section_paragraph: null,
+        secondary_about_section_image: null,
+    });
+}
+
+function removeSection(index) {
+    if(form.secondary_about_sections[index].id) {
+        form.secondary_about_sections_to_remove.push(form.secondary_about_sections[index].id);
+    }
+    form.secondary_about_sections.splice(index, 1);
+}
 </script>
 
 <template>
@@ -67,6 +87,56 @@ const form = useForm({
                     v-model:removeCurrentImage="form.remove_about_page_section_image"
                     :originalImage="props.about_page_section_image"
                 />
+            </FormSection>
+
+            <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <div
+                        v-for="(section, index) in form.secondary_about_sections"
+                        class="wb-card space-y-2"
+                    >
+                        <LabelledInputPair
+                            v-model="section.secondary_about_section_header"
+                            label="Section header"
+                            :errorMessage="form.errors['secondary_about_sections.' + index + '.secondary_about_section_header']"
+                            :fieldID="'secondary_about_section_header_' + index"
+                        />
+                        <InputLabel
+                            :for="'secondary_about_section_paragraph_' + index"
+                            value="Section paragraph"
+                            class="sr-only"
+                        />
+                        <textarea
+                            :id="'secondary_about_section_paragraph_' + index"
+                            type="text"
+                            v-model="section.secondary_about_section_paragraph"
+                            class="wb-input-box h-40 s:h-20"
+                            required
+                            :autocomplete="'secondary_about_section_paragraph_' + index"
+                            placeholder="More about our property..."
+                        />
+                        <InputError :message="form.errors['secondary_about_sections.' + index + '.secondary_about_section_paragraph']" />
+                        <ImageInput
+                            v-model="section.secondary_about_section_image"
+                            :errorMessage="form.errors['secondary_about_sections.' + index + '.secondary_about_section_image']"
+                            fieldTitle="section image"
+                            :fieldID="'secondary_about_section_image_' + index"
+                            v-model:removeCurrentImage="section.remove_secondary_about_section_image"
+                            :originalImage="typeof(section.secondary_about_section_image) === String ? section.secondary_about_section_image : null"
+                        />
+                        <div class="flex w-full justify-end pt-2">
+                            <PlusOrCrossButton
+                                v-on:click="removeSection(index)"
+                                text="Remove section"
+                                isCross
+                            />
+                        </div>
+                    </div>
+                    <PlusOrCrossButton
+                        v-on:click="addSection"
+                        text="Add section"
+                    />
+                </div>
             </FormSection>
 
             <SaveButton
