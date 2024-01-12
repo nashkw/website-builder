@@ -264,7 +264,7 @@
       "faq_page_section_paragraph": "Welcome to our FAQ page, your go-to resource for answers to common queries and helpful information about our hotel. Whether you are curious about our amenities, reservation process, or local attractions, we have compiled a comprehensive list to ensure your stay is seamless and enjoyable. If you do not find what you are looking for, our dedicated team is always ready to assist you. Explore the FAQs below and embark on a journey of clarity and convenience with us.",
       "faq_page_section_image": "images/sectionImages/faqPrimary/test_faq_page.jpg",
       "faq_page_section_image_description": "store testing",
-      "question_and_answers": [
+      "questions_and_answers": [
           {
               "question_label": "How can I make a reservation at your hotel?",
               "answer_paragraph": "Making a reservation is easy! Simply visit our website and use the user-friendly booking interface. Alternatively, you can call our reservation team at 0141 270 2173 for personalized assistance."

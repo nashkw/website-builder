@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageUpdates\FAQPageUpdateRequest;
+use App\Models\FAQPage\QuestionAndAnswer;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,14 +46,9 @@ class FAQPageController extends Controller
     /**
      * Update the user's generated site FAQ page information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(FAQPageUpdateRequest $request): RedirectResponse
     {
-        $request->validate([
-            'faq_page_section_header' => ['required', 'string', 'max:255'],
-            'faq_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
-            'faq_page_section_image' => ['nullable', 'image'],
-            'remove_faq_page_section_image' => ['required', 'boolean'],
-        ]);
+        $request->validated();
 
         $faqPage = User::find($request->user()->id)->property->faqPage;
         $data = $request->all();
@@ -65,6 +62,27 @@ class FAQPageController extends Controller
             $data
         );
 
+        foreach ($data['questions_and_answers_to_remove'] as $questionAndAnswerID) {
+            QuestionAndAnswer::find($questionAndAnswerID)->delete();
+        }
+        unset($data['questions_and_answers_to_remove']);
+
+        foreach ($data['questions_and_answers'] as $questionAndAnswer) {
+            if($questionAndAnswer['id']) {
+                $existingQuestionAndAnswer = QuestionAndAnswer::find($questionAndAnswer['id']);
+            } else {
+                $existingQuestionAndAnswer = new QuestionAndAnswer;
+                $existingQuestionAndAnswer->property_id = $faqPage->property_id;
+            }
+
+            unset($questionAndAnswer['id']);
+            unset($questionAndAnswer['property_id']);
+
+            $existingQuestionAndAnswer->fill($questionAndAnswer);
+            $existingQuestionAndAnswer->save();
+        }
+        unset($data['questions_and_answers']);
+
         $faqPage->fill($data);
         $faqPage->save();
 
@@ -76,11 +94,11 @@ class FAQPageController extends Controller
         $faqPage = User::find($userID)->property->faqPage;
         $data = $faqPage->toArray();
 
-        $questionAndAnswers = [];
-        foreach ($faqPage->questionAndAnswers as $questionAndAnswer) {
-            $questionAndAnswers[] = $questionAndAnswer->toArray();
+        $questionsAndAnswers = [];
+        foreach ($faqPage->questionsAndAnswers as $questionAndAnswer) {
+            $questionsAndAnswers[] = $questionAndAnswer->toArray();
         }
-        $data['question_and_answers'] = $questionAndAnswers;
+        $data['questions_and_answers'] = $questionsAndAnswers;
 
         $data['faq_page_section_image'] = ControllerServices::getImageIfExists($data['faq_page_section_image']);
 

@@ -58,7 +58,7 @@ class FAQPage extends Model
     /**
      * Get the Q&As for the FAQ page.
      */
-    public function questionAndAnswers(): HasMany
+    public function questionsAndAnswers(): HasMany
     {
         return $this->hasMany(QuestionAndAnswer::class, 'property_id');
     }
