@@ -88,7 +88,10 @@ class AboutPageController extends Controller
                     $section['secondary_about_section_image'] = null;
                 }
             }
-            if (is_file($section['secondary_about_section_image'])) {
+
+            if (is_string($section['secondary_about_section_image'])) {
+                unset($section['secondary_about_section_image']);
+            } else if ($section['secondary_about_section_image']) {
                 $filepath = Storage::disk("public")->putFile('images/sectionImages/aboutSecondary/', $section['secondary_about_section_image']);
                 $section['secondary_about_section_image'] = $filepath;
             }

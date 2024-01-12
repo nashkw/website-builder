@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {Head, router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -40,6 +40,12 @@ function removeSection(index) {
     }
     form.secondary_about_sections.splice(index, 1);
 }
+
+router.on('success', (event) => {
+    // reset secondary about section fields when form is submitted successfully
+    form.secondary_about_sections = props.secondary_about_sections;
+    form.secondary_about_sections_to_remove = [];
+})
 </script>
 
 <template>

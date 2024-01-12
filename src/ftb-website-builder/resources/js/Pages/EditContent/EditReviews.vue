@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {Head, router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -41,6 +41,12 @@ function removeReview(index) {
     }
     form.reviews.splice(index, 1);
 }
+
+router.on('success', (event) => {
+    // reset review fields when form is submitted successfully
+    form.reviews = props.reviews;
+    form.reviews_to_remove = [];
+})
 </script>
 
 <template>
