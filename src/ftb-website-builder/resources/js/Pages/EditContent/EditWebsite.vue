@@ -6,6 +6,8 @@ import ImageInput from "@/Components/Forms/ImageInput.vue";
 import ColourPickerGridItem from "@/Components/Forms/ColourPickerGridItem.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import InputLabel from "@/Components/Forms/InputLabel.vue";
+import InputError from "@/Components/Forms/InputError.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -25,6 +27,54 @@ const form = useForm({
     remove_divider_art: false,
     font_family: props.font_family,
 });
+
+const fonts = [
+    "Abril Fatface",
+    "Archivo",
+    "Archivo Black",
+    "Arvo",
+    "Barlow",
+    "Bebas Neue",
+    "Caveat",
+    "Comfortaa",
+    "Crimson Text",
+    "Dancing Script",
+    "Dela Gothic One",
+    "Dosis",
+    "Exo 2",
+    "Figtree",
+    "Genos",
+    "IBM Plex Mono",
+    "Indie Flower",
+    "Instrument Serif",
+    "Inter",
+    "Josefin Sans",
+    "Kalam",
+    "Lato",
+    "Lemon",
+    "Libre Baskerville",
+    "Lilita One",
+    "Lobster",
+    "Merriweather",
+    "Montserrat",
+    "Noto Sans",
+    "Oswald",
+    "Outfit",
+    "Pacifico",
+    "Playfair Display",
+    "Poppins",
+    "Questrial",
+    "Rajdhani",
+    "Raleway",
+    "Roboto",
+    "Roboto Condensed",
+    "Roboto Mono",
+    "Roboto Slab",
+    "Salsa",
+    "Satisfy",
+    "Shadows Into Light",
+    "Tektur",
+];
 </script>
 
 <template>
@@ -78,12 +128,30 @@ const form = useForm({
             </FormSection>
 
             <FormSection prompt="Optionally, you can select a font family to be used accross your website.">
-                <LabelledInputPair
-                    v-model="form.font_family"
-                    label="Font family"
-                    :errorMessage="form.errors.font_family"
-                    fieldID="font_family"
+                <InputLabel
+                    for="font_family"
+                    value="Font family"
+                    class="sr-only"
                 />
+                <select
+                    class="wb-input-box"
+                    v-model="form.font_family"
+                    :style="'font-family:' + form.font_family ?? 'Inter'"
+                >
+                    <option
+                        disabled value=""
+                        style="font-family: Inter, sans-serif"
+                    >
+                        Select a font family...
+                    </option>
+                    <option
+                        v-for="font in fonts"
+                        :style="'font-family:' + font"
+                    >
+                        {{ font }}
+                    </option>
+                </select>
+                <InputError :message="form.errors.font_family" />
             </FormSection>
 
             <SaveButton
