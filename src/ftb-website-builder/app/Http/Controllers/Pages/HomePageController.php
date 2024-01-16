@@ -96,7 +96,7 @@ class HomePageController extends Controller
                 $existingCoverImage->property_id = $homePage->property_id;
             }
 
-            if(is_file($coverImage['secondary_cover_image'])) {
+            if(!is_string($coverImage['secondary_cover_image'])) {
                 $filepath = Storage::disk("public")->putFile('images/coverImageSecondary/', $coverImage['secondary_cover_image']);
                 $coverImage['secondary_cover_image'] = $filepath;
 

@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col w-full gap-2">
         <p
             v-if="prompt"
             class="wb-subtitle p-2"

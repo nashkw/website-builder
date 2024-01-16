@@ -41,6 +41,23 @@ function removeRoom(index) {
     form.rooms.splice(index, 1);
 }
 
+function addSecondaryImage(roomIndex) {
+    form.rooms[roomIndex].secondary_room_images.push({
+        id: null,
+        secondary_room_image: null,
+    });
+}
+
+function removeSecondaryImage(roomIndex, imageIndex) {
+    if(form.rooms[roomIndex].secondary_room_images[imageIndex].id) {
+        if(!form.rooms[roomIndex].secondary_room_images_to_remove) {
+            form.rooms[roomIndex].secondary_room_images_to_remove = [];
+        }
+        form.rooms[roomIndex].secondary_room_images_to_remove.push(form.rooms[roomIndex].secondary_room_images[imageIndex].id);
+    }
+    form.rooms[roomIndex].secondary_room_images.splice(imageIndex, 1);
+}
+
 router.on('success', (event) => {
     // reset room fields when form is submitted successfully
     form.rooms = props.rooms;
@@ -97,43 +114,72 @@ router.on('success', (event) => {
             <FormSection prompt="Add the rooms available at your property. If you have multiple rooms of each type it would be best to list room types instead of individual rooms. Each room you list should have a name, a short description of what a guest can expect if they book it, and a picture of the room. Optionally, you can include additional pictures of the room.">
                 <div class="flex flex-col gap-4 justify-center items-center">
                     <div
-                        v-for="(room, index) in form.rooms"
+                        v-for="(room, roomIndex) in form.rooms"
                         class="wb-card space-y-2"
                     >
                         <LabelledInputPair
                             v-model="room.room_name"
                             label="Name of room"
-                            :errorMessage="form.errors['rooms.' + index + '.room_name']"
-                            :fieldID="'room_name_' + index"
+                            :errorMessage="form.errors['rooms.' + roomIndex + '.room_name']"
+                            :fieldID="'room_name_' + roomIndex"
                             required
                         />
                         <InputLabel
-                            :for="'room_description_' + index"
+                            :for="'room_description_' + roomIndex"
                             value="Room description"
                             class="sr-only"
                         />
                         <textarea
-                            :id="'room_description_' + index"
+                            :id="'room_description_' + roomIndex"
                             type="text"
                             v-model="room.room_description"
                             class="wb-input-box h-40 s:h-20"
                             required
-                            :autocomplete="'room_description_' + index"
+                            :autocomplete="'room_description_' + roomIndex"
                             placeholder="This room is..."
                         />
-                        <InputError :message="form.errors['rooms.' + index + '.room_description']" />
+                        <InputError :message="form.errors['rooms.' + roomIndex + '.room_description']" />
                         <ImageInput
                             v-model="room.room_image_primary"
-                            :errorMessage="form.errors['rooms.' + index + '.room_image_primary']"
-                            fieldTitle="room image"
-                            :fieldID="'room_image_primary_' + index"
+                            :errorMessage="form.errors['rooms.' + roomIndex + '.room_image_primary']"
+                            fieldTitle="primary room image"
+                            :fieldID="'room_image_primary_' + roomIndex"
                             :originalImage="typeof(room.room_image_primary) === String ? room.room_image_primary : null"
                             notNullable
                         />
 
+                        <div class="flex flex-col w-full space-y-3 justify-center items-center">
+                            <div
+                                v-for="(image, imageIndex) in form.rooms[roomIndex].secondary_room_images"
+                                class="flex w-full rounded-lg gradient-bg mt-1"
+                            >
+                                <div class="wb-card wb-sub-card space-y-2">
+                                    <ImageInput
+                                        v-model="image.secondary_room_image"
+                                        :errorMessage="form.errors['rooms.' + roomIndex + '.secondary_room_images.' + imageIndex + '.secondary_room_image']"
+                                        fieldTitle="secondary room image"
+                                        :fieldID="'secondary_room_image_' + roomIndex + '_' + imageIndex"
+                                        :originalImage="typeof(image.secondary_room_image) === String ? image.secondary_room_image : null"
+                                        notNullable
+                                    />
+                                    <div class="flex w-full justify-end pt-2">
+                                        <PlusOrCrossButton
+                                            v-on:click="removeSecondaryImage(roomIndex, imageIndex)"
+                                            text="Remove room image"
+                                            isCross
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <PlusOrCrossButton
+                                v-on:click="addSecondaryImage(roomIndex)"
+                                text="Add room image"
+                            />
+                        </div>
+
                         <div class="flex w-full justify-end pt-2">
                             <PlusOrCrossButton
-                                v-on:click="removeRoom(index)"
+                                v-on:click="removeRoom(roomIndex)"
                                 text="Remove room"
                                 isCross
                             />

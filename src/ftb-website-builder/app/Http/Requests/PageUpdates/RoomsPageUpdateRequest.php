@@ -22,6 +22,9 @@ class RoomsPageUpdateRequest extends FormRequest
             'rooms.*.room_name' => ['required', 'string', 'max:255'],
             'rooms.*.room_description' => ['required', 'string', 'max:65535'],
             'rooms.*.room_image_primary' => ['required'],
+            'rooms.*.secondary_room_images' => ['nullable', 'array'],
+            'rooms.*.secondary_room_images.secondary_room_image' => ['required'],
+            'rooms.*.secondary_room_images_to_remove' => ['nullable', 'array'],
             'rooms_to_remove' => ['nullable', 'array'],
         ];
     }
@@ -41,6 +44,7 @@ class RoomsPageUpdateRequest extends FormRequest
             'rooms.*.room_description.string' => 'The room description must be stored as a string.',
             'rooms.*.room_description.max' => 'The room description must not be longer than 65535 characters.',
             'rooms.*.room_image_primary.required' => 'The primary room image field is required.',
+            'rooms.*.secondary_room_images.secondary_room_image' => 'The secondary room image field is required',
         ];
     }
 }

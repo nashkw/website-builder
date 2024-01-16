@@ -8,6 +8,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\RoomsPageUpdateRequest;
 use App\Models\RoomsPage\Room;
+use App\Models\RoomsPage\SecondaryRoomImage;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -87,7 +88,34 @@ class RoomsPageController extends Controller
                 $room['room_image_primary'] = $filepath;
             }
 
-            //temporarily ignore secondary room images. these will be implemented in a future commit
+            if(array_key_exists('secondary_room_images_to_remove', $room)) {
+                foreach ($room['secondary_room_images_to_remove'] as $roomImageID) {
+                    $roomImage = SecondaryRoomImage::find($roomImageID);
+                    ControllerServices::deleteImage('secondary_room_image', $roomImage);
+                    $roomImage->delete();
+                }
+                unset($room['secondary_room_images_to_remove']);
+            }
+
+            foreach ($room['secondary_room_images'] as $image) {
+                if ($image['id']) {
+                    $existingImage = SecondaryRoomImage::find($image['id']);
+                } else {
+                    $existingImage = new SecondaryRoomImage;
+                    $existingImage->room_id = $existingRoom->id;
+                }
+
+                if(!is_string($image['secondary_room_image'])) {
+                    $filepath = Storage::disk("public")->putFile('images/roomListingSecondary/', $image['secondary_room_image']);
+                    $image['secondary_room_image'] = $filepath;
+
+                    unset($image['id']);
+                    unset($image['property_id']);
+
+                    $existingImage->fill($image);
+                    $existingImage->save();
+                }
+            }
             unset($room['secondary_room_images']);
 
             unset($room['remove_room_image_primary']);
