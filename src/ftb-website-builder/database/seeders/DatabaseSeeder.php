@@ -38,12 +38,12 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('websites')->insert([
             'property_id' => $property_id,
-            'primary_colour' => '79a900',
-            'secondary_colour' => 'ff7b00',
-            'background_colour' => '040700',
-            'text_colour' => 'f5ffe7',
+            'primary_colour' => '10b981',
+            'secondary_colour' => 'b1cc16',
+            'background_colour' => '010200',
+            'text_colour' => 'fefffd',
             'divider_art' => 'images/dividerArt/test_divider_art.png',
-            'font_family' => 'Noto Sans',
+            'font_family' => 'Roboto Slab',
         ]);
         DB::table('home_pages')->insert([
             'property_id' => $property_id,

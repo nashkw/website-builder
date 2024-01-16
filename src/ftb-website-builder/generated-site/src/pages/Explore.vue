@@ -20,21 +20,26 @@ export default {
             return this.explore_page.explore_page_section_header ?? "Things to do near " + this.property.property_name;
         },
         colours() {
+            const primary = tinycolor(this.website.primary_colour);
+            const secondary = tinycolor(this.website.secondary_colour);
+            const text = tinycolor(this.website.text_colour);
+            const background = tinycolor(this.website.background_colour);
             return {
-                accentPrimary: tinycolor(this.website.primary_colour),
-                accentPrimaryAlt: tinycolor(this.website.primary_colour).darken(),
-                accentSecondary: tinycolor(this.website.secondary_colour),
-                accentSecondaryAlt: tinycolor(this.website.secondary_colour).darken(),
-                title: tinycolor(this.website.text_colour),
-                subtitle: tinycolor(this.website.text_colour).lighten(),
-                text: tinycolor(this.website.text_colour).lighten().lighten(),
-                background: tinycolor(this.website.background_colour),
-                backgroundAlt: tinycolor.mix(
-                    tinycolor(this.website.background_colour),
-                    tinycolor(this.website.secondary_colour),
-                    7
-                ),
+                accentPrimary: primary,
+                accentPrimaryAlt: this.lightenOrDarken(primary, 10),
+                accentSecondary: secondary,
+                accentSecondaryAlt: this.lightenOrDarken(secondary, 10),
+                title: text,
+                subtitle: this.lightenOrDarken(text, 3),
+                text: this.lightenOrDarken(text, 7),
+                background: background,
+                backgroundAlt: tinycolor.mix(background, secondary, 7),
             };
+        },
+    },
+    methods: {
+        lightenOrDarken(baseColour, amount) {
+            return baseColour.isLight() ? baseColour.clone().darken(amount) : baseColour.clone().lighten(amount);
         },
     },
 }

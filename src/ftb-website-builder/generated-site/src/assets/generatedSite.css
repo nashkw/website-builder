@@ -49,6 +49,8 @@
 @tailwind utilities;
 
 .gs-logo {
+    display: flex;
+    align-items: center;
     text-align: center;
     white-space: nowrap;
     color: var(--gs-colour-accent-primary);

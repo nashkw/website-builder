@@ -22,7 +22,7 @@ const props = defineProps({
             :alt="'The ' + property.property_name + ' logo'"
             class="flex object-cover h-8"
         />
-        <h1 class="gs-logo">
+        <h1 class="gs-logo h-8">
             {{ property.property_name }}
         </h1>
     </a>
