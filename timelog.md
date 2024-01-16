@@ -281,3 +281,32 @@
 ### 03 Jan 2024
 
 * *7 hours* continued work on adding dynamic styling to the generated site (colours, fonts)
+
+### 04 Jan 2024
+
+* *7.5 hours* simplified edit subpage forms by extracting common code to components
+
+### 05 Jan 2024
+
+* *7.5 hours* began adding the missing variable subsections to edit subpages
+
+
+## Week 17
+
+### 11 Jan 2024
+
+* *8 hours* continued adding the missing variable subsections to edit subpages
+
+### 12 Jan 2024
+
+* *7 hours* continued adding the missing variable subsections to edit subpages
+
+
+## Week 18
+
+### 16 Jan 2024
+
+* *2 hours* finished adding the missing variable subsections to edit subpages
+* *1.5 hours* added a font picker component and made all fonts available in both apps
+* *1.5 hours* improved colour calculations in dynamic generated site styling
+* *2 hours* began updating trello notes and timelog with winter break developments
