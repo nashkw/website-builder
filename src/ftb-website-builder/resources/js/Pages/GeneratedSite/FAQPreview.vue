@@ -15,19 +15,7 @@ export default {
         faq_page: Object,
         property: Object,
         website: Object,
-    },
-    data() {
-        return {
-            routes: {
-                home: route('preview'),
-                rooms: route('preview.rooms'),
-                reviews: route('preview.reviews'),
-                about: route('preview.about'),
-                explore: route('preview.explore'),
-                findus: route('preview.findus'),
-                faq: route('preview.faq'),
-            },
-        }
+        routes: Object,
     },
 }
 </script>

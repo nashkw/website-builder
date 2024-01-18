@@ -24,46 +24,60 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () { return Inertia::render('LandingPage'); });
+Route::domain('websitebuilder.ftb.sites')->group(function () {
+    Route::get('/', function () { return Inertia::render('LandingPage'); });
 
-Route::middleware('auth')->group(function () {
-    Route::name('account')->prefix('account')->group(function () {
-        Route::get('/', [AccountController::class, 'edit']);
-        Route::patch('/', [AccountController::class, 'update'])->name('.update');
-        Route::delete('/', [AccountController::class, 'destroy'])->name('.destroy');
+    Route::middleware('auth')->group(function () {
+        Route::name('account')->prefix('account')->group(function () {
+            Route::get('/', [AccountController::class, 'edit']);
+            Route::patch('/', [AccountController::class, 'update'])->name('.update');
+            Route::delete('/', [AccountController::class, 'destroy'])->name('.destroy');
+        });
+        Route::name('edit')->prefix('edit')->group(function () {
+            Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
+            Route::get('/property', [PropertyController::class, 'edit'])->name('.property');
+            Route::post('/property', [PropertyController::class, 'update'])->name('.property.update');
+            Route::get('/website', [WebsiteController::class, 'edit'])->name('.website');
+            Route::post('/website', [WebsiteController::class, 'update'])->name('.website.update');
+            Route::get('/home-page', [HomePageController::class, 'edit'])->name('.home');
+            Route::post('/home-page', [HomePageController::class, 'update'])->name('.home.update');
+            Route::get('/rooms-page', [RoomsPageController::class, 'edit'])->name('.rooms');
+            Route::post('/rooms-page', [RoomsPageController::class, 'update'])->name('.rooms.update');
+            Route::get('/reviews-page', [ReviewsPageController::class, 'edit'])->name('.reviews');
+            Route::post('/reviews-page', [ReviewsPageController::class, 'update'])->name('.reviews.update');
+            Route::get('/about-page', [AboutPageController::class, 'edit'])->name('.about');
+            Route::post('/about-page', [AboutPageController::class, 'update'])->name('.about.update');
+            Route::get('/explore-page', [ExplorePageController::class, 'edit'])->name('.explore');
+            Route::post('/explore-page', [ExplorePageController::class, 'update'])->name('.explore.update');
+            Route::get('/find-us-page', [FindUsPageController::class, 'edit'])->name('.findus');
+            Route::post('/find-us-page', [FindUsPageController::class, 'update'])->name('.findus.update');
+            Route::get('/faq-page', [FAQPageController::class, 'edit'])->name('.faq');
+            Route::post('/faq-page', [FAQPageController::class, 'update'])->name('.faq.update');
+        });
+        Route::name('add')->prefix('add')->group(function () {
+            Route::get('/', function () { return Inertia::render('AddContent/Add'); });
+        });
+        Route::name('preview')->prefix('preview')->group(function () {
+            Route::get('/', [HomePageController::class, 'preview']);
+            Route::get('/rooms', [RoomsPageController::class, 'preview'])->name('.rooms');
+            Route::get('/reviews', [ReviewsPageController::class, 'preview'])->name('.reviews');
+            Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
+            Route::get('/explore', [ExplorePageController::class, 'preview'])->name('.explore');
+            Route::get('/find-us', [FindUsPageController::class, 'preview'])->name('.findus');
+            Route::get('/faq', [FAQPageController::class, 'preview'])->name('.faq');
+        });
     });
-    Route::name('edit')->prefix('edit')->group(function () {
-        Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
-        Route::get('/property', [PropertyController::class, 'edit'])->name('.property');
-        Route::post('/property', [PropertyController::class, 'update'])->name('.property.update');
-        Route::get('/website', [WebsiteController::class, 'edit'])->name('.website');
-        Route::post('/website', [WebsiteController::class, 'update'])->name('.website.update');
-        Route::get('/home-page', [HomePageController::class, 'edit'])->name('.home');
-        Route::post('/home-page', [HomePageController::class, 'update'])->name('.home.update');
-        Route::get('/rooms-page', [RoomsPageController::class, 'edit'])->name('.rooms');
-        Route::post('/rooms-page', [RoomsPageController::class, 'update'])->name('.rooms.update');
-        Route::get('/reviews-page', [ReviewsPageController::class, 'edit'])->name('.reviews');
-        Route::post('/reviews-page', [ReviewsPageController::class, 'update'])->name('.reviews.update');
-        Route::get('/about-page', [AboutPageController::class, 'edit'])->name('.about');
-        Route::post('/about-page', [AboutPageController::class, 'update'])->name('.about.update');
-        Route::get('/explore-page', [ExplorePageController::class, 'edit'])->name('.explore');
-        Route::post('/explore-page', [ExplorePageController::class, 'update'])->name('.explore.update');
-        Route::get('/find-us-page', [FindUsPageController::class, 'edit'])->name('.findus');
-        Route::post('/find-us-page', [FindUsPageController::class, 'update'])->name('.findus.update');
-        Route::get('/faq-page', [FAQPageController::class, 'edit'])->name('.faq');
-        Route::post('/faq-page', [FAQPageController::class, 'update'])->name('.faq.update');
-    });
-    Route::name('add')->prefix('add')->group(function () {
-        Route::get('/', function () { return Inertia::render('AddContent/Add'); });
-    });
-    Route::name('preview')->prefix('preview')->group(function () {
-        Route::get('/', [HomePageController::class, 'preview']);
-        Route::get('/rooms', [RoomsPageController::class, 'preview'])->name('.rooms');
-        Route::get('/reviews', [ReviewsPageController::class, 'preview'])->name('.reviews');
-        Route::get('/about', [AboutPageController::class, 'preview'])->name('.about');
-        Route::get('/explore', [ExplorePageController::class, 'preview'])->name('.explore');
-        Route::get('/find-us', [FindUsPageController::class, 'preview'])->name('.findus');
-        Route::get('/faq', [FAQPageController::class, 'preview'])->name('.faq');
+});
+
+Route::domain('{subdomain}.ftb.sites')->group(function () {
+    Route::name('website')->group(function () {
+        Route::get('/', [HomePageController::class, 'display']);
+        Route::get('/rooms', [RoomsPageController::class, 'display'])->name('.rooms');
+        Route::get('/reviews', [ReviewsPageController::class, 'display'])->name('.reviews');
+        Route::get('/about', [AboutPageController::class, 'display'])->name('.about');
+        Route::get('/explore', [ExplorePageController::class, 'display'])->name('.explore');
+        Route::get('/find-us', [FindUsPageController::class, 'display'])->name('.findus');
+        Route::get('/faq', [FAQPageController::class, 'display'])->name('.faq');
     });
 });
 

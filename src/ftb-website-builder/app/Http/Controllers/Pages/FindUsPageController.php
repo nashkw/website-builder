@@ -9,6 +9,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\FindUsPageUpdateRequest;
 use App\Models\FindUsPage\Direction;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +18,24 @@ use Inertia\Response;
 
 class FindUsPageController extends Controller
 {
+    /**
+     * Display the generated site find us page.
+     */
+    public function display(Request $request): Response
+    {
+        $subdomain = $request->route()->parameters()['subdomain'];
+        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        return Inertia::render(
+            'GeneratedSite/FindUsPreview',
+            [
+                'find_us_page' => $this->getFindUsPageData($user),
+                'property' => PropertyController::getPropertyData($user),
+                'website' => WebsiteController::getWebsiteData($user),
+                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+            ]
+        );
+    }
+
     /**
      * Display a preview of the generated site find us page.
      */
@@ -28,6 +47,7 @@ class FindUsPageController extends Controller
                 'find_us_page' => $this->getFindUsPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'routes' => ControllerServices::getRoutes('preview'),
             ]
         );
     }

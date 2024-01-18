@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('text_colour', 6)->default("000000");
             $table->string('divider_art')->nullable();
             $table->string('font_family')->nullable();
+            $table->string('subdomain')->unique();
             $table->timestamps();
         });
     }

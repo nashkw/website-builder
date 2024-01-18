@@ -9,6 +9,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\AboutPageUpdateRequest;
 use App\Models\AboutPage\SecondaryAboutSection;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -18,6 +19,24 @@ use Inertia\Response;
 
 class AboutPageController extends Controller
 {
+    /**
+     * Display the generated site about page.
+     */
+    public function display(Request $request): Response
+    {
+        $subdomain = $request->route()->parameters()['subdomain'];
+        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        return Inertia::render(
+            'GeneratedSite/AboutPreview',
+            [
+                'about_page' => $this->getAboutPageData($user),
+                'property' => PropertyController::getPropertyData($user),
+                'website' => WebsiteController::getWebsiteData($user),
+                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+            ]
+        );
+    }
+
     /**
      * Display a preview of the generated site about page.
      */
@@ -29,6 +48,7 @@ class AboutPageController extends Controller
                 'about_page' => $this->getAboutPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'routes' => ControllerServices::getRoutes('preview'),
             ]
         );
     }

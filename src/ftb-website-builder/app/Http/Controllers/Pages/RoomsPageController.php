@@ -10,6 +10,7 @@ use App\Http\Requests\PageUpdates\RoomsPageUpdateRequest;
 use App\Models\RoomsPage\Room;
 use App\Models\RoomsPage\SecondaryRoomImage;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -19,6 +20,24 @@ use Inertia\Response;
 
 class RoomsPageController extends Controller
 {
+    /**
+     * Display the generated site rooms page.
+     */
+    public function display(Request $request): Response
+    {
+        $subdomain = $request->route()->parameters()['subdomain'];
+        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        return Inertia::render(
+            'GeneratedSite/RoomsPreview',
+            [
+                'rooms_page' => $this->getRoomsPageData($user),
+                'property' => PropertyController::getPropertyData($user),
+                'website' => WebsiteController::getWebsiteData($user),
+                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+            ]
+        );
+    }
+
     /**
      * Display a preview of the generated site rooms page.
      */
@@ -30,6 +49,7 @@ class RoomsPageController extends Controller
                 'rooms_page' => $this->getRoomsPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'routes' => ControllerServices::getRoutes('preview'),
             ]
         );
     }

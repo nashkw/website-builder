@@ -48,4 +48,17 @@ class ControllerServices
         }
         return $data;
     }
+
+    public static function getRoutes(String $prefix, array $params = []): array
+    {
+        return [
+            'home' => route($prefix, $params),
+            'rooms' => route($prefix . '.rooms', $params),
+            'reviews' => route($prefix . '.reviews', $params),
+            'about' => route($prefix . '.about', $params),
+            'explore' => route($prefix . '.explore', $params),
+            'findus' => route($prefix . '.findus', $params),
+            'faq' => route($prefix . '.faq', $params),
+        ];
+    }
 }

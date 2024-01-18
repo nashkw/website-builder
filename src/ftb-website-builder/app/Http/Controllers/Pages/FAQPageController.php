@@ -9,6 +9,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\FAQPageUpdateRequest;
 use App\Models\FAQPage\QuestionAndAnswer;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +18,24 @@ use Inertia\Response;
 
 class FAQPageController extends Controller
 {
+    /**
+     * Display the generated site FAQ page.
+     */
+    public function display(Request $request): Response
+    {
+        $subdomain = $request->route()->parameters()['subdomain'];
+        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        return Inertia::render(
+            'GeneratedSite/FAQPreview',
+            [
+                'faq_page' => $this->getFAQPageData($user),
+                'property' => PropertyController::getPropertyData($user),
+                'website' => WebsiteController::getWebsiteData($user),
+                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+            ]
+        );
+    }
+
     /**
      * Display a preview of the generated site FAQ page.
      */
@@ -28,6 +47,7 @@ class FAQPageController extends Controller
                 'faq_page' => $this->getFAQPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'routes' => ControllerServices::getRoutes('preview'),
             ]
         );
     }

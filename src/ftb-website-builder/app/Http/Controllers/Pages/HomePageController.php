@@ -9,6 +9,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\HomePageUpdateRequest;
 use App\Models\HomePage\SecondaryCoverImage;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -18,6 +19,24 @@ use Inertia\Response;
 
 class HomePageController extends Controller
 {
+    /**
+     * Display the generated site home page.
+     */
+    public function display(Request $request): Response
+    {
+        $subdomain = $request->route()->parameters()['subdomain'];
+        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        return Inertia::render(
+            'GeneratedSite/HomePreview',
+            [
+                'home_page' => $this->getHomePageData($user),
+                'property' => PropertyController::getPropertyData($user),
+                'website' => WebsiteController::getWebsiteData($user),
+                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+            ]
+        );
+    }
+
     /**
      * Display a preview of the generated site home page.
      */
@@ -29,6 +48,7 @@ class HomePageController extends Controller
                 'home_page' => $this->getHomePageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'routes' => ControllerServices::getRoutes('preview'),
             ]
         );
     }

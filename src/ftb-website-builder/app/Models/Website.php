@@ -27,6 +27,7 @@ class Website extends Model
         'text_colour' => 'string',
         'divider_art' => 'string',
         'font_family' => 'string',
+        'subdomain' => 'string',
     ];
 
     /**
