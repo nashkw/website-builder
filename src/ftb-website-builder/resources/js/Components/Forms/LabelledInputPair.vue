@@ -3,6 +3,7 @@ import InputLabel from "@/Components/Forms/InputLabel.vue";
 import TextInput from "@/Components/Forms/TextInput.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 import RatingInput from "@/Components/Forms/RatingInput.vue";
+import SubdomainInput from "@/Components/Forms/SubdomainInput.vue";
 
 const props = defineProps({
     modelValue: {
@@ -56,6 +57,11 @@ defineEmits(['update:modelValue']);
         />
         <RatingInput
             v-if="inputType === 'rating'"
+            :modelValue="modelValue"
+            @update:modelValue="$emit('update:modelValue', $event)"
+        />
+        <SubdomainInput
+            v-else-if="inputType === 'subdomain'"
             :modelValue="modelValue"
             @update:modelValue="$emit('update:modelValue', $event)"
         />

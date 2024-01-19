@@ -95,6 +95,7 @@ const fonts = [
                     label="websitename"
                     :errorMessage="form.errors.subdomain"
                     fieldID="subdomain"
+                    inputType="subdomain"
                     required
                 />
             </FormSection>
