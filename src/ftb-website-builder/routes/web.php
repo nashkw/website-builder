@@ -25,7 +25,7 @@ use Inertia\Inertia;
 */
 
 Route::domain('websitebuilder.ftb.sites')->group(function () {
-    Route::get('/', function () { return Inertia::render('LandingPage'); });
+    Route::get('/', function () { return Inertia::render('LandingPage'); })->name('landing');
 
     Route::middleware('auth')->group(function () {
         Route::name('account')->prefix('account')->group(function () {

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('divider_art')->nullable();
             $table->string('font_family')->nullable();
             $table->string('subdomain')->unique();
+            $table->boolean('preview_only')->default(true);
             $table->timestamps();
         });
     }

@@ -21,10 +21,17 @@ class FindUsPageController extends Controller
     /**
      * Display the generated site find us page.
      */
-    public function display(Request $request): Response
+    public function display(Request $request): Response|RedirectResponse
     {
         $subdomain = $request->route()->parameters()['subdomain'];
-        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        $website = Website::firstWhere('subdomain', $subdomain);
+        if (!$website) {
+            return Redirect::route('landing');
+        } else if ($website->preview_only) {
+            return Redirect::route('preview.findus');
+        }
+
+        $user = $website->property->user_id;
         return Inertia::render(
             'GeneratedSite/GenerateFindUs',
             [
@@ -40,8 +47,13 @@ class FindUsPageController extends Controller
     /**
      * Display a preview of the generated site find us page.
      */
-    public function preview(Request $request): Response
+    public function preview(Request $request): Response|RedirectResponse
     {
+        $website = User::find($request->user()->id)->property->website;
+        if (!$website->preview_only) {
+            return Redirect::route('website.findus', ['subdomain' => $website->subdomain]);
+        }
+
         return Inertia::render(
             'GeneratedSite/GenerateFindUs',
             [

@@ -23,10 +23,17 @@ class RoomsPageController extends Controller
     /**
      * Display the generated site rooms page.
      */
-    public function display(Request $request): Response
+    public function display(Request $request): Response|RedirectResponse
     {
         $subdomain = $request->route()->parameters()['subdomain'];
-        $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
+        $website = Website::firstWhere('subdomain', $subdomain);
+        if (!$website) {
+            return Redirect::route('landing');
+        } else if ($website->preview_only) {
+            return Redirect::route('preview.rooms');
+        }
+
+        $user = $website->property->user_id;
         return Inertia::render(
             'GeneratedSite/GenerateRooms',
             [
@@ -42,8 +49,13 @@ class RoomsPageController extends Controller
     /**
      * Display a preview of the generated site rooms page.
      */
-    public function preview(Request $request): Response
+    public function preview(Request $request): Response|RedirectResponse
     {
+        $website = User::find($request->user()->id)->property->website;
+        if (!$website->preview_only) {
+            return Redirect::route('website.rooms', ['subdomain' => $website->subdomain]);
+        }
+
         return Inertia::render(
             'GeneratedSite/GenerateRooms',
             [

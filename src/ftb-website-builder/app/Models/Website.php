@@ -28,6 +28,7 @@ class Website extends Model
         'divider_art' => 'string',
         'font_family' => 'string',
         'subdomain' => 'string',
+        'preview_only' => 'boolean',
     ];
 
     /**

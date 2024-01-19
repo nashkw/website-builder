@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'divider_art' => 'images/dividerArt/test_divider_art.png',
             'font_family' => 'Roboto Slab',
             'subdomain' => 'testhotel',
+            'preview_only' => false,
         ]);
         DB::table('home_pages')->insert([
             'property_id' => $property_id,
