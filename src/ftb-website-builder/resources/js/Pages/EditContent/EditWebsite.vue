@@ -16,6 +16,7 @@ const props = defineProps({
     text_colour: String,
     divider_art: String,
     font_family: String,
+    subdomain: String,
 });
 
 const form = useForm({
@@ -26,6 +27,7 @@ const form = useForm({
     divider_art: null,
     remove_divider_art: false,
     font_family: props.font_family,
+    subdomain: props.subdomain,
 });
 
 const fonts = [
@@ -87,6 +89,16 @@ const fonts = [
             @submit.prevent="form.post(route('edit.website.update'))"
             class="space-y-8"
         >
+            <FormSection prompt="Enter the name of your website. This name will form the first part of the URL for your website, so it should be all lowercase and contain no spaces.">
+                <LabelledInputPair
+                    v-model="form.subdomain"
+                    label="websitename"
+                    :errorMessage="form.errors.subdomain"
+                    fieldID="subdomain"
+                    required
+                />
+            </FormSection>
+
             <FormSection prompt="Select the theme colours for your website. Make sure that the primary, secondary, and text colours will stand out against the background colour.">
                 <div class="flex grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
                     <ColourPickerGridItem
