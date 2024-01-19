@@ -2,12 +2,10 @@
 import FindUs from "../../../../generated-site/src/pages/FindUs.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
-import About from "../../../../generated-site/src/pages/About.vue";
 
 export default {
-    name: "FindUsPreview",
+    name: "GenerateFindUs",
     components: {
-        About,
         Head,
         FindUs,
     },
@@ -16,12 +14,13 @@ export default {
         property: Object,
         website: Object,
         routes: Object,
+        isPreview: Boolean,
     },
 }
 </script>
 
 <template>
-    <Head title="Find Us (preview)" />
+    <Head :title="'Find Us' + isPreview ? ' (preview)' : ''" />
     <FindUs
         :property="property"
         :website="website"

@@ -1,31 +1,30 @@
 <script>
-import Reviews from "../../../../generated-site/src/pages/Reviews.vue";
+import Home from "../../../../generated-site/src/pages/Home.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
-import About from "../../../../generated-site/src/pages/About.vue";
 
 export default {
-    name: "ReviewsPreview",
+    name: "GenerateHome",
     components: {
-        About,
         Head,
-        Reviews,
+        Home,
     },
     props: {
-        reviews_page: Object,
+        home_page: Object,
         property: Object,
         website: Object,
         routes: Object,
+        isPreview: Boolean,
     },
 }
 </script>
 
 <template>
-    <Head title="Reviews (preview)" />
-    <Reviews
+    <Head :title="'Home' + isPreview ? ' (preview)' : ''" />
+    <Home
         :property="property"
         :website="website"
-        :reviews_page="reviews_page"
+        :home_page="home_page"
         :routes="routes"
     />
 </template>

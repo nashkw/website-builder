@@ -1,31 +1,30 @@
 <script>
-import Home from "../../../../generated-site/src/pages/Home.vue";
+import Rooms from "../../../../generated-site/src/pages/Rooms.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
-import About from "../../../../generated-site/src/pages/About.vue";
 
 export default {
-    name: "HomePreview",
+    name: "GenerateRooms",
     components: {
-        About,
         Head,
-        Home,
+        Rooms,
     },
     props: {
-        home_page: Object,
+        rooms_page: Object,
         property: Object,
         website: Object,
         routes: Object,
+        isPreview: Boolean,
     },
 }
 </script>
 
 <template>
-    <Head title="Home (preview)" />
-    <Home
+    <Head :title="'Rooms' + isPreview ? ' (preview)' : ''" />
+    <Rooms
         :property="property"
         :website="website"
-        :home_page="home_page"
+        :rooms_page="rooms_page"
         :routes="routes"
     />
 </template>

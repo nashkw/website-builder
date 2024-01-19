@@ -1,29 +1,30 @@
 <script>
-import About from "../../../../generated-site/src/pages/About.vue";
+import FAQ from "../../../../generated-site/src/pages/FAQ.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
 
 export default {
-    name: "AboutPreview",
+    name: "GenerateFAQ",
     components: {
         Head,
-        About,
+        FAQ,
     },
     props: {
-        about_page: Object,
+        faq_page: Object,
         property: Object,
         website: Object,
         routes: Object,
+        isPreview: Boolean,
     },
 }
 </script>
 
 <template>
-    <Head title="About (preview)" />
-    <About
+    <Head :title="'FAQ' + isPreview ? ' (preview)' : ''" />
+    <FAQ
         :property="property"
         :website="website"
-        :about_page="about_page"
+        :faq_page="faq_page"
         :routes="routes"
     />
 </template>

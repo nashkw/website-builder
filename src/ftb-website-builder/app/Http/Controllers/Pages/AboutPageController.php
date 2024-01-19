@@ -27,12 +27,13 @@ class AboutPageController extends Controller
         $subdomain = $request->route()->parameters()['subdomain'];
         $user = Website::firstWhere('subdomain', $subdomain)->property->user_id;
         return Inertia::render(
-            'GeneratedSite/AboutPreview',
+            'GeneratedSite/GenerateAbout',
             [
                 'about_page' => $this->getAboutPageData($user),
                 'property' => PropertyController::getPropertyData($user),
                 'website' => WebsiteController::getWebsiteData($user),
                 'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+                'isPreview' => false,
             ]
         );
     }
@@ -43,12 +44,13 @@ class AboutPageController extends Controller
     public function preview(Request $request): Response
     {
         return Inertia::render(
-            'GeneratedSite/AboutPreview',
+            'GeneratedSite/GenerateAbout',
             [
                 'about_page' => $this->getAboutPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
                 'routes' => ControllerServices::getRoutes('preview'),
+                'isPreview' => true,
             ]
         );
     }

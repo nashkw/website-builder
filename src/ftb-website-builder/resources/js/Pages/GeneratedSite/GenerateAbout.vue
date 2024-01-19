@@ -1,31 +1,30 @@
 <script>
-import Explore from "../../../../generated-site/src/pages/Explore.vue";
+import About from "../../../../generated-site/src/pages/About.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
-import About from "../../../../generated-site/src/pages/About.vue";
 
 export default {
-    name: "ExplorePreview",
+    name: "GenerateAbout",
     components: {
-        About,
         Head,
-        Explore,
+        About,
     },
     props: {
-        explore_page: Object,
+        about_page: Object,
         property: Object,
         website: Object,
         routes: Object,
+        isPreview: Boolean,
     },
 }
 </script>
 
 <template>
-    <Head title="Explore (preview)" />
-    <Explore
+    <Head :title="'About' + isPreview ? ' (preview)' : ''" />
+    <About
         :property="property"
         :website="website"
-        :explore_page="explore_page"
+        :about_page="about_page"
         :routes="routes"
     />
 </template>
