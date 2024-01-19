@@ -2,10 +2,12 @@
 import FAQ from "../../../../generated-site/src/pages/FAQ.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import AppHead from "@/Layout/AppHead.vue";
 
 export default {
     name: "GenerateFAQ",
     components: {
+        AppHead,
         Head,
         FAQ,
     },
@@ -20,7 +22,14 @@ export default {
 </script>
 
 <template>
-    <Head :title="'FAQ' + isPreview ? ' (preview)' : ''" />
+    <AppHead
+        v-if="isPreview"
+        title="FAQ (preview)"
+    />
+    <Head
+        v-else
+        :title="'FAQ - ' + property.property_name"
+    />
     <FAQ
         :property="property"
         :website="website"

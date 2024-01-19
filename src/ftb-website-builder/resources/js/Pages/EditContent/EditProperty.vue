@@ -1,10 +1,11 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
+import AppHead from "@/Layout/AppHead.vue";
 
 const props = defineProps({
     property_name: String,
@@ -47,7 +48,7 @@ const form = useForm({
 </script>
 
 <template>
-    <Head title="Edit your property details" />
+    <AppHead title="Edit your property details" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your property details

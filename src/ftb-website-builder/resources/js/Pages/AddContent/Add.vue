@@ -1,10 +1,10 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
+import AppHead from "@/Layout/AppHead.vue";
 </script>
 
 <template>
-    <Head title="Add pages" />
+    <AppHead title="Add pages" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Add more pages to your website

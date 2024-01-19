@@ -3,9 +3,10 @@ import Checkbox from '@/Components/Forms/Checkbox.vue';
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import {Link, useForm} from '@inertiajs/vue3';
 import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
+import AppHead from "@/Layout/AppHead.vue";
 
 defineProps({
     canResetPassword: {
@@ -30,7 +31,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Log in" />
+    <AppHead title="Log in" />
     <LoggedOutLayout>
         <form
             @submit.prevent="submit"

@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
@@ -8,6 +8,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
+import AppHead from "@/Layout/AppHead.vue";
 
 const props = defineProps({
     primary_colour: String,
@@ -80,7 +81,7 @@ const fonts = [
 </script>
 
 <template>
-    <Head title="Edit your styling choices" />
+    <AppHead title="Edit your styling choices" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your styling choices

@@ -1,5 +1,5 @@
 <script setup>
-import {Head, router, useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -8,6 +8,7 @@ import ImageInput from "@/Components/Forms/ImageInput.vue";
 import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
+import AppHead from "@/Layout/AppHead.vue";
 
 const props = defineProps({
     faq_page_section_header: String,
@@ -48,7 +49,7 @@ router.on('success', (event) => {
 </script>
 
 <template>
-    <Head title="Edit your FAQ page" />
+    <AppHead title="Edit your FAQ page" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your FAQ page

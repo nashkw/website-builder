@@ -2,10 +2,12 @@
 import Rooms from "../../../../generated-site/src/pages/Rooms.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import AppHead from "@/Layout/AppHead.vue";
 
 export default {
     name: "GenerateRooms",
     components: {
+        AppHead,
         Head,
         Rooms,
     },
@@ -20,7 +22,14 @@ export default {
 </script>
 
 <template>
-    <Head :title="'Rooms' + isPreview ? ' (preview)' : ''" />
+    <AppHead
+        v-if="isPreview"
+        title="Rooms (preview)"
+    />
+    <Head
+        v-else
+        :title="'Rooms - ' + property.property_name"
+    />
     <Rooms
         :property="property"
         :website="website"

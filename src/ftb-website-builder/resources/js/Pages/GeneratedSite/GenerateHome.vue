@@ -2,10 +2,12 @@
 import Home from "../../../../generated-site/src/pages/Home.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import AppHead from "@/Layout/AppHead.vue";
 
 export default {
     name: "GenerateHome",
     components: {
+        AppHead,
         Head,
         Home,
     },
@@ -20,7 +22,14 @@ export default {
 </script>
 
 <template>
-    <Head :title="'Home' + isPreview ? ' (preview)' : ''" />
+    <AppHead
+        v-if="isPreview"
+        title="Home (preview)"
+    />
+    <Head
+        v-else
+        :title="'Home - ' + property.property_name"
+    />
     <Home
         :property="property"
         :website="website"

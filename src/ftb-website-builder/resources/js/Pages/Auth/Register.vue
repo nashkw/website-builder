@@ -2,9 +2,10 @@
 import InputError from '@/Components/Forms/InputError.vue';
 import InputLabel from '@/Components/Forms/InputLabel.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import {Link, useForm} from '@inertiajs/vue3';
 import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
 import ArrowIcon from "@/Components/Icons/ArrowIcon.vue";
+import AppHead from "@/Layout/AppHead.vue";
 
 const form = useForm({
     name: '',
@@ -21,7 +22,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Register" />
+    <AppHead title="Register" />
     <LoggedOutLayout>
         <form @submit.prevent="submit">
             <div class="w-80 sm:w-96 my-7 wb-page-container rounded-xl shadow-sm space-y-5">

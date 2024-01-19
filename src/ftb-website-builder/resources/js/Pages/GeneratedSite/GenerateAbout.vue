@@ -2,10 +2,12 @@
 import About from "../../../../generated-site/src/pages/About.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import AppHead from "@/Layout/AppHead.vue";
 
 export default {
     name: "GenerateAbout",
     components: {
+        AppHead,
         Head,
         About,
     },
@@ -20,7 +22,14 @@ export default {
 </script>
 
 <template>
-    <Head :title="'About' + isPreview ? ' (preview)' : ''" />
+    <AppHead
+        v-if="isPreview"
+        title="About (preview)"
+    />
+    <Head
+        v-else
+        :title="'About - ' + property.property_name"
+    />
     <About
         :property="property"
         :website="website"

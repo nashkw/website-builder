@@ -1,12 +1,12 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
 import ArrowButton from "@/Components/Buttons/ArrowButton.vue";
 import SignInOutButton from "@/Components/Buttons/SignInOutButton.vue";
 import LoggedOutLayout from "@/Layout/LoggedOutLayout.vue";
+import AppHead from "@/Layout/AppHead.vue";
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <AppHead title="Welcome" />
     <LoggedOutLayout>
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
             <div class="max-w-2xl text-center mx-auto">

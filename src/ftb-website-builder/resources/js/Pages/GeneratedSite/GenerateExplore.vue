@@ -2,10 +2,12 @@
 import Explore from "../../../../generated-site/src/pages/Explore.vue";
 import '../../../../generated-site/src/assets/generatedSite.css'
 import {Head} from "@inertiajs/vue3";
+import AppHead from "@/Layout/AppHead.vue";
 
 export default {
     name: "GenerateExplore",
     components: {
+        AppHead,
         Head,
         Explore,
     },
@@ -20,7 +22,14 @@ export default {
 </script>
 
 <template>
-    <Head :title="'Explore' + isPreview ? ' (preview)' : ''" />
+    <AppHead
+        v-if="isPreview"
+        title="Explore (preview)"
+    />
+    <Head
+        v-else
+        :title="'Explore - ' + property.property_name"
+    />
     <Explore
         :property="property"
         :website="website"

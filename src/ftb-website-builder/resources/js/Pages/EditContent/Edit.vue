@@ -1,11 +1,11 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import ClickableCard from "@/Components/Buttons/ClickableCard.vue";
+import AppHead from "@/Layout/AppHead.vue";
 </script>
 
 <template>
-    <Head title="Edit" />
+    <AppHead title="Edit" />
     <LoggedInLayout>
         <h1 class="wb-title">
             Edit your website
