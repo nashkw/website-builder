@@ -43,6 +43,9 @@ function removeRoom(index) {
 }
 
 function addSecondaryImage(roomIndex) {
+    if(!form.rooms[roomIndex].secondary_room_images) {
+        form.rooms[roomIndex].secondary_room_images = [];
+    }
     form.rooms[roomIndex].secondary_room_images.push({
         id: null,
         secondary_room_image: null,
