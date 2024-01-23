@@ -41,9 +41,9 @@ export default {
 
 <template>
     <div>
-        <header class="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full gs-bg-alt text-sm py-4">
+        <header class="flex flex-wrap xl:justify-start xl:flex-nowrap z-50 w-full gs-bg-alt text-sm py-4">
             <nav
-                class="relative w-full mx-auto px-4 lg:flex lg:items-center lg:justify-between lg:px-8"
+                class="relative w-full mx-auto px-4 xl:flex xl:items-center xl:justify-between xl:px-8"
                 aria-label="Global"
             >
                 <div class="flex items-center justify-between">
@@ -52,7 +52,7 @@ export default {
                         :routes="routes"
                         :property="property"
                     />
-                    <div class="lg:hidden">
+                    <div class="xl:hidden">
                         <button
                             type="button"
                             class="hs-collapse-toggle w-9 h-9 flex justify-center items-center text-sm font-semibold rounded-lg"
@@ -60,15 +60,15 @@ export default {
                             aria-controls="navbar-collapse-with-animation"
                             aria-label="Toggle navigation"
                         >
-                            <HeaderIcon/>
+                            <HeaderIcon class="gs-title"/>
                         </button>
                     </div>
                 </div>
                 <div
                     id="navbar-collapse-with-animation"
-                    class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow lg:block"
+                    class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow xl:block"
                 >
-                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-5 lg:flex lg:flex-row lg:items-center lg:justify-end lg:gap-y-0 lg:gap-x-2 lg:mt-0 lg:ps-7">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-5 xl:flex xl:flex-row xl:items-center xl:justify-end xl:gap-y-0 xl:gap-x-2 xl:mt-0 xl:ps-7">
                         <HeaderButton
                             text="Home"
                             :href="routes.home"
@@ -100,7 +100,7 @@ export default {
                         <BookingButton
                             text="Book Now"
                             :bookingLink="property.property_booking_link"
-                            class="lg:ml-4"
+                            class="xl:ml-4"
                         />
                     </div>
                 </div>
