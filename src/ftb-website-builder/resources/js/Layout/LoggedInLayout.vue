@@ -46,17 +46,6 @@ export default {
                 aria-label="Breadcrumb"
             >
                 <ApplicationLogo />
-                <ArrowIcon class="wb-text max-sm:hidden" />
-                <li class="flex items-center wb-text max-sm:hidden">
-                    Tier 1
-                </li>
-                <ArrowIcon  class="wb-text max-sm:hidden" />
-                <li
-                    class="flex items-center wb-text max-sm:hidden"
-                    aria-current="page"
-                >
-                    Tier 2
-                </li>
             </ol>
         </div>
     </div>
