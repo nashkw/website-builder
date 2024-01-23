@@ -129,14 +129,14 @@
 
 * *0.5 hours* brainstorming next steps for project and recording as trello tickets
 * *1 hour* updating freetobook on wireframing progress and updating timelog
-* *6.5 hours* begin setup of authentication system (including database and landing page)
+* *6.5 hours* begin set up of authentication system (including database and landing page)
 
 
 ## Week 7
 
 ### 02 Nov 2023
 
-* *8 hours* continued setup of authentication system (including sign up and log in pages)
+* *8 hours* continued set up of authentication system (including sign up and log in pages)
 
 ### 05 Nov 2023
 
@@ -147,7 +147,7 @@
 
 ### 07 Nov 2023
 
-* *8 hours* continued setup of authentication system (including routes and account page)
+* *8 hours* continued set up of authentication system (including routes and account page)
 
 ### 08 Nov 2023
 
@@ -310,3 +310,14 @@
 * *1.5 hours* added a font picker component and made all fonts available in both apps
 * *1.5 hours* improved colour calculations in dynamic generated site styling
 * *2 hours* began updating trello notes and timelog with winter break developments
+
+### 18 Jan 2024
+
+* *2 hours* continued updating trello notes with winter break developments
+* *6 hours* began implementing subdomain hosting of generated sites
+
+### 19 Jan 2024
+
+* *5 hours* continued implementing subdomain hosting of generated sites
+* *1 hour* prepared demo of winter break developments, tested zoom set up
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
