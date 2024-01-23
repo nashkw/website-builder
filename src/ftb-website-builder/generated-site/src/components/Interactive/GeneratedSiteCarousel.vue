@@ -39,13 +39,12 @@ const props = defineProps({
         <template #addons>
             <Navigation>
                 <template #next>
-                    <RightArrowIcon />
+                    <RightArrowIcon class="gs-title" />
                 </template>
                 <template #prev>
-                    <LeftArrowIcon />
+                    <LeftArrowIcon class="gs-title" />
                 </template>
             </Navigation>
-            <Pagination />
         </template>
     </Carousel>
 </template>
