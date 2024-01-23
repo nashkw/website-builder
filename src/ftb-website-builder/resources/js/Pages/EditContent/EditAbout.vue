@@ -116,6 +116,8 @@ router.on('success', (event) => {
                         <textarea
                             :id="'secondary_about_section_paragraph_' + index"
                             type="text"
+                            wrap="hard"
+                            style="white-space: pre-wrap;"
                             v-model="section.secondary_about_section_paragraph"
                             class="wb-input-box h-40 s:h-20"
                             required

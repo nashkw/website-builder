@@ -165,13 +165,13 @@
     "secondary_about_sections": [
         {
             "secondary_about_section_header": null,
-            "secondary_about_section_paragraph": "As the doors opened, our story began to unfold through the unique experiences of our cherished guests. They quickly discovered the genuine warmth radiating from our attentive staff, experienced the stylish allure embedded in every corner of our accommodations, and marveled at the seamless fusion of modern amenities with timeless charm.\\nThe resounding positivity echoed in the reviews served as a testament to the success of our endeavor, further solidifying our commitment to delivering an unparalleled escape for each and every visitor. These testimonials not only inspire us but also motivate our dedicated team to continually raise the bar, ensuring that every guest enjoys a truly exceptional and memorable stay.",
+            "secondary_about_section_paragraph": "As the doors opened, our story began to unfold through the unique experiences of our cherished guests. They quickly discovered the genuine warmth radiating from our attentive staff, experienced the stylish allure embedded in every corner of our accommodations, and marveled at the seamless fusion of modern amenities with timeless charm.\nThe resounding positivity echoed in the reviews served as a testament to the success of our endeavor, further solidifying our commitment to delivering an unparalleled escape for each and every visitor. These testimonials not only inspire us but also motivate our dedicated team to continually raise the bar, ensuring that every guest enjoys a truly exceptional and memorable stay.",
             "secondary_about_section_image": "images/sectionImages/aboutSecondary/test_about_image_2.jpg",
             "secondary_about_section_image_description": "store testing"
         },
         {
             "secondary_about_section_header": "Where we are today",
-            "secondary_about_section_paragraph": "Today, our hotel stands as a testament to the dedication that brought it into existence. It serves as a living story, with every check-in marking the addition of a new chapter. Whether our guests are here for business or leisure, the narrative of our establishment continues to evolve, weaving a legacy of cherished moments and leaving behind a trail of satisfied smiles.\\nOur story is an ongoing journey, and we extend a warm invitation for you to become a part of it. Your chapter awaits at our doors, where each guest contributes to the vibrant tapestry of experiences that define our hotel. Join us in creating and sharing moments that make our story truly extraordinary.",
+            "secondary_about_section_paragraph": "Today, our hotel stands as a testament to the dedication that brought it into existence. It serves as a living story, with every check-in marking the addition of a new chapter. Whether our guests are here for business or leisure, the narrative of our establishment continues to evolve, weaving a legacy of cherished moments and leaving behind a trail of satisfied smiles.\nOur story is an ongoing journey, and we extend a warm invitation for you to become a part of it. Your chapter awaits at our doors, where each guest contributes to the vibrant tapestry of experiences that define our hotel. Join us in creating and sharing moments that make our story truly extraordinary.",
             "secondary_about_section_image": "images/sectionImages/aboutSecondary/test_about_image_3.jpg",
             "secondary_about_section_image_description": "store testing"
         }
@@ -211,7 +211,7 @@
           },
           {
               "attraction_header": "Epicurus Scuba Diving",
-              "attraction_paragraph": "Dive into the exhilarating world beneath the waves with Epicurus Scuba Diving, a thrilling adventure located just steps away from Test Hotel, nestled around the scenic Camusport Beach. Explore the mesmerizing underwater landscapes and vibrant marine life under the expert guidance of the experienced Epicurus instructors.\\nWhether you are a seasoned diver or a first-timer, Epicurus Scuba Diving caters to all skill levels, promising an unforgettable subaquatic experience.",
+              "attraction_paragraph": "Dive into the exhilarating world beneath the waves with Epicurus Scuba Diving, a thrilling adventure located just steps away from Test Hotel, nestled around the scenic Camusport Beach. Explore the mesmerizing underwater landscapes and vibrant marine life under the expert guidance of the experienced Epicurus instructors.\nWhether you are a seasoned diver or a first-timer, Epicurus Scuba Diving caters to all skill levels, promising an unforgettable subaquatic experience.",
               "attraction_image": "images/attractionListing/test_attraction_5.jpg",
               "attraction_image_description": "store testing"
           },

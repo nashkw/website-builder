@@ -57,7 +57,7 @@ const props = defineProps({
             </h1>
             <p
                 v-if="paragraph"
-                v-for="(line, index) of paragraph.split('\\n')"
+                v-for="(line, index) of paragraph.split('\n')"
                 :key="index"
                 class="gs-text"
             >
