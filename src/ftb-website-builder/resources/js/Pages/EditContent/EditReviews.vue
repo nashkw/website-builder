@@ -102,15 +102,21 @@ router.on('success', (event) => {
                         v-for="(review, index) in form.reviews"
                         class="wb-card space-y-2"
                     >
-                        <LabelledInputPair
+                        <InputLabel
+                            :for="'review_quote_' + index"
+                            value="Review text"
+                            class="sr-only"
+                        />
+                        <textarea
+                            :id="'review_quote_' + index"
+                            type="text"
                             v-model="review.review_quote"
-                            showLabel
-                            label="Review text"
-                            labelClass="w-28"
-                            :errorMessage="form.errors['reviews.' + index + '.review_quote']"
-                            :fieldID="'review_quote_' + index"
+                            class="wb-input-box h-24"
+                            autocomplete="'review_quote_' + index"
+                            placeholder="My review of this property is..."
                             required
                         />
+                        <InputError :message="form.errors['reviews.' + index + '.review_quote']" />
                         <LabelledInputPair
                             v-model="review.reviewer_name"
                             showLabel
