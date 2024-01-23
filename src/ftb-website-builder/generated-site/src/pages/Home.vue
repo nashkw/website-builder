@@ -75,6 +75,7 @@ export default {
         <GeneratedSiteCarousel
             :images="coverImages"
             :autoplay="8000"
+            :wrap="true"
         />
 
         <PageSection

@@ -13,13 +13,17 @@ const props = defineProps({
         type: Number,
         default: 0,
     },
+    wrap: {
+        type: Boolean,
+        default: false,
+    },
 });
 </script>
 
 <template>
     <Carousel
         :autoplay="autoplay"
-        :wrap-around="true"
+        :wrap-around="wrap"
     >
         <Slide
             v-for="slide in images"
@@ -51,8 +55,5 @@ const props = defineProps({
     object-fit: cover;
     height: 400px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 </style>
