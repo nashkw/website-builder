@@ -66,11 +66,15 @@ class AccountController extends Controller
             if (!$file->isDir()) {
                 $filePath = $file->getRealPath();
                 $relativePath = substr($filePath, strlen($sitePath) + 1);
-                $zip->addFile($filePath, $relativePath);
+                if (!str_contains($relativePath, 'src/data/')
+                    && !str_contains($relativePath, 'node_modules/')
+                    && !str_contains($relativePath, '.idea/')
+                ) {
+                    $zip->addFile($filePath, $relativePath);
+                }
             }
         }
 
-        $zip->deleteName('data.json');
         $zip->addFromString('src/data/data.json', $data);
 
         $zip->close();
