@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use ZipArchive;
 
@@ -35,7 +37,7 @@ class AccountController extends Controller
     /**
      * Download the user's website as a standalone app.
      */
-    public function download(Request $request): BinaryFileResponse|string
+    public function download(Request $request): BinaryFileResponse
     {
         $userID = $request->user()->id;
         $data = json_encode([
@@ -52,14 +54,27 @@ class AccountController extends Controller
 
         $zip = new ZipArchive();
         $zipPath = public_path('website.zip');
+        $sitePath = realpath(base_path('generated-site'));
+        $zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-        if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
-            $zip->addFromString('data.json', $data);
-            $zip->close();
-            return response()->download($zipPath)->deleteFileAfterSend(true);
-        } else {
-            return "Failed to export website.";
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($sitePath),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+
+        foreach ($files as $file) {
+            if (!$file->isDir()) {
+                $filePath = $file->getRealPath();
+                $relativePath = substr($filePath, strlen($sitePath) + 1);
+                $zip->addFile($filePath, $relativePath);
+            }
         }
+
+        $zip->deleteName('data.json');
+        $zip->addFromString('src/data/data.json', $data);
+
+        $zip->close();
+        return response()->download($zipPath)->deleteFileAfterSend(true);
     }
 
     /**
