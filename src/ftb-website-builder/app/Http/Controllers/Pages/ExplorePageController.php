@@ -85,6 +85,7 @@ class ExplorePageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $explorePage = User::find($request->user()->id)->property->explorePage;
         $data = $request->all();
 
@@ -92,7 +93,7 @@ class ExplorePageController extends Controller
             $request,
             'explore_page_section_image',
             'remove_explore_page_section_image',
-            'images/sectionImages/explorePrimary/',
+            $imagePath,
             $explorePage,
             $data
         );
@@ -126,7 +127,7 @@ class ExplorePageController extends Controller
             if (is_string($attraction['attraction_image'])) {
                 unset($attraction['attraction_image']);
             } else if ($attraction['attraction_image']) {
-                $filepath = Storage::disk("public")->putFile('images/attractionListing/', $attraction['attraction_image']);
+                $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
                 $attraction['attraction_image'] = $filepath;
             }
 

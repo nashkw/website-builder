@@ -84,6 +84,7 @@ class FAQPageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $faqPage = User::find($request->user()->id)->property->faqPage;
         $data = $request->all();
 
@@ -91,7 +92,7 @@ class FAQPageController extends Controller
             $request,
             'faq_page_section_image',
             'remove_faq_page_section_image',
-            'images/sectionImages/faqPrimary/',
+            $imagePath,
             $faqPage,
             $data
         );

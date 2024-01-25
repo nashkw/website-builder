@@ -84,6 +84,7 @@ class FindUsPageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $findUsPage = User::find($request->user()->id)->property->findUsPage;
         $data = $request->all();
 
@@ -91,7 +92,7 @@ class FindUsPageController extends Controller
             $request,
             'find_us_page_section_image',
             'remove_find_us_page_section_image',
-            'images/sectionImages/findUsPrimary/',
+            $imagePath,
             $findUsPage,
             $data
         );

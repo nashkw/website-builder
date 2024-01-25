@@ -85,6 +85,7 @@ class ReviewsPageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $reviewsPage = User::find($request->user()->id)->property->reviewsPage;
         $data = $request->all();
 
@@ -92,7 +93,7 @@ class ReviewsPageController extends Controller
             $request,
             'reviews_page_section_image',
             'remove_reviews_page_section_image',
-            'images/sectionImages/reviewsPrimary/',
+            $imagePath,
             $reviewsPage,
             $data
         );

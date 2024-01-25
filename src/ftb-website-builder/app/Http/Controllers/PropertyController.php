@@ -47,6 +47,7 @@ class PropertyController
             'property_booking_link' => ['required', 'string', 'max:255'],
         ]);
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $property = User::find($request->user()->id)->property;
         $data = $request->all();
 
@@ -54,7 +55,7 @@ class PropertyController
             $request,
             'property_logo',
             'remove_property_logo',
-            'images/propertyLogo/',
+            $imagePath,
             $property,
             $data
         );

@@ -85,6 +85,7 @@ class AboutPageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $aboutPage = User::find($request->user()->id)->property->aboutPage;
         $data = $request->all();
 
@@ -92,7 +93,7 @@ class AboutPageController extends Controller
             $request,
             'about_page_section_image',
             'remove_about_page_section_image',
-            'images/sectionImages/aboutPrimary/',
+            $imagePath,
             $aboutPage,
             $data
         );
@@ -126,7 +127,7 @@ class AboutPageController extends Controller
             if (is_string($section['secondary_about_section_image'])) {
                 unset($section['secondary_about_section_image']);
             } else if ($section['secondary_about_section_image']) {
-                $filepath = Storage::disk("public")->putFile('images/sectionImages/aboutSecondary/', $section['secondary_about_section_image']);
+                $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
                 $section['secondary_about_section_image'] = $filepath;
             }
 

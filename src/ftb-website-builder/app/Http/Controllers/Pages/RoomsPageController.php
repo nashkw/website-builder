@@ -86,6 +86,7 @@ class RoomsPageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $roomsPage = User::find($request->user()->id)->property->roomsPage;
         $data = $request->all();
 
@@ -93,7 +94,7 @@ class RoomsPageController extends Controller
             $request,
             'rooms_page_section_image',
             'remove_rooms_page_section_image',
-            'images/sectionImages/roomsPrimary/',
+            $imagePath,
             $roomsPage,
             $data
         );
@@ -118,7 +119,7 @@ class RoomsPageController extends Controller
             if (is_string($room['room_image_primary'])) {
                 unset($room['room_image_primary']);
             } else if ($room['room_image_primary']) {
-                $filepath = Storage::disk("public")->putFile('images/roomListingPrimary/', $room['room_image_primary']);
+                $filepath = Storage::disk("public")->putFile($imagePath, $room['room_image_primary']);
                 $room['room_image_primary'] = $filepath;
             }
 
@@ -140,7 +141,7 @@ class RoomsPageController extends Controller
                 }
 
                 if(!is_string($image['secondary_room_image'])) {
-                    $filepath = Storage::disk("public")->putFile('images/roomListingSecondary/', $image['secondary_room_image']);
+                    $filepath = Storage::disk("public")->putFile($imagePath, $image['secondary_room_image']);
                     $image['secondary_room_image'] = $filepath;
 
                     unset($image['id']);

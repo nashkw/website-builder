@@ -85,6 +85,7 @@ class HomePageController extends Controller
     {
         $request->validated();
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $homePage = User::find($request->user()->id)->property->homePage;
         $data = $request->all();
 
@@ -92,7 +93,7 @@ class HomePageController extends Controller
             $request,
             'cover_image_primary',
             null,
-            'images/coverImagePrimary/',
+            $imagePath,
             $homePage,
             $data
         );
@@ -100,7 +101,7 @@ class HomePageController extends Controller
             $request,
             'intro_section_image',
             'remove_intro_section_image',
-            'images/sectionImages/homeIntro/',
+            $imagePath,
             $homePage,
             $data
         );
@@ -108,7 +109,7 @@ class HomePageController extends Controller
             $request,
             'welcome_section_image',
             'remove_welcome_section_image',
-            'images/sectionImages/homeWelcome/',
+            $imagePath,
             $homePage,
             $data
         );
@@ -131,7 +132,7 @@ class HomePageController extends Controller
             }
 
             if(!is_string($coverImage['secondary_cover_image'])) {
-                $filepath = Storage::disk("public")->putFile('images/coverImageSecondary/', $coverImage['secondary_cover_image']);
+                $filepath = Storage::disk("public")->putFile($imagePath, $coverImage['secondary_cover_image']);
                 $coverImage['secondary_cover_image'] = $filepath;
 
                 unset($coverImage['id']);

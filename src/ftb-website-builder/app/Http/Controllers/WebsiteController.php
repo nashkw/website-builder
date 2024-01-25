@@ -37,6 +37,7 @@ class WebsiteController
             'font_family' => ['nullable', 'string', 'max:255'],
         ]);
 
+        $imagePath = 'images/' . User::find($request->user()->id)->property->id . '/';
         $website = User::find($request->user()->id)->property->website;
         $data = $request->all();
 
@@ -44,7 +45,7 @@ class WebsiteController
             $request,
             'divider_art',
             'remove_divider_art',
-            'images/dividerArt/',
+            $imagePath,
             $website,
             $data
         );
