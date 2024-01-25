@@ -362,3 +362,8 @@
     border-color: var(--colour-background-outline);
     box-shadow: var(--input-shadow);
 }
+
+.wb-divider {
+    border-width: thin;
+    border-color: var(--colour-background-outline);
+}

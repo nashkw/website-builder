@@ -97,10 +97,6 @@ export default {
                 :href="route('preview')"
                 text="View website"
             />
-            <ArrowButton
-                :href="route('download')"
-                text="Download website"
-            />
             <SignInOutButton />
         </div>
     </div>
