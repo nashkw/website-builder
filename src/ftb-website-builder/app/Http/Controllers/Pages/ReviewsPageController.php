@@ -131,7 +131,7 @@ class ReviewsPageController extends Controller
         return Redirect::route('edit.reviews');
     }
 
-    private function getReviewsPageData(int $userID, bool $formatDate = false): array
+    public static function getReviewsPageData(int $userID, bool $formatDate = false): array
     {
         $reviewsPage = User::find($userID)->property->reviewsPage;
         $data = $reviewsPage->toArray();

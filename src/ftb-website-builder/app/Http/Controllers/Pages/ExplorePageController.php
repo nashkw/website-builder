@@ -145,7 +145,7 @@ class ExplorePageController extends Controller
         return Redirect::route('edit.explore');
     }
 
-    private function getExplorePageData(int $userID): array
+    public static function getExplorePageData(int $userID): array
     {
         $explorePage = User::find($userID)->property->explorePage;
         $data = $explorePage->toArray();

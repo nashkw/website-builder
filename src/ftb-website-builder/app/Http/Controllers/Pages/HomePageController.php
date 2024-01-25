@@ -149,7 +149,7 @@ class HomePageController extends Controller
         return Redirect::route('edit.home');
     }
 
-    private function getHomePageData(int $userID): array
+    public static function getHomePageData(int $userID): array
     {
         $homePage = User::find($userID)->property->homePage;
         $data = $homePage->toArray();

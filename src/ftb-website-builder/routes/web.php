@@ -34,6 +34,7 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
             Route::patch('/', [AccountController::class, 'subdomain'])->name('.subdomain');
             Route::delete('/', [AccountController::class, 'destroy'])->name('.destroy');
         });
+
         Route::name('edit')->prefix('edit')->group(function () {
             Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
             Route::get('/property', [PropertyController::class, 'edit'])->name('.property');
@@ -55,9 +56,11 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
             Route::get('/faq-page', [FAQPageController::class, 'edit'])->name('.faq');
             Route::post('/faq-page', [FAQPageController::class, 'update'])->name('.faq.update');
         });
+
         Route::name('add')->prefix('add')->group(function () {
             Route::get('/', function () { return Inertia::render('AddContent/Add'); });
         });
+
         Route::name('preview')->prefix('preview')->group(function () {
             Route::get('/', [HomePageController::class, 'preview']);
             Route::get('/rooms', [RoomsPageController::class, 'preview'])->name('.rooms');
@@ -67,6 +70,8 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
             Route::get('/find-us', [FindUsPageController::class, 'preview'])->name('.findus');
             Route::get('/faq', [FAQPageController::class, 'preview'])->name('.faq');
         });
+
+        Route::get('/download', [AccountController::class, 'download'])->name('download');
     });
 });
 

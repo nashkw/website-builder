@@ -123,7 +123,7 @@ class FAQPageController extends Controller
         return Redirect::route('edit.faq');
     }
 
-    private function getFAQPageData(int $userID): array
+    public static function getFAQPageData(int $userID): array
     {
         $faqPage = User::find($userID)->property->faqPage;
         $data = $faqPage->toArray();

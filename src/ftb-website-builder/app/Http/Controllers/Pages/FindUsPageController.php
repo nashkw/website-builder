@@ -123,7 +123,7 @@ class FindUsPageController extends Controller
         return Redirect::route('edit.findus');
     }
 
-    private function getFindUsPageData(int $userID): array
+    public static function getFindUsPageData(int $userID): array
     {
         $findUsPage = User::find($userID)->property->findUsPage;
         $data = $findUsPage->toArray();

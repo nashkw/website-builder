@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Pages\AboutPageController;
+use App\Http\Controllers\Pages\ExplorePageController;
+use App\Http\Controllers\Pages\FAQPageController;
+use App\Http\Controllers\Pages\FindUsPageController;
+use App\Http\Controllers\Pages\HomePageController;
+use App\Http\Controllers\Pages\ReviewsPageController;
+use App\Http\Controllers\Pages\RoomsPageController;
 use App\Http\Requests\AccountUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -21,6 +28,26 @@ class AccountController extends Controller
     {
         $subdomain = User::find($request->user()->id)->property->website->subdomain;
         return Inertia::render('Account/Account', ['subdomain' => $subdomain]);
+    }
+
+    /**
+     * Download the user's website data.
+     */
+    public function download(Request $request): \Illuminate\Http\Response
+    {
+        $userID = $request->user()->id;
+        $file = json_encode([
+            'home_page' => HomePageController::getHomePageData($userID),
+            'rooms_page' => RoomsPageController::getRoomsPageData($userID),
+            'reviews_page' => ReviewsPageController::getReviewsPageData($userID),
+            'about_page' => AboutPageController::getAboutPageData($userID),
+            'explore_page' => ExplorePageController::getExplorePageData($userID),
+            'find_us_page' => FindUsPageController::getFindUsPageData($userID),
+            'faq_page' => FAQPageController::getFAQPageData($userID),
+            'property' => PropertyController::getPropertyData($userID),
+            'website' => WebsiteController::getWebsiteData($userID),
+        ]);
+        return response($file, 200, ['Content-Disposition' => 'attachment; filename="data.json"']);
     }
 
     /**

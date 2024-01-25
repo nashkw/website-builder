@@ -167,7 +167,7 @@ class RoomsPageController extends Controller
         return Redirect::route('edit.rooms');
     }
 
-    private function getRoomsPageData(int $userID): array
+    public static function getRoomsPageData(int $userID): array
     {
         $roomsPage = User::find($userID)->property->roomsPage;
         $data = $roomsPage->toArray();

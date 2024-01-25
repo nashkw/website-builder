@@ -145,7 +145,7 @@ class AboutPageController extends Controller
         return Redirect::route('edit.about');
     }
 
-    private function getAboutPageData(int $userID): array
+    public static function getAboutPageData(int $userID): array
     {
         $aboutPage = User::find($userID)->property->aboutPage;
         $data = $aboutPage->toArray();
