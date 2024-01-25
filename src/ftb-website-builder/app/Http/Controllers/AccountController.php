@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use ZipArchive;
 
 class AccountController extends Controller
 {
@@ -31,12 +33,12 @@ class AccountController extends Controller
     }
 
     /**
-     * Download the user's website data.
+     * Download the user's website as a standalone app.
      */
-    public function download(Request $request): \Illuminate\Http\Response
+    public function download(Request $request): BinaryFileResponse|string
     {
         $userID = $request->user()->id;
-        $file = json_encode([
+        $data = json_encode([
             'home_page' => HomePageController::getHomePageData($userID),
             'rooms_page' => RoomsPageController::getRoomsPageData($userID),
             'reviews_page' => ReviewsPageController::getReviewsPageData($userID),
@@ -47,7 +49,17 @@ class AccountController extends Controller
             'property' => PropertyController::getPropertyData($userID),
             'website' => WebsiteController::getWebsiteData($userID),
         ]);
-        return response($file, 200, ['Content-Disposition' => 'attachment; filename="data.json"']);
+
+        $zip = new ZipArchive();
+        $zipPath = public_path('website.zip');
+
+        if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
+            $zip->addFromString('data.json', $data);
+            $zip->close();
+            return response()->download($zipPath)->deleteFileAfterSend(true);
+        } else {
+            return "Failed to export website.";
+        }
     }
 
     /**
