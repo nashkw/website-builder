@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -36,13 +35,6 @@ class WebsiteController
             'divider_art' => ['nullable', 'image'],
             'remove_divider_art' => ['required', 'boolean'],
             'font_family' => ['nullable', 'string', 'max:255'],
-            'subdomain' => [
-                'required',
-                'string',
-                'lowercase',
-                'alpha_dash',
-                Rule::unique('websites')->ignore(User::find($request->user()->id)->property->id, 'property_id'),
-            ],
         ]);
 
         $website = User::find($request->user()->id)->property->website;

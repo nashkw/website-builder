@@ -31,6 +31,7 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
         Route::name('account')->prefix('account')->group(function () {
             Route::get('/', [AccountController::class, 'edit']);
             Route::patch('/', [AccountController::class, 'update'])->name('.update');
+            Route::patch('/', [AccountController::class, 'subdomain'])->name('.subdomain');
             Route::delete('/', [AccountController::class, 'destroy'])->name('.destroy');
         });
         Route::name('edit')->prefix('edit')->group(function () {
