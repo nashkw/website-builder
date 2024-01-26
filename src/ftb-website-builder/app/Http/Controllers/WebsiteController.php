@@ -56,10 +56,10 @@ class WebsiteController
         return Redirect::route('edit.website');
     }
 
-    public static function getWebsiteData(int $userID): array
+    public static function getWebsiteData(int $userID, bool $getURL = true): array
     {
         $data = User::find($userID)->property->website->toArray();
-        $data['divider_art'] = ControllerServices::getImageIfExists($data['divider_art']);
+        $data['divider_art'] = ControllerServices::getImageIfExists($data['divider_art'], $getURL);
         return $data;
     }
 }

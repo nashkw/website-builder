@@ -124,7 +124,7 @@ class FAQPageController extends Controller
         return Redirect::route('edit.faq');
     }
 
-    public static function getFAQPageData(int $userID): array
+    public static function getFAQPageData(int $userID, bool $getURL = true): array
     {
         $faqPage = User::find($userID)->property->faqPage;
         $data = $faqPage->toArray();
@@ -135,7 +135,7 @@ class FAQPageController extends Controller
         }
         $data['questions_and_answers'] = $questionsAndAnswers;
 
-        $data['faq_page_section_image'] = ControllerServices::getImageIfExists($data['faq_page_section_image']);
+        $data['faq_page_section_image'] = ControllerServices::getImageIfExists($data['faq_page_section_image'], $getURL);
 
         return $data;
     }

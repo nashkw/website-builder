@@ -168,7 +168,7 @@ class RoomsPageController extends Controller
         return Redirect::route('edit.rooms');
     }
 
-    public static function getRoomsPageData(int $userID): array
+    public static function getRoomsPageData(int $userID, bool $getURL = true): array
     {
         $roomsPage = User::find($userID)->property->roomsPage;
         $data = $roomsPage->toArray();
@@ -176,12 +176,12 @@ class RoomsPageController extends Controller
         $rooms = [];
         foreach ($roomsPage->rooms as $room) {
             $roomData = $room->toArray();
-            $roomData['room_image_primary'] = ControllerServices::getImageIfExists($roomData['room_image_primary']);
+            $roomData['room_image_primary'] = ControllerServices::getImageIfExists($roomData['room_image_primary'], $getURL);
 
             $secondaryRoomImages = [];
             foreach ($room->secondaryRoomImages as $secondaryRoomImage) {
                 $roomImageData = $secondaryRoomImage->toArray();
-                $roomImageData['secondary_room_image'] = ControllerServices::getImageIfExists($roomImageData['secondary_room_image']);
+                $roomImageData['secondary_room_image'] = ControllerServices::getImageIfExists($roomImageData['secondary_room_image'], $getURL);
                 $secondaryRoomImages[] = $roomImageData;
             }
             $roomData['secondary_room_images'] = $secondaryRoomImages;
@@ -190,7 +190,7 @@ class RoomsPageController extends Controller
         }
         $data['rooms'] = $rooms;
 
-        $data['rooms_page_section_image'] = ControllerServices::getImageIfExists($data['rooms_page_section_image']);
+        $data['rooms_page_section_image'] = ControllerServices::getImageIfExists($data['rooms_page_section_image'], $getURL);
 
         return $data;
     }

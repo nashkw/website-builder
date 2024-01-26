@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ControllerServices
 {
-    public static function getImageIfExists (?string $path): ?string
+    public static function getImageIfExists (?string $path, bool $getURL): ?string
     {
-        if($path && Storage::disk('public')->exists($path)) {
+        if ($path && !$getURL) {
+            return 'images/' . basename($path);
+        } else if ($path && Storage::disk('public')->exists($path)) {
             return Storage::url($path);
         }
         return null;

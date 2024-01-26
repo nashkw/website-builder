@@ -124,7 +124,7 @@ class FindUsPageController extends Controller
         return Redirect::route('edit.findus');
     }
 
-    public static function getFindUsPageData(int $userID): array
+    public static function getFindUsPageData(int $userID, bool $getURL = true): array
     {
         $findUsPage = User::find($userID)->property->findUsPage;
         $data = $findUsPage->toArray();
@@ -135,7 +135,7 @@ class FindUsPageController extends Controller
         }
         $data['directions'] = $directions;
 
-        $data['find_us_page_section_image'] = ControllerServices::getImageIfExists($data['find_us_page_section_image']);
+        $data['find_us_page_section_image'] = ControllerServices::getImageIfExists($data['find_us_page_section_image'], $getURL);
 
         return $data;
     }

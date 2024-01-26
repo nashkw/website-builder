@@ -150,7 +150,7 @@ class HomePageController extends Controller
         return Redirect::route('edit.home');
     }
 
-    public static function getHomePageData(int $userID): array
+    public static function getHomePageData(int $userID, bool $getURL = true): array
     {
         $homePage = User::find($userID)->property->homePage;
         $data = $homePage->toArray();
@@ -158,14 +158,14 @@ class HomePageController extends Controller
         $secondaryCoverImages = [];
         foreach ($homePage->secondaryCoverImages as $coverImage) {
             $coverImageData = $coverImage->toArray();
-            $coverImageData['secondary_cover_image'] = ControllerServices::getImageIfExists($coverImageData['secondary_cover_image']);
+            $coverImageData['secondary_cover_image'] = ControllerServices::getImageIfExists($coverImageData['secondary_cover_image'], $getURL);
             $secondaryCoverImages[] = $coverImageData;
         }
         $data['secondary_cover_images'] = $secondaryCoverImages;
 
-        $data['cover_image_primary'] = ControllerServices::getImageIfExists($data['cover_image_primary']);
-        $data['intro_section_image'] = ControllerServices::getImageIfExists($data['intro_section_image']);
-        $data['welcome_section_image'] = ControllerServices::getImageIfExists($data['welcome_section_image']);
+        $data['cover_image_primary'] = ControllerServices::getImageIfExists($data['cover_image_primary'], $getURL);
+        $data['intro_section_image'] = ControllerServices::getImageIfExists($data['intro_section_image'], $getURL);
+        $data['welcome_section_image'] = ControllerServices::getImageIfExists($data['welcome_section_image'], $getURL);
 
         return $data;
     }

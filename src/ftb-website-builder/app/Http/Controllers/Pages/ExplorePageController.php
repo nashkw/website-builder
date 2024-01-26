@@ -146,7 +146,7 @@ class ExplorePageController extends Controller
         return Redirect::route('edit.explore');
     }
 
-    public static function getExplorePageData(int $userID): array
+    public static function getExplorePageData(int $userID, bool $getURL = true): array
     {
         $explorePage = User::find($userID)->property->explorePage;
         $data = $explorePage->toArray();
@@ -154,12 +154,12 @@ class ExplorePageController extends Controller
         $attractions = [];
         foreach ($explorePage->attractions as $attraction) {
             $attractionData = $attraction->toArray();
-            $attractionData['attraction_image'] = ControllerServices::getImageIfExists($attractionData['attraction_image']);
+            $attractionData['attraction_image'] = ControllerServices::getImageIfExists($attractionData['attraction_image'], $getURL);
             $attractions[] = $attractionData;
         }
         $data['attractions'] = $attractions;
 
-        $data['explore_page_section_image'] = ControllerServices::getImageIfExists($data['explore_page_section_image']);
+        $data['explore_page_section_image'] = ControllerServices::getImageIfExists($data['explore_page_section_image'], $getURL);
 
         return $data;
     }

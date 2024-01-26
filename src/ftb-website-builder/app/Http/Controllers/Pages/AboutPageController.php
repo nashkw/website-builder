@@ -146,7 +146,7 @@ class AboutPageController extends Controller
         return Redirect::route('edit.about');
     }
 
-    public static function getAboutPageData(int $userID): array
+    public static function getAboutPageData(int $userID, bool $getURL = true): array
     {
         $aboutPage = User::find($userID)->property->aboutPage;
         $data = $aboutPage->toArray();
@@ -154,12 +154,12 @@ class AboutPageController extends Controller
         $secondaryAboutSections = [];
         foreach ($aboutPage->secondaryAboutSections as $aboutSection) {
             $sectionData = $aboutSection->toArray();
-            $sectionData['secondary_about_section_image'] = ControllerServices::getImageIfExists($sectionData['secondary_about_section_image']);
+            $sectionData['secondary_about_section_image'] = ControllerServices::getImageIfExists($sectionData['secondary_about_section_image'], $getURL);
             $secondaryAboutSections[] = $sectionData;
         }
         $data['secondary_about_sections'] = $secondaryAboutSections;
 
-        $data['about_page_section_image'] = ControllerServices::getImageIfExists($data['about_page_section_image']);
+        $data['about_page_section_image'] = ControllerServices::getImageIfExists($data['about_page_section_image'], $getURL);
 
         return $data;
     }

@@ -66,10 +66,10 @@ class PropertyController
         return Redirect::route('edit.property');
     }
 
-    public static function getPropertyData(int $userID): array
+    public static function getPropertyData(int $userID, bool $getURL = true): array
     {
         $data = User::find($userID)->property->toArray();
-        $data['property_logo'] = ControllerServices::getImageIfExists($data['property_logo']);
+        $data['property_logo'] = ControllerServices::getImageIfExists($data['property_logo'], $getURL);
         return $data;
     }
 }

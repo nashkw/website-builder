@@ -132,7 +132,7 @@ class ReviewsPageController extends Controller
         return Redirect::route('edit.reviews');
     }
 
-    public static function getReviewsPageData(int $userID, bool $formatDate = false): array
+    public static function getReviewsPageData(int $userID, bool $formatDate = false, bool $getURL = true): array
     {
         $reviewsPage = User::find($userID)->property->reviewsPage;
         $data = $reviewsPage->toArray();
@@ -151,7 +151,7 @@ class ReviewsPageController extends Controller
         }
         $data['reviews'] = $reviews;
 
-        $data['reviews_page_section_image'] = ControllerServices::getImageIfExists($data['reviews_page_section_image']);
+        $data['reviews_page_section_image'] = ControllerServices::getImageIfExists($data['reviews_page_section_image'], $getURL);
 
         return $data;
     }

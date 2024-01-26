@@ -40,28 +40,16 @@ class AccountController extends Controller
     public function download(Request $request): BinaryFileResponse
     {
         $userID = $request->user()->id;
-        $data = json_encode([
-            'home_page' => HomePageController::getHomePageData($userID),
-            'rooms_page' => RoomsPageController::getRoomsPageData($userID),
-            'reviews_page' => ReviewsPageController::getReviewsPageData($userID),
-            'about_page' => AboutPageController::getAboutPageData($userID),
-            'explore_page' => ExplorePageController::getExplorePageData($userID),
-            'find_us_page' => FindUsPageController::getFindUsPageData($userID),
-            'faq_page' => FAQPageController::getFAQPageData($userID),
-            'property' => PropertyController::getPropertyData($userID),
-            'website' => WebsiteController::getWebsiteData($userID),
-        ]);
-
         $zip = new ZipArchive();
         $zipPath = public_path('website.zip');
-        $sitePath = realpath(base_path('generated-site'));
         $zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
+        // add generated site app
+        $sitePath = realpath(base_path('generated-site'));
         $files = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($sitePath),
             RecursiveIteratorIterator::LEAVES_ONLY
         );
-
         foreach ($files as $file) {
             if (!$file->isDir()) {
                 $filePath = $file->getRealPath();
@@ -75,10 +63,35 @@ class AccountController extends Controller
             }
         }
 
+        // add user images
+        $imagesPath = realpath(base_path('storage/app/public/images/' . User::find($userID)->property->id . '/'));
+        $images = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($imagesPath),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+        foreach ($images as $image) {
+            if (!$image->isDir()) {
+                $filePath = $image->getRealPath();
+                $zip->addFile($filePath, 'src/data/images/' . basename($filePath));
+            }
+        }
+
+        // add user data
+        $data = json_encode([
+            'home_page' => HomePageController::getHomePageData($userID, false),
+            'rooms_page' => RoomsPageController::getRoomsPageData($userID, false),
+            'reviews_page' => ReviewsPageController::getReviewsPageData($userID, false, false),
+            'about_page' => AboutPageController::getAboutPageData($userID, false),
+            'explore_page' => ExplorePageController::getExplorePageData($userID, false),
+            'find_us_page' => FindUsPageController::getFindUsPageData($userID, false),
+            'faq_page' => FAQPageController::getFAQPageData($userID, false),
+            'property' => PropertyController::getPropertyData($userID, false),
+            'website' => WebsiteController::getWebsiteData($userID, false),
+        ]);
         $zip->addFromString('src/data/data.json', $data);
 
         $zip->close();
-        return response()->download($zipPath)->deleteFileAfterSend(true);
+        return response()->download($zipPath)->deleteFileAfterSend();
     }
 
     /**
