@@ -321,3 +321,19 @@
 * *5 hours* continued implementing subdomain hosting of generated sites
 * *1 hour* prepared demo of winter break developments, tested zoom set up
 * *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+
+## Week 19
+
+### 23 Jan 2024
+
+* *7.5 hours* implemented various priority improvements and necessary fixes
+
+### 25 Jan 2024
+
+* *7 hours* began implementation of website download button
+
+### 26 Jan 2024
+
+* *3 hours* continued implementation of website download button
+* *4.5 hours* preliminary planning and research for the evaluation
