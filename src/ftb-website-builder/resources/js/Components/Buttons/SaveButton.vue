@@ -1,4 +1,6 @@
 <script setup>
+import SaveIcon from "@/Components/Icons/SaveIcon.vue";
+
 const props = defineProps({
     processing: {
         type: Boolean,
@@ -18,6 +20,7 @@ const props = defineProps({
             :disabled="processing"
             class="wb-primary-button"
         >
+            <SaveIcon />
             Save
         </button>
         <Transition

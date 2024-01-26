@@ -5,6 +5,7 @@ import Modal from '@/Components/Structural/Modal.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
+import BinIcon from "@/Components/Icons/BinIcon.vue";
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -51,6 +52,7 @@ const closeModal = () => {
             @click="confirmUserDeletion"
             class="wb-primary-button"
         >
+            <BinIcon />
             Delete Account
         </button>
 
@@ -84,7 +86,7 @@ const closeModal = () => {
                     <InputError :message="form.errors.password" />
                 </div>
 
-                <div class="flex justify-end space-x-3">
+                <div class="flex justify-end space-x-6">
                     <button
                         @click="closeModal"
                         class="wb-secondary-button"
@@ -97,6 +99,7 @@ const closeModal = () => {
                         class="wb-primary-button"
                         :class="{ 'opacity-25': form.processing }"
                     >
+                        <BinIcon />
                         Delete Account
                     </button>
                 </div>
