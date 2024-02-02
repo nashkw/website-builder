@@ -79,7 +79,7 @@ class AccountTest extends TestCase
         $user = User::factory()
             ->has(Property::factory()->has(Website::factory()))
             ->create();
-        $newSubdomain = fake()->domainWord;
+        $newSubdomain = fake()->unique()->domainWord();
 
         $response = $this
             ->actingAs($user)
