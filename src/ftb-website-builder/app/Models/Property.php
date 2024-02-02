@@ -9,12 +9,15 @@ use App\Models\FindUsPage\FindUsPage;
 use App\Models\HomePage\HomePage;
 use App\Models\ReviewsPage\ReviewsPage;
 use App\Models\RoomsPage\RoomsPage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Property extends Model
 {
+    use HasFactory;
+
     /**
      * The attributes that should be cast.
      *

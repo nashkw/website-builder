@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\Property;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,7 +14,9 @@ class AccountTest extends TestCase
 
     public function test_account_page_is_displayed(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
 
         $response = $this
             ->actingAs($user)
@@ -23,7 +27,9 @@ class AccountTest extends TestCase
 
     public function test_account_information_can_be_updated(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
 
         $response = $this
             ->actingAs($user)
@@ -44,7 +50,9 @@ class AccountTest extends TestCase
 
     public function test_user_can_delete_their_account(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
 
         $response = $this
             ->actingAs($user)
@@ -62,7 +70,9 @@ class AccountTest extends TestCase
 
     public function test_correct_password_must_be_provided_to_delete_account(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
 
         $response = $this
             ->actingAs($user)
