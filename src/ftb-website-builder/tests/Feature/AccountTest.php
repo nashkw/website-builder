@@ -13,7 +13,7 @@ class AccountTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_account_page_is_displayed(): void
+    public function test_account_management_page_can_be_rendered(): void
     {
         $user = User::factory()
             ->has(Property::factory()->has(Website::factory()))
@@ -49,6 +49,31 @@ class AccountTest extends TestCase
         $this->assertSame('test@example.com', $user->email);
     }
 
+    public function test_account_information_cannot_be_updated_with_invalid_values(): void
+    {
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
+        $originalName = $user->name;
+        $originalEmail = $user->email;
+
+        $response = $this
+            ->actingAs($user)
+            ->patch('/account', [
+                'name' => fake()->words(),
+                'email' => 'invalid email',
+            ]);
+
+        $response
+            ->assertSessionHasErrors(['name', 'email'])
+            ->assertRedirect('/');
+
+        $user->refresh();
+
+        $this->assertSame($originalName, $user->name);
+        $this->assertSame($originalEmail, $user->email);
+    }
+
     public function test_subdomain_can_be_updated(): void
     {
         $user = User::factory()
@@ -69,6 +94,28 @@ class AccountTest extends TestCase
         $user->refresh();
 
         $this->assertSame($newSubdomain, $user->property->website->subdomain);
+    }
+
+    public function test_subdomain_cannot_be_updated_with_an_invalid_value(): void
+    {
+        $user = User::factory()
+            ->has(Property::factory()->has(Website::factory()))
+            ->create();
+        $originalSubdomain = $user->property->website->subdomain;
+
+        $response = $this
+            ->actingAs($user)
+            ->post('/account', [
+                'subdomain' => 'invalid subdomain',
+            ]);
+
+        $response
+            ->assertSessionHasErrors('subdomain')
+            ->assertRedirect('/');
+
+        $user->refresh();
+
+        $this->assertSame($originalSubdomain, $user->property->website->subdomain);
     }
 
     public function test_password_can_be_updated(): void
