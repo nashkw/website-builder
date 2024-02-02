@@ -28,7 +28,7 @@ const form = useForm({
                 </header>
 
                 <form
-                    @submit.prevent="form.patch(route('account.subdomain'))"
+                    @submit.prevent="form.post(route('account.subdomain'))"
                     class="space-y-6 flex flex-col w-full"
                 >
                     <FormSection>
