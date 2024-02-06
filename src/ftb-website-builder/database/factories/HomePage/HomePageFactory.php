@@ -20,7 +20,7 @@ class HomePageFactory extends Factory
         return [
             'property_id' => Property::factory(),
             'meta_page_title' => fake()->sentence(),
-            'meta_page_description' => fake()->paragraph(),
+            'meta_page_description' => fake()->sentence(),
             'cover_image_primary' => fake()->mimeType() . '.' . fake()->fileExtension(),
             'cover_image_primary_description' => fake()->sentence(),
             'intro_section_header' => fake()->sentence(),
