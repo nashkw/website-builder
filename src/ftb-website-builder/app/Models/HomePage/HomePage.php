@@ -3,12 +3,15 @@
 namespace App\Models\HomePage;
 
 use App\Models\Property;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class HomePage extends Model
 {
+    use HasFactory;
+
     /**
      * The primary key associated with the table.
      *
