@@ -337,3 +337,18 @@
 
 * *3 hours* continued implementation of website download button
 * *4.5 hours* preliminary planning and research for the evaluation
+
+
+## Week 20
+
+### 29 Jan 2024
+
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 30 Jan 2024
+
+* *6 hours* drafted several potential evaluation proposals
+
+### 02 Feb 2024
+
+* *7 hours* began writing automatic test suite
