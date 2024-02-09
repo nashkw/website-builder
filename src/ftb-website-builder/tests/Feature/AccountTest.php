@@ -2,7 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Models\AboutPage\AboutPage;
+use App\Models\ExplorePage\ExplorePage;
+use App\Models\FAQPage\FAQPage;
+use App\Models\FindUsPage\FindUsPage;
+use App\Models\HomePage\HomePage;
 use App\Models\Property;
+use App\Models\ReviewsPage\ReviewsPage;
+use App\Models\RoomsPage\RoomsPage;
 use App\Models\User;
 use App\Models\Website;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -116,6 +123,31 @@ class AccountTest extends TestCase
         $user->refresh();
 
         $this->assertSame($originalSubdomain, $user->property->website->subdomain);
+    }
+
+    public function test_generated_website_can_be_downloaded(): void
+    {
+        $user = User::factory()
+            ->has(Property::factory()
+                ->has(Website::factory())
+                ->has(HomePage::factory())
+                ->has(RoomsPage::factory())
+                ->has(ReviewsPage::factory())
+                ->has(AboutPage::factory())
+                ->has(ExplorePage::factory())
+                ->has(FindUsPage::factory())
+                ->has(FAQPage::factory()))
+            ->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->get('/download');
+
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertDownload('website.zip');
+
+        unlink('public/website.zip');
     }
 
     public function test_password_can_be_updated(): void

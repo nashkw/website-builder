@@ -65,14 +65,16 @@ class AccountController extends Controller
 
         // add user images
         $imagesPath = realpath(base_path('storage/app/public/images/' . User::find($userID)->property->id . '/'));
-        $images = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($imagesPath),
-            RecursiveIteratorIterator::LEAVES_ONLY
-        );
-        foreach ($images as $image) {
-            if (!$image->isDir()) {
-                $filePath = $image->getRealPath();
-                $zip->addFile($filePath, 'src/data/images/' . basename($filePath));
+        if ($imagesPath) {
+            $images = new RecursiveIteratorIterator(
+                new RecursiveDirectoryIterator($imagesPath),
+                RecursiveIteratorIterator::LEAVES_ONLY
+            );
+            foreach ($images as $image) {
+                if (!$image->isDir()) {
+                    $filePath = $image->getRealPath();
+                    $zip->addFile($filePath, 'src/data/images/' . basename($filePath));
+                }
             }
         }
 
