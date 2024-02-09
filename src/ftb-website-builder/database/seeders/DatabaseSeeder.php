@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('properties')->where('id', $property_id)->update([
             'property_logo' => 'images/' . $property_id . '/test_logo.png',
+            'property_favicon' => 'images/' . $property_id . '/test_favicon.ico',
         ]);
         DB::table('websites')->insert([
             'property_id' => $property_id,

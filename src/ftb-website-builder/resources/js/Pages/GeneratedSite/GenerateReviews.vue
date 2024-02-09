@@ -25,11 +25,19 @@ export default {
     <AppHead
         v-if="isPreview"
         title="Reviews (preview)"
+        :favicon="property.property_favicon"
     />
     <Head
         v-else
         :title="'Reviews - ' + property.property_name"
-    />
+    >
+        <link
+            v-if="property.property_favicon"
+            rel="icon"
+            type="image/x-icon"
+            :href="property.property_favicon"
+        />
+    </Head>
     <Reviews
         :property="property"
         :website="website"

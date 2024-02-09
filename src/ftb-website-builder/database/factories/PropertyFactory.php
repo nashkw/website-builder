@@ -34,6 +34,7 @@ class PropertyFactory extends Factory
             'property_instagram_link' => fake()->url(),
             'property_tripadvisor_link' => fake()->url(),
             'property_logo' => fake()->mimeType() . '.' . fake()->fileExtension(),
+            'property_favicon' => fake()->mimeType() . '.ico',
             'property_booking_link' => fake()->url(),
         ];
     }

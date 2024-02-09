@@ -70,6 +70,7 @@ class PropertyController
     {
         $data = User::find($userID)->property->toArray();
         $data['property_logo'] = ControllerServices::getImageIfExists($data['property_logo'], $getURL);
+        $data['property_favicon'] = ControllerServices::getImageIfExists($data['property_favicon'], $getURL);
         return $data;
     }
 }
