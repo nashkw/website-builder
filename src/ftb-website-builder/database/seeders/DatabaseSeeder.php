@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $user_id = DB::table('users')->insertGetId([
             'name' => 'Testing User',
-            'email' => 'nash@freetobook.co.uk',
-            'password' => Hash::make('nashtest'),
+            'email' => 'testhotel@example.com',
+            'password' => Hash::make('testhotelpass'),
         ]);
         $property_id = DB::table('properties')->insertGetId([
             'user_id' => $user_id,

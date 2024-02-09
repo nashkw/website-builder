@@ -5,7 +5,6 @@ For issue management, meeting notes, contact info, and other records see the pro
 
 ### Project Structure
 
-* `.github/` workflows for automatic deployment to an AWS EC2 instance (hosted [here](http://52.87.120.138/))
 * `data/` data acquired during the project, and supporting documents for data collection
 * `dissertation/` the dissertation documenting this project
 * `presentation/` a presentation summarising this project
