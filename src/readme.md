@@ -132,6 +132,7 @@ The `generated-sites` directory contains a [Vue.js app](https://vuejs.org/guide/
 * Install all necessary PHP packages by running `composer install`.
 * Install all necessary JavaScript packages by running `npm install`.
 * Create a symbolic link necessary for image storage by running `php artisan storage:link`.
+* Generate the `APP_KEY` environment variable by running `php artisan key:generate`.
 * Prepare the database by running `npm run reseed`.
 * Prepare the test images by copying them into the `src/ftb-website-builder/storage/app/public/images/1/` directory.
   * The test images can be found in the `src/ftb-website-builder/generated-site/src/data/images/` directory.
