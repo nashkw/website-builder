@@ -132,6 +132,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.questions_and_answers" />
                     <PlusOrCrossButton
                         v-on:click="addQuestionAndAnswer"
                         text="Add Q&A item"

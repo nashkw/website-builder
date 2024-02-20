@@ -189,6 +189,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.rooms" />
                     <PlusOrCrossButton
                         v-on:click="addRoom"
                         text="Add room"

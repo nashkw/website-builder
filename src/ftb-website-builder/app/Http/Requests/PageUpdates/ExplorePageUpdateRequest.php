@@ -18,7 +18,7 @@ class ExplorePageUpdateRequest extends FormRequest
             'explore_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'explore_page_section_image' => ['nullable', 'image'],
             'remove_explore_page_section_image' => ['required', 'boolean'],
-            'attractions' => ['nullable', 'array'],
+            'attractions' => ['required', 'array'],
             'attractions.*.attraction_header' => ['required', 'string', 'max:255'],
             'attractions.*.attraction_paragraph' => ['required', 'string', 'max:65535'],
             'attractions.*.attraction_image' => ['nullable'],
@@ -35,6 +35,8 @@ class ExplorePageUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'attractions.required' => 'You must include attractions on your Explore page.',
+            'attractions.array' => 'Your attractions must be packaged in an array.',
             'attractions.*.attraction_header.required' => 'The attraction name field is required.',
             'attractions.*.attraction_header.string' => 'The attraction name must be stored as a string.',
             'attractions.*.attraction_header.max' => 'The attraction name must not be longer than 255 characters.',

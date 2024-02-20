@@ -154,6 +154,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.reviews" />
                     <PlusOrCrossButton
                         v-on:click="addReview"
                         text="Add review"

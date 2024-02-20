@@ -18,7 +18,7 @@ class RoomsPageUpdateRequest extends FormRequest
             'rooms_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'rooms_page_section_image' => ['nullable', 'image'],
             'remove_rooms_page_section_image' => ['required', 'boolean'],
-            'rooms' => ['nullable', 'array'],
+            'rooms' => ['required', 'array'],
             'rooms.*.room_name' => ['required', 'string', 'max:255'],
             'rooms.*.room_description' => ['required', 'string', 'max:65535'],
             'rooms.*.room_image_primary' => ['required'],
@@ -37,6 +37,8 @@ class RoomsPageUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'rooms.required' => 'You must list your rooms on your Rooms page.',
+            'rooms.array' => 'Your rooms must be packaged in an array.',
             'rooms.*.room_name.required' => 'The room name field is required.',
             'rooms.*.room_name.string' => 'The room name must be stored as a string.',
             'rooms.*.room_name.max' => 'The room name must not be longer than 255 characters.',

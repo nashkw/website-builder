@@ -18,7 +18,7 @@ class ReviewsPageUpdateRequest extends FormRequest
             'reviews_page_section_paragraph' => ['nullable', 'string', 'max:65535'],
             'reviews_page_section_image' => ['nullable', 'image'],
             'remove_reviews_page_section_image' => ['required', 'boolean'],
-            'reviews' => ['nullable', 'array'],
+            'reviews' => ['required', 'array'],
             'reviews.*.review_quote' => ['required', 'string', 'max:1000'],
             'reviews.*.reviewer_name' => ['required', 'string', 'max:255'],
             'reviews.*.star_rating' => ['nullable', 'numeric', 'min:0', 'max:10'],
@@ -35,6 +35,8 @@ class ReviewsPageUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'reviews.required' => 'You must include reviews on your Reviews page.',
+            'reviews.array' => 'Your reviews must be packaged in an array.',
             'reviews.*.review_quote.required' => 'The review text field is required.',
             'reviews.*.review_quote.string' => 'The review text must be stored as a string.',
             'reviews.*.review_quote.max' => 'The review text must not be longer than 1000 characters.',
