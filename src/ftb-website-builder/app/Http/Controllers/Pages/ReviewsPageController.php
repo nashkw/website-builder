@@ -73,23 +73,35 @@ class ReviewsPageController extends Controller
     /**
      * Display the edit subpage for the generated site reviews page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'EditContent/EditReviews',
-            $this->getReviewsPageData($request->user()->id, true)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_reviews_page']) {
+            return Inertia::render(
+                'EditContent/EditReviews',
+                $this->getReviewsPageData($request->user()->id, true)
+            );
+        } else {
+            return Redirect::route('add.reviews');
+        }
     }
 
     /**
      * Display the add subpage for the generated site reviews page.
      */
-    public function add(Request $request): Response
+    public function add(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'AddContent/AddReviews',
-            $this->getReviewsPageData($request->user()->id, true)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_reviews_page']) {
+            return Redirect::route('edit.reviews');
+        } else {
+            return Inertia::render(
+                'AddContent/AddReviews',
+                $this->getReviewsPageData($request->user()->id, true)
+            );
+        }
     }
 
     /**

@@ -72,23 +72,35 @@ class FAQPageController extends Controller
     /**
      * Display the edit subpage for the generated site FAQ page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'EditContent/EditFAQ',
-            $this->getFAQPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_faq_page']) {
+            return Inertia::render(
+                'EditContent/EditFAQ',
+                $this->getFAQPageData($request->user()->id)
+            );
+        } else {
+            return Redirect::route('add.faq');
+        }
     }
 
     /**
      * Display the add subpage for the generated site FAQ page.
      */
-    public function add(Request $request): Response
+    public function add(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'AddContent/AddFAQ',
-            $this->getFAQPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_faq_page']) {
+            return Redirect::route('edit.faq');
+        } else {
+            return Inertia::render(
+                'AddContent/AddFAQ',
+                $this->getFAQPageData($request->user()->id)
+            );
+        }
     }
 
     /**

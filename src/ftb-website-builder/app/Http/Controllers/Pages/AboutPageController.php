@@ -73,23 +73,35 @@ class AboutPageController extends Controller
     /**
      * Display the edit subpage for the generated site about page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'EditContent/EditAbout',
-            $this->getAboutPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_about_page']) {
+            return Inertia::render(
+                'EditContent/EditAbout',
+                $this->getAboutPageData($request->user()->id)
+            );
+        } else {
+            return Redirect::route('add.about');
+        }
     }
 
     /**
      * Display the add subpage for the generated site about page.
      */
-    public function add(Request $request): Response
+    public function add(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'AddContent/AddAbout',
-            $this->getAboutPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_about_page']) {
+            return Redirect::route('edit.about');
+        } else {
+            return Inertia::render(
+                'AddContent/AddAbout',
+                $this->getAboutPageData($request->user()->id)
+            );
+        }
     }
 
     /**

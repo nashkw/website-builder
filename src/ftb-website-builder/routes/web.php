@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\Pages\AboutPageController;
 use App\Http\Controllers\Pages\ExplorePageController;
 use App\Http\Controllers\Pages\FAQPageController;
@@ -36,7 +37,7 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
         });
 
         Route::name('edit')->prefix('edit')->group(function () {
-            Route::get('/', function () { return Inertia::render('EditContent/Edit'); });
+            Route::get('/', [PageFlagsController::class, 'edit']);
             Route::get('/property', [PropertyController::class, 'edit'])->name('.property');
             Route::post('/property', [PropertyController::class, 'update'])->name('.property.update');
             Route::get('/website', [WebsiteController::class, 'edit'])->name('.website');
@@ -58,7 +59,7 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
         });
 
         Route::name('add')->prefix('add')->group(function () {
-            Route::get('/', function () { return Inertia::render('AddContent/Add'); });
+            Route::get('/', [PageFlagsController::class, 'add']);
             Route::get('/reviews-page', [ReviewsPageController::class, 'add'])->name('.reviews');
             Route::post('/reviews-page', [ReviewsPageController::class, 'create'])->name('.reviews.create');
             Route::get('/about-page', [AboutPageController::class, 'add'])->name('.about');

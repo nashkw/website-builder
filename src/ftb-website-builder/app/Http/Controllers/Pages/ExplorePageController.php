@@ -73,23 +73,35 @@ class ExplorePageController extends Controller
     /**
      * Display the edit subpage for the generated site explore page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'EditContent/EditExplore',
-            $this->getExplorePageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_explore_page']) {
+            return Inertia::render(
+                'EditContent/EditExplore',
+                $this->getExplorePageData($request->user()->id)
+            );
+        } else {
+            return Redirect::route('add.explore');
+        }
     }
 
     /**
      * Display the add subpage for the generated site explore page.
      */
-    public function add(Request $request): Response
+    public function add(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'AddContent/AddExplore',
-            $this->getExplorePageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_explore_page']) {
+            return Redirect::route('edit.explore');
+        } else {
+            return Inertia::render(
+                'AddContent/AddExplore',
+                $this->getExplorePageData($request->user()->id)
+            );
+        }
     }
 
     /**

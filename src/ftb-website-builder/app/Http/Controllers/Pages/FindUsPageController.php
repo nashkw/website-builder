@@ -72,23 +72,35 @@ class FindUsPageController extends Controller
     /**
      * Display the edit subpage for the generated site find us page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'EditContent/EditFindUs',
-            $this->getFindUsPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_find_us_page']) {
+            return Inertia::render(
+                'EditContent/EditFindUs',
+                $this->getFindUsPageData($request->user()->id)
+            );
+        } else {
+            return Redirect::route('add.findus');
+        }
     }
 
     /**
      * Display the add subpage for the generated site find us page.
      */
-    public function add(Request $request): Response
+    public function add(Request $request): Response|RedirectResponse
     {
-        return Inertia::render(
-            'AddContent/AddFindUs',
-            $this->getFindUsPageData($request->user()->id)
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+
+        if ($page_flags['has_find_us_page']) {
+            return Redirect::route('edit.findus');
+        } else {
+            return Inertia::render(
+                'AddContent/AddFindUs',
+                $this->getFindUsPageData($request->user()->id)
+            );
+        }
     }
 
     /**
