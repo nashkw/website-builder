@@ -19,6 +19,7 @@ export default {
     props: {
         property: Object,
         routes: Object,
+        page_flags: Object,
     },
     components: {
         TripAdvisorIcon,
@@ -70,30 +71,37 @@ export default {
                 >
                     <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-5 xl:flex xl:flex-row xl:items-center xl:justify-end xl:gap-y-0 xl:gap-x-2 xl:mt-0 xl:ps-7">
                         <HeaderButton
+                            v-if="page_flags.has_home_page"
                             text="Home"
                             :href="routes.home"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_rooms_page"
                             text="Rooms"
                             :href="routes.rooms"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_reviews_page"
                             text="Reviews"
                             :href="routes.reviews"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_about_page"
                             text="About"
                             :href="routes.about"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_explore_page"
                             text="Explore"
                             :href="routes.explore"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_find_us_page"
                             text="Find Us"
                             :href="routes.findus"
                         />
                         <HeaderButton
+                            v-if="page_flags.has_faq_page"
                             text="FAQ"
                             :href="routes.faq"
                         />

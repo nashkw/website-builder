@@ -15,6 +15,7 @@ export default {
         faq_page: Object,
         property: Object,
         website: Object,
+        page_flags: Object,
         routes: Object,
         isPreview: Boolean,
     },
@@ -42,6 +43,7 @@ export default {
         :property="property"
         :website="website"
         :faq_page="faq_page"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

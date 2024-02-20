@@ -13,6 +13,7 @@ export default {
         property: Object,
         website: Object,
         about_page: Object,
+        page_flags: Object,
         routes: Object,
     },
     computed: {
@@ -46,6 +47,7 @@ export default {
     <GeneratedSiteLayout
         :property="property"
         :routes="routes"
+        :page_flags="page_flags"
     >
         <PageSection
             :header="about_page.about_page_section_header"

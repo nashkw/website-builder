@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ControllerServices;
+use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Requests\PageUpdates\RoomsPageUpdateRequest;
@@ -40,6 +41,7 @@ class RoomsPageController extends Controller
                 'rooms_page' => $this->getRoomsPageData($user),
                 'property' => PropertyController::getPropertyData($user),
                 'website' => WebsiteController::getWebsiteData($user),
+                'page_flags' => PageFlagsController::getPageFlagsData($user),
                 'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
                 'isPreview' => false,
             ]
@@ -62,6 +64,7 @@ class RoomsPageController extends Controller
                 'rooms_page' => $this->getRoomsPageData($request->user()->id),
                 'property' => PropertyController::getPropertyData($request->user()->id),
                 'website' => WebsiteController::getWebsiteData($request->user()->id),
+                'page_flags' => PageFlagsController::getPageFlagsData($request->user()->id),
                 'routes' => ControllerServices::getRoutes('preview'),
                 'isPreview' => true,
             ]
