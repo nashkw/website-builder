@@ -94,8 +94,14 @@ export default {
                     :bookingLink="property.property_booking_link"
                 />
                 <LinkButton
+                    v-if="page_flags.has_about_page"
                     text="Learn more"
                     :href="routes.about"
+                />
+                <LinkButton
+                    v-else-if="page_flags.has_rooms_page"
+                    text="Our rooms"
+                    :href="routes.rooms"
                 />
             </div>
         </PageSection>
@@ -111,12 +117,30 @@ export default {
         >
             <div class="flex max-sm:flex-col justify-center gap-8 pt-4">
                 <LinkButton
+                    v-if="page_flags.has_about_page"
                     text="Our story"
                     :href="routes.about"
                 />
                 <LinkButton
+                    v-else-if="page_flags.has_reviews_page"
+                    text="Hear from our guests"
+                    :href="routes.reviews"
+                />
+                <LinkButton
+                    v-else-if="page_flags.has_faq_page"
+                    text="FAQ"
+                    :href="routes.faq"
+                />
+
+                <LinkButton
+                    v-if="page_flags.has_explore_page"
                     text="Things to do in our area"
                     :href="routes.explore"
+                />
+                <LinkButton
+                    v-else-if="page_flags.has_find_us_page"
+                    text="How to find us"
+                    :href="routes.findus"
                 />
             </div>
         </PageSection>
