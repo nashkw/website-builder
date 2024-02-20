@@ -89,6 +89,7 @@ class AccountController extends Controller
             'faq_page' => FAQPageController::getFAQPageData($userID, false),
             'property' => PropertyController::getPropertyData($userID, false),
             'website' => WebsiteController::getWebsiteData($userID, false),
+            'page_flags' => PageFlagsController::getPageFlagsData($userID),
         ]);
         $zip->addFromString('src/data/data.json', $data);
 

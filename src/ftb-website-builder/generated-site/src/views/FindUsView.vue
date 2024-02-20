@@ -13,6 +13,7 @@ export default {
             'find_us_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedFindUsPage() {
@@ -47,6 +48,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :find_us_page="formattedFindUsPage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

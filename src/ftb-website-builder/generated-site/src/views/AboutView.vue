@@ -13,6 +13,7 @@ export default {
             'about_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedAboutPage() {
@@ -50,6 +51,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :about_page="formattedAboutPage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

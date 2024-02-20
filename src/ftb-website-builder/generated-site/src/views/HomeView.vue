@@ -13,6 +13,7 @@ export default {
             'home_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedHomePage() {
@@ -52,6 +53,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :home_page="formattedHomePage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

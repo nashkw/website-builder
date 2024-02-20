@@ -13,6 +13,7 @@ export default {
             'rooms_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedRoomsPage() {
@@ -53,6 +54,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :rooms_page="formattedRoomsPage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

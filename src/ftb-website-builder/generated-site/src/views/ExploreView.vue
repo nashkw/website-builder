@@ -13,6 +13,7 @@ export default {
             'explore_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedExplorePage() {
@@ -50,6 +51,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :explore_page="formattedExplorePage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

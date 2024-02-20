@@ -13,6 +13,7 @@ export default {
             'faq_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedFAQPage() {
@@ -47,6 +48,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :faq_page="formattedFAQPage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>

@@ -522,5 +522,17 @@
         "preview_only": false,
         "created_at": null,
         "updated_at": null
+    },
+    "page_flags": {
+        "property_id": 1,
+        "has_home_page": true,
+        "has_rooms_page": true,
+        "has_reviews_page": true,
+        "has_about_page": true,
+        "has_explore_page": true,
+        "has_find_us_page": true,
+        "has_faq_page": true,
+        "created_at": null,
+        "updated_at": null
     }
 }

@@ -13,6 +13,7 @@ export default {
             'reviews_page',
             'property',
             'website',
+            'page_flags',
             'routes',
         ]),
         formattedReviewsPage() {
@@ -47,6 +48,7 @@ export default {
         :property="formattedProperty"
         :website="formattedWebsite"
         :reviews_page="formattedReviewsPage"
+        :page_flags="page_flags"
         :routes="routes"
     />
 </template>
