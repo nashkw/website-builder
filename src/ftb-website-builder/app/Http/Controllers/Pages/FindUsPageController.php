@@ -81,6 +81,27 @@ class FindUsPageController extends Controller
     }
 
     /**
+     * Display the add subpage for the generated site find us page.
+     */
+    public function add(Request $request): Response
+    {
+        return Inertia::render(
+            'AddContent/AddFindUs',
+            $this->getFindUsPageData($request->user()->id)
+        );
+    }
+
+    /**
+     * Create the user's generated site find us page information.
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        // TODO
+
+        return Redirect::route('add.findus');
+    }
+
+    /**
      * Update the user's generated site find us page information.
      */
     public function update(FindUsPageUpdateRequest $request): RedirectResponse

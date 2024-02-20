@@ -1,6 +1,7 @@
 <script setup>
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import ClickableCard from "@/Components/Buttons/ClickableCard.vue";
 </script>
 
 <template>
@@ -9,20 +10,42 @@ import AppHead from "@/Layout/AppHead.vue";
         <h1 class="wb-title">
             Add more pages to your website
         </h1>
-        <p class="wb-text">
-            On this page you will be able to add new pages to your website. This page has not yet been created.
-        </p>
-        <p class="wb-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Diam vel quam elementum pulvinar etiam non quam lacus suspendisse. At volutpat diam ut venenatis tellus in metus. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Feugiat nisl pretium fusce id velit ut tortor pretium viverra. Tristique senectus et netus et malesuada fames. Nisl tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Ac turpis egestas sed tempus. Orci phasellus egestas tellus rutrum tellus. Dolor sit amet consectetur adipiscing. Habitant morbi tristique senectus et netus et malesuada fames. Erat nam at lectus urna duis.
-        </p>
-        <p class="wb-text">
-            Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Elementum integer enim neque volutpat. Quam viverra orci sagittis eu volutpat odio. Rhoncus urna neque viverra justo nec ultrices. Porttitor leo a diam sollicitudin. Vitae turpis massa sed elementum tempus egestas sed sed risus. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Condimentum vitae sapien pellentesque habitant morbi tristique. Semper viverra nam libero justo laoreet sit amet cursus sit. A arcu cursus vitae congue mauris rhoncus aenean. Eget duis at tellus at urna. Arcu dui vivamus arcu felis bibendum ut tristique et.
-        </p>
-        <p class="wb-text">
-            Id volutpat lacus laoreet non curabitur gravida. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Commodo viverra maecenas accumsan lacus. Justo laoreet sit amet cursus sit amet dictum sit. Luctus accumsan tortor posuere ac. Suscipit tellus mauris a diam maecenas sed enim ut sem. Imperdiet dui accumsan sit amet. Dolor magna eget est lorem ipsum dolor sit. Tortor aliquam nulla facilisi cras fermentum odio. Aliquam nulla facilisi cras fermentum.
-        </p>
-        <p class="wb-text">
-            Ultrices mi tempus imperdiet nulla malesuada. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Vitae suscipit tellus mauris a diam maecenas sed enim. Amet volutpat consequat mauris nunc congue. Lectus urna duis convallis convallis tellus id interdum. In pellentesque massa placerat duis. Tristique magna sit amet purus gravida quis blandit turpis. Facilisis gravida neque convallis a cras semper auctor neque vitae. Est ante in nibh mauris cursus mattis molestie a. Risus in hendrerit gravida rutrum quisque. Eget nullam non nisi est. Malesuada bibendum arcu vitae elementum curabitur vitae nunc.
-        </p>
+        <div class="flex flex-col lg:grid grid-cols-2 gap-6">
+            <ClickableCard
+                heading="Reviews Page"
+                description="This page will allow potential customers to view feedback from previous customers. The information needed for this page includes a name and quote for each review. Optionally, you can also attach the date of the review and a star rating."
+                button="Add a reviews page"
+                :href="route('add.reviews')"
+                hubCard
+            />
+            <ClickableCard
+                heading="About Page"
+                description="This page is where you can tell customers all about your property. This could be anything from the history of your building to a picture of your team. The information needed for this page is whatever combination of text and images you need to tell your story."
+                button="Add an about page"
+                :href="route('add.about')"
+                hubCard
+            />
+            <ClickableCard
+                heading="Explore Page"
+                description="This page lets potential customers browse things to do while staying at your property. The information needed for this page includes a description and image for each attraction you want to advertise to your customers."
+                button="Add an explore page"
+                :href="route('add.explore')"
+                hubCard
+            />
+            <ClickableCard
+                heading="Find Us Page"
+                description="This page tells potential customers where your property is and how they can navigate to it. You could also tell them what to do when they arrive or about parking in the area. The information needed for this page includes directions to your property and a picture to help customers find their way."
+                button="Add a find us page"
+                :href="route('add.findus')"
+                hubCard
+            />
+            <ClickableCard
+                heading="FAQ Page"
+                description="This page is where you can answer all the common questions you would expect from potential and current customers. The information needed for this page includes a list of questions and your answers to them."
+                button="Add a FAQ page"
+                :href="route('add.faq')"
+                hubCard
+            />
+        </div>
     </LoggedInLayout>
 </template>

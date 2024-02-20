@@ -59,6 +59,16 @@ Route::domain('websitebuilder.ftb.sites')->group(function () {
 
         Route::name('add')->prefix('add')->group(function () {
             Route::get('/', function () { return Inertia::render('AddContent/Add'); });
+            Route::get('/reviews-page', [ReviewsPageController::class, 'add'])->name('.reviews');
+            Route::post('/reviews-page', [ReviewsPageController::class, 'create'])->name('.reviews.create');
+            Route::get('/about-page', [AboutPageController::class, 'add'])->name('.about');
+            Route::post('/about-page', [AboutPageController::class, 'create'])->name('.about.create');
+            Route::get('/explore-page', [ExplorePageController::class, 'add'])->name('.explore');
+            Route::post('/explore-page', [ExplorePageController::class, 'create'])->name('.explore.create');
+            Route::get('/find-us-page', [FindUsPageController::class, 'add'])->name('.findus');
+            Route::post('/find-us-page', [FindUsPageController::class, 'create'])->name('.findus.create');
+            Route::get('/faq-page', [FAQPageController::class, 'add'])->name('.faq');
+            Route::post('/faq-page', [FAQPageController::class, 'create'])->name('.faq.create');
         });
 
         Route::name('preview')->prefix('preview')->group(function () {

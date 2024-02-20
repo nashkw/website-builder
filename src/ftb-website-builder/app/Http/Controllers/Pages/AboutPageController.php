@@ -82,6 +82,27 @@ class AboutPageController extends Controller
     }
 
     /**
+     * Display the add subpage for the generated site about page.
+     */
+    public function add(Request $request): Response
+    {
+        return Inertia::render(
+            'AddContent/AddAbout',
+            $this->getAboutPageData($request->user()->id)
+        );
+    }
+
+    /**
+     * Create the user's generated site about page information.
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        // TODO
+
+        return Redirect::route('add.about');
+    }
+
+    /**
      * Update the user's generated site about page information.
      */
     public function update(AboutPageUpdateRequest $request): RedirectResponse

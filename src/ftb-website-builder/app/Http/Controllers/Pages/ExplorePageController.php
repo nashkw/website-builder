@@ -82,6 +82,27 @@ class ExplorePageController extends Controller
     }
 
     /**
+     * Display the add subpage for the generated site explore page.
+     */
+    public function add(Request $request): Response
+    {
+        return Inertia::render(
+            'AddContent/AddExplore',
+            $this->getExplorePageData($request->user()->id)
+        );
+    }
+
+    /**
+     * Create the user's generated site explore page information.
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        // TODO
+
+        return Redirect::route('add.explore');
+    }
+
+    /**
      * Update the user's generated site explore page information.
      */
     public function update(ExplorePageUpdateRequest $request): RedirectResponse

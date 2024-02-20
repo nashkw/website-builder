@@ -82,6 +82,27 @@ class ReviewsPageController extends Controller
     }
 
     /**
+     * Display the add subpage for the generated site reviews page.
+     */
+    public function add(Request $request): Response
+    {
+        return Inertia::render(
+            'AddContent/AddReviews',
+            $this->getReviewsPageData($request->user()->id, true)
+        );
+    }
+
+    /**
+     * Create the user's generated site reviews page information.
+     */
+    public function create(Request $request): RedirectResponse
+    {
+        // TODO
+
+        return Redirect::route('add.reviews');
+    }
+
+    /**
      * Update the user's generated site reviews page information.
      */
     public function update(ReviewsPageUpdateRequest $request): RedirectResponse
