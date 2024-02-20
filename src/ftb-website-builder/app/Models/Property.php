@@ -64,6 +64,14 @@ class Property extends Model
     }
 
     /**
+     * Get the page flags associated with the property.
+     */
+    public function pageFlags(): HasOne
+    {
+        return $this->hasOne(PageFlags::class);
+    }
+
+    /**
      * Get the website associated with the property.
      */
     public function website(): HasOne

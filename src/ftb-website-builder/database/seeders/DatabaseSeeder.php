@@ -379,5 +379,15 @@ class DatabaseSeeder extends Seeder
                 'answer_paragraph' => 'While we love pets, we maintain a pet-free environment to ensure a comfortable and allergy-free experience for all our guests.',
             ],
         ]);
+        DB::table('page_flags')->insert([
+            'property_id' => $property_id,
+            'has_home_page' => true,
+            'has_rooms_page' => true,
+            'has_reviews_page' => true,
+            'has_about_page' => true,
+            'has_explore_page' => true,
+            'has_find_us_page' => true,
+            'has_faq_page' => true,
+        ]);
     }
 }
