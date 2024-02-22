@@ -1,5 +1,5 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -10,25 +10,16 @@ import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
 
-const props = defineProps({
-    about_page_section_header: String,
-    about_page_section_paragraph: String,
-    about_page_section_image: String,
-    secondary_about_sections: Array,
-});
-
 const form = useForm({
-    about_page_section_header: props.about_page_section_header,
-    about_page_section_paragraph: props.about_page_section_paragraph,
+    about_page_section_header: "",
+    about_page_section_paragraph: "",
     about_page_section_image: null,
     remove_about_page_section_image: false,
-    secondary_about_sections: props.secondary_about_sections,
-    secondary_about_sections_to_remove: [],
+    secondary_about_sections: [],
 });
 
 function addSection() {
     form.secondary_about_sections.push({
-        id: null,
         secondary_about_section_header: null,
         secondary_about_section_paragraph: null,
         secondary_about_section_image: null,
@@ -36,17 +27,8 @@ function addSection() {
 }
 
 function removeSection(index) {
-    if(form.secondary_about_sections[index].id) {
-        form.secondary_about_sections_to_remove.push(form.secondary_about_sections[index].id);
-    }
     form.secondary_about_sections.splice(index, 1);
 }
-
-router.on('success', (event) => {
-    // reset secondary about section fields when form is submitted successfully
-    form.secondary_about_sections = props.secondary_about_sections;
-    form.secondary_about_sections_to_remove = [];
-})
 </script>
 
 <template>
@@ -92,7 +74,7 @@ router.on('success', (event) => {
                     fieldTitle="section image"
                     fieldID="about_page_section_image"
                     v-model:removeCurrentImage="form.remove_about_page_section_image"
-                    :originalImage="props.about_page_section_image"
+                    :originalImage="null"
                 />
             </FormSection>
 
@@ -141,6 +123,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.secondary_about_sections" />
                     <PlusOrCrossButton
                         v-on:click="addSection"
                         text="Add section"

@@ -7,7 +7,9 @@ use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageCreation\AboutPageCreationRequest;
 use App\Http\Requests\PageUpdates\AboutPageUpdateRequest;
+use App\Models\AboutPage\AboutPage;
 use App\Models\AboutPage\SecondaryAboutSection;
 use App\Models\User;
 use App\Models\Website;
@@ -34,17 +36,22 @@ class AboutPageController extends Controller
         }
 
         $user = $website->property->user_id;
-        return Inertia::render(
-            'GeneratedSite/GenerateAbout',
-            [
-                'about_page' => $this->getAboutPageData($user),
-                'property' => PropertyController::getPropertyData($user),
-                'website' => WebsiteController::getWebsiteData($user),
-                'page_flags' => PageFlagsController::getPageFlagsData($user),
-                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
-                'isPreview' => false,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($user);
+        if ($page_flags['has_about_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateAbout',
+                [
+                    'about_page' => $this->getAboutPageData($user),
+                    'property' => PropertyController::getPropertyData($user),
+                    'website' => WebsiteController::getWebsiteData($user),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+                    'isPreview' => false,
+                ]
+            );
+        } else {
+            return Redirect::route('website', ['subdomain' => $website->subdomain]);
+        }
     }
 
     /**
@@ -57,17 +64,22 @@ class AboutPageController extends Controller
             return Redirect::route('website.about', ['subdomain' => $website->subdomain]);
         }
 
-        return Inertia::render(
-            'GeneratedSite/GenerateAbout',
-            [
-                'about_page' => $this->getAboutPageData($request->user()->id),
-                'property' => PropertyController::getPropertyData($request->user()->id),
-                'website' => WebsiteController::getWebsiteData($request->user()->id),
-                'page_flags' => PageFlagsController::getPageFlagsData($request->user()->id),
-                'routes' => ControllerServices::getRoutes('preview'),
-                'isPreview' => true,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+        if ($page_flags['has_about_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateAbout',
+                [
+                    'about_page' => $this->getAboutPageData($request->user()->id),
+                    'property' => PropertyController::getPropertyData($request->user()->id),
+                    'website' => WebsiteController::getWebsiteData($request->user()->id),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('preview'),
+                    'isPreview' => true,
+                ]
+            );
+        } else {
+            return Redirect::route('preview');
+        }
     }
 
     /**
@@ -97,21 +109,61 @@ class AboutPageController extends Controller
         if ($page_flags['has_about_page']) {
             return Redirect::route('edit.about');
         } else {
-            return Inertia::render(
-                'AddContent/AddAbout',
-                $this->getAboutPageData($request->user()->id)
-            );
+            return Inertia::render('AddContent/AddAbout');
         }
     }
 
     /**
      * Create the user's generated site about page information.
      */
-    public function create(Request $request): RedirectResponse
+    public function create(AboutPageCreationRequest $request): RedirectResponse
     {
-        // TODO
+        $request->validated();
 
-        return Redirect::route('add.about');
+        $property = User::find($request->user()->id)->property;
+        $imagePath = 'images/' . $property->id . '/';
+        $aboutPage = new AboutPage;
+        $aboutPage->property_id = $property->id;
+        $data = $request->all();
+
+        $data = ControllerServices::uploadImage(
+            $request,
+            'about_page_section_image',
+            'remove_about_page_section_image',
+            $imagePath,
+            $aboutPage,
+            $data
+        );
+
+        foreach ($data['secondary_about_sections'] as $section) {
+            $newSection = new SecondaryAboutSection;
+            $newSection->property_id = $property->id;
+
+            if (array_key_exists('remove_secondary_about_section_image', $section)) {
+                if ($section['remove_secondary_about_section_image']) {
+                    $section['secondary_about_section_image'] = null;
+                }
+                unset($section['remove_secondary_about_section_image']);
+            }
+
+            if ($section['secondary_about_section_image']) {
+                $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
+                $section['secondary_about_section_image'] = $filepath;
+            }
+
+            $newSection->fill($section);
+            $newSection->save();
+        }
+        unset($data['secondary_about_sections']);
+
+        $aboutPage->fill($data);
+        $aboutPage->save();
+
+        $pageFlags = $property->pageFlags;
+        $pageFlags->has_about_page = true;
+        $pageFlags->save();
+
+        return Redirect::route('add');
     }
 
     /**

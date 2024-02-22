@@ -82,7 +82,7 @@ const noMissingPages = computed(() => {
                 To edit your pages please navigate to the
                 <a
                     class="wb-text-link"
-                    href="https://en.freetobook.com"
+                    :href="route('edit')"
                 >
                     Edit your website
                 </a>
