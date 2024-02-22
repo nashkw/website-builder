@@ -351,4 +351,43 @@
 
 ### 02 Feb 2024
 
-* *7 hours* began writing automatic test suite
+* *7 hours* began writing automatic testuite (including factories)
+
+
+## Week 21
+
+### 06 Feb 2024
+
+* *5 hours* finished writing automatic test suite (including factories)
+* *2 hours* added favicons (main app, hosted generated sites)
+
+### 08 Feb 2024
+
+* *1.5 hours* set up project on personal computer and made notes on installation steps
+* *4 hours* wrote a first draft of the main readme.md file for the project
+
+### 09 Feb 2024
+
+* *2.5 hours* meeting with freetobook director to give update on project status
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+
+## Week 22
+
+### 14 Feb 2024
+
+* *2.5 hours* drafted initial evaluation proposals (market validation, editing interface)
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+
+## Week 23
+
+### 19 Feb 2024
+
+* *1 hour* created market validation survey
+* *3 hours* drafted final evaluation plan (scenario, interview questions)
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 20 Feb 2024
+
+* *7.5 hours* implemented page addition section of application
