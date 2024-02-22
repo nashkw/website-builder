@@ -1,5 +1,5 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -10,25 +10,16 @@ import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
 
-const props = defineProps({
-    reviews_page_section_header: String,
-    reviews_page_section_paragraph: String,
-    reviews_page_section_image: String,
-    reviews: Array,
-});
-
 const form = useForm({
-    reviews_page_section_header: props.reviews_page_section_header,
-    reviews_page_section_paragraph: props.reviews_page_section_paragraph,
+    reviews_page_section_header: "",
+    reviews_page_section_paragraph: "",
     reviews_page_section_image: null,
     remove_reviews_page_section_image: false,
-    reviews: props.reviews,
-    reviews_to_remove: [],
+    reviews: [],
 });
 
 function addReview() {
     form.reviews.push({
-        id: null,
         review_quote: null,
         reviewer_name: null,
         star_rating: null,
@@ -37,17 +28,8 @@ function addReview() {
 }
 
 function removeReview(index) {
-    if(form.reviews[index].id) {
-        form.reviews_to_remove.push(form.reviews[index].id);
-    }
     form.reviews.splice(index, 1);
 }
-
-router.on('success', (event) => {
-    // reset review fields when form is submitted successfully
-    form.reviews = props.reviews;
-    form.reviews_to_remove = [];
-})
 </script>
 
 <template>
@@ -92,7 +74,7 @@ router.on('success', (event) => {
                     fieldTitle="section image"
                     fieldID="reviews_page_section_image"
                     v-model:removeCurrentImage="form.remove_reviews_page_section_image"
-                    :originalImage="props.reviews_page_section_image"
+                    :originalImage="null"
                 />
             </FormSection>
 
