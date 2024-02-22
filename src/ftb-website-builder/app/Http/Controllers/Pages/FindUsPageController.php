@@ -7,8 +7,10 @@ use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageCreation\FindUsPageCreationRequest;
 use App\Http\Requests\PageUpdates\FindUsPageUpdateRequest;
 use App\Models\FindUsPage\Direction;
+use App\Models\FindUsPage\FindUsPage;
 use App\Models\User;
 use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
@@ -33,17 +35,22 @@ class FindUsPageController extends Controller
         }
 
         $user = $website->property->user_id;
-        return Inertia::render(
-            'GeneratedSite/GenerateFindUs',
-            [
-                'find_us_page' => $this->getFindUsPageData($user),
-                'property' => PropertyController::getPropertyData($user),
-                'website' => WebsiteController::getWebsiteData($user),
-                'page_flags' => PageFlagsController::getPageFlagsData($user),
-                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
-                'isPreview' => false,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($user);
+        if ($page_flags['has_find_us_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateFindUs',
+                [
+                    'find_us_page' => $this->getFindUsPageData($user),
+                    'property' => PropertyController::getPropertyData($user),
+                    'website' => WebsiteController::getWebsiteData($user),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+                    'isPreview' => false,
+                ]
+            );
+        } else {
+            return Redirect::route('website', ['subdomain' => $website->subdomain]);
+        }
     }
 
     /**
@@ -56,17 +63,22 @@ class FindUsPageController extends Controller
             return Redirect::route('website.findus', ['subdomain' => $website->subdomain]);
         }
 
-        return Inertia::render(
-            'GeneratedSite/GenerateFindUs',
-            [
-                'find_us_page' => $this->getFindUsPageData($request->user()->id),
-                'property' => PropertyController::getPropertyData($request->user()->id),
-                'website' => WebsiteController::getWebsiteData($request->user()->id),
-                'page_flags' => PageFlagsController::getPageFlagsData($request->user()->id),
-                'routes' => ControllerServices::getRoutes('preview'),
-                'isPreview' => true,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+        if ($page_flags['has_find_us_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateFindUs',
+                [
+                    'find_us_page' => $this->getFindUsPageData($request->user()->id),
+                    'property' => PropertyController::getPropertyData($request->user()->id),
+                    'website' => WebsiteController::getWebsiteData($request->user()->id),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('preview'),
+                    'isPreview' => true,
+                ]
+            );
+        } else {
+            return Redirect::route('preview');
+        }
     }
 
     /**
@@ -96,21 +108,48 @@ class FindUsPageController extends Controller
         if ($page_flags['has_find_us_page']) {
             return Redirect::route('edit.findus');
         } else {
-            return Inertia::render(
-                'AddContent/AddFindUs',
-                $this->getFindUsPageData($request->user()->id)
-            );
+            return Inertia::render('AddContent/AddFindUs');
         }
     }
 
     /**
      * Create the user's generated site find us page information.
      */
-    public function create(Request $request): RedirectResponse
+    public function create(FindUsPageCreationRequest $request): RedirectResponse
     {
-        // TODO
+        $request->validated();
 
-        return Redirect::route('add.findus');
+        $property = User::find($request->user()->id)->property;
+        $imagePath = 'images/' . $property->id . '/';
+        $findUsPage = new FindUsPage;
+        $findUsPage->property_id = $property->id;
+        $data = $request->all();
+
+        $data = ControllerServices::uploadImage(
+            $request,
+            'find_us_page_section_image',
+            'remove_find_us_page_section_image',
+            $imagePath,
+            $findUsPage,
+            $data
+        );
+
+        foreach ($data['directions'] as $direction) {
+            $newDirection = new Direction;
+            $newDirection->property_id = $property->id;
+            $newDirection->fill($direction);
+            $newDirection->save();
+        }
+        unset($data['directions']);
+
+        $findUsPage->fill($data);
+        $findUsPage->save();
+
+        $pageFlags = $property->pageFlags;
+        $pageFlags->has_find_us_page = true;
+        $pageFlags->save();
+
+        return Redirect::route('add');
     }
 
     /**

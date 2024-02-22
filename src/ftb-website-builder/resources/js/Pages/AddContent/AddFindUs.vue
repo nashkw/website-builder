@@ -1,5 +1,5 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -10,42 +10,24 @@ import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
 
-const props = defineProps({
-    find_us_page_section_header: String,
-    find_us_page_section_paragraph: String,
-    find_us_page_section_image: String,
-    directions: Array,
-});
-
 const form = useForm({
-    find_us_page_section_header: props.find_us_page_section_header,
-    find_us_page_section_paragraph: props.find_us_page_section_paragraph,
+    find_us_page_section_header: "",
+    find_us_page_section_paragraph: "",
     find_us_page_section_image: null,
     remove_find_us_page_section_image: false,
-    directions: props.directions,
-    directions_to_remove: [],
+    directions: [],
 });
 
 function addDirection() {
     form.directions.push({
-        id: null,
         directions_label: null,
         directions_paragraph: null,
     });
 }
 
 function removeDirection(index) {
-    if(form.directions[index].id) {
-        form.directions_to_remove.push(form.directions[index].id);
-    }
     form.directions.splice(index, 1);
 }
-
-router.on('success', (event) => {
-    // reset directions fields when form is submitted successfully
-    form.directions = props.directions;
-    form.directions_to_remove = [];
-})
 </script>
 
 <template>
@@ -91,7 +73,7 @@ router.on('success', (event) => {
                     fieldTitle="section image"
                     fieldID="find_us_page_section_image"
                     v-model:removeCurrentImage="form.remove_find_us_page_section_image"
-                    :originalImage="props.find_us_page_section_image"
+                    :originalImage="null"
                 />
             </FormSection>
 
@@ -133,6 +115,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.directions" />
                     <PlusOrCrossButton
                         v-on:click="addDirection"
                         text="Add set of directions"
