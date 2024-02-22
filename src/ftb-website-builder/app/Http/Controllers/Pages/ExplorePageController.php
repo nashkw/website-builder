@@ -7,8 +7,10 @@ use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageCreation\ExplorePageCreationRequest;
 use App\Http\Requests\PageUpdates\ExplorePageUpdateRequest;
 use App\Models\ExplorePage\Attraction;
+use App\Models\ExplorePage\ExplorePage;
 use App\Models\User;
 use App\Models\Website;
 use Illuminate\Http\RedirectResponse;
@@ -34,17 +36,22 @@ class ExplorePageController extends Controller
         }
 
         $user = $website->property->user_id;
-        return Inertia::render(
-            'GeneratedSite/GenerateExplore',
-            [
-                'explore_page' => $this->getExplorePageData($user),
-                'property' => PropertyController::getPropertyData($user),
-                'website' => WebsiteController::getWebsiteData($user),
-                'page_flags' => PageFlagsController::getPageFlagsData($user),
-                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
-                'isPreview' => false,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($user);
+        if ($page_flags['has_explore_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateExplore',
+                [
+                    'explore_page' => $this->getExplorePageData($user),
+                    'property' => PropertyController::getPropertyData($user),
+                    'website' => WebsiteController::getWebsiteData($user),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+                    'isPreview' => false,
+                ]
+            );
+        } else {
+            return Redirect::route('website', ['subdomain' => $website->subdomain]);
+        }
     }
 
     /**
@@ -57,17 +64,22 @@ class ExplorePageController extends Controller
             return Redirect::route('website.explore', ['subdomain' => $website->subdomain]);
         }
 
-        return Inertia::render(
-            'GeneratedSite/GenerateExplore',
-            [
-                'explore_page' => $this->getExplorePageData($request->user()->id),
-                'property' => PropertyController::getPropertyData($request->user()->id),
-                'website' => WebsiteController::getWebsiteData($request->user()->id),
-                'page_flags' => PageFlagsController::getPageFlagsData($request->user()->id),
-                'routes' => ControllerServices::getRoutes('preview'),
-                'isPreview' => true,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+        if ($page_flags['has_explore_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateExplore',
+                [
+                    'explore_page' => $this->getExplorePageData($request->user()->id),
+                    'property' => PropertyController::getPropertyData($request->user()->id),
+                    'website' => WebsiteController::getWebsiteData($request->user()->id),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('preview'),
+                    'isPreview' => true,
+                ]
+            );
+        } else {
+            return Redirect::route('preview');
+        }
     }
 
     /**
@@ -97,21 +109,61 @@ class ExplorePageController extends Controller
         if ($page_flags['has_explore_page']) {
             return Redirect::route('edit.explore');
         } else {
-            return Inertia::render(
-                'AddContent/AddExplore',
-                $this->getExplorePageData($request->user()->id)
-            );
+            return Inertia::render('AddContent/AddExplore');
         }
     }
 
     /**
      * Create the user's generated site explore page information.
      */
-    public function create(Request $request): RedirectResponse
+    public function create(ExplorePageCreationRequest $request): RedirectResponse
     {
-        // TODO
+        $request->validated();
 
-        return Redirect::route('add.explore');
+        $property = User::find($request->user()->id)->property;
+        $imagePath = 'images/' . $property->id . '/';
+        $explorePage = new ExplorePage;
+        $explorePage->property_id = $property->id;
+        $data = $request->all();
+
+        $data = ControllerServices::uploadImage(
+            $request,
+            'explore_page_section_image',
+            'remove_explore_page_section_image',
+            $imagePath,
+            $explorePage,
+            $data
+        );
+
+        foreach ($data['attractions'] as $attraction) {
+            $newAttraction = new Attraction;
+            $newAttraction->property_id = $property->id;
+
+            if (array_key_exists('remove_attraction_image', $attraction)) {
+                if ($attraction['remove_attraction_image']) {
+                    $attraction['attraction_image'] = null;
+                }
+                unset($attraction['remove_attraction_image']);
+            }
+
+            if ($attraction['attraction_image']) {
+                $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
+                $attraction['attraction_image'] = $filepath;
+            }
+
+            $newAttraction->fill($attraction);
+            $newAttraction->save();
+        }
+        unset($data['attractions']);
+
+        $explorePage->fill($data);
+        $explorePage->save();
+
+        $pageFlags = $property->pageFlags;
+        $pageFlags->has_explore_page = true;
+        $pageFlags->save();
+
+        return Redirect::route('add');
     }
 
     /**

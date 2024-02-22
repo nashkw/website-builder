@@ -1,5 +1,5 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -10,25 +10,16 @@ import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
 
-const props = defineProps({
-    explore_page_section_header: String,
-    explore_page_section_paragraph: String,
-    explore_page_section_image: String,
-    attractions: Array,
-});
-
 const form = useForm({
-    explore_page_section_header: props.explore_page_section_header,
-    explore_page_section_paragraph: props.explore_page_section_paragraph,
+    explore_page_section_header: "",
+    explore_page_section_paragraph: "",
     explore_page_section_image: null,
     remove_explore_page_section_image: false,
-    attractions: props.attractions,
-    attractions_to_remove: [],
+    attractions: [],
 });
 
 function addAttraction() {
     form.attractions.push({
-        id: null,
         attraction_header: null,
         attraction_paragraph: null,
         attraction_image: null,
@@ -36,17 +27,8 @@ function addAttraction() {
 }
 
 function removeAttraction(index) {
-    if(form.attractions[index].id) {
-        form.attractions_to_remove.push(form.attractions[index].id);
-    }
     form.attractions.splice(index, 1);
 }
-
-router.on('success', (event) => {
-    // reset attraction fields when form is submitted successfully
-    form.attractions = props.attractions;
-    form.attractions_to_remove = [];
-})
 </script>
 
 <template>
@@ -91,7 +73,7 @@ router.on('success', (event) => {
                     fieldTitle="section image"
                     fieldID="explore_page_section_image"
                     v-model:removeCurrentImage="form.remove_explore_page_section_image"
-                    :originalImage="props.explore_page_section_image"
+                    :originalImage="null"
                 />
             </FormSection>
 
@@ -140,6 +122,7 @@ router.on('success', (event) => {
                             />
                         </div>
                     </div>
+                    <InputError :message="form.errors.attractions" />
                     <PlusOrCrossButton
                         v-on:click="addAttraction"
                         text="Add attraction"
