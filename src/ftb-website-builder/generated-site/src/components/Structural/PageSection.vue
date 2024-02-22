@@ -47,7 +47,7 @@ const props = defineProps({
         class="flex flex-col md:flex-row w-full justify-center items-center px-8 gap-8"
         :class="{'md:flex-row-reverse': flipped, 'px-48': !image}"
     >
-        <div class="flex flex-col py-10 px-2 sm:px-10 space-y-8">
+        <div class="flex flex-col py-10 px-2 sm:px-10 space-y-8 min-w-[50%]">
             <h1
                 v-if="header"
                 class="text-center"

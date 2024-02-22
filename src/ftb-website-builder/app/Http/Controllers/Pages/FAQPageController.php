@@ -7,7 +7,9 @@ use App\Http\Controllers\ControllerServices;
 use App\Http\Controllers\PageFlagsController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Requests\PageCreation\FAQPageCreationRequest;
 use App\Http\Requests\PageUpdates\FAQPageUpdateRequest;
+use App\Models\FAQPage\FAQPage;
 use App\Models\FAQPage\QuestionAndAnswer;
 use App\Models\User;
 use App\Models\Website;
@@ -33,17 +35,22 @@ class FAQPageController extends Controller
         }
 
         $user = $website->property->user_id;
-        return Inertia::render(
-            'GeneratedSite/GenerateFAQ',
-            [
-                'faq_page' => $this->getFAQPageData($user),
-                'property' => PropertyController::getPropertyData($user),
-                'website' => WebsiteController::getWebsiteData($user),
-                'page_flags' => PageFlagsController::getPageFlagsData($user),
-                'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
-                'isPreview' => false,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($user);
+        if ($page_flags['has_faq_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateFAQ',
+                [
+                    'faq_page' => $this->getFAQPageData($user),
+                    'property' => PropertyController::getPropertyData($user),
+                    'website' => WebsiteController::getWebsiteData($user),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('website', ['subdomain' => $subdomain]),
+                    'isPreview' => false,
+                ]
+            );
+        } else {
+            return Redirect::route('website', ['subdomain' => $website->subdomain]);
+        }
     }
 
     /**
@@ -56,17 +63,22 @@ class FAQPageController extends Controller
             return Redirect::route('website.faq', ['subdomain' => $website->subdomain]);
         }
 
-        return Inertia::render(
-            'GeneratedSite/GenerateFAQ',
-            [
-                'faq_page' => $this->getFAQPageData($request->user()->id),
-                'property' => PropertyController::getPropertyData($request->user()->id),
-                'website' => WebsiteController::getWebsiteData($request->user()->id),
-                'page_flags' => PageFlagsController::getPageFlagsData($request->user()->id),
-                'routes' => ControllerServices::getRoutes('preview'),
-                'isPreview' => true,
-            ]
-        );
+        $page_flags = PageFlagsController::getPageFlagsData($request->user()->id);
+        if ($page_flags['has_faq_page']) {
+            return Inertia::render(
+                'GeneratedSite/GenerateFAQ',
+                [
+                    'faq_page' => $this->getFAQPageData($request->user()->id),
+                    'property' => PropertyController::getPropertyData($request->user()->id),
+                    'website' => WebsiteController::getWebsiteData($request->user()->id),
+                    'page_flags' => $page_flags,
+                    'routes' => ControllerServices::getRoutes('preview'),
+                    'isPreview' => true,
+                ]
+            );
+        } else {
+            return Redirect::route('preview');
+        }
     }
 
     /**
@@ -96,21 +108,48 @@ class FAQPageController extends Controller
         if ($page_flags['has_faq_page']) {
             return Redirect::route('edit.faq');
         } else {
-            return Inertia::render(
-                'AddContent/AddFAQ',
-                $this->getFAQPageData($request->user()->id)
-            );
+            return Inertia::render('AddContent/AddFAQ');
         }
     }
 
     /**
      * Create the user's generated site FAQ page information.
      */
-    public function create(Request $request): RedirectResponse
+    public function create(FAQPageCreationRequest $request): RedirectResponse
     {
-        // TODO
+        $request->validated();
 
-        return Redirect::route('add.faq');
+        $property = User::find($request->user()->id)->property;
+        $imagePath = 'images/' . $property->id . '/';
+        $faqPage = new FAQPage;
+        $faqPage->property_id = $property->id;
+        $data = $request->all();
+
+        $data = ControllerServices::uploadImage(
+            $request,
+            'faq_page_section_image',
+            'remove_faq_page_section_image',
+            $imagePath,
+            $faqPage,
+            $data
+        );
+
+        foreach ($data['questions_and_answers'] as $questionAndAnswer) {
+            $newQuestionAndAnswer = new QuestionAndAnswer;
+            $newQuestionAndAnswer->property_id = $property->id;
+            $newQuestionAndAnswer->fill($questionAndAnswer);
+            $newQuestionAndAnswer->save();
+        }
+        unset($data['questions_and_answers']);
+
+        $faqPage->fill($data);
+        $faqPage->save();
+
+        $pageFlags = $property->pageFlags;
+        $pageFlags->has_faq_page = true;
+        $pageFlags->save();
+
+        return Redirect::route('add');
     }
 
     /**

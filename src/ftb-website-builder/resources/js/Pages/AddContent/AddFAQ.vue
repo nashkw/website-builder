@@ -1,5 +1,5 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import InputError from "@/Components/Forms/InputError.vue";
@@ -10,42 +10,24 @@ import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
 
-const props = defineProps({
-    faq_page_section_header: String,
-    faq_page_section_paragraph: String,
-    faq_page_section_image: String,
-    questions_and_answers: Array,
-});
-
 const form = useForm({
-    faq_page_section_header: props.faq_page_section_header,
-    faq_page_section_paragraph: props.faq_page_section_paragraph,
+    faq_page_section_header: "",
+    faq_page_section_paragraph: "",
     faq_page_section_image: null,
     remove_faq_page_section_image: false,
-    questions_and_answers: props.questions_and_answers,
-    questions_and_answers_to_remove: [],
+    questions_and_answers: [],
 });
 
 function addQuestionAndAnswer() {
     form.questions_and_answers.push({
-        id: null,
         question_label: null,
         answer_paragraph: null,
     });
 }
 
 function removeQuestionAndAnswer(index) {
-    if(form.questions_and_answers[index].id) {
-        form.questions_and_answers_to_remove.push(form.questions_and_answers[index].id);
-    }
     form.questions_and_answers.splice(index, 1);
 }
-
-router.on('success', (event) => {
-    // reset Q&A fields when form is submitted successfully
-    form.questions_and_answers = props.questions_and_answers;
-    form.questions_and_answers_to_remove = [];
-})
 </script>
 
 <template>
@@ -90,7 +72,7 @@ router.on('success', (event) => {
                     fieldTitle="section image"
                     fieldID="faq_page_section_image"
                     v-model:removeCurrentImage="form.remove_faq_page_section_image"
-                    :originalImage="props.faq_page_section_image"
+                    :originalImage="null"
                 />
             </FormSection>
 

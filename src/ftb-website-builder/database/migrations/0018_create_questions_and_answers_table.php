@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('question_label');
-            $table->string('answer_paragraph');
+            $table->text('answer_paragraph');
             $table->timestamps();
         });
     }
