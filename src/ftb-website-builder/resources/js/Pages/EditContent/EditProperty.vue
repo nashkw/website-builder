@@ -1,5 +1,5 @@
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import LabelledInputPair from "@/Components/Forms/LabelledInputPair.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
@@ -44,6 +44,12 @@ const form = useForm({
     property_logo: null,
     remove_property_logo: false,
     property_booking_link: props.property_booking_link,
+});
+
+router.on('success', (event) => {
+    // reset property logo fields when form is submitted successfully
+    form.property_logo = null;
+    form.remove_property_logo = false;
 });
 </script>
 

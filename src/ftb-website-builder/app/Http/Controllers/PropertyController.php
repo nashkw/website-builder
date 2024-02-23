@@ -6,8 +6,10 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
+use PHP_ICO;
 
 class PropertyController
 {
@@ -59,6 +61,15 @@ class PropertyController
             $property,
             $data
         );
+        if (!$request->remove_property_logo && $data['property_logo']) {
+            $sizes = array(array(16, 16), array(24, 24), array(32, 32), array(48, 48));
+            $ico = new PHP_ICO(public_path('storage/' . $data['property_logo']), $sizes);
+            $ico->save_ico(public_path('storage/' . $imagePath . 'favicon.ico'));
+            $data['property_favicon'] = $imagePath . 'favicon.ico';
+        } else if ($property->property_favicon && $request->remove_property_logo) {
+            Storage::disk("public")->delete($property->property_favicon);
+            $data['property_favicon'] = null;
+        }
 
         $property->fill($data);
         $property->save();

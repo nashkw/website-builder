@@ -1,5 +1,5 @@
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 import LoggedInLayout from "@/Layout/LoggedInLayout.vue";
 import ImageInput from "@/Components/Forms/ImageInput.vue";
 import ColourPickerGridItem from "@/Components/Forms/ColourPickerGridItem.vue";
@@ -26,6 +26,12 @@ const form = useForm({
     divider_art: null,
     remove_divider_art: false,
     font_family: props.font_family,
+});
+
+router.on('success', (event) => {
+    // reset divider art fields when form is submitted successfully
+    form.divider_art = null;
+    form.remove_divider_art = false;
 });
 
 const fonts = [
