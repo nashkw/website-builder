@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TestHotelFullSeeder::class,
             TestHotelPartialSeeder::class,
+            EvaluationSeeder::class,
         ]);
     }
 }
