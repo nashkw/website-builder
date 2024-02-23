@@ -73,7 +73,12 @@ class AccountController extends Controller
             foreach ($images as $image) {
                 if (!$image->isDir()) {
                     $filePath = $image->getRealPath();
-                    $zip->addFile($filePath, 'src/data/images/' . basename($filePath));
+                    $fileName = basename($filePath);
+                    if ($fileName == 'favicon.ico') {
+                        $zip->addFile($filePath, 'public/' . 'favicon.ico');
+                    } else {
+                        $zip->addFile($filePath, 'src/data/images/' . $fileName);
+                    }
                 }
             }
         }

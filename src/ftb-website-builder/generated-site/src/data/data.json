@@ -506,6 +506,7 @@
         "property_instagram_link": "https:\/\/www.instagram.com\/freetobook\/",
         "property_tripadvisor_link": null,
         "property_logo": "images\/test_logo.png",
+        "property_favicon": "images\/favicon.ico",
         "property_booking_link": "https:\/\/en.freetobook.com\/",
         "created_at": null,
         "updated_at": null
