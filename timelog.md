@@ -359,7 +359,7 @@
 ### 06 Feb 2024
 
 * *5 hours* finished writing automatic test suite (including factories)
-* *2 hours* added favicons (main app, hosted generated sites)
+* *2 hours* began adding favicons (main app, preview and hosted generated sites)
 
 ### 08 Feb 2024
 
@@ -391,3 +391,12 @@
 ### 20 Feb 2024
 
 * *7.5 hours* implemented page addition section of application
+
+### 22 Feb 2024
+
+* *4.5 hours* wrote documentation (generated site readme, project plan, data folder, main readme)
+
+### 23 Feb 2024
+
+* *2.5 hours* finished adding favicons (standalone generated site app, download function)
+* *5 hours* created database seeders in preperation for the evaluation
