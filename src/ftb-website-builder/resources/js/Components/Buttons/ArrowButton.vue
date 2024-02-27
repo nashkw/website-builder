@@ -10,6 +10,10 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    newTab: {
+        type: Boolean,
+        default: false,
+    }
 });
 </script>
 
@@ -17,6 +21,7 @@ const props = defineProps({
     <a
         class="wb-primary-button"
         :href="href"
+        :target="newTab ? '_blank' : ''"
     >
         {{ text }}
         <ArrowIcon />

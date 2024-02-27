@@ -96,6 +96,7 @@ export default {
             <ArrowButton
                 :href="route('preview')"
                 text="View website"
+                :newTab="true"
             />
             <SignInOutButton />
         </div>

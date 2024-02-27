@@ -1,5 +1,4 @@
 <script setup>
-
 import SecondaryButton from "@/Components/Buttons/SecondaryButton.vue";
 
 const props = defineProps({

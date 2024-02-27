@@ -79,7 +79,7 @@ const props = defineProps({
         />
         <div
             v-else-if="images"
-            class="flex md:w-1/2 md:min-w-[50%] max-h-[800px]"
+            class="flex md:w-1/2 md:min-w-[50%] max-h-[800px] px-8"
             :class="{'md:pr-5': flipped, 'md:pl-5': !flipped}"
         >
             <GeneratedSiteCarousel :images="images" />
