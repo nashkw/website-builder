@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const form = useForm({
     explore_page_section_header: "",
@@ -79,9 +80,10 @@ function removeAttraction(index) {
 
             <FormSection prompt="Add things to do near your property. Optionally, you can add an image of each attraction.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(attraction, index) in form.attractions"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeAttraction"
+                        :params="[index]"
                     >
                         <LabelledInputPair
                             v-model="attraction.attraction_header"
@@ -113,15 +115,7 @@ function removeAttraction(index) {
                             v-model:removeCurrentImage="attraction.remove_attraction_image"
                             :originalImage="typeof(attraction.attraction_image) === String ? attraction.attraction_image : null"
                         />
-
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeAttraction(index)"
-                                text="Remove attraction"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <InputError :message="form.errors.attractions" />
                     <PlusOrCrossButton
                         v-on:click="addAttraction"

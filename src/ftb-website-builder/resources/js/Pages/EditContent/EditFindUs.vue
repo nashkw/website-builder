@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const props = defineProps({
     find_us_page_section_header: String,
@@ -97,9 +98,10 @@ router.on('success', (event) => {
 
             <FormSection prompt="Optionally, you can add sets of directions to your Find Us page. For best results try to keep the directions a similar length.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(direction, index) in form.directions"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeDirection"
+                        :params="[index]"
                     >
                         <LabelledInputPair
                             v-model="direction.directions_label"
@@ -124,15 +126,8 @@ router.on('success', (event) => {
                             placeholder="The directions are..."
                         />
                         <InputError :message="form.errors['directions.' + index + '.directions_paragraph']" />
-
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeDirection(index)"
-                                text="Remove set of directions"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
+                    <InputError :message="form.errors.directions" />
                     <PlusOrCrossButton
                         v-on:click="addDirection"
                         text="Add set of directions"

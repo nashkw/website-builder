@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const props = defineProps({
     about_page_section_header: String,
@@ -98,9 +99,10 @@ router.on('success', (event) => {
 
             <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(section, index) in form.secondary_about_sections"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeSection"
+                        :params="[index]"
                     >
                         <LabelledInputPair
                             v-model="section.secondary_about_section_header"
@@ -133,14 +135,7 @@ router.on('success', (event) => {
                             v-model:removeCurrentImage="section.remove_secondary_about_section_image"
                             :originalImage="typeof(section.secondary_about_section_image) === String ? section.secondary_about_section_image : null"
                         />
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeSection(index)"
-                                text="Remove section"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <PlusOrCrossButton
                         v-on:click="addSection"
                         text="Add section"

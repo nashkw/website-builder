@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const props = defineProps({
     rooms_page_section_header: String,
@@ -117,9 +118,10 @@ router.on('success', (event) => {
 
             <FormSection prompt="Add the rooms available at your property. If you have multiple rooms of each type it would be best to list room types instead of individual rooms. Each room you list should have a name, a short description of what a guest can expect if they book it, and a picture of the room. Optionally, you can include additional pictures of the room.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(room, roomIndex) in form.rooms"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeRoom"
+                        :params="[roomIndex]"
                     >
                         <LabelledInputPair
                             v-model="room.room_name"
@@ -152,12 +154,16 @@ router.on('success', (event) => {
                             notNullable
                         />
 
-                        <div class="flex flex-col w-full space-y-3 justify-center items-center">
+                        <div class="flex flex-col w-full gap-3 justify-center items-center">
                             <div
                                 v-for="(image, imageIndex) in form.rooms[roomIndex].secondary_room_images"
                                 class="flex w-full rounded-lg gradient-bg mt-1"
                             >
-                                <div class="wb-card wb-sub-card space-y-2">
+                                <RemovableCard
+                                    :removeFunction="removeSecondaryImage"
+                                    :params="[roomIndex, imageIndex]"
+                                    class="wb-sub-card"
+                                >
                                     <ImageInput
                                         v-model="image.secondary_room_image"
                                         :errorMessage="form.errors['rooms.' + roomIndex + '.secondary_room_images.' + imageIndex + '.secondary_room_image']"
@@ -166,29 +172,14 @@ router.on('success', (event) => {
                                         :originalImage="typeof(image.secondary_room_image) === String ? image.secondary_room_image : null"
                                         notNullable
                                     />
-                                    <div class="flex w-full justify-end pt-2">
-                                        <PlusOrCrossButton
-                                            v-on:click="removeSecondaryImage(roomIndex, imageIndex)"
-                                            text="Remove room image"
-                                            isCross
-                                        />
-                                    </div>
-                                </div>
+                                </RemovableCard>
                             </div>
                             <PlusOrCrossButton
                                 v-on:click="addSecondaryImage(roomIndex)"
                                 text="Add room image"
                             />
                         </div>
-
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeRoom(roomIndex)"
-                                text="Remove room"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <InputError :message="form.errors.rooms" />
                     <PlusOrCrossButton
                         v-on:click="addRoom"

@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const props = defineProps({
     cover_image_primary: String,
@@ -79,9 +80,10 @@ router.on('success', (event) => {
 
             <FormSection prompt="Optionally, you can add more cover images for your website. These will be put into a slider that will rotate between all available cover images.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(coverImage, index) in form.secondary_cover_images"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeCoverImage"
+                        :params="[index]"
                     >
                         <ImageInput
                             v-model="coverImage.secondary_cover_image"
@@ -91,14 +93,7 @@ router.on('success', (event) => {
                             :originalImage="typeof(coverImage.secondary_cover_image) === String ? coverImage.secondary_cover_image : null"
                             notNullable
                         />
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeCoverImage(index)"
-                                text="Remove cover image"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <PlusOrCrossButton
                         v-on:click="addCoverImage"
                         text="Add cover image"

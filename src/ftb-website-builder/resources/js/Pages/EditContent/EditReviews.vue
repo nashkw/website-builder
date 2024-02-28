@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const props = defineProps({
     reviews_page_section_header: String,
@@ -98,9 +99,10 @@ router.on('success', (event) => {
 
             <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(review, index) in form.reviews"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeReview"
+                        :params="[index]"
                     >
                         <InputLabel
                             :for="'review_quote_' + index"
@@ -146,14 +148,7 @@ router.on('success', (event) => {
                             :fieldID="'review_date_' + index"
                             inputType="month"
                         />
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeReview(index)"
-                                text="Remove review"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <InputError :message="form.errors.reviews" />
                     <PlusOrCrossButton
                         v-on:click="addReview"

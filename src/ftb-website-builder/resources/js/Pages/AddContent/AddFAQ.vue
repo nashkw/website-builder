@@ -9,6 +9,7 @@ import SaveButton from "@/Components/Buttons/SaveButton.vue";
 import FormSection from "@/Components/Structural/FormSection.vue";
 import PlusOrCrossButton from "@/Components/Buttons/PlusOrCrossButton.vue";
 import AppHead from "@/Layout/AppHead.vue";
+import RemovableCard from "@/Components/Buttons/RemovableCard.vue";
 
 const form = useForm({
     faq_page_section_header: "",
@@ -78,9 +79,10 @@ function removeQuestionAndAnswer(index) {
 
             <FormSection prompt="Add Q&As to your FAQ page. For best results try to keep your answers a similar length.">
                 <div class="flex flex-col gap-4 justify-center items-center">
-                    <div
+                    <RemovableCard
                         v-for="(item, index) in form.questions_and_answers"
-                        class="wb-card space-y-2"
+                        :removeFunction="removeQuestionAndAnswer"
+                        :params="[index]"
                     >
                         <LabelledInputPair
                             v-model="item.question_label"
@@ -105,15 +107,7 @@ function removeQuestionAndAnswer(index) {
                             placeholder="Answer to the question..."
                         />
                         <InputError :message="form.errors['questions_and_answers.' + index + '.answer_paragraph']" />
-
-                        <div class="flex w-full justify-end pt-2">
-                            <PlusOrCrossButton
-                                v-on:click="removeQuestionAndAnswer(index)"
-                                text="Remove Q&A item"
-                                isCross
-                            />
-                        </div>
-                    </div>
+                    </RemovableCard>
                     <InputError :message="form.errors.questions_and_answers" />
                     <PlusOrCrossButton
                         v-on:click="addQuestionAndAnswer"
