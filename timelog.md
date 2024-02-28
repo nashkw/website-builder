@@ -400,3 +400,18 @@
 
 * *2.5 hours* finished adding favicons (standalone generated site app, download function)
 * *5 hours* created database seeders in preperation for the evaluation
+
+
+## Week 24
+
+### 27 Feb 2024
+
+* *3.5 hours* final preperation for evaluation (ethics checklist, consent forms, instructions)
+* *1.5 hours* began working on final implementation tweaks (new tab links, removable cards)
+* *2 hours* weekly meeting with supervisor, including pre-meeting and post-meeting trello work
+
+### 28 Feb 2024
+
+* *0.5 hours* finished working on final implementation tweaks
+* *1 hour* final preperation for evaluation (schedulling evaluations, preparing set up)
+* *2 hours* carried out evaluation for participant 1
