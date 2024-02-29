@@ -61,7 +61,7 @@ class PropertyController
             $property,
             $data
         );
-        if (!$request->remove_property_logo && $data['property_logo']) {
+        if (!$request->remove_property_logo && array_key_exists('property_logo', $data) && $data['property_logo']) {
             $sizes = array(array(16, 16), array(24, 24), array(32, 32), array(48, 48));
             $ico = new PHP_ICO(public_path('storage/' . $data['property_logo']), $sizes);
             $ico->save_ico(public_path('storage/' . $imagePath . 'favicon.ico'));

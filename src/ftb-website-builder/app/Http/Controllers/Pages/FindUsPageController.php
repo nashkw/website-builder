@@ -134,11 +134,13 @@ class FindUsPageController extends Controller
             $data
         );
 
-        foreach ($data['directions'] as $direction) {
-            $newDirection = new Direction;
-            $newDirection->property_id = $property->id;
-            $newDirection->fill($direction);
-            $newDirection->save();
+        if (array_key_exists('directions', $data)) {
+            foreach ($data['directions'] as $direction) {
+                $newDirection = new Direction;
+                $newDirection->property_id = $property->id;
+                $newDirection->fill($direction);
+                $newDirection->save();
+            }
         }
         unset($data['directions']);
 
@@ -172,24 +174,28 @@ class FindUsPageController extends Controller
             $data
         );
 
-        foreach ($data['directions_to_remove'] as $directionID) {
-            Direction::find($directionID)->delete();
+        if (array_key_exists('directions_to_remove', $data)) {
+            foreach ($data['directions_to_remove'] as $directionID) {
+                Direction::find($directionID)->delete();
+            }
         }
         unset($data['directions_to_remove']);
 
-        foreach ($data['directions'] as $direction) {
-            if($direction['id']) {
-                $existingDirection = Direction::find($direction['id']);
-            } else {
-                $existingDirection = new Direction;
-                $existingDirection->property_id = $findUsPage->property_id;
+        if (array_key_exists('directions', $data)) {
+            foreach ($data['directions'] as $direction) {
+                if ($direction['id']) {
+                    $existingDirection = Direction::find($direction['id']);
+                } else {
+                    $existingDirection = new Direction;
+                    $existingDirection->property_id = $findUsPage->property_id;
+                }
+
+                unset($direction['id']);
+                unset($direction['property_id']);
+
+                $existingDirection->fill($direction);
+                $existingDirection->save();
             }
-
-            unset($direction['id']);
-            unset($direction['property_id']);
-
-            $existingDirection->fill($direction);
-            $existingDirection->save();
         }
         unset($data['directions']);
 

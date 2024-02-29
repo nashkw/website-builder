@@ -135,24 +135,26 @@ class AboutPageController extends Controller
             $data
         );
 
-        foreach ($data['secondary_about_sections'] as $section) {
-            $newSection = new SecondaryAboutSection;
-            $newSection->property_id = $property->id;
+        if (array_key_exists('secondary_about_sections', $data)) {
+            foreach ($data['secondary_about_sections'] as $section) {
+                $newSection = new SecondaryAboutSection;
+                $newSection->property_id = $property->id;
 
-            if (array_key_exists('remove_secondary_about_section_image', $section)) {
-                if ($section['remove_secondary_about_section_image']) {
-                    $section['secondary_about_section_image'] = null;
+                if (array_key_exists('remove_secondary_about_section_image', $section)) {
+                    if ($section['remove_secondary_about_section_image']) {
+                        $section['secondary_about_section_image'] = null;
+                    }
+                    unset($section['remove_secondary_about_section_image']);
                 }
-                unset($section['remove_secondary_about_section_image']);
-            }
 
-            if ($section['secondary_about_section_image']) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
-                $section['secondary_about_section_image'] = $filepath;
-            }
+                if ($section['secondary_about_section_image']) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
+                    $section['secondary_about_section_image'] = $filepath;
+                }
 
-            $newSection->fill($section);
-            $newSection->save();
+                $newSection->fill($section);
+                $newSection->save();
+            }
         }
         unset($data['secondary_about_sections']);
 
@@ -195,36 +197,38 @@ class AboutPageController extends Controller
             unset($data['secondary_about_sections_to_remove']);
         }
 
-        foreach ($data['secondary_about_sections'] as $section) {
-            if ($section['id']) {
-                $existingSection = SecondaryAboutSection::find($section['id']);
-            } else {
-                $existingSection = new SecondaryAboutSection;
-                $existingSection->property_id = $aboutPage->property_id;
-            }
-
-            if (array_key_exists('remove_secondary_about_section_image', $section)) {
-                if ($section['remove_secondary_about_section_image']) {
-                    if (is_string($section['secondary_about_section_image'])) {
-                        ControllerServices::deleteImage('secondary_about_section_image', $existingSection);
-                    }
-                    $section['secondary_about_section_image'] = null;
+        if (array_key_exists('secondary_about_sections', $data)) {
+            foreach ($data['secondary_about_sections'] as $section) {
+                if ($section['id']) {
+                    $existingSection = SecondaryAboutSection::find($section['id']);
+                } else {
+                    $existingSection = new SecondaryAboutSection;
+                    $existingSection->property_id = $aboutPage->property_id;
                 }
+
+                if (array_key_exists('remove_secondary_about_section_image', $section)) {
+                    if ($section['remove_secondary_about_section_image']) {
+                        if (is_string($section['secondary_about_section_image'])) {
+                            ControllerServices::deleteImage('secondary_about_section_image', $existingSection);
+                        }
+                        $section['secondary_about_section_image'] = null;
+                    }
+                }
+
+                if (is_string($section['secondary_about_section_image'])) {
+                    unset($section['secondary_about_section_image']);
+                } else if ($section['secondary_about_section_image']) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
+                    $section['secondary_about_section_image'] = $filepath;
+                }
+
+                unset($section['remove_secondary_about_section_image']);
+                unset($section['id']);
+                unset($section['property_id']);
+
+                $existingSection->fill($section);
+                $existingSection->save();
             }
-
-            if (is_string($section['secondary_about_section_image'])) {
-                unset($section['secondary_about_section_image']);
-            } else if ($section['secondary_about_section_image']) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $section['secondary_about_section_image']);
-                $section['secondary_about_section_image'] = $filepath;
-            }
-
-            unset($section['remove_secondary_about_section_image']);
-            unset($section['id']);
-            unset($section['property_id']);
-
-            $existingSection->fill($section);
-            $existingSection->save();
         }
         unset($data['secondary_about_sections']);
 

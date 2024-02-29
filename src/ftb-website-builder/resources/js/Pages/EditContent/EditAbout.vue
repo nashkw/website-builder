@@ -97,7 +97,7 @@ router.on('success', (event) => {
                 />
             </FormSection>
 
-            <FormSection prompt="Add reviews of your property. Optionally, you can add star ratings and dates to your reviews.">
+            <FormSection prompt="Add more sections to your about page. Like the previous section, these will consist of a block of text optionally accompanied by an image and header.">
                 <div class="flex flex-col gap-4 justify-center items-center">
                     <RemovableCard
                         v-for="(section, index) in form.secondary_about_sections"
