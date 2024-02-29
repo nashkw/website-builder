@@ -414,4 +414,9 @@
 
 * *0.5 hours* finished working on final implementation tweaks
 * *1 hour* final preperation for evaluation (schedulling evaluations, preparing set up)
+* *1.5 hours* carried out pilot study and fixed all noted issues
 * *2 hours* carried out evaluation for participant 1
+
+### 29 Feb 2024
+
+* *2 hours* carried out evaluation for participant 2
