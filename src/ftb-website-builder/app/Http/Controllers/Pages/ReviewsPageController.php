@@ -135,19 +135,21 @@ class ReviewsPageController extends Controller
             $data
         );
 
-        foreach ($data['reviews'] as $review) {
-            $newReview = new Review;
-            $newReview->property_id = $property->id;
+        if (array_key_exists('reviews', $data)) {
+            foreach ($data['reviews'] as $review) {
+                $newReview = new Review;
+                $newReview->property_id = $property->id;
 
-            if($review['star_rating']) {
-                $review['star_rating'] = $review['star_rating'] * 2;
-            }
-            if($review['review_date']) {
-                $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
-            }
+                if ($review['star_rating']) {
+                    $review['star_rating'] = $review['star_rating'] * 2;
+                }
+                if ($review['review_date']) {
+                    $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
+                }
 
-            $newReview->fill($review);
-            $newReview->save();
+                $newReview->fill($review);
+                $newReview->save();
+            }
         }
         unset($data['reviews']);
 
@@ -181,31 +183,35 @@ class ReviewsPageController extends Controller
             $data
         );
 
-        foreach ($data['reviews_to_remove'] as $reviewID) {
-            Review::find($reviewID)->delete();
+        if (array_key_exists('reviews', $data)) {
+            foreach ($data['reviews_to_remove'] as $reviewID) {
+                Review::find($reviewID)->delete();
+            }
         }
         unset($data['reviews_to_remove']);
 
-        foreach ($data['reviews'] as $review) {
-            if($review['id']) {
-                $existingReview = Review::find($review['id']);
-            } else {
-                $existingReview = new Review;
-                $existingReview->property_id = $reviewsPage->property_id;
-            }
+        if (array_key_exists('reviews', $data)) {
+            foreach ($data['reviews'] as $review) {
+                if ($review['id']) {
+                    $existingReview = Review::find($review['id']);
+                } else {
+                    $existingReview = new Review;
+                    $existingReview->property_id = $reviewsPage->property_id;
+                }
 
-            if($review['star_rating']) {
-                $review['star_rating'] = $review['star_rating'] * 2;
-            }
-            if($review['review_date']) {
-                $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
-            }
+                if ($review['star_rating']) {
+                    $review['star_rating'] = $review['star_rating'] * 2;
+                }
+                if ($review['review_date']) {
+                    $review['review_date'] = Carbon::parse($review['review_date'])->toDatetimeString();
+                }
 
-            unset($review['id']);
-            unset($review['property_id']);
+                unset($review['id']);
+                unset($review['property_id']);
 
-            $existingReview->fill($review);
-            $existingReview->save();
+                $existingReview->fill($review);
+                $existingReview->save();
+            }
         }
         unset($data['reviews']);
 

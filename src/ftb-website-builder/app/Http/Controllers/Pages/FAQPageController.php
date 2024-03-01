@@ -134,11 +134,13 @@ class FAQPageController extends Controller
             $data
         );
 
-        foreach ($data['questions_and_answers'] as $questionAndAnswer) {
-            $newQuestionAndAnswer = new QuestionAndAnswer;
-            $newQuestionAndAnswer->property_id = $property->id;
-            $newQuestionAndAnswer->fill($questionAndAnswer);
-            $newQuestionAndAnswer->save();
+        if (array_key_exists('questions_and_answers', $data)) {
+            foreach ($data['questions_and_answers'] as $questionAndAnswer) {
+                $newQuestionAndAnswer = new QuestionAndAnswer;
+                $newQuestionAndAnswer->property_id = $property->id;
+                $newQuestionAndAnswer->fill($questionAndAnswer);
+                $newQuestionAndAnswer->save();
+            }
         }
         unset($data['questions_and_answers']);
 
@@ -172,24 +174,28 @@ class FAQPageController extends Controller
             $data
         );
 
-        foreach ($data['questions_and_answers_to_remove'] as $questionAndAnswerID) {
-            QuestionAndAnswer::find($questionAndAnswerID)->delete();
+        if (array_key_exists('questions_and_answers_to_remove', $data)) {
+            foreach ($data['questions_and_answers_to_remove'] as $questionAndAnswerID) {
+                QuestionAndAnswer::find($questionAndAnswerID)->delete();
+            }
         }
         unset($data['questions_and_answers_to_remove']);
 
-        foreach ($data['questions_and_answers'] as $questionAndAnswer) {
-            if($questionAndAnswer['id']) {
-                $existingQuestionAndAnswer = QuestionAndAnswer::find($questionAndAnswer['id']);
-            } else {
-                $existingQuestionAndAnswer = new QuestionAndAnswer;
-                $existingQuestionAndAnswer->property_id = $faqPage->property_id;
+        if (array_key_exists('questions_and_answers', $data)) {
+            foreach ($data['questions_and_answers'] as $questionAndAnswer) {
+                if ($questionAndAnswer['id']) {
+                    $existingQuestionAndAnswer = QuestionAndAnswer::find($questionAndAnswer['id']);
+                } else {
+                    $existingQuestionAndAnswer = new QuestionAndAnswer;
+                    $existingQuestionAndAnswer->property_id = $faqPage->property_id;
+                }
+
+                unset($questionAndAnswer['id']);
+                unset($questionAndAnswer['property_id']);
+
+                $existingQuestionAndAnswer->fill($questionAndAnswer);
+                $existingQuestionAndAnswer->save();
             }
-
-            unset($questionAndAnswer['id']);
-            unset($questionAndAnswer['property_id']);
-
-            $existingQuestionAndAnswer->fill($questionAndAnswer);
-            $existingQuestionAndAnswer->save();
         }
         unset($data['questions_and_answers']);
 

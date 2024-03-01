@@ -126,23 +126,25 @@ class HomePageController extends Controller
             unset($data['secondary_cover_images_to_remove']);
         }
 
-        foreach ($data['secondary_cover_images'] as $coverImage) {
-            if($coverImage['id']) {
-                $existingCoverImage = SecondaryCoverImage::find($coverImage['id']);
-            } else {
-                $existingCoverImage = new SecondaryCoverImage;
-                $existingCoverImage->property_id = $homePage->property_id;
-            }
+        if (array_key_exists('secondary_cover_images', $data)) {
+            foreach ($data['secondary_cover_images'] as $coverImage) {
+                if ($coverImage['id']) {
+                    $existingCoverImage = SecondaryCoverImage::find($coverImage['id']);
+                } else {
+                    $existingCoverImage = new SecondaryCoverImage;
+                    $existingCoverImage->property_id = $homePage->property_id;
+                }
 
-            if(!is_string($coverImage['secondary_cover_image'])) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $coverImage['secondary_cover_image']);
-                $coverImage['secondary_cover_image'] = $filepath;
+                if (!is_string($coverImage['secondary_cover_image'])) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $coverImage['secondary_cover_image']);
+                    $coverImage['secondary_cover_image'] = $filepath;
 
-                unset($coverImage['id']);
-                unset($coverImage['property_id']);
+                    unset($coverImage['id']);
+                    unset($coverImage['property_id']);
 
-                $existingCoverImage->fill($coverImage);
-                $existingCoverImage->save();
+                    $existingCoverImage->fill($coverImage);
+                    $existingCoverImage->save();
+                }
             }
         }
         unset($data['secondary_cover_images']);

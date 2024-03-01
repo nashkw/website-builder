@@ -111,57 +111,61 @@ class RoomsPageController extends Controller
             unset($data['rooms_to_remove']);
         }
 
-        foreach ($data['rooms'] as $room) {
-            if ($room['id']) {
-                $existingRoom = Room::find($room['id']);
-            } else {
-                $existingRoom = new Room;
-                $existingRoom->property_id = $roomsPage->property_id;
-            }
+        if (array_key_exists('rooms', $data)) {
+            foreach ($data['rooms'] as $room) {
+                if ($room['id']) {
+                    $existingRoom = Room::find($room['id']);
+                } else {
+                    $existingRoom = new Room;
+                    $existingRoom->property_id = $roomsPage->property_id;
+                }
 
-            if (is_string($room['room_image_primary'])) {
-                unset($room['room_image_primary']);
-            } else if ($room['room_image_primary']) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $room['room_image_primary']);
-                $room['room_image_primary'] = $filepath;
-            }
+                if (is_string($room['room_image_primary'])) {
+                    unset($room['room_image_primary']);
+                } else if ($room['room_image_primary']) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $room['room_image_primary']);
+                    $room['room_image_primary'] = $filepath;
+                }
 
-            if(array_key_exists('secondary_room_images_to_remove', $room)) {
-                foreach ($room['secondary_room_images_to_remove'] as $roomImageID) {
-                    $roomImage = SecondaryRoomImage::find($roomImageID);
-                    ControllerServices::deleteImage('secondary_room_image', $roomImage);
-                    $roomImage->delete();
+                if (array_key_exists('secondary_room_images_to_remove', $room)) {
+                    foreach ($room['secondary_room_images_to_remove'] as $roomImageID) {
+                        $roomImage = SecondaryRoomImage::find($roomImageID);
+                        ControllerServices::deleteImage('secondary_room_image', $roomImage);
+                        $roomImage->delete();
+                    }
                 }
                 unset($room['secondary_room_images_to_remove']);
-            }
 
-            foreach ($room['secondary_room_images'] as $image) {
-                if ($image['id']) {
-                    $existingImage = SecondaryRoomImage::find($image['id']);
-                } else {
-                    $existingImage = new SecondaryRoomImage;
-                    $existingImage->room_id = $existingRoom->id;
+                if (array_key_exists('secondary_room_images', $room)) {
+                    foreach ($room['secondary_room_images'] as $image) {
+                        if ($image['id']) {
+                            $existingImage = SecondaryRoomImage::find($image['id']);
+                        } else {
+                            $existingImage = new SecondaryRoomImage;
+                            $existingImage->room_id = $existingRoom->id;
+                        }
+
+                        if (!is_string($image['secondary_room_image'])) {
+                            $filepath = Storage::disk("public")->putFile($imagePath, $image['secondary_room_image']);
+                            $image['secondary_room_image'] = $filepath;
+
+                            unset($image['id']);
+                            unset($image['property_id']);
+
+                            $existingImage->fill($image);
+                            $existingImage->save();
+                        }
+                    }
                 }
+                unset($room['secondary_room_images']);
 
-                if(!is_string($image['secondary_room_image'])) {
-                    $filepath = Storage::disk("public")->putFile($imagePath, $image['secondary_room_image']);
-                    $image['secondary_room_image'] = $filepath;
+                unset($room['remove_room_image_primary']);
+                unset($room['id']);
+                unset($room['property_id']);
 
-                    unset($image['id']);
-                    unset($image['property_id']);
-
-                    $existingImage->fill($image);
-                    $existingImage->save();
-                }
+                $existingRoom->fill($room);
+                $existingRoom->save();
             }
-            unset($room['secondary_room_images']);
-
-            unset($room['remove_room_image_primary']);
-            unset($room['id']);
-            unset($room['property_id']);
-
-            $existingRoom->fill($room);
-            $existingRoom->save();
         }
         unset($data['rooms']);
 

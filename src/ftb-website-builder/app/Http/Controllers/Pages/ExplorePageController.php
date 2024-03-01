@@ -135,24 +135,26 @@ class ExplorePageController extends Controller
             $data
         );
 
-        foreach ($data['attractions'] as $attraction) {
-            $newAttraction = new Attraction;
-            $newAttraction->property_id = $property->id;
+        if (array_key_exists('attractions', $data)) {
+            foreach ($data['attractions'] as $attraction) {
+                $newAttraction = new Attraction;
+                $newAttraction->property_id = $property->id;
 
-            if (array_key_exists('remove_attraction_image', $attraction)) {
-                if ($attraction['remove_attraction_image']) {
-                    $attraction['attraction_image'] = null;
+                if (array_key_exists('remove_attraction_image', $attraction)) {
+                    if ($attraction['remove_attraction_image']) {
+                        $attraction['attraction_image'] = null;
+                    }
+                    unset($attraction['remove_attraction_image']);
                 }
-                unset($attraction['remove_attraction_image']);
-            }
 
-            if ($attraction['attraction_image']) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
-                $attraction['attraction_image'] = $filepath;
-            }
+                if ($attraction['attraction_image']) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
+                    $attraction['attraction_image'] = $filepath;
+                }
 
-            $newAttraction->fill($attraction);
-            $newAttraction->save();
+                $newAttraction->fill($attraction);
+                $newAttraction->save();
+            }
         }
         unset($data['attractions']);
 
@@ -195,36 +197,38 @@ class ExplorePageController extends Controller
             unset($data['attractions_to_remove']);
         }
 
-        foreach ($data['attractions'] as $attraction) {
-            if ($attraction['id']) {
-                $existingAttraction = Attraction::find($attraction['id']);
-            } else {
-                $existingAttraction = new Attraction;
-                $existingAttraction->property_id = $explorePage->property_id;
-            }
-
-            if (array_key_exists('remove_attraction_image', $attraction)) {
-                if ($attraction['remove_attraction_image']) {
-                    if (is_string($attraction['attraction_image'])) {
-                        ControllerServices::deleteImage('attraction_image', $existingAttraction);
-                    }
-                    $attraction['attraction_image'] = null;
+        if (array_key_exists('attractions', $data)) {
+            foreach ($data['attractions'] as $attraction) {
+                if ($attraction['id']) {
+                    $existingAttraction = Attraction::find($attraction['id']);
+                } else {
+                    $existingAttraction = new Attraction;
+                    $existingAttraction->property_id = $explorePage->property_id;
                 }
+
+                if (array_key_exists('remove_attraction_image', $attraction)) {
+                    if ($attraction['remove_attraction_image']) {
+                        if (is_string($attraction['attraction_image'])) {
+                            ControllerServices::deleteImage('attraction_image', $existingAttraction);
+                        }
+                        $attraction['attraction_image'] = null;
+                    }
+                }
+
+                if (is_string($attraction['attraction_image'])) {
+                    unset($attraction['attraction_image']);
+                } else if ($attraction['attraction_image']) {
+                    $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
+                    $attraction['attraction_image'] = $filepath;
+                }
+
+                unset($attraction['remove_attraction_image']);
+                unset($attraction['id']);
+                unset($attraction['property_id']);
+
+                $existingAttraction->fill($attraction);
+                $existingAttraction->save();
             }
-
-            if (is_string($attraction['attraction_image'])) {
-                unset($attraction['attraction_image']);
-            } else if ($attraction['attraction_image']) {
-                $filepath = Storage::disk("public")->putFile($imagePath, $attraction['attraction_image']);
-                $attraction['attraction_image'] = $filepath;
-            }
-
-            unset($attraction['remove_attraction_image']);
-            unset($attraction['id']);
-            unset($attraction['property_id']);
-
-            $existingAttraction->fill($attraction);
-            $existingAttraction->save();
         }
         unset($data['attractions']);
 
